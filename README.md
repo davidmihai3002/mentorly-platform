@@ -1,75 +1,73 @@
-# React + TypeScript + Vite
+# Mentorly — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Platformă de mentorat care conectează tineri la început de carieră cu mentori verificați.
+Aplicație web responsive, doar în limba română, prețuri în RON.
 
-Currently, two official plugins are available:
+- **Backend:** [mentorly-api](https://github.com/davidmihai3002/mentorly-api) (NestJS + PostgreSQL)
+- **Jira:** [SCRUM board](https://ancadrehluta.atlassian.net/jira/software/projects/SCRUM/boards/1)
+- **Decizii tehnice:** `docs/adr/` (vin cu SCRUM-271)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Cerințe
 
-## React Compiler
+- **Node.js 24** (versiunea e în `.nvmrc`; cu nvm: `nvm use`; pe Windows: nvm-windows sau fnm)
+- npm 11
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Pornire locală
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm ci                      # instalează dependențele exact ca în package-lock.json
+cp .env.example .env.local  # apoi completează valorile
+npm run dev                 # http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripturi
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Comandă                           | Ce face                                              |
+| --------------------------------- | ---------------------------------------------------- |
+| `npm run dev`                     | Server de dezvoltare cu reîncărcare automată         |
+| `npm run build`                   | Verificare de tipuri + build de producție în `dist/` |
+| `npm run preview`                 | Servește local build-ul din `dist/`                  |
+| `npm run typecheck`               | Doar verificarea de tipuri (TypeScript strict)       |
+| `npm run lint` / `lint:fix`       | ESLint (cu reguli pe tipuri) / cu reparare automată  |
+| `npm run format` / `format:check` | Prettier: formatează / doar verifică                 |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Structura
 
+```text
+src/
+  app/          # pornirea aplicației: providers, router, layout-uri
+  components/   # componente comune (ui/ = shadcn)
+  features/     # cod pe funcționalități
+    auth/  mentors/  applications/  sessions/
+    payments/  progress/  notifications/  sponsors/
+  lib/          # utilitare fără legătură cu React (formatare, validare, API)
 ```
+
+**Regula:** codul unei funcționalități stă în `features/<nume>/`. Ce folosesc două sau mai
+multe funcționalități se mută în `components/` sau `lib/`.
+
+**Importuri:** folosește alias-ul `@/` în loc de căi relative lungi (exemplu):
+
+```ts
+import { Button } from '@/components/ui/button'
+```
+
+## Variabile de mediu
+
+Lista completă e în [`.env.example`](.env.example), iar tipurile în `src/vite-env.d.ts`.
+
+> Orice variabilă `VITE_*` ajunge în codul trimis în browser. **Nu pune niciodată secrete
+> în ele.** Fișierele `.env` și `.env.*` sunt ignorate de git, cu excepția `.env.example`.
+
+## Cum lucrăm
+
+1. Un tichet Jira = un branch = un PR: `feature/SCRUM-XX-descriere-scurta`.
+2. **Commit-uri** după [Conventional Commits](https://www.conventionalcommits.org/):
+   tip, apoi descriere cu literă mică, apoi cheia tichetului (convenție de echipă):
+   `feat: pagina de login (SCRUM-297)`. Tipuri: `feat`, `fix`,
+   `refactor`, `docs`, `test`, `chore`, `perf`, `ci`, `build`, `style`, `revert`.
+3. La fiecare commit rulează automat:
+   - **pre-commit:** ESLint + Prettier doar pe fișierele modificate (lint-staged);
+   - **commit-msg:** commitlint verifică formatul mesajului.
+4. PR-ul primește review de la celălalt developer FE, apoi se face merge în `main`.
+5. **Fără `--no-verify`.** Dacă un hook pică, se repară codul, nu se ocolește verificarea.

@@ -16,7 +16,15 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Alias: import { x } from '@/lib/x' în loc de '../../../lib/x' */
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
     /* Linting */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,

@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Variabile de mediu (doar .env.example se commit-uie)
+.env
+.env.*
+!.env.example
+
+# Test coverage
+coverage
