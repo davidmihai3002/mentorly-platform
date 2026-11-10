@@ -3,3 +3,4 @@
 *.png binary
 *.svg text eol=lf
 package-lock.json linguist-generated=true
+src/lib/api/schema.d.ts linguist-generated=true

@@ -41,6 +41,7 @@ src/
     auth/  mentors/  applications/  sessions/
     payments/  progress/  notifications/  sponsors/
   lib/          # utilitare fără legătură cu React (formatare, validare, API)
+    api/        # client HTTP (api.get/post...), erori în română, TanStack Query
 ```
 
 **Regula:** codul unei funcționalități stă în `features/<nume>/`. Ce folosesc două sau mai
