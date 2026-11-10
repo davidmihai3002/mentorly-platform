@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="msw/vite/client" />
 
 // Variabilele de mediu disponibile în aplicație (vezi .env.example).
 // Atenție: tot ce începe cu VITE_ ajunge în bundle-ul public — fără secrete aici.

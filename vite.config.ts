@@ -1,10 +1,12 @@
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import { msw } from 'msw/vite'
 import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  // msw(): servește service worker-ul mock-urilor; în build intră doar cu VITE_USE_MOCKS=true.
+  plugins: [react(), tailwindcss(), msw()],
   resolve: {
     // Alias-ul `@/` e citit din tsconfig. Atenție: e declarat în tsconfig.json ȘI în
     // tsconfig.app.json; cele două trebuie să rămână identice.

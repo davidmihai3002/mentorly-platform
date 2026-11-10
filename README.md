@@ -53,6 +53,20 @@ multe funcționalități se mută în `components/` sau `lib/`.
 import { Button } from '@/components/ui/button'
 ```
 
+## Mock-uri API (fără backend)
+
+Cu `VITE_USE_MOCKS=true` (implicit în `.env.example`), cererile către API sunt servite de
+[MSW](https://mswjs.io) direct în browser, din `src/mocks/`. Așa construim ecranele fără
+backend. În build-ul de producție, cu `VITE_USE_MOCKS=false`, codul mock nu există.
+
+| Cont de test | Email                   | Parolă            |
+| ------------ | ----------------------- | ----------------- |
+| Cursant      | `cursant@mentorly.test` | `parola-mock-123` |
+| Mentor       | `mentor@mentorly.test`  | `parola-mock-123` |
+
+Adresele și formele răspunsurilor din `src/mocks/handlers.ts` sunt provizorii, până la
+contractul OpenAPI al backend-ului. În teste, aceleași handler-e rulează cu `msw/node`.
+
 ## Variabile de mediu
 
 Lista completă e în [`.env.example`](.env.example), iar tipurile în `src/vite-env.d.ts`.
