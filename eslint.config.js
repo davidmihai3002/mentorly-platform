@@ -24,6 +24,19 @@ export default defineConfig([
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    rules: {
+      // React Router semnalează 404 și redirecționări prin `throw data(...)` și
+      // `throw redirect(...)`. Permitem DOAR aceste valori, nu orice non-Error.
+      '@typescript-eslint/only-throw-error': [
+        'error',
+        {
+          allow: [
+            { from: 'package', package: 'react-router', name: 'DataWithResponseInit' },
+            { from: 'lib', name: 'Response' },
+          ],
+        },
+      ],
+    },
   },
   {
     // Componentele generate de shadcn exportă și variante (de ex. `buttonVariants`), pe care
@@ -31,6 +44,13 @@ export default defineConfig([
     // rapidă în dev, așa că o oprim DOAR aici, nu în tot proiectul.
     files: ['src/components/ui/**/*.tsx'],
     rules: { 'react-refresh/only-export-components': 'off' },
+  },
+  {
+    // layouts.tsx importă din header.tsx; invers ar crea un import circular.
+    files: ['src/app/header.tsx'],
+    rules: {
+      'no-restricted-imports': ['error', { patterns: ['./layouts', '@/app/layouts'] }],
+    },
   },
   // Ultimul: dezactivează regulile de formatare, de care se ocupă Prettier.
   prettier,

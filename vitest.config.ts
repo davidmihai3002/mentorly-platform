@@ -1,12 +1,16 @@
-import { defineConfig } from 'vitest/config'
+import { defineConfig, mergeConfig } from 'vitest/config'
+import viteConfig from './vite.config.ts'
 
-// Configurare minimă pentru SCRUM-281. SCRUM-284 (FE-F14) o extinde cu
-// Testing Library, MSW și jsdom.
-export default defineConfig({
-  test: {
-    include: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
-    // Rulăm testele pe UTC, ca să demonstrăm că utilitarele nu depind de fusul
-    // orar al calculatorului (dezvoltatorii sunt pe Europe/Bucharest, CI pe UTC).
-    env: { TZ: 'UTC' },
-  },
-})
+// Configurare minimă de test. SCRUM-284 (FE-F14) o extinde cu MSW și Playwright.
+export default mergeConfig(
+  viteConfig,
+  defineConfig({
+    test: {
+      include: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
+      environment: 'jsdom',
+      setupFiles: ['./src/test/setup.ts'],
+      // Rulăm pe UTC, ca rezultatele să nu depindă de fusul orar al calculatorului.
+      env: { TZ: 'UTC' },
+    },
+  }),
+)
