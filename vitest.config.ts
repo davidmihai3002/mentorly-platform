@@ -11,6 +11,8 @@ export default mergeConfig(
       setupFiles: ['./src/test/setup.ts'],
       // Rulăm pe UTC, ca rezultatele să nu depindă de fusul orar al calculatorului.
       env: { TZ: 'UTC' },
+      // Tema (index.css) e citită de src/theme.test.ts ca să verifice contrastul culorilor.
+      css: { include: [/src\/index\.css/] },
     },
   }),
 )

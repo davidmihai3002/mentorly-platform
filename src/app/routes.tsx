@@ -1,6 +1,6 @@
 import type { RouteObject } from 'react-router'
 import { AuthLayout, MenteeLayout, MentorLayout, PublicLayout, RootLayout } from './layouts'
-import { PATHS } from './paths'
+import { PATHS, STYLEGUIDE_PATH } from './paths'
 import { NotFoundPage, PageLoading, RouteErrorPage } from './status-pages'
 
 type PageName = keyof typeof import('./pages')
@@ -17,6 +17,11 @@ const lazyPage =
   () =>
     import('./pages').then((pages) => ({ Component: pages[name] }))
 
+const styleguideRoute: RouteObject = {
+  path: STYLEGUIDE_PATH,
+  lazy: () => import('./styleguide').then((m) => ({ Component: m.StyleguidePage })),
+}
+
 /** Toate rutele aplicației. Layout-urile, 404 și paginile de stare se încarcă imediat. */
 export const routes: RouteObject[] = [
   {
@@ -30,6 +35,8 @@ export const routes: RouteObject[] = [
         children: [
           { path: PATHS.home, lazy: lazyPage('HomePage') },
           { path: PATHS.mentors, lazy: lazyPage('MentorSearchPage') },
+          // În build-ul de producție, condiția e false și codul paginii dispare complet.
+          ...(import.meta.env.DEV ? [styleguideRoute] : []),
           { path: '*', element: <NotFoundPage /> },
         ],
       },

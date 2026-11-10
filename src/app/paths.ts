@@ -9,5 +9,8 @@ export const PATHS = {
   mentorDashboard: '/mentor',
 } as const
 
+/** Doar în dezvoltare: toate componentele cu tema Mentorly (SCRUM-274). */
+export const STYLEGUIDE_PATH = '/styleguide'
+
 /** Id-ul elementului <main> din fiecare layout; ținta link-ului „Sari la conținut”. */
 export const MAIN_CONTENT_ID = 'continut'
