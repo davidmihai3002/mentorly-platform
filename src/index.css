@@ -1,111 +1,146 @@
+@import 'tailwindcss';
+/* Fonturi servite din aplicație, nu de la Google: niciun IP trimis unui terț (GDPR). */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/plus-jakarta-sans';
+
+/* Fără dark mode în MVP: clasele dark: din componentele shadcn rămân inactive. */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans Variable', 'Inter Variable', ui-sans-serif, sans-serif;
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-rating: var(--rating);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Umbre moi, albastru-gri, pentru carduri și meniuri (tonul „spațiu de suport”). */
+@theme {
+  --shadow-xs: 0 1px 2px 0 rgb(30 41 59 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(30 41 59 / 0.08), 0 1px 2px -1px rgb(30 41 59 / 0.06);
+  --shadow-md: 0 4px 12px -2px rgb(30 41 59 / 0.1), 0 2px 4px -2px rgb(30 41 59 / 0.06);
+  --shadow-lg: 0 12px 28px -6px rgb(30 41 59 / 0.14), 0 4px 8px -4px rgb(30 41 59 / 0.08);
+}
+
+/*
+ * TEMA MENTORLY: singurul loc cu culori, fonturi și colțuri.
+ * Sursa provizorie: moodboard-ul (docs/design). La design-ul 1.0 se schimbă DOAR valorile
+ * de aici; componentele folosesc numele (bg-primary, text-muted-foreground etc.).
+ * Contrastul WCAG e verificat automat de src/theme.test.ts la fiecare schimbare
+ * (culorile din :root se scriu ca hex #rrggbb, ca testul să le poată citi).
+ * Fără dark mode în MVP.
+ */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Fundaluri și text */
+  --background: #f9fafb;
+  --foreground: #1e293b;
+  --card: #ffffff;
+  --card-foreground: #1e293b;
+  --popover: #ffffff;
+  --popover-foreground: #1e293b;
+  --muted: #f1f5f9;
+  --muted-foreground: #475569;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Brand */
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --highlight: #4f46e5;
+  --highlight-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #1e293b;
+  --accent: #eff6ff;
+  --accent-foreground: #1e293b;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Stări */
+  --success: #d1fae5;
+  --success-foreground: #047857;
+  /* Roșu-700: rămâne lizibil și pe fundalul lui transparent 10–20% (stările shadcn) */
+  --destructive: #b91c1c;
+  --rating: #f59e0b;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  /* Chenare: --input e la 3:1 pe alb, ca un câmp de formular să se vadă (WCAG 1.4.11) */
+  --border: #e2e8f0;
+  --input: #77849a;
+  --ring: #2563eb;
+
+  /* Grafice (de ex. câștigurile mentorului) */
+  --chart-1: #2563eb;
+  --chart-2: #4f46e5;
+  --chart-3: #10b981;
+  --chart-4: #f59e0b;
+  --chart-5: #64748b;
+
+  /* Colțuri: cardurile din moodboard sunt foarte rotunjite */
+  --radius: 0.75rem;
+
+  /* Bara laterală (componentele shadcn o cer) */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1e293b;
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eff6ff;
+  --sidebar-accent-foreground: #1e293b;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #2563eb;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  body {
+    @apply bg-background text-foreground antialiased;
   }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  h1,
+  h2,
+  h3 {
+    @apply font-heading;
   }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
   }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+  html {
+    @apply font-sans;
   }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }
