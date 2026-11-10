@@ -1,12 +1,12 @@
 # ADR 0001 — Stack-ul frontend, hosting-ul de staging și mesageria de grup
 
-| | |
-| --- | --- |
-| **Status** | Acceptat |
-| **Data** | 2026-11-07 (hosting actualizat 2026-11-09) |
-| **Tichet** | [SCRUM-271 · FE-F01](https://ancadrehluta.atlassian.net/browse/SCRUM-271) |
-| **Autor** | teo (Frontend) |
-| **Afectează** | toate tichetele FE (SCRUM-272 → SCRUM-335) |
+|               |                                                                           |
+| ------------- | ------------------------------------------------------------------------- |
+| **Status**    | Acceptat                                                                  |
+| **Data**      | 2026-11-07 (hosting actualizat 2026-11-09)                                |
+| **Tichet**    | [SCRUM-271 · FE-F01](https://ancadrehluta.atlassian.net/browse/SCRUM-271) |
+| **Autor**     | teo (Frontend)                                                            |
+| **Afectează** | toate tichetele FE (SCRUM-272 → SCRUM-335)                                |
 
 ## Context
 
@@ -26,24 +26,24 @@
 Versiunile de mai jos sunt cele stabile, verificate pe npm pe 2026-11-07. Fixăm versiunea
 majoră; actualizările minore sunt permise.
 
-| Zonă | Alegere | Versiune | De ce |
-| --- | --- | --- | --- |
-| UI | React | 19.3 | Decis în documentul de cerințe (§3) |
-| Build / dev server | Vite | 8.x | Decis în §3; deja în repo |
-| Limbaj | TypeScript, `strict` | **6.0.x** | Vezi „TypeScript 7” mai jos |
-| Rutare | React Router | 8.x | Standardul pentru SPA-uri React; lazy loading pe rute (F05) |
-| Date de la server | TanStack Query | 5.x | Cache, retry, invalidare după mutații, stări de loading/eroare |
-| Formulare | React Hook Form + Zod + `@hookform/resolvers` | 7.x / 4.x / 7.x | Validare declarativă; aceeași schemă Zod validează și răspunsurile API |
-| Stilizare | Tailwind CSS (`@tailwindcss/vite`) | 4.x | Temă cu tokens din moodboard, configurare din CSS (`@theme`) |
-| Componente | shadcn/ui (CLI `shadcn`) | 4.x | Componentele sunt copiate în repo (`src/components/ui`), deci le putem adapta designului |
+| Zonă               | Alegere                                       | Versiune        | De ce                                                                                    |
+| ------------------ | --------------------------------------------- | --------------- | ---------------------------------------------------------------------------------------- |
+| UI                 | React                                         | 19.3            | Decis în documentul de cerințe (§3)                                                      |
+| Build / dev server | Vite                                          | 8.x             | Decis în §3; deja în repo                                                                |
+| Limbaj             | TypeScript, `strict`                          | **6.0.x**       | Vezi „TypeScript 7” mai jos                                                              |
+| Rutare             | React Router                                  | 8.x             | Standardul pentru SPA-uri React; lazy loading pe rute (F05)                              |
+| Date de la server  | TanStack Query                                | 5.x             | Cache, retry, invalidare după mutații, stări de loading/eroare                           |
+| Formulare          | React Hook Form + Zod + `@hookform/resolvers` | 7.x / 4.x / 7.x | Validare declarativă; aceeași schemă Zod validează și răspunsurile API                   |
+| Stilizare          | Tailwind CSS (`@tailwindcss/vite`)            | 4.x             | Temă cu tokens din moodboard, configurare din CSS (`@theme`)                             |
+| Componente         | shadcn/ui (CLI `shadcn`)                      | 4.x             | Componentele sunt copiate în repo (`src/components/ui`), deci le putem adapta designului |
 
 **Folosite de tichetele următoare.** Le notăm aici ca să nu alegem altceva pe parcurs:
 
-| Zonă | Alegere | Tichet |
-| --- | --- | --- |
-| Mock API | MSW 3.x | SCRUM-283 (F13) |
-| Teste | Vitest 5.x + Testing Library 16.x + Playwright 1.x | SCRUM-284 (F14) |
-| Tipuri din contractul BE | `openapi-typescript` 7.x | SCRUM-276 (F06) |
+| Zonă                     | Alegere                                            | Tichet          |
+| ------------------------ | -------------------------------------------------- | --------------- |
+| Mock API                 | MSW 3.x                                            | SCRUM-283 (F13) |
+| Teste                    | Vitest 5.x + Testing Library 16.x + Playwright 1.x | SCRUM-284 (F14) |
+| Tipuri din contractul BE | `openapi-typescript` 7.x                           | SCRUM-276 (F06) |
 
 ### Cum folosim React Router
 
@@ -67,12 +67,12 @@ Altfel lint-ul pe tipuri se strică fără să ne dăm seama.
 
 ### Alternative respinse
 
-| Alternativă | De ce nu |
-| --- | --- |
-| Next.js / React Router framework mode | SSR nu e cerut; documentul a decis React + Vite; ar complica hosting-ul |
-| Redux Toolkit / Zustand | Starea e aproape toată de la server, iar TanStack Query o acoperă |
-| Formik + Yup | Re-randează mai mult decât RHF; Zod ne dă tipuri TS direct din schemă |
-| MUI / Chakra / Mantine | Cerința echipei este shadcn/ui; aspectul lor implicit e greu de adus la moodboard |
+| Alternativă                           | De ce nu                                                                          |
+| ------------------------------------- | --------------------------------------------------------------------------------- |
+| Next.js / React Router framework mode | SSR nu e cerut; documentul a decis React + Vite; ar complica hosting-ul           |
+| Redux Toolkit / Zustand               | Starea e aproape toată de la server, iar TanStack Query o acoperă                 |
+| Formik + Yup                          | Re-randează mai mult decât RHF; Zod ne dă tipuri TS direct din schemă             |
+| MUI / Chakra / Mantine                | Cerința echipei este shadcn/ui; aspectul lor implicit e greu de adus la moodboard |
 
 ## Decizia 2 — Hosting de staging: Vercel
 
@@ -126,7 +126,7 @@ de furnizor.
   type GroupLink = {
     type: 'PRIVATE' | 'COHORT'
     inviteUrl: string // URL absolut, https
-    provider: string  // doar pentru afișare (nume, iconiță)
+    provider: string // doar pentru afișare (nume, iconiță)
   }
   ```
 
@@ -160,12 +160,12 @@ de furnizor.
 
 ### Negative și riscuri asumate
 
-| Risc | Măsură |
-| --- | --- |
-| Componentele shadcn sunt cod copiat în repo, deci nu se actualizează singure | Le tratăm ca pe cod propriu; upgrade-urile se fac manual, pe tichet separat |
-| Un SPA are SEO limitat pe paginile publice (landing, profil mentor) | `<title>`/`<meta>` per pagină (suportate nativ de React 19) și Open Graph în SCRUM-289 (F19); SSR doar printr-un ADR nou dacă SEO devine prioritar |
-| Upgrade-ul la TS 7 e blocat de `typescript-eslint` | Reevaluăm la fiecare sprint |
-| Planul Hobby de la Vercel nu acoperă uzul comercial | La lansare: Vercel Pro sau mutare (aplicația e statică, se mută ușor) |
+| Risc                                                                         | Măsură                                                                                                                                             |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Componentele shadcn sunt cod copiat în repo, deci nu se actualizează singure | Le tratăm ca pe cod propriu; upgrade-urile se fac manual, pe tichet separat                                                                        |
+| Un SPA are SEO limitat pe paginile publice (landing, profil mentor)          | `<title>`/`<meta>` per pagină (suportate nativ de React 19) și Open Graph în SCRUM-289 (F19); SSR doar printr-un ADR nou dacă SEO devine prioritar |
+| Upgrade-ul la TS 7 e blocat de `typescript-eslint`                           | Reevaluăm la fiecare sprint                                                                                                                        |
+| Planul Hobby de la Vercel nu acoperă uzul comercial                          | La lansare: Vercel Pro sau mutare (aplicația e statică, se mută ușor)                                                                              |
 
 ## Puncte deschise pentru echipă
 
