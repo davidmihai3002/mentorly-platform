@@ -20,8 +20,6 @@ export default defineConfig([
     },
   },
   {
-    // Componentele shadcn exportă și variante (de ex. `buttonVariants`), cerute de alte
-    // componente shadcn din același fișier. Regula afectează doar reîncărcarea rapidă în dev.
     files: ['src/components/ui/**/*.tsx'],
     rules: { 'react-refresh/only-export-components': 'off' },
   },

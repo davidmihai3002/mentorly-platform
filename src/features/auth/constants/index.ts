@@ -1,1 +1,1 @@
-export { LOGIN_ACTIONS, LOGIN_TEXT, MENTOR_PREVIEW } from './login.constants'
+export { LOGIN_ACTIONS, LOGIN_TEXT } from './login.constants'

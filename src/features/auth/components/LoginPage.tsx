@@ -1,26 +1,27 @@
 import { LOGIN_TEXT } from '../constants'
-import { LoginBrandPanel } from './LoginBrandPanel'
+import { logLoginAction } from '../utils'
+import { AuthBackdrop } from './AuthBackdrop'
+import { AuthCardHeader } from './AuthCardHeader'
+import { AuthNavbar } from './AuthNavbar'
 import { LoginForm } from './LoginForm'
 
-/** Pagina de login: panou de brand (ecrane mari) + cardul cu formularul. */
 export function LoginPage() {
+  const logNavAction = (action: 'nav-login' | 'nav-register') => {
+    logLoginAction(action, { email: '', password: '' })
+  }
+
   return (
-    <div className="grid min-h-svh grid-cols-[minmax(0,1fr)] bg-background lg:grid-cols-2">
+    <div className="relative flex min-h-svh flex-col bg-background">
       <title>{LOGIN_TEXT.pageTitle}</title>
-      <LoginBrandPanel />
-      <main className="flex min-w-0 items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md space-y-8 rounded-3xl bg-card p-6 shadow-lg sm:p-10">
-          <header className="space-y-3">
-            <p className="font-heading text-xl font-extrabold tracking-tight text-primary lg:hidden">
-              {LOGIN_TEXT.brand}
-            </p>
-            <h1 className="font-heading text-3xl font-extrabold">{LOGIN_TEXT.title}</h1>
-            <p className="text-muted-foreground">{LOGIN_TEXT.subtitle}</p>
-            <p className="inline-flex items-center gap-2 rounded-full bg-success px-3 py-1 text-sm font-medium text-success-foreground lg:hidden">
-              <span aria-hidden className="size-2 rounded-full bg-chart-3" />
-              {LOGIN_TEXT.freeCall}
-            </p>
-          </header>
+      <AuthBackdrop />
+      <AuthNavbar
+        onLoginClick={() => logNavAction('nav-login')}
+        onRegisterClick={() => logNavAction('nav-register')}
+      />
+
+      <main className="relative z-10 flex flex-1 items-center justify-center px-4 py-10">
+        <div className="w-full max-w-[420px] space-y-5 rounded-2xl border border-border/80 bg-card p-6 shadow-lg sm:p-8">
+          <AuthCardHeader title={LOGIN_TEXT.title} subtitle={LOGIN_TEXT.subtitle} />
           <LoginForm />
         </div>
       </main>

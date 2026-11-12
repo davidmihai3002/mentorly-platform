@@ -1,14 +1,14 @@
 @import 'tailwindcss';
-/* Fonturi servite din aplicație, nu de la Google: niciun IP trimis unui terț (GDPR). */
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/plus-jakarta-sans';
 
-/* Fără dark mode în MVP: clasele dark: din componentele shadcn rămân inactive. */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --font-heading: 'Plus Jakarta Sans Variable', 'Inter Variable', ui-sans-serif, sans-serif;
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-navy-foreground: var(--brand-navy-foreground);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
   --color-highlight: var(--highlight);
@@ -54,74 +54,59 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* Umbre moi, albastru-gri, pentru carduri și meniuri (tonul „spațiu de suport”). */
 @theme {
-  --shadow-xs: 0 1px 2px 0 rgb(30 41 59 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(30 41 59 / 0.08), 0 1px 2px -1px rgb(30 41 59 / 0.06);
-  --shadow-md: 0 4px 12px -2px rgb(30 41 59 / 0.1), 0 2px 4px -2px rgb(30 41 59 / 0.06);
-  --shadow-lg: 0 12px 28px -6px rgb(30 41 59 / 0.14), 0 4px 8px -4px rgb(30 41 59 / 0.08);
+  --shadow-xs: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(15 23 42 / 0.08), 0 1px 2px -1px rgb(15 23 42 / 0.06);
+  --shadow-md: 0 4px 12px -2px rgb(15 23 42 / 0.1), 0 2px 4px -2px rgb(15 23 42 / 0.06);
+  --shadow-lg: 0 12px 32px -6px rgb(15 23 42 / 0.12), 0 4px 10px -4px rgb(15 23 42 / 0.06);
 }
 
-/*
- * TEMA MENTORLY: singurul loc cu culori, fonturi și colțuri.
- * Sursa provizorie: moodboard-ul (docs/design). La design-ul 1.0 se schimbă DOAR valorile
- * de aici; componentele folosesc numele (bg-primary, text-muted-foreground etc.).
- * Contrastul WCAG e verificat automat de src/theme.test.ts la fiecare schimbare
- * (culorile din :root se scriu ca hex #rrggbb, ca testul să le poată citi).
- * Fără dark mode în MVP.
- */
 :root {
-  /* Fundaluri și text */
-  --background: #f9fafb;
-  --foreground: #1e293b;
+  --background: #f8fafc;
+  --foreground: #0f172a;
   --card: #ffffff;
-  --card-foreground: #1e293b;
+  --card-foreground: #0f172a;
   --popover: #ffffff;
-  --popover-foreground: #1e293b;
+  --popover-foreground: #0f172a;
   --muted: #f1f5f9;
   --muted-foreground: #475569;
 
-  /* Brand */
-  --primary: #2563eb;
+  --primary: #0066cc;
   --primary-foreground: #ffffff;
+  --brand-navy: #0b192f;
+  --brand-navy-foreground: #ffffff;
   --highlight: #4f46e5;
   --highlight-foreground: #ffffff;
   --secondary: #f1f5f9;
-  --secondary-foreground: #1e293b;
+  --secondary-foreground: #0f172a;
   --accent: #eff6ff;
-  --accent-foreground: #1e293b;
+  --accent-foreground: #0f172a;
 
-  /* Stări */
   --success: #d1fae5;
   --success-foreground: #047857;
-  /* Roșu-700: rămâne lizibil și pe fundalul lui transparent 10–20% (stările shadcn) */
   --destructive: #b91c1c;
   --rating: #f59e0b;
 
-  /* Chenare: --input e la 3:1 pe alb, ca un câmp de formular să se vadă (WCAG 1.4.11) */
-  --border: #e2e8f0;
-  --input: #77849a;
-  --ring: #2563eb;
+  --border: #cbd5e1;
+  --input: #cbd5e1;
+  --ring: #0066cc;
 
-  /* Grafice (de ex. câștigurile mentorului) */
-  --chart-1: #2563eb;
+  --chart-1: #0066cc;
   --chart-2: #4f46e5;
   --chart-3: #10b981;
   --chart-4: #f59e0b;
   --chart-5: #64748b;
 
-  /* Colțuri: cardurile din moodboard sunt foarte rotunjite */
-  --radius: 0.75rem;
+  --radius: 0.625rem;
 
-  /* Bara laterală (componentele shadcn o cer) */
   --sidebar: #ffffff;
-  --sidebar-foreground: #1e293b;
-  --sidebar-primary: #2563eb;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #0066cc;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #eff6ff;
-  --sidebar-accent-foreground: #1e293b;
+  --sidebar-accent-foreground: #0f172a;
   --sidebar-border: #e2e8f0;
-  --sidebar-ring: #2563eb;
+  --sidebar-ring: #0066cc;
 }
 
 @layer base {
