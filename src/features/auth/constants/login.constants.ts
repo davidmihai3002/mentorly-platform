@@ -1,0 +1,30 @@
+export const LOGIN_TEXT = {
+  brand: 'Mentorly',
+  pageTitle: 'Autentificare Cursant – Mentorly',
+  title: 'Autentificare Cursant',
+  subtitle: 'Continuă să îți construiești cariera alături de oameni care au fost deja acolo.',
+  google: 'Continuă cu Google',
+  divider: 'sau cu email',
+  emailLabel: 'Adresă de email',
+  emailPlaceholder: 'exemplu@email.ro',
+  passwordLabel: 'Parolă',
+  forgotPassword: 'Ai uitat parola?',
+  showPassword: 'Arată parola',
+  hidePassword: 'Ascunde parola',
+  submit: 'Intră în cont',
+  noAccount: 'Nu ai cont?',
+  registerMentee: 'Înregistrează-te ca cursant',
+  minimumAge: '(minim 16 ani)',
+  navLinks: ['Ce este Mentorly', 'Comunitate Q&A', 'Recenzii', 'Parteneri'],
+  navLogin: 'Autentificare',
+  navRegister: 'Înregistrare',
+} as const
+
+export const LOGIN_ACTIONS = [
+  'login',
+  'google',
+  'forgot-password',
+  'register-mentee',
+  'nav-login',
+  'nav-register',
+] as const

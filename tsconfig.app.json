@@ -16,7 +16,14 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Alias: import { Button } from '@/components/ui' */
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
     /* Linting */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
