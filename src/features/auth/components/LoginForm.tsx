@@ -7,9 +7,18 @@ import { AuthPasswordField } from './AuthPasswordField'
 import { AuthTextField } from './AuthTextField'
 import { GoogleAuthButton } from './GoogleAuthButton'
 
-export function LoginForm() {
+type LoginFormProps = {
+  onNavigateToSignup?: () => void
+}
+
+export function LoginForm({ onNavigateToSignup }: LoginFormProps) {
   const { form, submit, logCurrentValues } = useLoginForm()
   const { errors } = form.formState
+
+  const handleRegisterClick = () => {
+    logCurrentValues('register-mentee')
+    onNavigateToSignup?.()
+  }
 
   return (
     <div className="space-y-4">
@@ -40,7 +49,7 @@ export function LoginForm() {
         </Button>
       </form>
 
-      <AuthCardFooter onRegisterClick={() => logCurrentValues('register-mentee')} />
+      <AuthCardFooter onRegisterClick={handleRegisterClick} />
     </div>
   )
 }

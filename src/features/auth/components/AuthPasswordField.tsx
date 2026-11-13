@@ -7,6 +7,8 @@ import { usePasswordVisibility } from '../hooks'
 
 type AuthPasswordFieldProps = {
   label?: string
+  placeholder?: string
+  helperText?: string
   autoComplete?: string
   error?: string
   registration: UseFormRegisterReturn
@@ -16,6 +18,8 @@ type AuthPasswordFieldProps = {
 
 export function AuthPasswordField({
   label = LOGIN_TEXT.passwordLabel,
+  placeholder,
+  helperText,
   autoComplete = 'current-password',
   error,
   registration,
@@ -23,7 +27,11 @@ export function AuthPasswordField({
   forgotPasswordLabel = LOGIN_TEXT.forgotPassword,
 }: AuthPasswordFieldProps) {
   const fieldId = useId()
+  const helperId = `${fieldId}-helper`
   const errorId = `${fieldId}-error`
+  const describedBy =
+    [helperText ? helperId : undefined, error ? errorId : undefined].filter(Boolean).join(' ') ||
+    undefined
   const { isVisible, toggleVisibility, inputType, toggleLabel } = usePasswordVisibility()
 
   return (
@@ -46,18 +54,19 @@ export function AuthPasswordField({
         <Input
           id={fieldId}
           type={inputType}
+          placeholder={placeholder}
           required
           autoComplete={autoComplete}
           className="h-10 rounded-lg bg-card pr-10 pl-3 text-sm"
           aria-invalid={error ? true : undefined}
-          aria-describedby={error ? errorId : undefined}
+          aria-describedby={describedBy}
           {...registration}
         />
         <Button
           type="button"
           variant="ghost"
           size="icon-sm"
-          aria-label={toggleLabel}
+          aria-label={`${toggleLabel} (${label})`}
           className="absolute top-1/2 right-1.5 -translate-y-1/2 text-muted-foreground hover:bg-transparent hover:text-foreground"
           onClick={toggleVisibility}
         >
@@ -65,8 +74,14 @@ export function AuthPasswordField({
         </Button>
       </div>
 
+      {helperText && (
+        <p id={helperId} className="text-xs text-muted-foreground">
+          {helperText}
+        </p>
+      )}
+
       {error && (
-        <p id={errorId} className="text-xs text-destructive">
+        <p id={errorId} role="alert" className="text-xs text-destructive">
           {error}
         </p>
       )}

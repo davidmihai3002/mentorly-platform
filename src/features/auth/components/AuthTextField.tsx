@@ -30,8 +30,8 @@ export function AuthTextField({
         type={type}
         required
         autoComplete={autoComplete}
-        autoCapitalize="none"
-        spellCheck={false}
+        autoCapitalize={type === 'email' ? 'none' : undefined}
+        spellCheck={type === 'email' ? false : undefined}
         placeholder={placeholder}
         className="h-10 rounded-lg bg-card px-3 text-sm"
         aria-invalid={error ? true : undefined}
@@ -39,7 +39,7 @@ export function AuthTextField({
         {...registration}
       />
       {error && (
-        <p id={errorId} className="text-xs text-destructive">
+        <p id={errorId} role="alert" className="text-xs text-destructive">
           {error}
         </p>
       )}

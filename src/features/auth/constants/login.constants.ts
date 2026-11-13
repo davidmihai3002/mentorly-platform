@@ -18,6 +18,8 @@ export const LOGIN_TEXT = {
   navLinks: ['Ce este Mentorly', 'Comunitate Q&A', 'Recenzii', 'Parteneri'],
   navLogin: 'Autentificare',
   navRegister: 'Înregistrare',
+  copyright: '© 2026 Mentorly · Creștem împreună.',
+  footerLinks: ['Contact', 'Confidențialitate', 'Termeni și condiții'],
 } as const
 
 export const LOGIN_ACTIONS = [
