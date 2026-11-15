@@ -1,9 +1,12 @@
-import { type ReactNode, useId } from 'react'
+import { type ReactNode, type Ref, useId } from 'react'
 import { Checkbox } from '@/components/ui'
 
 type AuthCheckboxFieldProps = {
   checked: boolean
   onCheckedChange: (checked: boolean) => void
+  onBlur?: () => void
+  inputRef?: Ref<HTMLInputElement>
+  required?: boolean
   error?: string
   children: ReactNode
 }
@@ -11,6 +14,9 @@ type AuthCheckboxFieldProps = {
 export function AuthCheckboxField({
   checked,
   onCheckedChange,
+  onBlur,
+  inputRef,
+  required = true,
   error,
   children,
 }: AuthCheckboxFieldProps) {
@@ -25,6 +31,9 @@ export function AuthCheckboxField({
           id={fieldId}
           checked={checked}
           onCheckedChange={onCheckedChange}
+          onBlur={onBlur}
+          inputRef={inputRef}
+          required={required}
           aria-labelledby={labelId}
           aria-invalid={error ? true : undefined}
           aria-describedby={error ? errorId : undefined}
@@ -40,7 +49,7 @@ export function AuthCheckboxField({
       </div>
 
       {error && (
-        <p id={errorId} role="alert" className="text-xs text-destructive">
+        <p id={errorId} aria-live="polite" className="text-xs text-destructive">
           {error}
         </p>
       )}

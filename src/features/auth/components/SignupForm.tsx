@@ -72,6 +72,8 @@ export function SignupForm({ onNavigateToLogin }: SignupFormProps) {
               <AuthCheckboxField
                 checked={field.value}
                 onCheckedChange={field.onChange}
+                onBlur={field.onBlur}
+                inputRef={field.ref}
                 error={errors.isAgeConfirmed?.message}
               >
                 {SIGNUP_TEXT.ageConfirmationLabel}
@@ -86,6 +88,8 @@ export function SignupForm({ onNavigateToLogin }: SignupFormProps) {
               <AuthCheckboxField
                 checked={field.value}
                 onCheckedChange={field.onChange}
+                onBlur={field.onBlur}
+                inputRef={field.ref}
                 error={errors.isTermsAccepted?.message}
               >
                 <SignupTermsText

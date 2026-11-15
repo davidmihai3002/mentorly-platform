@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui'
 import { SIGNUP_TEXT } from '../constants'
 
 type SignupTermsTextProps = {
@@ -10,29 +9,29 @@ export function SignupTermsText({ onTermsClick, onPrivacyClick }: SignupTermsTex
   return (
     <>
       {SIGNUP_TEXT.termsPrefix}{' '}
-      <Button
-        type="button"
-        variant="link"
-        className="h-auto p-0 text-xs font-medium text-primary underline"
+      <a
+        href="#termeni-si-conditii"
+        className="font-medium text-primary underline underline-offset-4 transition-colors hover:text-primary/80"
         onClick={(event) => {
+          event.preventDefault()
           event.stopPropagation()
           onTermsClick()
         }}
       >
         {SIGNUP_TEXT.termsLink}
-      </Button>{' '}
+      </a>{' '}
       {SIGNUP_TEXT.termsMiddle}{' '}
-      <Button
-        type="button"
-        variant="link"
-        className="h-auto p-0 text-xs font-medium text-primary underline"
+      <a
+        href="#politica-de-confidentialitate"
+        className="font-medium text-primary underline underline-offset-4 transition-colors hover:text-primary/80"
         onClick={(event) => {
+          event.preventDefault()
           event.stopPropagation()
           onPrivacyClick()
         }}
       >
         {SIGNUP_TEXT.privacyLink}
-      </Button>
+      </a>
       .
     </>
   )

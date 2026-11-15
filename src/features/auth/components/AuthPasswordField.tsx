@@ -81,7 +81,7 @@ export function AuthPasswordField({
       )}
 
       {error && (
-        <p id={errorId} role="alert" className="text-xs text-destructive">
+        <p id={errorId} aria-live="polite" className="text-xs text-destructive">
           {error}
         </p>
       )}
