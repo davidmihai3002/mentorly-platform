@@ -1,0 +1,1 @@
+export { useFocusMainOnNavigate } from './useFocusMainOnNavigate'

@@ -21,7 +21,15 @@ GitHub Actions runs `npm ci`, lint, typecheck, format check and build on every p
 
 ```text
 src/
-  components/ui/      shadcn/ui primitives (installed manually from the Manual tab)
+  app/
+    router/           routes (React Router), lazy-loaded pages
+    layouts/          Root, Public, Auth and Account layouts
+    pages/            app-level pages (404, placeholders)
+  components/
+    ui/               shadcn/ui primitives (installed manually from the Manual tab)
+    layout/           shared header, footer, logo, account menu
+  constants/          routes and shared site copy
+  hooks/              shared React hooks
   features/<name>/
     components/       one small, reusable React component per file
     hooks/            React hooks
@@ -31,6 +39,17 @@ src/
     constants/        static UI copy and constants
     index.ts          public feature barrel
 ```
+
+## Routes
+
+| Path             | Page                          |
+| ---------------- | ----------------------------- |
+| `/`              | redirects to `/autentificare` |
+| `/autentificare` | Login                         |
+| `/inregistrare`  | Student signup                |
+| `/cursant`       | Student account (placeholder) |
+| `/mentor`        | Mentor account (placeholder)  |
+| anything else    | 404                           |
 
 ## Authentication (Team Decision)
 

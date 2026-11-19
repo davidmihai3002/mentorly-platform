@@ -24,12 +24,4 @@ export const SIGNUP_TEXT = {
   loginLink: 'Autentifică-te',
 } as const
 
-export const SIGNUP_ACTIONS = [
-  'signup',
-  'google',
-  'terms',
-  'privacy-policy',
-  'login-link',
-  'nav-login',
-  'nav-register',
-] as const
+export const SIGNUP_ACTIONS = ['signup', 'google', 'terms', 'privacy-policy', 'login-link'] as const

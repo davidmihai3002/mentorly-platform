@@ -10,18 +10,9 @@ import { GoogleAuthButton } from './GoogleAuthButton'
 import { SignupCardFooter } from './SignupCardFooter'
 import { SignupTermsText } from './SignupTermsText'
 
-type SignupFormProps = {
-  onNavigateToLogin?: () => void
-}
-
-export function SignupForm({ onNavigateToLogin }: SignupFormProps) {
+export function SignupForm() {
   const { form, submit, logCurrentValues } = useSignupForm()
   const { errors } = form.formState
-
-  const handleLoginClick = () => {
-    logCurrentValues('login-link')
-    onNavigateToLogin?.()
-  }
 
   return (
     <div className="space-y-4">
@@ -109,7 +100,7 @@ export function SignupForm({ onNavigateToLogin }: SignupFormProps) {
         </Button>
       </form>
 
-      <SignupCardFooter onLoginClick={handleLoginClick} />
+      <SignupCardFooter onLoginClick={() => logCurrentValues('login-link')} />
     </div>
   )
 }

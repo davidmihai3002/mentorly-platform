@@ -1,4 +1,4 @@
-export function AuthBackdrop() {
+export function PageBackdrop() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="absolute -top-24 -right-24 h-112 w-112 rounded-full bg-primary/8 blur-3xl" />
