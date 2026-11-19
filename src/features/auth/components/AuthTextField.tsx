@@ -1,6 +1,7 @@
 import { useId } from 'react'
 import type { UseFormRegisterReturn } from 'react-hook-form'
 import { Input, Label } from '@/components/ui'
+import { AuthFieldError } from './AuthFieldError'
 
 type AuthTextFieldProps = {
   label: string
@@ -23,7 +24,7 @@ export function AuthTextField({
   const errorId = `${fieldId}-error`
 
   return (
-    <div className="space-y-1.5">
+    <div className="flex flex-col gap-1.5">
       <Label htmlFor={fieldId}>{label}</Label>
       <Input
         id={fieldId}
@@ -38,11 +39,7 @@ export function AuthTextField({
         aria-describedby={error ? errorId : undefined}
         {...registration}
       />
-      {error && (
-        <p id={errorId} aria-live="polite" className="text-xs text-destructive">
-          {error}
-        </p>
-      )}
+      <AuthFieldError id={errorId} message={error} />
     </div>
   )
 }

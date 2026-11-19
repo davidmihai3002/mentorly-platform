@@ -1,6 +1,5 @@
 import { cn } from 'cn'
-import { Link } from 'react-router'
-import { buttonVariants } from '@/components'
+import { AppLink, buttonVariants } from '@/components'
 import { NOT_FOUND_TEXT, ROUTES } from '@/constants'
 
 export function NotFoundPage() {
@@ -16,7 +15,7 @@ export function NotFoundPage() {
         </h1>
         <p className="text-sm text-muted-foreground">{NOT_FOUND_TEXT.subtitle}</p>
       </div>
-      <Link
+      <AppLink
         to={ROUTES.home}
         className={cn(
           buttonVariants(),
@@ -24,7 +23,7 @@ export function NotFoundPage() {
         )}
       >
         {NOT_FOUND_TEXT.backHome}
-      </Link>
+      </AppLink>
     </div>
   )
 }

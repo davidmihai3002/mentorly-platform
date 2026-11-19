@@ -1,5 +1,6 @@
 import { type ReactNode, type Ref, useId } from 'react'
 import { Checkbox } from '@/components/ui'
+import { AuthFieldError } from './AuthFieldError'
 
 type AuthCheckboxFieldProps = {
   checked: boolean
@@ -25,7 +26,7 @@ export function AuthCheckboxField({
   const errorId = `${fieldId}-error`
 
   return (
-    <div className="space-y-1">
+    <div className="flex flex-col gap-1">
       <div className="flex items-start gap-2.5">
         <Checkbox
           id={fieldId}
@@ -48,11 +49,7 @@ export function AuthCheckboxField({
         </span>
       </div>
 
-      {error && (
-        <p id={errorId} aria-live="polite" className="text-xs text-destructive">
-          {error}
-        </p>
-      )}
+      <AuthFieldError id={errorId} message={error} />
     </div>
   )
 }
