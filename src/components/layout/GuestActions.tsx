@@ -1,12 +1,12 @@
 import { cn } from 'cn'
-import { Link } from 'react-router'
+import { AppLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
 import { ROUTES, SITE_TEXT } from '@/constants'
 
 export function GuestActions() {
   return (
     <div className="flex items-center gap-1 sm:gap-4">
-      <Link
+      <AppLink
         to={ROUTES.login}
         className={cn(
           buttonVariants({ variant: 'ghost' }),
@@ -14,8 +14,8 @@ export function GuestActions() {
         )}
       >
         {SITE_TEXT.login}
-      </Link>
-      <Link
+      </AppLink>
+      <AppLink
         to={ROUTES.signup}
         className={cn(
           buttonVariants(),
@@ -23,7 +23,7 @@ export function GuestActions() {
         )}
       >
         {SITE_TEXT.register}
-      </Link>
+      </AppLink>
     </div>
   )
 }

@@ -1,9 +1,9 @@
-import { Link } from 'react-router'
+import { AppLink } from '@/components/navigation'
 import { ROUTES, SITE_TEXT } from '@/constants'
 
 export function MentorlyLogo() {
   return (
-    <Link
+    <AppLink
       to={ROUTES.home}
       className="inline-flex items-center rounded-md select-none focus-visible:ring-3 focus-visible:ring-header-foreground/60 focus-visible:outline-none"
       aria-label={SITE_TEXT.brand}
@@ -34,6 +34,6 @@ export function MentorlyLogo() {
           {SITE_TEXT.brand}
         </text>
       </svg>
-    </Link>
+    </AppLink>
   )
 }

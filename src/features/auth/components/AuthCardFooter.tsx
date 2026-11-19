@@ -1,5 +1,5 @@
 import { cn } from 'cn'
-import { Link } from 'react-router'
+import { AppLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
 import { ROUTES } from '@/constants'
 import { LOGIN_TEXT } from '../constants'
@@ -12,7 +12,7 @@ export function AuthCardFooter({ onRegisterClick }: AuthCardFooterProps) {
   return (
     <p className="text-center text-xs text-foreground">
       {LOGIN_TEXT.noAccount}{' '}
-      <Link
+      <AppLink
         to={ROUTES.signup}
         className={cn(
           buttonVariants({ variant: 'link' }),
@@ -21,7 +21,7 @@ export function AuthCardFooter({ onRegisterClick }: AuthCardFooterProps) {
         onClick={onRegisterClick}
       >
         {LOGIN_TEXT.registerMentee}
-      </Link>{' '}
+      </AppLink>{' '}
       <span className="text-muted-foreground">{LOGIN_TEXT.minimumAge}</span>
     </p>
   )

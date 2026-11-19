@@ -1,5 +1,5 @@
 import { cn } from 'cn'
-import { Link } from 'react-router'
+import { AppLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
 import { ROUTES } from '@/constants'
 import { SIGNUP_TEXT } from '../constants'
@@ -12,7 +12,7 @@ export function SignupCardFooter({ onLoginClick }: SignupCardFooterProps) {
   return (
     <p className="text-center text-xs text-foreground">
       {SIGNUP_TEXT.hasAccount}{' '}
-      <Link
+      <AppLink
         to={ROUTES.login}
         className={cn(
           buttonVariants({ variant: 'link' }),
@@ -21,7 +21,7 @@ export function SignupCardFooter({ onLoginClick }: SignupCardFooterProps) {
         onClick={onLoginClick}
       >
         {SIGNUP_TEXT.loginLink}
-      </Link>
+      </AppLink>
     </p>
   )
 }
