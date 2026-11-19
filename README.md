@@ -13,6 +13,10 @@ npm run format:check # Prettier check
 npm run build        # Production build
 ```
 
+## CI
+
+GitHub Actions runs `npm ci`, lint, typecheck, format check and build on every pull request to `main` and on every push to `main`. The build output (`dist`) is uploaded as an artifact for 7 days.
+
 ## Project Structure
 
 ```text
