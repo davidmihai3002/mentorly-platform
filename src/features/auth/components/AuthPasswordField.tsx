@@ -4,6 +4,7 @@ import type { UseFormRegisterReturn } from 'react-hook-form'
 import { Button, Input, Label } from '@/components/ui'
 import { LOGIN_TEXT } from '../constants'
 import { usePasswordVisibility } from '../hooks'
+import { AuthFieldError } from './AuthFieldError'
 
 type AuthPasswordFieldProps = {
   label?: string
@@ -35,7 +36,7 @@ export function AuthPasswordField({
   const { isVisible, toggleVisibility, inputType, toggleLabel } = usePasswordVisibility()
 
   return (
-    <div className="space-y-1.5">
+    <div className="flex flex-col gap-1.5">
       <div className="flex items-center justify-between gap-2">
         <Label htmlFor={fieldId}>{label}</Label>
         {onForgotPassword && (
@@ -80,11 +81,7 @@ export function AuthPasswordField({
         </p>
       )}
 
-      {error && (
-        <p id={errorId} aria-live="polite" className="text-xs text-destructive">
-          {error}
-        </p>
-      )}
+      <AuthFieldError id={errorId} message={error} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { cn } from 'cn'
 import { MenuIcon, XIcon } from 'lucide-react'
 import { useCallback, useId, useRef, useState } from 'react'
-import { Link } from 'react-router'
+import { AppLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
 import { NAV_LINKS, ROUTES, SITE_TEXT } from '@/constants'
 import { useOutsidePointerDown } from '@/hooks'
@@ -46,8 +46,10 @@ export function MobileNavMenu() {
       <nav
         id={panelId}
         aria-label={SITE_TEXT.mobileNavLabel}
-        hidden={!isOpen}
-        className="absolute inset-x-0 top-full border-t border-header-foreground/15 bg-header px-4 py-3 shadow-md sm:px-8"
+        className={cn(
+          'absolute inset-x-0 top-full transition-[opacity,translate,display] duration-(--motion-duration) ease-(--motion-ease) transition-discrete starting:-translate-y-2 starting:opacity-0 border-t border-header-foreground/15 bg-header px-4 py-3 shadow-md sm:px-8',
+          !isOpen && 'hidden -translate-y-2 opacity-0',
+        )}
       >
         <ul className="mx-auto max-w-6xl space-y-1">
           {NAV_LINKS.map((link) => (
@@ -58,9 +60,9 @@ export function MobileNavMenu() {
             </li>
           ))}
           <li className="sm:hidden">
-            <Link to={ROUTES.login} className={MOBILE_LINK_CLASS} onClick={close}>
+            <AppLink to={ROUTES.login} className={MOBILE_LINK_CLASS} onClick={close}>
               {SITE_TEXT.login}
-            </Link>
+            </AppLink>
           </li>
         </ul>
       </nav>

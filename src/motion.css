@@ -1,0 +1,69 @@
+:root {
+  --motion-duration: 220ms;
+  --motion-distance: 8px;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+::view-transition-group(*) {
+  animation-duration: var(--motion-duration);
+  animation-timing-function: var(--motion-ease);
+}
+
+::view-transition-image-pair(auth-card) {
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+::view-transition-old(auth-card),
+::view-transition-new(auth-card) {
+  height: 100%;
+  object-fit: none;
+  object-position: top;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-old(page-content),
+::view-transition-old(auth-card) {
+  animation: calc(var(--motion-duration) * 0.4) var(--motion-ease) both page-leave;
+}
+
+::view-transition-new(page-content),
+::view-transition-new(auth-card) {
+  animation: calc(var(--motion-duration) * 0.75) var(--motion-ease)
+    calc(var(--motion-duration) * 0.25) both page-enter;
+}
+
+@keyframes page-leave {
+  to {
+    opacity: 0;
+    transform: translateY(calc(var(--motion-distance) * -1));
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-distance));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 0.01ms;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+
+  [class*='animate-in'],
+  [class*='animate-out'] {
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
+@import './motion.css';
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/plus-jakarta-sans';
 

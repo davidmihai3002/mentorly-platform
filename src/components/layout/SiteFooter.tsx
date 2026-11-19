@@ -2,7 +2,7 @@ import { FOOTER_LINKS, SITE_TEXT } from '@/constants'
 
 export function SiteFooter() {
   return (
-    <footer className="relative z-10 mt-auto">
+    <footer className="relative z-10 mt-auto [view-transition-name:site-footer]">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-muted-foreground sm:flex-row sm:px-8">
         <p>{SITE_TEXT.copyright}</p>
 

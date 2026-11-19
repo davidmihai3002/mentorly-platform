@@ -25,7 +25,7 @@ export function AccountMenu() {
         <ChevronDownIcon aria-hidden="true" />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-44">
-        <DropdownMenuItem onClick={() => void navigate(ROUTES.login)}>
+        <DropdownMenuItem onClick={() => void navigate(ROUTES.login, { viewTransition: true })}>
           <LogOutIcon aria-hidden="true" />
           {SITE_TEXT.logout}
         </DropdownMenuItem>
