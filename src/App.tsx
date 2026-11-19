@@ -1,7 +1,16 @@
-import { LoginPage } from '@/features/auth'
+import { useState } from 'react'
+import { LoginPage, SignupPage } from '@/features/auth'
+
+type AuthView = 'login' | 'signup'
 
 function App() {
-  return <LoginPage />
+  const [view, setView] = useState<AuthView>('signup')
+
+  if (view === 'login') {
+    return <LoginPage onNavigateToSignup={() => setView('signup')} />
+  }
+
+  return <SignupPage onNavigateToLogin={() => setView('login')} />
 }
 
 export default App

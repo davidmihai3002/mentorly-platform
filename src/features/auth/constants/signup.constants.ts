@@ -1,0 +1,35 @@
+export const SIGNUP_TEXT = {
+  pageTitle: 'Înscriere cursant – Mentorly',
+  title: 'Înscriere cursant',
+  subtitle:
+    'Fă primul pas spre cariera ta. Creează un cont și găsește mentorul potrivit pentru tine.',
+  google: 'Înscrie-te cu Google',
+  divider: 'sau cu email',
+  fullNameLabel: 'Nume complet',
+  fullNamePlaceholder: 'Nume, prenume',
+  emailLabel: 'Adresă de email',
+  emailPlaceholder: 'exemplu@email.ro',
+  passwordLabel: 'Parolă',
+  passwordPlaceholder: 'Creează o parolă',
+  passwordHelper: 'Minimum 8 caractere, o literă mare și o cifră.',
+  confirmPasswordLabel: 'Confirmă parola',
+  confirmPasswordPlaceholder: 'Reintrodu parola',
+  ageConfirmationLabel: 'Confirm că am cel puțin 16 ani.',
+  termsPrefix: 'Sunt de acord cu',
+  termsLink: 'Termenii și condițiile',
+  termsMiddle: 'și cu',
+  privacyLink: 'Politica de confidențialitate',
+  submit: 'Creează contul',
+  hasAccount: 'Ai deja un cont?',
+  loginLink: 'Autentifică-te',
+} as const
+
+export const SIGNUP_ACTIONS = [
+  'signup',
+  'google',
+  'terms',
+  'privacy-policy',
+  'login-link',
+  'nav-login',
+  'nav-register',
+] as const
