@@ -9,6 +9,8 @@
   --font-heading: 'Plus Jakarta Sans Variable', 'Inter Variable', ui-sans-serif, sans-serif;
   --color-brand-navy: var(--brand-navy);
   --color-brand-navy-foreground: var(--brand-navy-foreground);
+  --color-header: var(--header);
+  --color-header-foreground: var(--header-foreground);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
   --color-highlight: var(--highlight);
@@ -75,6 +77,8 @@
   --primary-foreground: #ffffff;
   --brand-navy: #0b192f;
   --brand-navy-foreground: #ffffff;
+  --header: #516276;
+  --header-foreground: #ffffff;
   --highlight: #4f46e5;
   --highlight-foreground: #ffffff;
   --secondary: #f1f5f9;
