@@ -6,7 +6,11 @@ export function PublicLayout() {
   return (
     <div className="flex min-h-svh flex-col bg-background">
       <GuestHeader />
-      <main id={MAIN_CONTENT_ID} tabIndex={-1} className="outline-none flex flex-1 flex-col">
+      <main
+        id={MAIN_CONTENT_ID}
+        tabIndex={-1}
+        className="flex flex-1 flex-col outline-none [view-transition-name:page-content]"
+      >
         <Outlet />
       </main>
       <SiteFooter />

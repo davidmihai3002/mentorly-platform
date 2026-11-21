@@ -1,7 +1,7 @@
 import { cn } from 'cn'
 import { AppLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
-import { ROUTES, SITE_TEXT } from '@/constants'
+import { HEADER_GHOST_CLASS, ROUTES, SITE_TEXT } from '@/constants'
 
 export function GuestActions() {
   return (
@@ -10,7 +10,8 @@ export function GuestActions() {
         to={ROUTES.login}
         className={cn(
           buttonVariants({ variant: 'ghost' }),
-          'hidden h-9 px-2 text-sm font-medium text-header-foreground sm:inline-flex sm:px-3 hover:bg-header-foreground/10 hover:text-header-foreground focus-visible:ring-header-foreground/60',
+          HEADER_GHOST_CLASS,
+          'hidden h-9 px-2 text-sm font-medium sm:inline-flex sm:px-3',
         )}
       >
         {SITE_TEXT.login}

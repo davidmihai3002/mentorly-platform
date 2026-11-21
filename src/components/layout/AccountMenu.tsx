@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui'
-import { ROUTES, SITE_TEXT } from '@/constants'
+import { HEADER_GHOST_CLASS, ROUTES, SITE_TEXT } from '@/constants'
 
 export function AccountMenu() {
   const navigate = useNavigate()
@@ -18,7 +18,8 @@ export function AccountMenu() {
       <DropdownMenuTrigger
         className={cn(
           buttonVariants({ variant: 'ghost' }),
-          'h-9 gap-1.5 px-3 text-sm font-medium text-header-foreground hover:bg-header-foreground/10 hover:text-header-foreground focus-visible:ring-header-foreground/60 aria-expanded:bg-header-foreground/10 aria-expanded:text-header-foreground',
+          HEADER_GHOST_CLASS,
+          'h-9 gap-1.5 px-3 text-sm font-medium',
         )}
       >
         {SITE_TEXT.accountMenu}
