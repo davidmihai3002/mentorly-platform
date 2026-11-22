@@ -18,6 +18,10 @@ export const router = createBrowserRouter([
             index: true,
             lazy: async () => ({ Component: (await import('@/features/landing')).HomePage }),
           },
+          {
+            path: ROUTES.about,
+            lazy: async () => ({ Component: (await import('@/features/landing')).AboutPage }),
+          },
           ...(import.meta.env.DEV
             ? [
                 {

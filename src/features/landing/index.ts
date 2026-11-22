@@ -1,1 +1,1 @@
-export { HomePage } from './components'
+export { AboutPage, HomePage } from './components'

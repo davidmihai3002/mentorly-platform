@@ -1,3 +1,4 @@
+export { ABOUT_TEXT, BENEFITS } from './about.constants'
 export { HOME_TEXT, LANDING_LINKS } from './home.constants'
 export {
   ARROW_LINK_CLASS,
