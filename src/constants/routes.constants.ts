@@ -1,5 +1,9 @@
 export const ROUTES = {
   home: '/',
+  about: '/ce-este-mentorly',
+  community: '/comunitate',
+  reviews: '/recenzii',
+  partners: '/parteneri',
   login: '/autentificare',
   signup: '/inregistrare',
   mentorSignup: '/inregistrare/mentor',
