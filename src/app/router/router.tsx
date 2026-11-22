@@ -26,6 +26,10 @@ export const router = createBrowserRouter([
             path: ROUTES.reviews,
             lazy: async () => ({ Component: (await import('@/features/landing')).ReviewsPage }),
           },
+          {
+            path: ROUTES.partners,
+            lazy: async () => ({ Component: (await import('@/features/landing')).PartnersPage }),
+          },
           ...(import.meta.env.DEV
             ? [
                 {
