@@ -4,6 +4,7 @@ export const ROUTES = {
   signup: '/inregistrare',
   student: '/cursant',
   mentor: '/mentor',
+  componentsPreview: '/dev/componente',
 } as const
 
 export const MAIN_CONTENT_ID = 'continut'

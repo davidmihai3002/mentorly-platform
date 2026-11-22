@@ -13,6 +13,8 @@
   --color-brand-navy-border: var(--brand-navy-border);
   --color-primary-border: var(--primary-border);
   --color-link: var(--link);
+  --color-tag: var(--tag);
+  --color-selected: var(--selected);
   --color-placeholder: var(--placeholder);
   --color-backdrop-tint: var(--backdrop-tint);
   --color-backdrop-grid: var(--backdrop-grid);
@@ -77,6 +79,7 @@
   --shadow-navy: 0 6px 12px 0 rgb(17 34 64 / 0.2);
   --shadow-card-soft: 0 12px 22px 0 rgb(24 35 44 / 0.1255);
   --shadow-navy-soft: 0 4px 10px 0 rgb(17 34 64 / 0.15);
+  --shadow-avatar: 0 8px 18px 0 rgb(15 23 42 / 0.078);
 }
 
 :root {
@@ -92,6 +95,8 @@
   --primary: #075bc9;
   --primary-border: #074b9a;
   --link: #12516b;
+  --tag: #dcecfa;
+  --selected: #eaf4fd;
   --placeholder: #777777;
   --backdrop-tint: #f1f9fc;
   --backdrop-grid: #edf8fa;

@@ -13,7 +13,20 @@ export const router = createBrowserRouter([
     children: [
       {
         Component: PublicLayout,
-        children: [{ index: true, loader: () => redirect(ROUTES.login), Component: RouteFallback }],
+        children: [
+          { index: true, loader: () => redirect(ROUTES.login), Component: RouteFallback },
+          ...(import.meta.env.DEV
+            ? [
+                {
+                  path: ROUTES.componentsPreview,
+                  lazy: async () => ({
+                    Component: (await import('../pages/ComponentsPreviewPage'))
+                      .ComponentsPreviewPage,
+                  }),
+                },
+              ]
+            : []),
+        ],
       },
       {
         Component: AuthLayout,
