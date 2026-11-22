@@ -35,7 +35,7 @@ export function QuizResultsPage() {
       <ul className="grid gap-4 md:grid-cols-3">
         {recommendations.map((mentor) => (
           <li key={mentor.id} className="flex flex-col gap-3">
-            <MentorCard mentor={mentor} headingLevel="h2" />
+            <MentorCard mentor={mentor} headingLevel="h2" className="flex-1" />
             <MatchReasonsCard mentor={mentor} />
           </li>
         ))}

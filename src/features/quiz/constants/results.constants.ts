@@ -10,6 +10,9 @@ export const RESULTS_TEXT = {
   consideredNote: 'Română · online · Îți poți ajusta răspunsurile oricând.',
   firstRecommendation: 'Prima recomandare',
   whyMatchTitle: 'De ce vă potriviți',
+  reasonDomain: (domain: string) => `Același domeniu: ${domain}`,
+  reasonGoal: (goal: string) => `Obiectiv comun: ${goal}`,
+  reasonLevel: (level: string) => `Lucrează cu nivelul ${level}`,
   experience: (years: number) => `Experiență: ${years} ani`,
   adjustAnswers: 'Ajustează răspunsurile',
   exploreAll: 'Explorează toți mentorii',
@@ -27,6 +30,7 @@ export const TOP_MENTORS_TEXT = {
     'Selecție orientativă după evaluări, sesiuni finalizate și feedbackul cursanților. Profiluri și indicatori ilustrativi.',
   findMatch: 'Găsește mentorul potrivit',
   empty: 'Nu avem încă mentori de top în acest domeniu.',
+  resultCount: (count: number) => (count === 1 ? '1 mentor afișat' : `${count} mentori afișați`),
 } as const
 
 export const DOMAIN_FILTERS: readonly {

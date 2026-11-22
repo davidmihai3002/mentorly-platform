@@ -1,5 +1,5 @@
 import { cn } from 'cn'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { AppLink, MentorCard } from '@/components'
 import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, ROUTES } from '@/constants'
 import { QUIZ_CARD_CLASS, QUIZ_MENTORS, TOP_MENTORS_TEXT } from '../constants'
@@ -11,13 +11,17 @@ import { QuizPageHeader } from './QuizPageHeader'
 export function TopMentorsPage() {
   const [filterId, setFilterId] = useState<DomainFilterId>('all')
   const mentors = filterTopMentors(QUIZ_MENTORS, filterId)
+  const progressTitleId = useId()
 
   return (
     <div className="flex flex-col gap-6">
       <title>{TOP_MENTORS_TEXT.pageTitle}</title>
       <QuizPageHeader title={TOP_MENTORS_TEXT.title} subtitle={TOP_MENTORS_TEXT.subtitle} />
       <DomainFilter activeId={filterId} onChange={setFilterId} />
-      <div aria-live="polite">
+      <p role="status" className="sr-only">
+        {TOP_MENTORS_TEXT.resultCount(mentors.length)}
+      </p>
+      <div>
         {mentors.length > 0 ? (
           <ul className="grid gap-4 md:grid-cols-3">
             {mentors.map((mentor) => (
@@ -31,11 +35,11 @@ export function TopMentorsPage() {
         )}
       </div>
       <section
-        aria-labelledby="top-progress-title"
+        aria-labelledby={progressTitleId}
         className={cn(QUIZ_CARD_CLASS, 'flex flex-col gap-2')}
       >
         <h2
-          id="top-progress-title"
+          id={progressTitleId}
           className="text-[22px] leading-[1.2] font-bold tracking-[-0.02em] text-foreground"
         >
           {TOP_MENTORS_TEXT.progressTitle}

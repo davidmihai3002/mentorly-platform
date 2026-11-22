@@ -2,7 +2,7 @@ import { useNavigate, useSearchParams } from 'react-router'
 import { ROUTES } from '@/constants'
 import { QUIZ_TEXT } from '../constants'
 import { useQuiz } from '../hooks'
-import { parseQuizAnswers, toQuizSearch } from '../utils'
+import { isStepAnswered, parseQuizAnswers, toQuizSearch } from '../utils'
 import { QuizIntro } from './QuizIntro'
 import { QuizStepView } from './QuizStepView'
 
@@ -12,7 +12,7 @@ export function QuizPage() {
   const quiz = useQuiz(parseQuizAnswers(searchParams))
 
   function handleNext() {
-    if (quiz.isLastStep && quiz.answers.pace) {
+    if (quiz.isLastStep && quiz.step && isStepAnswered(quiz.answers, quiz.step.id)) {
       navigate(`${ROUTES.quizResults}${toQuizSearch(quiz.answers)}`, { viewTransition: true })
       return
     }
@@ -31,7 +31,7 @@ export function QuizPage() {
           onNext={handleNext}
         />
       ) : (
-        <QuizIntro onStart={quiz.start} />
+        <QuizIntro shouldFocus={quiz.hasStarted} onStart={quiz.start} />
       )}
     </>
   )

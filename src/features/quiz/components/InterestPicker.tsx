@@ -1,5 +1,6 @@
+import { cn } from 'cn'
 import { Check } from 'lucide-react'
-import { INTERESTS, QUIZ_TEXT } from '../constants'
+import { INTERESTS, QUIZ_TAG_CLASS, QUIZ_TEXT } from '../constants'
 import type { InterestId } from '../types'
 
 type InterestPickerProps = {
@@ -17,7 +18,10 @@ export function InterestPicker({ selected, onToggle }: InterestPickerProps) {
         {INTERESTS.map((interest) => (
           <label
             key={interest.id}
-            className="inline-flex min-h-[26px] cursor-pointer items-center gap-1.5 rounded-[13px] border border-transparent bg-tag px-2.5 text-[11px] text-foreground has-checked:border-primary has-focus-visible:ring-3 has-focus-visible:ring-ring"
+            className={cn(
+              QUIZ_TAG_CLASS,
+              'cursor-pointer gap-1.5 border border-transparent has-checked:border-primary has-focus-visible:ring-3 has-focus-visible:ring-ring',
+            )}
           >
             <input
               type="checkbox"

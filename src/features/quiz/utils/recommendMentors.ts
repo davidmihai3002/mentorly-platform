@@ -1,5 +1,6 @@
 import { RESULTS_TEXT } from '../constants'
 import type { QuizAnswers, QuizMentor } from '../types'
+import { buildMatchReasons } from './buildMatchReasons'
 
 const RECOMMENDATION_COUNT = 3
 
@@ -28,5 +29,6 @@ export function recommendMentors(
     .map(({ mentor }, index) => ({
       ...mentor,
       highlight: index === 0 ? RESULTS_TEXT.firstRecommendation : mentor.focusLabel,
+      reasons: buildMatchReasons(mentor, answers),
     }))
 }

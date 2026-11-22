@@ -37,7 +37,7 @@ export function QuizStepView({ quiz, step, stepIndex, skipHref, onNext }: QuizSt
         <QuizQuestion
           step={step}
           value={quiz.answers[step.id]}
-          hasMissingAnswer={quiz.hasMissingAnswer}
+          missingAnswerCount={quiz.missingAnswerCount}
           onSelect={(value) => quiz.select(step.id, value)}
         />
         {step.id === 'domain' && (

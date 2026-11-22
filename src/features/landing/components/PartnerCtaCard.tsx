@@ -1,5 +1,5 @@
 import { cn } from 'cn'
-import { ROUNDED_BUTTON_CLASS } from '@/constants'
+import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
 import { PARTNERS_TEXT } from '../constants'
 import { Pill } from './Pill'
 
@@ -18,10 +18,7 @@ export function PartnerCtaCard() {
       <p className="mt-2 text-sm leading-[1.45] text-foreground">{PARTNERS_TEXT.ctaText}</p>
       <a
         href={`mailto:${PARTNERS_TEXT.email}`}
-        className={cn(
-          ROUNDED_BUTTON_CLASS,
-          'mt-5 w-full border-primary-border bg-primary font-semibold text-primary-foreground shadow-primary hover:bg-primary/90',
-        )}
+        className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'mt-5 w-full font-semibold')}
       >
         {PARTNERS_TEXT.ctaButton}
       </a>

@@ -1,12 +1,13 @@
 import { useReducer } from 'react'
 import { QUIZ_STEPS } from '../constants'
 import type { InterestId, QuizAnswers, QuizStep, QuizStepId } from '../types'
-import { hasAnyAnswer } from '../utils'
+import { hasAnyAnswer, isStepAnswered } from '../utils'
 
 type QuizState = {
   readonly stepIndex: number | null
   readonly answers: QuizAnswers
-  readonly hasMissingAnswer: boolean
+  readonly missingAnswerCount: number
+  readonly hasStarted: boolean
 }
 
 type QuizAction =
@@ -21,12 +22,12 @@ const LAST_STEP_INDEX = QUIZ_STEPS.length - 1
 function quizReducer(state: QuizState, action: QuizAction): QuizState {
   switch (action.type) {
     case 'start':
-      return { ...state, stepIndex: 0, hasMissingAnswer: false }
+      return { ...state, stepIndex: 0, missingAnswerCount: 0, hasStarted: true }
     case 'select':
       return {
         ...state,
         answers: { ...state.answers, [action.stepId]: action.value },
-        hasMissingAnswer: false,
+        missingAnswerCount: 0,
       }
     case 'toggleInterest': {
       const { interests } = state.answers
@@ -38,7 +39,8 @@ function quizReducer(state: QuizState, action: QuizAction): QuizState {
     case 'next': {
       if (state.stepIndex === null) return state
       const step = QUIZ_STEPS[state.stepIndex]
-      if (!step || !state.answers[step.id]) return { ...state, hasMissingAnswer: true }
+      if (!step || !isStepAnswered(state.answers, step.id))
+        return { ...state, missingAnswerCount: state.missingAnswerCount + 1 }
       return { ...state, stepIndex: Math.min(state.stepIndex + 1, LAST_STEP_INDEX) }
     }
     case 'back':
@@ -46,7 +48,7 @@ function quizReducer(state: QuizState, action: QuizAction): QuizState {
       return {
         ...state,
         stepIndex: state.stepIndex === 0 ? null : state.stepIndex - 1,
-        hasMissingAnswer: false,
+        missingAnswerCount: 0,
       }
   }
 }
@@ -56,7 +58,8 @@ export type UseQuizResult = {
   stepIndex: number | null
   isLastStep: boolean
   answers: QuizAnswers
-  hasMissingAnswer: boolean
+  missingAnswerCount: number
+  hasStarted: boolean
   start: () => void
   select: (stepId: QuizStepId, value: string) => void
   toggleInterest: (interest: InterestId) => void
@@ -68,7 +71,8 @@ export function useQuiz(initialAnswers: QuizAnswers): UseQuizResult {
   const [state, dispatch] = useReducer(quizReducer, {
     stepIndex: hasAnyAnswer(initialAnswers) ? 0 : null,
     answers: initialAnswers,
-    hasMissingAnswer: false,
+    missingAnswerCount: 0,
+    hasStarted: hasAnyAnswer(initialAnswers),
   })
 
   return {
@@ -76,7 +80,8 @@ export function useQuiz(initialAnswers: QuizAnswers): UseQuizResult {
     stepIndex: state.stepIndex,
     isLastStep: state.stepIndex === LAST_STEP_INDEX,
     answers: state.answers,
-    hasMissingAnswer: state.hasMissingAnswer,
+    missingAnswerCount: state.missingAnswerCount,
+    hasStarted: state.hasStarted,
     start: () => dispatch({ type: 'start' }),
     select: (stepId, value) => dispatch({ type: 'select', stepId, value }),
     toggleInterest: (interest) => dispatch({ type: 'toggleInterest', interest }),

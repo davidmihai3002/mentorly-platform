@@ -1,5 +1,5 @@
 import { cn } from 'cn'
-import { DOMAIN_FILTERS, TOP_MENTORS_TEXT } from '../constants'
+import { DOMAIN_FILTERS, QUIZ_TAG_CLASS, TOP_MENTORS_TEXT } from '../constants'
 import type { DomainFilterId } from '../types'
 
 type DomainFilterProps = {
@@ -17,7 +17,8 @@ export function DomainFilter({ activeId, onChange }: DomainFilterProps) {
           aria-pressed={filter.id === activeId}
           onClick={() => onChange(filter.id)}
           className={cn(
-            'inline-flex min-h-[26px] items-center rounded-[13px] border border-transparent bg-tag px-2.5 text-[11px] text-foreground transition-colors hover:border-primary/40 focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none',
+            QUIZ_TAG_CLASS,
+            'border border-transparent transition-colors hover:border-primary/40 focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none',
             'aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground',
           )}
         >

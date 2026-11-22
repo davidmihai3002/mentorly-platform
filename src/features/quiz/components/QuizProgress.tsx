@@ -24,7 +24,8 @@ export function QuizProgress({ stepIndex }: QuizProgressProps) {
         aria-valuemax={total}
         aria-valuenow={current}
         aria-valuetext={`${label}: ${stepLabel}`}
-        className="grid grid-cols-4 gap-1.5"
+        style={{ gridTemplateColumns: `repeat(${total}, minmax(0, 1fr))` }}
+        className="grid gap-1.5"
       >
         {QUIZ_STEPS.map((step, index) => (
           <span

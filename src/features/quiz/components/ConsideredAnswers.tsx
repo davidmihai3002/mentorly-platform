@@ -1,4 +1,5 @@
 import { cn } from 'cn'
+import { useId } from 'react'
 import { QUIZ_CARD_CLASS, QUIZ_TAG_CLASS, RESULTS_TEXT } from '../constants'
 
 type ConsideredAnswersProps = {
@@ -6,12 +7,10 @@ type ConsideredAnswersProps = {
 }
 
 export function ConsideredAnswers({ summaries }: ConsideredAnswersProps) {
+  const titleId = useId()
   return (
-    <section
-      aria-labelledby="considered-title"
-      className={cn(QUIZ_CARD_CLASS, 'flex flex-col gap-3')}
-    >
-      <h2 id="considered-title" className="text-lg font-bold tracking-[-0.02em] text-foreground">
+    <section aria-labelledby={titleId} className={cn(QUIZ_CARD_CLASS, 'flex flex-col gap-3')}>
+      <h2 id={titleId} className="text-lg font-bold tracking-[-0.02em] text-foreground">
         {RESULTS_TEXT.consideredTitle}
       </h2>
       {summaries.length > 0 && (

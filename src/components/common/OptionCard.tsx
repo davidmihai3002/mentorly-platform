@@ -9,6 +9,8 @@ type OptionCardProps = {
   checked: boolean
   disabled?: boolean
   size?: 'compact' | 'regular'
+  isInvalid?: boolean
+
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -20,8 +22,11 @@ export function OptionCard({
   checked,
   disabled,
   size = 'compact',
+  isInvalid = false,
+
   onChange,
 }: OptionCardProps) {
+  const titleId = useId()
   const descriptionId = useId()
 
   return (
@@ -37,7 +42,9 @@ export function OptionCard({
         value={value}
         checked={checked}
         disabled={disabled}
+        aria-labelledby={titleId}
         aria-describedby={description ? descriptionId : undefined}
+        aria-invalid={isInvalid || undefined}
         onChange={onChange}
         className="peer sr-only"
       />
@@ -47,6 +54,7 @@ export function OptionCard({
       />
       <span className="flex flex-col gap-1">
         <span
+          id={titleId}
           className={cn(
             'text-foreground',
             size === 'compact'

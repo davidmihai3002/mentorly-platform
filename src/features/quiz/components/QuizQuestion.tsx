@@ -6,23 +6,22 @@ import type { QuizStep } from '../types'
 type QuizQuestionProps = {
   step: QuizStep
   value?: string
-  hasMissingAnswer: boolean
+  missingAnswerCount: number
   onSelect: (value: string) => void
 }
 
-export function QuizQuestion({ step, value, hasMissingAnswer, onSelect }: QuizQuestionProps) {
+export function QuizQuestion({ step, value, missingAnswerCount, onSelect }: QuizQuestionProps) {
   const hintId = useId()
   const errorId = useId()
+  const hasMissingAnswer = missingAnswerCount > 0
 
   return (
     <fieldset
       aria-describedby={hasMissingAnswer ? `${hintId} ${errorId}` : hintId}
       className="flex flex-col gap-3.5"
     >
-      <legend className="contents">
-        <span className="block text-[23px] leading-[1.2] font-bold tracking-[-0.02em] text-foreground">
-          {step.question}
-        </span>
+      <legend className="float-left w-full text-[23px] leading-[1.2] font-bold tracking-[-0.02em] text-foreground">
+        {step.question}
       </legend>
       <p id={hintId} className="-mt-1 text-xs text-muted-foreground">
         {step.hint}
@@ -36,11 +35,17 @@ export function QuizQuestion({ step, value, hasMissingAnswer, onSelect }: QuizQu
           description={option.description}
           checked={value === option.value}
           size="regular"
+          isInvalid={hasMissingAnswer}
           onChange={() => onSelect(option.value)}
         />
       ))}
       {hasMissingAnswer && (
-        <p id={errorId} role="alert" className="text-[13px] font-medium text-destructive">
+        <p
+          key={missingAnswerCount}
+          id={errorId}
+          role="alert"
+          className="text-[13px] font-medium text-destructive"
+        >
           {QUIZ_TEXT.missingAnswer}
         </p>
       )}
