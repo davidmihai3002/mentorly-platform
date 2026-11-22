@@ -75,6 +75,8 @@
   --shadow-card: 0 12px 18px 0 rgb(24 35 44 / 0.145);
   --shadow-primary: 0 4px 10px 0 rgb(7 91 201 / 0.2);
   --shadow-navy: 0 6px 12px 0 rgb(17 34 64 / 0.2);
+  --shadow-card-soft: 0 12px 22px 0 rgb(24 35 44 / 0.1255);
+  --shadow-navy-soft: 0 4px 10px 0 rgb(17 34 64 / 0.15);
 }
 
 :root {

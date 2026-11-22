@@ -1,3 +1,4 @@
+export { AuthCard } from './AuthCard'
 export { AuthCardFooter } from './AuthCardFooter'
 export { AuthCardHeader } from './AuthCardHeader'
 export { AuthCheckboxField } from './AuthCheckboxField'

@@ -3,7 +3,8 @@ import { ACCOUNT_PLACEHOLDER_TEXT, ROUTES } from '@/constants'
 import { AuthLayout } from '../layouts/AuthLayout'
 import { PublicLayout } from '../layouts/PublicLayout'
 import { RootLayout } from '../layouts/RootLayout'
-import { AccountPlaceholderPage, NotFoundPage, RouteFallback } from '../pages'
+import { AccountPlaceholderPage } from '../pages/AccountPlaceholderPage'
+import { RouteFallback } from '../pages/RouteFallback'
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +26,10 @@ export const router = createBrowserRouter([
             path: ROUTES.signup,
             lazy: async () => ({ Component: (await import('@/features/auth')).SignupPage }),
           },
-          { path: '*', Component: NotFoundPage },
+          {
+            path: '*',
+            lazy: async () => ({ Component: (await import('../pages/NotFoundPage')).NotFoundPage }),
+          },
         ],
       },
       {

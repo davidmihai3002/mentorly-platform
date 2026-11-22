@@ -1,1 +1,1 @@
-export { LoginPage, SignupPage } from './components'
+export { AuthCard, LoginPage, SignupPage } from './components'
