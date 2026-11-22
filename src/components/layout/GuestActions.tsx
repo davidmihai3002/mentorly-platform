@@ -1,7 +1,7 @@
 import { cn } from 'cn'
 import { AppLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
-import { HEADER_GHOST_CLASS, ROUTES, SITE_TEXT } from '@/constants'
+import { HEADER_GHOST_CLASS, HEADER_PRIMARY_CLASS, ROUTES, SITE_TEXT } from '@/constants'
 
 export function GuestActions() {
   return (
@@ -18,10 +18,7 @@ export function GuestActions() {
       </AppLink>
       <AppLink
         to={ROUTES.signup}
-        className={cn(
-          buttonVariants(),
-          'h-[33px] rounded-md border border-primary-border px-3 text-sm font-semibold shadow-primary hover:bg-primary/90',
-        )}
+        className={cn(buttonVariants(), HEADER_PRIMARY_CLASS, 'font-semibold')}
       >
         {SITE_TEXT.register}
       </AppLink>

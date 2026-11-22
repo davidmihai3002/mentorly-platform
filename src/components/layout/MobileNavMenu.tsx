@@ -3,13 +3,17 @@ import { MenuIcon, XIcon } from 'lucide-react'
 import { useCallback, useId, useRef, useState } from 'react'
 import { AppLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
-import { HEADER_GHOST_CLASS, NAV_LINKS, ROUTES, SITE_TEXT } from '@/constants'
+import { HEADER_GHOST_CLASS, NAV_LINKS, SITE_TEXT } from '@/constants'
 import { useEscapeKey, useOutsidePointerDown } from '@/hooks'
 
 const MOBILE_LINK_CLASS =
   'block rounded-md px-3 py-2.5 text-sm font-medium text-header-foreground hover:bg-header-foreground/5 hover:text-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none'
 
-export function MobileNavMenu() {
+type MobileNavMenuProps = {
+  secondaryLink: { label: string; to: string }
+}
+
+export function MobileNavMenu({ secondaryLink }: MobileNavMenuProps) {
   const [isOpen, setIsOpen] = useState(false)
   const panelId = useId()
   const containerRef = useRef<HTMLDivElement>(null)
@@ -55,8 +59,8 @@ export function MobileNavMenu() {
             </li>
           ))}
           <li className="sm:hidden">
-            <AppLink to={ROUTES.login} className={MOBILE_LINK_CLASS} onClick={close}>
-              {SITE_TEXT.login}
+            <AppLink to={secondaryLink.to} className={MOBILE_LINK_CLASS} onClick={close}>
+              {secondaryLink.label}
             </AppLink>
           </li>
         </ul>

@@ -1,5 +1,5 @@
 export { AccountHeader } from './AccountHeader'
-export { AccountMenu } from './AccountMenu'
+export { AccountActions } from './AccountActions'
 export { GuestActions } from './GuestActions'
 export { GuestHeader } from './GuestHeader'
 export { MentorlyLogo } from './MentorlyLogo'

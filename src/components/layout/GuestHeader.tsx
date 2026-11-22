@@ -1,3 +1,4 @@
+import { ROUTES, SITE_TEXT } from '@/constants'
 import { GuestActions } from './GuestActions'
 import { MobileNavMenu } from './MobileNavMenu'
 import { PublicNavLinks } from './PublicNavLinks'
@@ -9,7 +10,7 @@ export function GuestHeader() {
       <PublicNavLinks />
       <div className="flex items-center gap-1">
         <GuestActions />
-        <MobileNavMenu />
+        <MobileNavMenu secondaryLink={{ label: SITE_TEXT.login, to: ROUTES.login }} />
       </div>
     </SiteHeader>
   )
