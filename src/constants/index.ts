@@ -1,7 +1,7 @@
 export { DOMAINS } from './domains.constants'
 export { FEATURED_MENTOR, MENTOR_TEXT, SAMPLE_MENTORS } from './mentor.constants'
 export { COMPONENTS_PREVIEW_TEXT } from './preview.constants'
-export { MAIN_CONTENT_ID, ROUTES } from './routes.constants'
+export { LOGOUT_STATE, MAIN_CONTENT_ID, ROUTES } from './routes.constants'
 export {
   ACCOUNT_PLACEHOLDER_TEXT,
   FOOTER_LINKS,

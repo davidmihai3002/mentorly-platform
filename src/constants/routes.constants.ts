@@ -11,3 +11,5 @@ export const ROUTES = {
 } as const
 
 export const MAIN_CONTENT_ID = 'continut'
+
+export const LOGOUT_STATE = { loggedOut: true } as const
