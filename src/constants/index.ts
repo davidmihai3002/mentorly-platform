@@ -6,4 +6,4 @@ export {
   NOT_FOUND_TEXT,
   SITE_TEXT,
 } from './site.constants'
-export { HEADER_GHOST_CLASS } from './styles.constants'
+export { HEADER_GHOST_CLASS, LAYOUT_CONTAINER_CLASS } from './styles.constants'

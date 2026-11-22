@@ -11,7 +11,7 @@ export function GuestActions() {
         className={cn(
           buttonVariants({ variant: 'ghost' }),
           HEADER_GHOST_CLASS,
-          'hidden h-9 px-2 text-sm font-medium sm:inline-flex sm:px-3',
+          'hidden h-[33px] px-2 text-sm font-medium sm:inline-flex sm:px-3',
         )}
       >
         {SITE_TEXT.login}
@@ -20,7 +20,7 @@ export function GuestActions() {
         to={ROUTES.signup}
         className={cn(
           buttonVariants(),
-          'h-9 rounded-lg px-3 text-sm font-semibold sm:px-4 shadow-xs hover:bg-primary/90 focus-visible:ring-header-foreground/60',
+          'h-[33px] rounded-md border border-primary-border px-3 text-sm font-semibold shadow-primary hover:bg-primary/90',
         )}
       >
         {SITE_TEXT.register}

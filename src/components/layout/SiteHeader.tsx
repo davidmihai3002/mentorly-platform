@@ -1,4 +1,6 @@
+import { cn } from 'cn'
 import type { ReactNode } from 'react'
+import { LAYOUT_CONTAINER_CLASS } from '@/constants'
 import { MentorlyLogo } from './MentorlyLogo'
 
 type SiteHeaderProps = {
@@ -7,8 +9,13 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ children }: SiteHeaderProps) {
   return (
-    <header className="relative z-20 bg-header [view-transition-name:site-header] text-header-foreground shadow-sm">
-      <div className="mx-auto flex h-18 max-w-6xl items-center justify-between gap-2 px-4 sm:gap-4 sm:px-8">
+    <header className="relative z-20 border-b border-border bg-header text-header-foreground [view-transition-name:site-header]">
+      <div
+        className={cn(
+          LAYOUT_CONTAINER_CLASS,
+          'flex h-[78px] items-center justify-between gap-2 sm:gap-4',
+        )}
+      >
         <MentorlyLogo />
         {children}
       </div>

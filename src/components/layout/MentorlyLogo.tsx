@@ -5,7 +5,7 @@ export function MentorlyLogo() {
   return (
     <AppLink
       to={ROUTES.home}
-      className="inline-flex items-center rounded-md select-none focus-visible:ring-3 focus-visible:ring-header-foreground/60 focus-visible:outline-none"
+      className="inline-flex items-center rounded-md text-header-foreground select-none focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
       aria-label={SITE_TEXT.brand}
     >
       <svg
@@ -15,10 +15,10 @@ export function MentorlyLogo() {
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
       >
-        <circle cx="9.5" cy="8.5" r="2.5" fill="currentColor" />
+        <circle cx="9.5" cy="8.5" r="2.5" className="fill-primary" />
         <path
           d="M14 9.5C19.5 4.5 27.5 4.5 33 9.5"
-          stroke="currentColor"
+          className="stroke-primary"
           strokeWidth="2.4"
           strokeLinecap="round"
         />
@@ -26,8 +26,8 @@ export function MentorlyLogo() {
           x="2"
           y="27"
           fill="currentColor"
-          fontFamily="'Plus Jakarta Sans Variable', sans-serif"
-          fontWeight="800"
+          fontFamily="'Roboto Variable', sans-serif"
+          fontWeight="700"
           fontSize="24"
           letterSpacing="-0.03em"
         >
