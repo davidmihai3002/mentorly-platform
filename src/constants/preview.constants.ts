@@ -7,6 +7,7 @@ export const COMPONENTS_PREVIEW_TEXT = {
   actions: 'Acțiuni și selecții',
   applyAction: 'Aplică la mentorat',
   backAction: 'Înapoi',
+  optionLegend: 'Obiectivul tău',
   optionTitle: 'Primul meu rol în domeniu',
   optionDescription: 'Construiesc un portofoliu și mă pregătesc pentru interviuri.',
   cardExamples: 'Exemple de carduri pe specialități',

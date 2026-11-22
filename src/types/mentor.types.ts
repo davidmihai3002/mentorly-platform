@@ -1,26 +1,32 @@
 export type DomainId = 'it-frontend' | 'management' | 'hr' | 'business' | 'ux-product' | 'marketing'
 
 export type Domain = {
-  id: DomainId
-  label: string
-  icon: string
-  description: string
+  readonly id: DomainId
+  readonly label: string
+  readonly icon: string
+  readonly description: string
 }
 
 export type MentorBadge = 'top' | 'verified'
 
+export type MentorReputation = {
+  readonly reviewCount: number
+  readonly sessionCount: number
+}
+
 export type Mentor = {
-  id: string
-  name: string
-  role: string
-  badge: MentorBadge
-  domainId: DomainId
-  domainLabel?: string
-  rating: number
-  reviewCount?: number
-  sessionCount?: number
-  description: string
-  pricePerSession: number
+  readonly id: string
+  readonly name: string
+  readonly role: string
+  readonly badge: MentorBadge
+  readonly domainId: DomainId
+  readonly domainLabel?: string
+  readonly rating: number
+  readonly reputation?: MentorReputation
+  readonly description: string
+  readonly pricePerSession: number
 }
 
 export type MentorCardVariant = 'grid' | 'list'
+
+export type HeadingLevel = 'h2' | 'h3'

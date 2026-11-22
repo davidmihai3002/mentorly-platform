@@ -25,6 +25,7 @@ src/
     router/           routes (React Router), lazy-loaded pages
     layouts/          Root, Public, Auth and Account layouts
     pages/            app-level pages (404, placeholders)
+    dev/              dev-only pages (components preview)
   components/
     ui/               shadcn/ui primitives (installed manually from the Manual tab)
     layout/           shared header, footer, logo, page backdrop

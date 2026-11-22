@@ -20,8 +20,7 @@ export const router = createBrowserRouter([
                 {
                   path: ROUTES.componentsPreview,
                   lazy: async () => ({
-                    Component: (await import('../pages/ComponentsPreviewPage'))
-                      .ComponentsPreviewPage,
+                    Component: (await import('../dev/ComponentsPreviewPage')).ComponentsPreviewPage,
                   }),
                 },
               ]

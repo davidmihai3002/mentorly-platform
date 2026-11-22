@@ -10,7 +10,7 @@ type AuthCardFooterProps = {
 
 export function AuthCardFooter({ onRegisterClick }: AuthCardFooterProps) {
   return (
-    <p className="text-[13px] leading-[1.6] text-foreground">
+    <p className="text-[13px] leading-[1.25] text-foreground">
       {LOGIN_TEXT.noAccount}{' '}
       <AppLink
         to={ROUTES.signup}
@@ -19,7 +19,7 @@ export function AuthCardFooter({ onRegisterClick }: AuthCardFooterProps) {
       >
         {LOGIN_TEXT.registerMentee}
       </AppLink>
-      <span className="block">{LOGIN_TEXT.minimumAge}</span>
+      <span className="mt-1 block">{LOGIN_TEXT.minimumAge}</span>
     </p>
   )
 }

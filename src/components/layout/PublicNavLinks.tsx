@@ -7,7 +7,7 @@ export function PublicNavLinks() {
         <a
           key={link.href}
           href={link.href}
-          className="rounded-sm text-sm font-medium whitespace-nowrap text-header-foreground transition-colors hover:text-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+          className="rounded-sm text-sm font-medium whitespace-nowrap text-header-foreground transition-colors hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
         >
           {link.label}
         </a>

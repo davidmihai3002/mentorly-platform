@@ -13,7 +13,7 @@ export function SiteHeader({ children }: SiteHeaderProps) {
       <div
         className={cn(
           LAYOUT_CONTAINER_CLASS,
-          'flex h-[78px] items-center justify-between gap-2 sm:gap-4',
+          'flex h-[77px] items-center justify-between gap-2 sm:gap-4',
         )}
       >
         <MentorlyLogo />

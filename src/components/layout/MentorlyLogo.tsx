@@ -5,7 +5,7 @@ export function MentorlyLogo() {
   return (
     <AppLink
       to={ROUTES.home}
-      className="inline-flex items-center rounded-md text-header-foreground select-none focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+      className="inline-flex items-center rounded-md text-header-foreground select-none focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
       aria-label={SITE_TEXT.brand}
     >
       <svg

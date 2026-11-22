@@ -1,5 +1,3 @@
 export { AccountPlaceholderPage } from './AccountPlaceholderPage'
-export { ComponentsPreviewPage } from './ComponentsPreviewPage'
-export { ComponentsPreviewSection } from './ComponentsPreviewSection'
 export { NotFoundPage } from './NotFoundPage'
 export { RouteFallback } from './RouteFallback'

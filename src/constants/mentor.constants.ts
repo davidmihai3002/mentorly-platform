@@ -7,20 +7,32 @@ export const MENTOR_TEXT = {
   sessions: 'sesiuni',
   pricePerSession: 'lei / sesiune',
   viewProfile: 'Vezi profilul',
-  apply: 'Aplică la mentorat →',
+  apply: 'Aplică la mentorat',
+  applyArrow: '→',
 } as const
+
+export const FEATURED_MENTOR: Mentor = {
+  id: 'mihai-popescu-featured',
+  name: 'Mihai Popescu',
+  role: 'Senior Frontend Engineer & Tech Lead',
+  badge: 'top',
+  domainId: 'it-frontend',
+  rating: 4.9,
+  reputation: { reviewCount: 24, sessionCount: 48 },
+  description: 'Code review, proiecte React și un plan clar pentru primul tău rol.',
+  pricePerSession: 200,
+}
 
 export const SAMPLE_MENTORS: readonly Mentor[] = [
   {
     id: 'mihai-popescu',
     name: 'Mihai Popescu',
     role: 'Senior Frontend Engineer & Tech Lead',
-    badge: 'top',
+    badge: 'verified',
     domainId: 'it-frontend',
     rating: 4.9,
-    reviewCount: 24,
-    sessionCount: 48,
-    description: 'Code review, proiecte React și un plan clar pentru primul tău rol.',
+    reputation: { reviewCount: 24, sessionCount: 48 },
+    description: 'Code review, React și arhitectură.',
     pricePerSession: 200,
   },
   {

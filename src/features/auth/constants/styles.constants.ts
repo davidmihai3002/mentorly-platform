@@ -15,9 +15,9 @@ export const AUTH_DENSITY_STYLES: Record<AuthDensity, AuthDensityStyles> = {
     card: 'max-w-[338px] px-6 pt-10 pb-6 shadow-card',
     stack: 'space-y-3',
     field: 'gap-0.5',
-    input: 'h-[30px] px-2.5',
-    google: 'h-[33px]',
-    submit: 'h-[29px] shadow-navy',
+    input: 'h-10 px-2.5 sm:h-[30px]',
+    google: 'h-10 sm:h-[33px]',
+    submit: 'h-10 shadow-navy sm:h-[29px]',
     divider: 'text-[13px] font-medium text-foreground',
   },
   regular: {

@@ -1,5 +1,6 @@
 import { ROUTES } from '@/constants'
 
 export function getAccountHome(pathname: string): string {
-  return pathname.startsWith(ROUTES.mentor) ? ROUTES.mentor : ROUTES.student
+  const isMentorArea = pathname === ROUTES.mentor || pathname.startsWith(`${ROUTES.mentor}/`)
+  return isMentorArea ? ROUTES.mentor : ROUTES.student
 }

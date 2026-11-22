@@ -17,7 +17,7 @@ export function SiteFooter() {
             <a
               key={link.href}
               href={link.href}
-              className="rounded-sm text-link transition-colors hover:text-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+              className="rounded-sm text-link transition-colors hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
             >
               {link.label}
             </a>

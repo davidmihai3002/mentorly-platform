@@ -1,1 +1,9 @@
-export type { Domain, DomainId, Mentor, MentorBadge, MentorCardVariant } from './mentor.types'
+export type {
+  Domain,
+  DomainId,
+  HeadingLevel,
+  Mentor,
+  MentorBadge,
+  MentorCardVariant,
+  MentorReputation,
+} from './mentor.types'
