@@ -6,7 +6,7 @@ export function buildAuthEventLog(values: AuthEventValues): AuthEventValues {
   return Object.fromEntries(
     Object.entries(values).map(([key, value]) => [
       key,
-      /password/i.test(key) && typeof value === 'string' ? maskPassword(value) : value,
+      /password|token|secret/i.test(key) && typeof value === 'string' ? maskPassword(value) : value,
     ]),
   )
 }
