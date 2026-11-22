@@ -1,2 +1,5 @@
+export { forgotPasswordSchema } from './forgotPasswordSchema'
 export { loginSchema } from './loginSchema'
+export { emailSchema, newPasswordSchema } from './passwordSchema'
+export { resetPasswordSchema } from './resetPasswordSchema'
 export { signupSchema } from './signupSchema'

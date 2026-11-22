@@ -1,3 +1,4 @@
+export { buildAuthEventLog, logAuthEvent } from './logAuthEvent'
 export { getPasswordFieldState } from './getPasswordFieldState'
 export { buildLoginLog, logLoginAction } from './logLoginAction'
 export { EMPTY_SIGNUP_VALUES, buildSignupLog, logSignupAction } from './logSignupAction'

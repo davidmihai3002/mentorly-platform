@@ -12,7 +12,14 @@ export const LOGIN_TEXT = {
   submit: 'Intră în cont',
   noAccount: 'Nu ai cont?',
   registerMentee: 'Înregistrează-te ca și cursant',
-  minimumAge: '(minim 16 ani)',
+  registerMentor: 'Înregistrează-te ca mentor',
+  loggedOut: 'Te-ai deconectat cu succes.',
 } as const
 
-export const LOGIN_ACTIONS = ['login', 'google', 'forgot-password', 'register-mentee'] as const
+export const LOGIN_ACTIONS = [
+  'login',
+  'google',
+  'forgot-password',
+  'register-mentee',
+  'register-mentor',
+] as const

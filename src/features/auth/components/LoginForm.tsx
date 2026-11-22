@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui'
 import { cn } from 'cn'
+import { ROUTES } from '@/constants'
 import { AUTH_DENSITY_STYLES, AUTH_SUBMIT_BASE_CLASS, LOGIN_TEXT } from '../constants'
 import { useLoginForm } from '../hooks'
 import { AuthCardFooter } from './AuthCardFooter'
@@ -33,6 +34,7 @@ export function LoginForm() {
           density="compact"
           error={errors.password?.message}
           registration={form.register('password')}
+          forgotPasswordHref={ROUTES.forgotPassword}
           onForgotPassword={() => logCurrentValues('forgot-password')}
         />
 
@@ -41,7 +43,7 @@ export function LoginForm() {
         </Button>
       </form>
 
-      <AuthCardFooter onRegisterClick={() => logCurrentValues('register-mentee')} />
+      <AuthCardFooter onRegisterClick={logCurrentValues} />
     </div>
   )
 }
