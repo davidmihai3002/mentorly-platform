@@ -2,6 +2,7 @@ export {
   AuthCard,
   ForgotPasswordPage,
   LoginPage,
+  MentorSignupPage,
   ResetPasswordPage,
   SignupPage,
 } from './components'

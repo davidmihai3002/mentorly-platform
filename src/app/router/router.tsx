@@ -39,6 +39,12 @@ export const router = createBrowserRouter([
             lazy: async () => ({ Component: (await import('@/features/auth')).SignupPage }),
           },
           {
+            path: ROUTES.mentorSignup,
+            lazy: async () => ({
+              Component: (await import('@/features/auth')).MentorSignupPage,
+            }),
+          },
+          {
             path: ROUTES.forgotPassword,
             lazy: async () => ({
               Component: (await import('@/features/auth')).ForgotPasswordPage,

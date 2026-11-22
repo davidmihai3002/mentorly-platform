@@ -15,6 +15,11 @@
   --color-link: var(--link);
   --color-tag: var(--tag);
   --color-selected: var(--selected);
+  --color-panel: var(--panel);
+  --color-track: var(--track);
+  --color-dropzone-border: var(--dropzone-border);
+  --color-status: var(--status);
+  --color-status-border: var(--status-border);
   --color-placeholder: var(--placeholder);
   --color-backdrop-tint: var(--backdrop-tint);
   --color-backdrop-grid: var(--backdrop-grid);
@@ -79,6 +84,7 @@
   --shadow-navy: 0 6px 12px 0 rgb(17 34 64 / 0.2);
   --shadow-card-soft: 0 12px 22px 0 rgb(24 35 44 / 0.1255);
   --shadow-navy-soft: 0 4px 10px 0 rgb(17 34 64 / 0.15);
+  --shadow-card-wide: 0 9px 13px 0 rgb(24 35 44 / 0.145);
   --shadow-avatar: 0 8px 18px 0 rgb(15 23 42 / 0.078);
 }
 
@@ -97,6 +103,11 @@
   --link: #12516b;
   --tag: #dcecfa;
   --selected: #eaf4fd;
+  --panel: #f7f7f7;
+  --track: #ecedef;
+  --dropzone-border: #bfc0c4;
+  --status: #fff7da;
+  --status-border: #d8c06a;
   --placeholder: #777777;
   --backdrop-tint: #f1f9fc;
   --backdrop-grid: #edf8fa;

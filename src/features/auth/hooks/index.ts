@@ -1,5 +1,7 @@
 export { useForgotPasswordForm } from './useForgotPasswordForm'
 export { useLoginForm } from './useLoginForm'
+export { useLogoutNotice } from './useLogoutNotice'
+export { useMentorSignupForm } from './useMentorSignupForm'
 export { usePasswordVisibility } from './usePasswordVisibility'
 export { useSignupForm } from './useSignupForm'
 export { useResetPasswordForm } from './useResetPasswordForm'
