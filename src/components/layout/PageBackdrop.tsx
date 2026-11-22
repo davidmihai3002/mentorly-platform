@@ -1,47 +1,35 @@
 export function PageBackdrop() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -top-24 -right-24 h-112 w-112 rounded-full bg-primary/8 blur-3xl" />
-      <div className="absolute -bottom-24 -left-24 h-112 w-112 rounded-full bg-primary/10 blur-3xl" />
+      <div className="absolute inset-y-0 left-0 w-1/2 bg-backdrop-tint" />
+      <div className="absolute inset-y-0 right-0 w-1/2 bg-backdrop-grid bg-[linear-gradient(to_right,var(--backdrop-grid-line)_1px,transparent_1px),linear-gradient(to_bottom,var(--backdrop-grid-line)_1px,transparent_1px)] bg-size-[28px_28px]" />
 
       <svg
-        className="absolute top-0 right-0 h-88 w-88 text-primary/15"
-        viewBox="0 0 400 400"
+        className="absolute -top-6 right-0 h-48 w-40 text-backdrop-blob sm:w-56"
+        viewBox="0 0 224 192"
         fill="none"
+        preserveAspectRatio="none"
       >
-        <defs>
-          <pattern id="auth-grid-tr" width="24" height="24" patternUnits="userSpaceOnUse">
-            <path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" strokeWidth="0.75" />
-          </pattern>
-        </defs>
-        <rect x="120" y="0" width="280" height="280" fill="url(#auth-grid-tr)" />
         <path
-          d="M40 0C120 90 220 60 320 150C360 186 385 240 400 300"
-          stroke="currentColor"
-          strokeWidth="2"
-        />
-        <path
-          d="M80 0C150 75 240 50 335 135C370 168 390 215 400 265"
-          stroke="currentColor"
-          strokeWidth="1.5"
+          d="M224 0H70c-6 34 6 62 38 78 40 20 58 52 66 86 4 18 22 28 50 28V0Z"
+          fill="currentColor"
         />
       </svg>
 
       <svg
-        className="absolute bottom-0 left-0 h-72 w-88 text-primary/15"
-        viewBox="0 0 400 320"
+        className="absolute bottom-16 left-0 h-40 w-[55%] sm:h-52"
+        viewBox="0 0 560 208"
         fill="none"
+        preserveAspectRatio="none"
       >
-        <defs>
-          <pattern id="auth-grid-bl" width="24" height="24" patternUnits="userSpaceOnUse">
-            <path d="M 24 0 L 0 0 0 24" fill="none" stroke="currentColor" strokeWidth="0.75" />
-          </pattern>
-        </defs>
-        <rect x="0" y="80" width="260" height="240" fill="url(#auth-grid-bl)" />
         <path
-          d="M0 150C70 140 130 180 200 230C260 272 320 295 400 310"
-          stroke="currentColor"
-          strokeWidth="2"
+          d="M0 40c70-34 150-34 214 12 58 42 82 104 150 124 70 20 142 8 196 32H0V40Z"
+          className="fill-backdrop-wave-soft"
+        />
+        <path
+          d="M0 92c64-22 120-12 166 26 46 38 72 78 132 90H0V92Z"
+          className="fill-backdrop-wave"
+          opacity="0.75"
         />
       </svg>
     </div>

@@ -14,6 +14,12 @@
   --color-primary-border: var(--primary-border);
   --color-link: var(--link);
   --color-placeholder: var(--placeholder);
+  --color-backdrop-tint: var(--backdrop-tint);
+  --color-backdrop-grid: var(--backdrop-grid);
+  --color-backdrop-grid-line: var(--backdrop-grid-line);
+  --color-backdrop-wave: var(--backdrop-wave);
+  --color-backdrop-wave-soft: var(--backdrop-wave-soft);
+  --color-backdrop-blob: var(--backdrop-blob);
   --color-header: var(--header);
   --color-header-foreground: var(--header-foreground);
   --color-success: var(--success);
@@ -85,6 +91,12 @@
   --primary-border: #074b9a;
   --link: #12516b;
   --placeholder: #777777;
+  --backdrop-tint: #f1f9fc;
+  --backdrop-grid: #edf8fa;
+  --backdrop-grid-line: #e3eef4;
+  --backdrop-wave: #91c3f6;
+  --backdrop-wave-soft: #d2f4fe;
+  --backdrop-blob: #b3e3f1;
   --primary-foreground: #ffffff;
   --brand-navy: #112240;
   --brand-navy-border: #080d20;
