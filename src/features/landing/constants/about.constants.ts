@@ -15,7 +15,7 @@ export const BENEFITS: readonly Benefit[] = [
     icon: Layers,
     title: 'Fără materie rigidă',
     text: 'Fără teorie inutilă. Focus pe provocări reale din industrie, portofolii solide și roadmap-uri personalizate.',
-    link: { label: 'Află cum funcționează', to: ROUTES.signup },
+    link: { label: 'Află cum funcționează', to: ROUTES.quiz },
   },
   {
     id: 'verified-mentors',

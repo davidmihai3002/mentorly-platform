@@ -1,7 +1,12 @@
 import { cn } from 'cn'
 import { AppLink } from '@/components'
-import { LAYOUT_CONTAINER_CLASS } from '@/constants'
-import { HERO_PILL_CLASS, HOME_TEXT, LANDING_LINKS } from '../constants'
+import {
+  LAYOUT_CONTAINER_CLASS,
+  ROUNDED_BUTTON_CLASS,
+  ROUNDED_OUTLINE_CLASS,
+  ROUNDED_PRIMARY_CLASS,
+} from '@/constants'
+import { HOME_TEXT, LANDING_LINKS } from '../constants'
 import { HeroIllustration } from './HeroIllustration'
 
 export function HomePage() {
@@ -27,19 +32,13 @@ export function HomePage() {
         <div className="mt-[18px] flex flex-wrap gap-3">
           <AppLink
             to={LANDING_LINKS.findMentor}
-            className={cn(
-              HERO_PILL_CLASS,
-              'border-primary bg-primary text-primary-foreground hover:bg-primary/90',
-            )}
+            className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS)}
           >
             {HOME_TEXT.findMentor}
           </AppLink>
           <AppLink
             to={LANDING_LINKS.becomeMentor}
-            className={cn(
-              HERO_PILL_CLASS,
-              'border-brand-navy-border bg-card text-foreground hover:bg-muted',
-            )}
+            className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_OUTLINE_CLASS)}
           >
             {HOME_TEXT.becomeMentor}
           </AppLink>

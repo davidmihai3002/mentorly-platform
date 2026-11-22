@@ -91,6 +91,18 @@ export const router = createBrowserRouter([
             element: <AccountPlaceholderPage {...ACCOUNT_PLACEHOLDER_TEXT.student} />,
           },
           {
+            path: ROUTES.quiz,
+            lazy: async () => ({ Component: (await import('@/features/quiz')).QuizPage }),
+          },
+          {
+            path: ROUTES.quizResults,
+            lazy: async () => ({ Component: (await import('@/features/quiz')).QuizResultsPage }),
+          },
+          {
+            path: ROUTES.topMentors,
+            lazy: async () => ({ Component: (await import('@/features/quiz')).TopMentorsPage }),
+          },
+          {
             path: ROUTES.mentor,
             element: <AccountPlaceholderPage {...ACCOUNT_PLACEHOLDER_TEXT.mentor} />,
           },

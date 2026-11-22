@@ -10,7 +10,7 @@ type MentorCardDetailsProps = {
 export function MentorCardDetails({ mentor }: MentorCardDetailsProps) {
   return (
     <>
-      <MentorBadge badge={mentor.badge} />
+      <MentorBadge badge={mentor.badge} label={mentor.highlight} />
       <SpecialtyChip domainId={mentor.domainId} label={mentor.domainLabel} />
       <p className="text-xs leading-[1.45] font-medium tracking-[-0.02em] text-link">
         {formatReputation(mentor)}

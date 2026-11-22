@@ -15,6 +15,7 @@ type MentorCardProps = {
   profileHref?: string
   onViewProfile?: () => void
   onApply?: () => void
+  className?: string
 }
 
 export function MentorCard({
@@ -24,6 +25,7 @@ export function MentorCard({
   profileHref,
   onViewProfile,
   onApply,
+  className,
 }: MentorCardProps) {
   const nameId = useId()
   const actions = (
@@ -52,7 +54,7 @@ export function MentorCard({
   }
 
   return (
-    <article className={cn(MENTOR_CARD_CLASS, 'flex flex-col gap-3')}>
+    <article className={cn(MENTOR_CARD_CLASS, 'flex flex-col gap-3', className)}>
       <MentorIdentity mentor={mentor} nameId={nameId} headingLevel={headingLevel} />
       <MentorCardDetails mentor={mentor} />
       {actions}

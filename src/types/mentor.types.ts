@@ -25,6 +25,7 @@ export type Mentor = {
   readonly reputation?: MentorReputation
   readonly description: string
   readonly pricePerSession: number
+  readonly highlight?: string
 }
 
 export type MentorCardVariant = 'grid' | 'list'
