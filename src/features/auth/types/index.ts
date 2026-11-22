@@ -1,3 +1,4 @@
+export type { AuthDensity } from './auth.types'
 export type {
   LoginAction,
   LoginFormInput,

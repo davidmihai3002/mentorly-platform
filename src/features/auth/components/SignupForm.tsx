@@ -1,6 +1,7 @@
 import { Controller } from 'react-hook-form'
 import { Button } from '@/components/ui'
-import { SIGNUP_TEXT } from '../constants'
+import { cn } from 'cn'
+import { AUTH_DENSITY_STYLES, AUTH_SUBMIT_BASE_CLASS, SIGNUP_TEXT } from '../constants'
 import { useSignupForm } from '../hooks'
 import { AuthCheckboxField } from './AuthCheckboxField'
 import { AuthDivider } from './AuthDivider'
@@ -13,13 +14,18 @@ import { SignupTermsText } from './SignupTermsText'
 export function SignupForm() {
   const { form, submit, logCurrentValues } = useSignupForm()
   const { errors } = form.formState
+  const styles = AUTH_DENSITY_STYLES.regular
 
   return (
-    <div className="space-y-4">
-      <GoogleAuthButton label={SIGNUP_TEXT.google} onClick={() => logCurrentValues('google')} />
+    <div className="space-y-5">
+      <GoogleAuthButton
+        label={SIGNUP_TEXT.google}
+        hasIcon={false}
+        onClick={() => logCurrentValues('google')}
+      />
       <AuthDivider />
 
-      <form onSubmit={(event) => void submit(event)} noValidate className="space-y-4">
+      <form onSubmit={(event) => void submit(event)} noValidate className={styles.stack}>
         <AuthTextField
           label={SIGNUP_TEXT.fullNameLabel}
           type="text"
@@ -55,7 +61,7 @@ export function SignupForm() {
           registration={form.register('confirmPassword')}
         />
 
-        <div className="space-y-2.5 pt-0.5">
+        <div className="space-y-3 pt-0.5">
           <Controller
             control={form.control}
             name="isAgeConfirmed"
@@ -92,10 +98,7 @@ export function SignupForm() {
           />
         </div>
 
-        <Button
-          type="submit"
-          className="h-10 w-full rounded-lg bg-brand-navy text-sm font-semibold text-brand-navy-foreground shadow-xs hover:bg-brand-navy/90"
-        >
+        <Button type="submit" className={cn(AUTH_SUBMIT_BASE_CLASS, styles.submit)}>
           {SIGNUP_TEXT.submit}
         </Button>
       </form>

@@ -12,9 +12,7 @@ export function AuthLayout() {
         tabIndex={-1}
         className="outline-none relative z-10 flex flex-1 items-center justify-center px-4 py-8"
       >
-        <div className="w-full max-w-[440px] space-y-5 rounded-2xl border border-border/80 bg-card p-6 shadow-lg [view-transition-name:auth-card] sm:p-8">
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
       <SiteFooter />
     </div>

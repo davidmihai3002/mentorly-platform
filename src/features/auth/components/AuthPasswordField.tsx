@@ -2,8 +2,10 @@ import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { useId } from 'react'
 import type { UseFormRegisterReturn } from 'react-hook-form'
 import { Button, Input, Label } from '@/components/ui'
-import { LOGIN_TEXT } from '../constants'
+import { cn } from 'cn'
+import { AUTH_DENSITY_STYLES, AUTH_INPUT_BASE_CLASS, LOGIN_TEXT } from '../constants'
 import { usePasswordVisibility } from '../hooks'
+import type { AuthDensity } from '../types'
 import { AuthFieldError } from './AuthFieldError'
 
 type AuthPasswordFieldProps = {
@@ -15,6 +17,7 @@ type AuthPasswordFieldProps = {
   registration: UseFormRegisterReturn
   onForgotPassword?: () => void
   forgotPasswordLabel?: string
+  density?: AuthDensity
 }
 
 export function AuthPasswordField({
@@ -26,7 +29,9 @@ export function AuthPasswordField({
   registration,
   onForgotPassword,
   forgotPasswordLabel = LOGIN_TEXT.forgotPassword,
+  density = 'regular',
 }: AuthPasswordFieldProps) {
+  const styles = AUTH_DENSITY_STYLES[density]
   const fieldId = useId()
   const helperId = `${fieldId}-helper`
   const errorId = `${fieldId}-error`
@@ -36,14 +41,14 @@ export function AuthPasswordField({
   const { isVisible, toggleVisibility, inputType, toggleLabel } = usePasswordVisibility()
 
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className={cn('flex flex-col', styles.field)}>
       <div className="flex items-center justify-between gap-2">
         <Label htmlFor={fieldId}>{label}</Label>
         {onForgotPassword && (
           <Button
             type="button"
             variant="link"
-            className="h-auto p-0 text-xs font-medium text-primary"
+            className="h-auto p-0 text-[13px] font-medium text-link hover:text-primary"
             onClick={onForgotPassword}
           >
             {forgotPasswordLabel}
@@ -58,7 +63,7 @@ export function AuthPasswordField({
           placeholder={placeholder}
           required
           autoComplete={autoComplete}
-          className="h-10 rounded-lg bg-card pr-10 pl-3 text-sm"
+          className={cn(AUTH_INPUT_BASE_CLASS, styles.input, 'pr-9')}
           aria-invalid={error ? true : undefined}
           aria-describedby={describedBy}
           {...registration}
@@ -68,7 +73,7 @@ export function AuthPasswordField({
           variant="ghost"
           size="icon-sm"
           aria-label={`${toggleLabel} (${label})`}
-          className="absolute top-1/2 right-1.5 -translate-y-1/2 text-muted-foreground hover:bg-transparent hover:text-foreground"
+          className="absolute top-1/2 right-1 -translate-y-1/2 text-muted-foreground hover:bg-transparent hover:text-foreground"
           onClick={toggleVisibility}
         >
           {isVisible ? <EyeIcon className="size-4" /> : <EyeOffIcon className="size-4" />}

@@ -27,7 +27,7 @@ export function AuthCheckboxField({
 
   return (
     <div className="flex flex-col gap-1">
-      <div className="flex items-start gap-2.5">
+      <div className="flex items-start gap-2">
         <Checkbox
           id={fieldId}
           checked={checked}
@@ -43,7 +43,7 @@ export function AuthCheckboxField({
         <span
           id={labelId}
           onClick={() => onCheckedChange(!checked)}
-          className="cursor-pointer text-xs leading-relaxed font-normal text-muted-foreground select-none"
+          className="cursor-pointer text-[13px] leading-[1.4] font-normal text-foreground select-none"
         >
           {children}
         </span>

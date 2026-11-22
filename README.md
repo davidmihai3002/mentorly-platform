@@ -25,11 +25,15 @@ src/
     router/           routes (React Router), lazy-loaded pages
     layouts/          Root, Public, Auth and Account layouts
     pages/            app-level pages (404, placeholders)
+    dev/              dev-only pages (components preview)
   components/
     ui/               shadcn/ui primitives (installed manually from the Manual tab)
-    layout/           shared header, footer, logo, account menu
-  constants/          routes and shared site copy
+    layout/           shared header, footer, logo, page backdrop
+    common/           shared UI from Figma (mentor card, tags, option card)
+  constants/          routes, shared copy, sample data and style classes
   hooks/              shared React hooks
+  types/              shared TypeScript types
+  utils/              shared pure helpers
   features/<name>/
     components/       one small, reusable React component per file
     hooks/            React hooks
@@ -42,14 +46,15 @@ src/
 
 ## Routes
 
-| Path             | Page                          |
-| ---------------- | ----------------------------- |
-| `/`              | redirects to `/autentificare` |
-| `/autentificare` | Login                         |
-| `/inregistrare`  | Student signup                |
-| `/cursant`       | Student account (placeholder) |
-| `/mentor`        | Mentor account (placeholder)  |
-| anything else    | 404                           |
+| Path              | Page                                 |
+| ----------------- | ------------------------------------ |
+| `/`               | redirects to `/autentificare`        |
+| `/autentificare`  | Login                                |
+| `/inregistrare`   | Student signup                       |
+| `/cursant`        | Student account (placeholder)        |
+| `/mentor`         | Mentor account (placeholder)         |
+| `/dev/componente` | Shared components preview (dev only) |
+| anything else     | 404                                  |
 
 ## Authentication (Team Decision)
 
