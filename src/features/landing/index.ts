@@ -1,1 +1,1 @@
-export { AboutPage, HomePage, PartnersPage, ReviewsPage } from './components'
+export { AboutPage, CommunityPage, HomePage, PartnersPage, ReviewsPage } from './components'
