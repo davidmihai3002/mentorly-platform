@@ -1,3 +1,5 @@
+import { ROUTES } from './routes.constants'
+
 export const SITE_TEXT = {
   brand: 'Mentorly',
   mainNavLabel: 'Navigare principală',
@@ -14,10 +16,10 @@ export const SITE_TEXT = {
 } as const
 
 export const NAV_LINKS = [
-  { label: 'Ce este Mentorly', href: '#ce-este-mentorly' },
-  { label: 'Comunitate Q&A', href: '#comunitate-qa' },
-  { label: 'Recenzii', href: '#recenzii' },
-  { label: 'Parteneri', href: '#parteneri' },
+  { label: 'Ce este Mentorly', to: ROUTES.about },
+  { label: 'Comunitate Q&A', to: ROUTES.community },
+  { label: 'Recenzii', to: ROUTES.reviews },
+  { label: 'Parteneri', to: ROUTES.partners },
 ] as const
 
 export const FOOTER_LINKS = [

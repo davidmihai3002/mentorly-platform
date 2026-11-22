@@ -1,13 +1,13 @@
 import { cn } from 'cn'
 import { MenuIcon, XIcon } from 'lucide-react'
 import { useCallback, useId, useRef, useState } from 'react'
-import { AppLink } from '@/components/navigation'
+import { AppLink, AppNavLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
 import { HEADER_GHOST_CLASS, NAV_LINKS, SITE_TEXT } from '@/constants'
 import { useEscapeKey, useOutsidePointerDown } from '@/hooks'
 
 const MOBILE_LINK_CLASS =
-  'block rounded-md px-3 py-2.5 text-sm font-medium text-header-foreground hover:bg-header-foreground/5 hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none'
+  'block rounded-md px-3 py-2.5 text-sm font-medium text-header-foreground hover:bg-header-foreground/5 hover:text-primary aria-[current=page]:bg-selected aria-[current=page]:text-link focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none'
 
 type MobileNavMenuProps = {
   secondaryLink: { label: string; to: string }
@@ -52,10 +52,10 @@ export function MobileNavMenu({ secondaryLink }: MobileNavMenuProps) {
       >
         <ul className="mx-auto max-w-6xl space-y-1">
           {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a href={link.href} className={MOBILE_LINK_CLASS} onClick={close}>
+            <li key={link.to}>
+              <AppNavLink to={link.to} className={MOBILE_LINK_CLASS} onClick={close}>
                 {link.label}
-              </a>
+              </AppNavLink>
             </li>
           ))}
           <li className="sm:hidden">

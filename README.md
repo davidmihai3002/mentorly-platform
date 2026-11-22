@@ -48,7 +48,11 @@ src/
 
 | Path                   | Page                                 |
 | ---------------------- | ------------------------------------ |
-| `/`                    | redirects to `/autentificare`        |
+| `/`                    | Home (landing hero)                  |
+| `/ce-este-mentorly`    | Why mentoring (3 benefit cards)      |
+| `/comunitate`          | Community Q&A                        |
+| `/recenzii`            | Success stories                      |
+| `/parteneri`           | Partners                             |
 | `/autentificare`       | Login                                |
 | `/inregistrare`        | Student signup                       |
 | `/inregistrare/mentor` | Mentor signup + documents            |

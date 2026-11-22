@@ -13,6 +13,10 @@
   --color-brand-navy-border: var(--brand-navy-border);
   --color-primary-border: var(--primary-border);
   --color-link: var(--link);
+  --color-link-muted: var(--link-muted);
+  --color-pill-border: var(--pill-border);
+  --color-border-soft: var(--border-soft);
+  --color-slate: var(--slate);
   --color-tag: var(--tag);
   --color-selected: var(--selected);
   --color-panel: var(--panel);
@@ -86,6 +90,8 @@
   --shadow-navy-soft: 0 4px 10px 0 rgb(17 34 64 / 0.15);
   --shadow-card-wide: 0 9px 13px 0 rgb(24 35 44 / 0.145);
   --shadow-avatar: 0 8px 18px 0 rgb(15 23 42 / 0.078);
+  --shadow-benefit: 0 8px 20px 0 rgb(24 35 44 / 0.0706);
+  --shadow-review: 0 10px 18px 0 rgb(24 35 44 / 0.102);
 }
 
 :root {
@@ -101,6 +107,10 @@
   --primary: #075bc9;
   --primary-border: #074b9a;
   --link: #12516b;
+  --link-muted: #405e9c;
+  --pill-border: #b7d7e8;
+  --border-soft: #d7e3f0;
+  --slate: #5b6472;
   --tag: #dcecfa;
   --selected: #eaf4fd;
   --panel: #f7f7f7;
