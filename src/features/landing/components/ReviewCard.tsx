@@ -1,5 +1,6 @@
 import { cn } from 'cn'
 import { LANDING_CARD_CLASS, REVIEWS_TEXT } from '../constants'
+import { formatPosition } from '../utils'
 import type { Review } from '../types'
 import { PersonAvatar } from './PersonAvatar'
 import { StarRating } from './StarRating'
@@ -41,7 +42,7 @@ export function ReviewCard({ review, position }: ReviewCardProps) {
         aria-hidden="true"
         className="absolute right-5 bottom-5 text-[9px] text-muted-foreground"
       >
-        {String(position).padStart(2, '0')}
+        {formatPosition(position)}
       </span>
     </figure>
   )

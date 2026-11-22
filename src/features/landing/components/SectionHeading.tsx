@@ -1,4 +1,5 @@
 import { cn } from 'cn'
+import { Pill } from './Pill'
 
 type SectionHeadingProps = {
   titleId: string
@@ -21,16 +22,15 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <header className="flex flex-col items-center text-center">
-      <p
-        className={cn(
-          'uppercase',
-          eyebrowStyle === 'text'
-            ? 'text-sm leading-[1.25] font-bold tracking-[0.08em] text-link'
-            : 'inline-flex h-[27px] items-center rounded-full bg-selected px-3.5 text-[11px] font-semibold text-foreground',
-        )}
-      >
-        {eyebrow}
-      </p>
+      {eyebrowStyle === 'text' ? (
+        <p className="text-sm leading-[1.25] font-bold tracking-[0.08em] text-link uppercase">
+          {eyebrow}
+        </p>
+      ) : (
+        <Pill size="md" className="px-3.5 font-semibold">
+          {eyebrow}
+        </Pill>
+      )}
       <h1
         id={titleId}
         className={cn('mt-2 font-bold text-balance text-foreground', titleClassName)}

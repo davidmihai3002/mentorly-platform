@@ -1,5 +1,6 @@
 import { cn } from 'cn'
 import { HERO_PILL_CLASS, PARTNERS_TEXT } from '../constants'
+import { Pill } from './Pill'
 
 export function PartnerCtaCard() {
   return (
@@ -7,9 +8,9 @@ export function PartnerCtaCard() {
       aria-labelledby="partner-cta-title"
       className="flex flex-col items-start rounded-[16px] border border-border bg-card/80 p-6 shadow-card-wide"
     >
-      <p className="inline-flex h-[22px] items-center rounded-full border border-pill-border bg-selected px-2.5 text-[9px] font-semibold text-foreground uppercase">
+      <Pill size="sm" hasBorder className="text-[9px] font-semibold">
         {PARTNERS_TEXT.ctaEyebrow}
-      </p>
+      </Pill>
       <h2 id="partner-cta-title" className="mt-4 text-xl leading-[1.2] font-bold text-foreground">
         {PARTNERS_TEXT.ctaTitle}
       </h2>
@@ -23,12 +24,7 @@ export function PartnerCtaCard() {
       >
         {PARTNERS_TEXT.ctaButton}
       </a>
-      <a
-        href={`mailto:${PARTNERS_TEXT.email}`}
-        className="mt-4 rounded-sm text-xs font-medium text-link transition-colors hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
-      >
-        {PARTNERS_TEXT.email}
-      </a>
+      <p className="mt-4 text-xs font-medium text-link">{PARTNERS_TEXT.email}</p>
     </section>
   )
 }

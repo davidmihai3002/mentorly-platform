@@ -3,6 +3,7 @@ import { MessageSquare } from 'lucide-react'
 import { AppLink } from '@/components'
 import { LAYOUT_CONTAINER_CLASS } from '@/constants'
 import { COMMUNITY_QUESTIONS, COMMUNITY_TEXT, HERO_PILL_CLASS, LANDING_LINKS } from '../constants'
+import { Pill } from './Pill'
 import { QuestionCard } from './QuestionCard'
 
 export function CommunityPage() {
@@ -16,9 +17,9 @@ export function CommunityPage() {
     >
       <title>{COMMUNITY_TEXT.pageTitle}</title>
       <div>
-        <p className="inline-flex h-[27px] items-center rounded-[14px] border border-pill-border bg-tag px-2.5 text-[11px] text-foreground uppercase">
+        <Pill size="md" hasBorder className="bg-tag">
           {COMMUNITY_TEXT.eyebrow}
-        </p>
+        </Pill>
         <h1
           id="community-title"
           className="mt-3.5 text-[clamp(2.25rem,5vw,2.8125rem)] leading-[1.1] font-bold text-foreground"
@@ -32,7 +33,7 @@ export function CommunityPage() {
           to={LANDING_LINKS.askQuestion}
           className={cn(
             HERO_PILL_CLASS,
-            'mt-[5px] border-primary-border bg-primary text-primary-foreground shadow-primary hover:bg-primary/90',
+            'mt-[5px] px-[17px] border-primary-border bg-primary text-primary-foreground shadow-primary hover:bg-primary/90',
           )}
         >
           {COMMUNITY_TEXT.askQuestion}
