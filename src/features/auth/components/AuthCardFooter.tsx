@@ -3,23 +3,38 @@ import { AppLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
 import { ROUTES } from '@/constants'
 import { AUTH_LINK_CLASS, LOGIN_TEXT } from '../constants'
+import type { LoginAction } from '../types'
+
+type RegisterAction = Extract<LoginAction, 'register-mentee' | 'register-mentor'>
 
 type AuthCardFooterProps = {
-  onRegisterClick: () => void
+  onRegisterClick: (action: RegisterAction) => void
 }
+
+const LINK_CLASS = cn(buttonVariants({ variant: 'link' }), AUTH_LINK_CLASS)
 
 export function AuthCardFooter({ onRegisterClick }: AuthCardFooterProps) {
   return (
-    <p className="text-[13px] leading-[1.25] text-foreground">
-      {LOGIN_TEXT.noAccount}{' '}
-      <AppLink
-        to={ROUTES.signup}
-        className={cn(buttonVariants({ variant: 'link' }), AUTH_LINK_CLASS)}
-        onClick={onRegisterClick}
-      >
-        {LOGIN_TEXT.registerMentee}
-      </AppLink>
-      <span className="mt-1 block">{LOGIN_TEXT.minimumAge}</span>
-    </p>
+    <div className="space-y-1 text-[13px] leading-[1.25] text-foreground">
+      <p>
+        {LOGIN_TEXT.noAccount}{' '}
+        <AppLink
+          to={ROUTES.signup}
+          className={LINK_CLASS}
+          onClick={() => onRegisterClick('register-mentee')}
+        >
+          {LOGIN_TEXT.registerMentee}
+        </AppLink>
+      </p>
+      <p>
+        <AppLink
+          to={ROUTES.mentorSignup}
+          className={LINK_CLASS}
+          onClick={() => onRegisterClick('register-mentor')}
+        >
+          {LOGIN_TEXT.registerMentor}
+        </AppLink>
+      </p>
+    </div>
   )
 }

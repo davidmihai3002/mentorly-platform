@@ -46,15 +46,18 @@ src/
 
 ## Routes
 
-| Path              | Page                                 |
-| ----------------- | ------------------------------------ |
-| `/`               | redirects to `/autentificare`        |
-| `/autentificare`  | Login                                |
-| `/inregistrare`   | Student signup                       |
-| `/cursant`        | Student account (placeholder)        |
-| `/mentor`         | Mentor account (placeholder)         |
-| `/dev/componente` | Shared components preview (dev only) |
-| anything else     | 404                                  |
+| Path                   | Page                                 |
+| ---------------------- | ------------------------------------ |
+| `/`                    | redirects to `/autentificare`        |
+| `/autentificare`       | Login                                |
+| `/inregistrare`        | Student signup                       |
+| `/inregistrare/mentor` | Mentor signup + documents            |
+| `/parola-uitata`       | Forgot password                      |
+| `/resetare-parola`     | Reset password                       |
+| `/cursant`             | Student account (placeholder)        |
+| `/mentor`              | Mentor account (placeholder)         |
+| `/dev/componente`      | Shared components preview (dev only) |
+| anything else          | 404                                  |
 
 ## Authentication (Team Decision)
 

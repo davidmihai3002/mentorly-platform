@@ -1,10 +1,7 @@
 import { z } from 'zod'
+import { emailSchema } from './passwordSchema'
 
 export const loginSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .min(1, 'Introdu adresa de email.')
-    .pipe(z.email('Adresa de email nu este validă.')),
+  email: emailSchema,
   password: z.string().min(1, 'Introdu parola.'),
 })

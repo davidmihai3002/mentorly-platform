@@ -2,7 +2,13 @@ import { cn } from 'cn'
 import { useNavigate } from 'react-router'
 import { AppLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
-import { HEADER_GHOST_CLASS, HEADER_PRIMARY_CLASS, ROUTES, SITE_TEXT } from '@/constants'
+import {
+  HEADER_GHOST_CLASS,
+  HEADER_PRIMARY_CLASS,
+  LOGOUT_STATE,
+  ROUTES,
+  SITE_TEXT,
+} from '@/constants'
 
 type AccountActionsProps = {
   homePath: string
@@ -25,7 +31,7 @@ export function AccountActions({ homePath }: AccountActionsProps) {
       </AppLink>
       <button
         type="button"
-        onClick={() => void navigate(ROUTES.login, { viewTransition: true })}
+        onClick={() => void navigate(ROUTES.login, { viewTransition: true, state: LOGOUT_STATE })}
         className={cn(buttonVariants(), HEADER_PRIMARY_CLASS, 'font-normal')}
       >
         {SITE_TEXT.logout}

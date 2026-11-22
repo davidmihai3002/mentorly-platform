@@ -1,6 +1,7 @@
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { useId } from 'react'
 import type { UseFormRegisterReturn } from 'react-hook-form'
+import { AppLink } from '@/components/navigation'
 import { Button, Input, Label } from '@/components/ui'
 import { cn } from 'cn'
 import { AUTH_DENSITY_STYLES, AUTH_INPUT_BASE_CLASS, LOGIN_TEXT } from '../constants'
@@ -16,6 +17,7 @@ type AuthPasswordFieldProps = {
   error?: string
   registration: UseFormRegisterReturn
   onForgotPassword?: () => void
+  forgotPasswordHref?: string
   forgotPasswordLabel?: string
   density?: AuthDensity
 }
@@ -28,6 +30,7 @@ export function AuthPasswordField({
   error,
   registration,
   onForgotPassword,
+  forgotPasswordHref,
   forgotPasswordLabel = LOGIN_TEXT.forgotPassword,
   density = 'regular',
 }: AuthPasswordFieldProps) {
@@ -44,15 +47,14 @@ export function AuthPasswordField({
     <div className={cn('flex flex-col', styles.field)}>
       <div className="flex items-center justify-between gap-2">
         <Label htmlFor={fieldId}>{label}</Label>
-        {onForgotPassword && (
-          <Button
-            type="button"
-            variant="link"
-            className="h-auto p-0 text-[13px] font-medium text-link hover:text-primary"
+        {forgotPasswordHref && (
+          <AppLink
+            to={forgotPasswordHref}
             onClick={onForgotPassword}
+            className="rounded-sm text-[13px] font-medium text-link hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
           >
             {forgotPasswordLabel}
-          </Button>
+          </AppLink>
         )}
       </div>
 
