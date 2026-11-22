@@ -4,8 +4,9 @@ import { Tag } from './Tag'
 
 type MentorBadgeProps = {
   badge: MentorBadgeType
+  label?: string
 }
 
-export function MentorBadge({ badge }: MentorBadgeProps) {
-  return <Tag className="font-medium uppercase">{MENTOR_TEXT.badge[badge]}</Tag>
+export function MentorBadge({ badge, label }: MentorBadgeProps) {
+  return <Tag className="font-medium uppercase">{label ?? MENTOR_TEXT.badge[badge]}</Tag>
 }

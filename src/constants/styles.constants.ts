@@ -16,3 +16,12 @@ export const PILL_OUTLINE_CLASS =
   'h-[39px] rounded-[24px] border border-brand-navy-border bg-card px-2.5 text-[13px] font-medium tracking-[-0.02em] text-foreground hover:bg-muted'
 
 export const MENTOR_CARD_CLASS = 'rounded-[14px] border border-border bg-card p-[18px]'
+
+export const ROUNDED_BUTTON_CLASS =
+  'inline-flex min-h-10 items-center justify-center gap-2 rounded-[24px] border px-5 py-2 text-center text-base leading-[1.2] font-medium transition-colors focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none'
+
+export const ROUNDED_PRIMARY_CLASS =
+  'border-primary-border bg-primary text-primary-foreground shadow-primary hover:bg-primary/90'
+
+export const ROUNDED_OUTLINE_CLASS =
+  'border-brand-navy-border bg-card text-foreground hover:bg-muted'

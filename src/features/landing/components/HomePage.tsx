@@ -1,7 +1,7 @@
 import { cn } from 'cn'
 import { AppLink } from '@/components'
-import { LAYOUT_CONTAINER_CLASS } from '@/constants'
-import { HERO_PILL_CLASS, HOME_TEXT, LANDING_LINKS } from '../constants'
+import { LAYOUT_CONTAINER_CLASS, ROUNDED_BUTTON_CLASS } from '@/constants'
+import { HOME_TEXT, LANDING_LINKS } from '../constants'
 import { HeroIllustration } from './HeroIllustration'
 
 export function HomePage() {
@@ -28,7 +28,7 @@ export function HomePage() {
           <AppLink
             to={LANDING_LINKS.findMentor}
             className={cn(
-              HERO_PILL_CLASS,
+              ROUNDED_BUTTON_CLASS,
               'border-primary bg-primary text-primary-foreground hover:bg-primary/90',
             )}
           >
@@ -37,7 +37,7 @@ export function HomePage() {
           <AppLink
             to={LANDING_LINKS.becomeMentor}
             className={cn(
-              HERO_PILL_CLASS,
+              ROUNDED_BUTTON_CLASS,
               'border-brand-navy-border bg-card text-foreground hover:bg-muted',
             )}
           >

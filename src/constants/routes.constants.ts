@@ -10,6 +10,9 @@ export const ROUTES = {
   forgotPassword: '/parola-uitata',
   resetPassword: '/resetare-parola',
   student: '/cursant',
+  quiz: '/test-potrivire',
+  quizResults: '/test-potrivire/recomandari',
+  topMentors: '/top-mentori',
   mentor: '/mentor',
   componentsPreview: '/dev/componente',
 } as const

@@ -1,8 +1,8 @@
 import { cn } from 'cn'
 import { MessageSquare } from 'lucide-react'
 import { AppLink } from '@/components'
-import { LAYOUT_CONTAINER_CLASS } from '@/constants'
-import { COMMUNITY_QUESTIONS, COMMUNITY_TEXT, HERO_PILL_CLASS, LANDING_LINKS } from '../constants'
+import { LAYOUT_CONTAINER_CLASS, ROUNDED_BUTTON_CLASS } from '@/constants'
+import { COMMUNITY_QUESTIONS, COMMUNITY_TEXT, LANDING_LINKS } from '../constants'
 import { Pill } from './Pill'
 import { QuestionCard } from './QuestionCard'
 
@@ -32,7 +32,7 @@ export function CommunityPage() {
         <AppLink
           to={LANDING_LINKS.askQuestion}
           className={cn(
-            HERO_PILL_CLASS,
+            ROUNDED_BUTTON_CLASS,
             'mt-[5px] px-[17px] border-primary-border bg-primary text-primary-foreground shadow-primary hover:bg-primary/90',
           )}
         >

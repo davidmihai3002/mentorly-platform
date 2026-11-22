@@ -10,7 +10,7 @@ export const HOME_TEXT = {
 } as const
 
 export const LANDING_LINKS = {
-  findMentor: ROUTES.signup,
+  findMentor: ROUTES.quiz,
   becomeMentor: ROUTES.mentorSignup,
   askQuestion: ROUTES.signup,
 } as const

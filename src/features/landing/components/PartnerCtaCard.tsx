@@ -1,5 +1,6 @@
 import { cn } from 'cn'
-import { HERO_PILL_CLASS, PARTNERS_TEXT } from '../constants'
+import { ROUNDED_BUTTON_CLASS } from '@/constants'
+import { PARTNERS_TEXT } from '../constants'
 import { Pill } from './Pill'
 
 export function PartnerCtaCard() {
@@ -18,7 +19,7 @@ export function PartnerCtaCard() {
       <a
         href={`mailto:${PARTNERS_TEXT.email}`}
         className={cn(
-          HERO_PILL_CLASS,
+          ROUNDED_BUTTON_CLASS,
           'mt-5 w-full border-primary-border bg-primary font-semibold text-primary-foreground shadow-primary hover:bg-primary/90',
         )}
       >
