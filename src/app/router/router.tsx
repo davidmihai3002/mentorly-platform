@@ -1,4 +1,4 @@
-import { createBrowserRouter, redirect } from 'react-router'
+import { createBrowserRouter } from 'react-router'
 import { ACCOUNT_PLACEHOLDER_TEXT, ROUTES } from '@/constants'
 import { AuthLayout } from '../layouts/AuthLayout'
 import { PublicLayout } from '../layouts/PublicLayout'
@@ -14,7 +14,10 @@ export const router = createBrowserRouter([
       {
         Component: PublicLayout,
         children: [
-          { index: true, loader: () => redirect(ROUTES.login), Component: RouteFallback },
+          {
+            index: true,
+            lazy: async () => ({ Component: (await import('@/features/landing')).HomePage }),
+          },
           ...(import.meta.env.DEV
             ? [
                 {
