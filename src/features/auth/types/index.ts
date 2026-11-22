@@ -7,3 +7,9 @@ export type {
   PasswordFieldState,
 } from './login.types'
 export type { SignupAction, SignupFormInput, SignupFormOutput, SignupLog } from './signup.types'
+export type {
+  ForgotPasswordInput,
+  ForgotPasswordOutput,
+  ResetPasswordInput,
+  ResetPasswordOutput,
+} from './password.types'
