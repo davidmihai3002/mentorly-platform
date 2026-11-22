@@ -1,1 +1,1 @@
-export { AboutPage, HomePage } from './components'
+export { AboutPage, HomePage, ReviewsPage } from './components'

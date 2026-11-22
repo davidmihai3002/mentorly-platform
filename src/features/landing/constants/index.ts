@@ -1,3 +1,4 @@
+export { REVIEWS, REVIEWS_TEXT } from './reviews.constants'
 export { ABOUT_TEXT, BENEFITS } from './about.constants'
 export { HOME_TEXT, LANDING_LINKS } from './home.constants'
 export {
