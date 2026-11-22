@@ -1,16 +1,19 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import './motion.css';
-@import '@fontsource-variable/inter';
-@import '@fontsource-variable/plus-jakarta-sans';
+@import '@fontsource-variable/roboto';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-heading: 'Plus Jakarta Sans Variable', 'Inter Variable', ui-sans-serif, sans-serif;
+  --font-sans: 'Roboto Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Roboto Variable', ui-sans-serif, system-ui, sans-serif;
   --color-brand-navy: var(--brand-navy);
   --color-brand-navy-foreground: var(--brand-navy-foreground);
+  --color-brand-navy-border: var(--brand-navy-border);
+  --color-primary-border: var(--primary-border);
+  --color-link: var(--link);
+  --color-placeholder: var(--placeholder);
   --color-header: var(--header);
   --color-header-foreground: var(--header-foreground);
   --color-success: var(--success);
@@ -50,10 +53,10 @@
   --color-foreground: var(--foreground);
   --color-background: var(--background);
   --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
+  --radius-md: calc(var(--radius) * 0.75);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-2xl: calc(var(--radius) * 2);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 }
@@ -63,24 +66,31 @@
   --shadow-sm: 0 1px 3px 0 rgb(15 23 42 / 0.08), 0 1px 2px -1px rgb(15 23 42 / 0.06);
   --shadow-md: 0 4px 12px -2px rgb(15 23 42 / 0.1), 0 2px 4px -2px rgb(15 23 42 / 0.06);
   --shadow-lg: 0 12px 32px -6px rgb(15 23 42 / 0.12), 0 4px 10px -4px rgb(15 23 42 / 0.06);
+  --shadow-card: 0 12px 18px 0 rgb(24 35 44 / 0.145);
+  --shadow-primary: 0 4px 10px 0 rgb(7 91 201 / 0.2);
+  --shadow-navy: 0 6px 12px 0 rgb(17 34 64 / 0.2);
 }
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #f6f8f9;
+  --foreground: #080d20;
   --card: #ffffff;
-  --card-foreground: #0f172a;
+  --card-foreground: #080d20;
   --popover: #ffffff;
-  --popover-foreground: #0f172a;
+  --popover-foreground: #080d20;
   --muted: #f1f5f9;
-  --muted-foreground: #475569;
+  --muted-foreground: #62666e;
 
-  --primary: #0066cc;
+  --primary: #075bc9;
+  --primary-border: #074b9a;
+  --link: #12516b;
+  --placeholder: #777777;
   --primary-foreground: #ffffff;
-  --brand-navy: #0b192f;
+  --brand-navy: #112240;
+  --brand-navy-border: #080d20;
   --brand-navy-foreground: #ffffff;
-  --header: #516276;
-  --header-foreground: #ffffff;
+  --header: #ffffff;
+  --header-foreground: #080d20;
   --highlight: #4f46e5;
   --highlight-foreground: #ffffff;
   --secondary: #f1f5f9;
@@ -93,9 +103,9 @@
   --destructive: #b91c1c;
   --rating: #f59e0b;
 
-  --border: #cbd5e1;
-  --input: #cbd5e1;
-  --ring: #0066cc;
+  --border: #dadde0;
+  --input: #d0d0d0;
+  --ring: #075bc9;
 
   --chart-1: #0066cc;
   --chart-2: #4f46e5;
@@ -103,7 +113,7 @@
   --chart-4: #f59e0b;
   --chart-5: #64748b;
 
-  --radius: 0.625rem;
+  --radius: 0.5rem;
 
   --sidebar: #ffffff;
   --sidebar-foreground: #0f172a;
