@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui'
-import { LOGIN_TEXT } from '../constants'
+import { AUTH_SUBMIT_CLASS, LOGIN_TEXT } from '../constants'
 import { useLoginForm } from '../hooks'
 import { AuthCardFooter } from './AuthCardFooter'
 import { AuthDivider } from './AuthDivider'
@@ -12,11 +12,11 @@ export function LoginForm() {
   const { errors } = form.formState
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <GoogleAuthButton onClick={() => logCurrentValues('google')} />
       <AuthDivider />
 
-      <form onSubmit={(event) => void submit(event)} noValidate className="space-y-4">
+      <form onSubmit={(event) => void submit(event)} noValidate className="space-y-3">
         <AuthTextField
           label={LOGIN_TEXT.emailLabel}
           type="email"
@@ -32,10 +32,7 @@ export function LoginForm() {
           onForgotPassword={() => logCurrentValues('forgot-password')}
         />
 
-        <Button
-          type="submit"
-          className="h-10 w-full rounded-lg bg-brand-navy text-sm font-semibold text-brand-navy-foreground shadow-xs hover:bg-brand-navy/90"
-        >
+        <Button type="submit" className={AUTH_SUBMIT_CLASS}>
           {LOGIN_TEXT.submit}
         </Button>
       </form>

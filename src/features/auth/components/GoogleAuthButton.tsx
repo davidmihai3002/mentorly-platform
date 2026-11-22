@@ -12,7 +12,7 @@ export function GoogleAuthButton({ onClick, label = LOGIN_TEXT.google }: GoogleA
     <Button
       type="button"
       variant="outline"
-      className="h-10 w-full gap-2.5 rounded-lg border-border bg-card text-sm font-medium text-foreground shadow-2xs hover:bg-muted/50"
+      className="h-[33px] w-full gap-2 rounded-lg border-input bg-background text-sm font-medium text-foreground hover:bg-muted"
       onClick={onClick}
     >
       <GoogleIcon />

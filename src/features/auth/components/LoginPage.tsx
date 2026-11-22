@@ -6,7 +6,7 @@ export function LoginPage() {
   return (
     <>
       <title>{LOGIN_TEXT.pageTitle}</title>
-      <AuthCardHeader title={LOGIN_TEXT.title} subtitle={LOGIN_TEXT.subtitle} />
+      <AuthCardHeader title={LOGIN_TEXT.title} />
       <LoginForm />
     </>
   )

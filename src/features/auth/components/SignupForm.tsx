@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form'
 import { Button } from '@/components/ui'
-import { SIGNUP_TEXT } from '../constants'
+import { AUTH_SUBMIT_CLASS, SIGNUP_TEXT } from '../constants'
 import { useSignupForm } from '../hooks'
 import { AuthCheckboxField } from './AuthCheckboxField'
 import { AuthDivider } from './AuthDivider'
@@ -92,10 +92,7 @@ export function SignupForm() {
           />
         </div>
 
-        <Button
-          type="submit"
-          className="h-10 w-full rounded-lg bg-brand-navy text-sm font-semibold text-brand-navy-foreground shadow-xs hover:bg-brand-navy/90"
-        >
+        <Button type="submit" className={AUTH_SUBMIT_CLASS}>
           {SIGNUP_TEXT.submit}
         </Button>
       </form>

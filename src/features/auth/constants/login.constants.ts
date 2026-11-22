@@ -1,7 +1,6 @@
 export const LOGIN_TEXT = {
-  pageTitle: 'Autentificare Cursant – Mentorly',
-  title: 'Autentificare Cursant',
-  subtitle: 'Continuă să îți construiești cariera alături de oameni care au fost deja acolo.',
+  pageTitle: 'Autentificare – Mentorly',
+  title: 'Autentificare',
   google: 'Continuă cu Google',
   divider: 'sau cu email',
   emailLabel: 'Adresă de email',
@@ -12,7 +11,7 @@ export const LOGIN_TEXT = {
   hidePassword: 'Ascunde parola',
   submit: 'Intră în cont',
   noAccount: 'Nu ai cont?',
-  registerMentee: 'Înregistrează-te ca cursant',
+  registerMentee: 'Înregistrează-te ca și cursant',
   minimumAge: '(minim 16 ani)',
 } as const
 
