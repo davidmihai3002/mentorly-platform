@@ -21,4 +21,5 @@ export const RESET_PASSWORD_TEXT = {
   submit: 'Salvează parola',
   saved: 'Parola a fost schimbată. Te poți autentifica acum.',
   goToLogin: 'Mergi la autentificare',
+  backToLogin: 'Înapoi la autentificare',
 } as const

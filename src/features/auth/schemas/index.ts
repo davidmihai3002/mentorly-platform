@@ -1,5 +1,6 @@
 export { forgotPasswordSchema } from './forgotPasswordSchema'
 export { loginSchema } from './loginSchema'
+export { mentorSignupSchema } from './mentorSignupSchema'
 export { emailSchema, newPasswordSchema } from './passwordSchema'
 export { resetPasswordSchema } from './resetPasswordSchema'
 export { signupSchema } from './signupSchema'

@@ -1,25 +1,33 @@
-import { useId } from 'react'
+import { useId, useRef } from 'react'
 import { MENTOR_SIGNUP_TEXT } from '../constants'
 import { useMentorSignupForm } from '../hooks'
+import type { MentorDocument } from '../types'
 import { AuthCardHeader } from './AuthCardHeader'
 import { MentorDocumentsPanel } from './MentorDocumentsPanel'
 import { MentorSignupForm } from './MentorSignupForm'
 
 export function MentorSignupPage() {
-  const mentor = useMentorSignupForm()
   const documentsErrorId = useId()
+  const linkedInRef = useRef<HTMLButtonElement>(null)
+  const cvButtonRef = useRef<HTMLButtonElement>(null)
+
+  const focusMissingDocument = (document: MentorDocument) => {
+    const target = document === 'linkedin' ? linkedInRef.current : cvButtonRef.current
+    target?.focus()
+  }
+
+  const mentor = useMentorSignupForm(focusMissingDocument)
 
   return (
     <>
       <title>{MENTOR_SIGNUP_TEXT.pageTitle}</title>
-      <div className="grid w-full max-w-[608px] overflow-hidden rounded-xl border border-border bg-card shadow-card-wide [view-transition-name:auth-card] md:grid-cols-[321px_1fr]">
-        <div className="space-y-5 px-7 py-10">
+      <div className="grid w-full max-w-[608px] overflow-hidden rounded-[12px] border border-border bg-card shadow-card-wide [view-transition-name:auth-card] md:grid-cols-[321px_1fr]">
+        <div className="space-y-4 px-7 py-8">
           <AuthCardHeader title={MENTOR_SIGNUP_TEXT.title} subtitle={MENTOR_SIGNUP_TEXT.subtitle} />
           <MentorSignupForm
             form={mentor.form}
-            onSubmit={() => void mentor.submit()}
+            onSubmit={(event) => void mentor.submit(event)}
             onLinkedIn={mentor.connectLinkedIn}
-            documentsErrorId={mentor.documentsError ? documentsErrorId : undefined}
           />
         </div>
         <MentorDocumentsPanel
@@ -28,9 +36,11 @@ export function MentorSignupPage() {
           cvFileName={mentor.cvFile?.name}
           certificatesCount={mentor.certificates.length}
           onCvSelect={mentor.selectCv}
-          onCertificatesSelect={mentor.setCertificates}
+          onCertificatesSelect={mentor.addCertificates}
           error={mentor.documentsError}
           errorId={documentsErrorId}
+          linkedInRef={linkedInRef}
+          cvButtonRef={cvButtonRef}
         />
       </div>
     </>

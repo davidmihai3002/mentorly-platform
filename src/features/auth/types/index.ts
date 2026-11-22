@@ -10,6 +10,9 @@ export type { SignupAction, SignupFormInput, SignupFormOutput, SignupLog } from 
 export type {
   ForgotPasswordInput,
   ForgotPasswordOutput,
+  MentorDocument,
+  MentorSignupInput,
+  MentorSignupOutput,
   ResetPasswordInput,
   ResetPasswordOutput,
 } from './password.types'

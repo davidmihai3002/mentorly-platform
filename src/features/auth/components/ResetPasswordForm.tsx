@@ -42,6 +42,7 @@ export function ResetPasswordForm() {
       <Button type="submit" className={cn(AUTH_SUBMIT_BASE_CLASS, styles.submit)}>
         {RESET_PASSWORD_TEXT.submit}
       </Button>
+      <AuthBackLink label={RESET_PASSWORD_TEXT.backToLogin} />
     </form>
   )
 }

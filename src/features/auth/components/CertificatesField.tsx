@@ -27,7 +27,10 @@ export function CertificatesField({ count, onSelect }: CertificatesFieldProps) {
         multiple
         accept="application/pdf,image/*"
         className="sr-only"
-        onChange={(event) => onSelect(Array.from(event.target.files ?? []))}
+        onChange={(event) => {
+          onSelect(Array.from(event.target.files ?? []))
+          event.currentTarget.value = ''
+        }}
       />
     </label>
   )

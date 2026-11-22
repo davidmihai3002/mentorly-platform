@@ -1,38 +1,25 @@
 import { cn } from 'cn'
+import type { FormEvent } from 'react'
 import type { UseFormReturn } from 'react-hook-form'
 import { Button } from '@/components/ui'
 import { ROUTES } from '@/constants'
 import { AUTH_DENSITY_STYLES, AUTH_SUBMIT_BASE_CLASS, MENTOR_SIGNUP_TEXT } from '../constants'
-import type { LoginFormInput, LoginFormOutput } from '../types'
+import type { MentorSignupInput, MentorSignupOutput } from '../types'
 import { AuthPasswordField } from './AuthPasswordField'
 import { AuthTextField } from './AuthTextField'
 
 type MentorSignupFormProps = {
-  form: UseFormReturn<LoginFormInput, unknown, LoginFormOutput>
-  onSubmit: () => void
+  form: UseFormReturn<MentorSignupInput, unknown, MentorSignupOutput>
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void
   onLinkedIn: () => void
-  documentsErrorId?: string
 }
 
-export function MentorSignupForm({
-  form,
-  onSubmit,
-  onLinkedIn,
-  documentsErrorId,
-}: MentorSignupFormProps) {
+export function MentorSignupForm({ form, onSubmit, onLinkedIn }: MentorSignupFormProps) {
   const { errors } = form.formState
   const styles = AUTH_DENSITY_STYLES.compact
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault()
-        onSubmit()
-      }}
-      noValidate
-      aria-describedby={documentsErrorId}
-      className={styles.stack}
-    >
+    <form onSubmit={onSubmit} noValidate className={styles.stack}>
       <AuthTextField
         density="compact"
         label={MENTOR_SIGNUP_TEXT.emailLabel}

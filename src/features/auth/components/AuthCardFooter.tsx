@@ -3,8 +3,9 @@ import { AppLink } from '@/components/navigation'
 import { buttonVariants } from '@/components/ui'
 import { ROUTES } from '@/constants'
 import { AUTH_LINK_CLASS, LOGIN_TEXT } from '../constants'
+import type { LoginAction } from '../types'
 
-type RegisterAction = 'register-mentee' | 'register-mentor'
+type RegisterAction = Extract<LoginAction, 'register-mentee' | 'register-mentor'>
 
 type AuthCardFooterProps = {
   onRegisterClick: (action: RegisterAction) => void

@@ -1,7 +1,12 @@
-export { buildAuthEventLog, logAuthEvent } from './logAuthEvent'
+export { logAuthEvent } from './logAuthEvent'
 export { getPasswordFieldState } from './getPasswordFieldState'
 export { isLoggedOutState } from './isLoggedOutState'
 export { buildLoginLog, logLoginAction } from './logLoginAction'
 export { EMPTY_SIGNUP_VALUES, buildSignupLog, logSignupAction } from './logSignupAction'
 export { maskPassword } from './maskPassword'
-export { getMentorDocumentsError, validateCvFile } from './mentorDocuments'
+export {
+  getMentorDocumentError,
+  getMissingMentorDocument,
+  mergeFiles,
+  validateCvFile,
+} from './mentorDocuments'

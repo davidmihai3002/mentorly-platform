@@ -1,5 +1,5 @@
 import { FileTextIcon } from 'lucide-react'
-import { useId } from 'react'
+import { useId, type Ref } from 'react'
 import { MENTOR_SIGNUP_TEXT } from '../constants'
 import { CertificatesField } from './CertificatesField'
 import { FileDropzone } from './FileDropzone'
@@ -9,6 +9,8 @@ type CvUploadCardProps = {
   certificatesCount: number
   onCvSelect: (file: File) => void
   onCertificatesSelect: (files: File[]) => void
+  buttonRef?: Ref<HTMLButtonElement>
+  errorId?: string
 }
 
 export function CvUploadCard({
@@ -16,6 +18,8 @@ export function CvUploadCard({
   certificatesCount,
   onCvSelect,
   onCertificatesSelect,
+  buttonRef,
+  errorId,
 }: CvUploadCardProps) {
   const titleId = useId()
 
@@ -28,7 +32,8 @@ export function CvUploadCard({
       <FileDropzone
         accept="application/pdf,.pdf"
         fileName={cvFileName}
-        describedById={titleId}
+        describedById={[titleId, errorId].filter(Boolean).join(' ')}
+        buttonRef={buttonRef}
         onFile={onCvSelect}
       />
       <CertificatesField count={certificatesCount} onSelect={onCertificatesSelect} />

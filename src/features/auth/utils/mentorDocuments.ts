@@ -1,4 +1,5 @@
 import { CV_MAX_SIZE_BYTES, MENTOR_SIGNUP_TEXT } from '../constants'
+import type { MentorDocument } from '../types'
 
 const PDF_TYPE = 'application/pdf'
 
@@ -9,11 +10,22 @@ export function validateCvFile(file: Pick<File, 'name' | 'type' | 'size'>): stri
   return null
 }
 
-export function getMentorDocumentsError(documents: {
+export function getMissingMentorDocument(documents: {
   isLinkedInConnected: boolean
   hasCv: boolean
-}): string | null {
-  if (!documents.isLinkedInConnected) return MENTOR_SIGNUP_TEXT.errors.linkedinMissing
-  if (!documents.hasCv) return MENTOR_SIGNUP_TEXT.errors.cvMissing
+}): MentorDocument | null {
+  if (!documents.isLinkedInConnected) return 'linkedin'
+  if (!documents.hasCv) return 'cv'
   return null
+}
+
+export function getMentorDocumentError(document: MentorDocument): string {
+  return document === 'linkedin'
+    ? MENTOR_SIGNUP_TEXT.errors.linkedinMissing
+    : MENTOR_SIGNUP_TEXT.errors.cvMissing
+}
+
+export function mergeFiles(current: readonly File[], added: readonly File[]): File[] {
+  const names = new Set(current.map((file) => file.name))
+  return [...current, ...added.filter((file) => !names.has(file.name))]
 }
