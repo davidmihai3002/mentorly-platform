@@ -11,7 +11,7 @@ export function SignupTermsText({ onTermsClick, onPrivacyClick }: SignupTermsTex
       {SIGNUP_TEXT.termsPrefix}{' '}
       <a
         href="#termeni-si-conditii"
-        className="font-medium text-primary underline underline-offset-4 transition-colors hover:text-primary/80"
+        className="font-medium text-link underline underline-offset-4 transition-colors hover:text-primary"
         onClick={(event) => {
           event.preventDefault()
           event.stopPropagation()
@@ -23,7 +23,7 @@ export function SignupTermsText({ onTermsClick, onPrivacyClick }: SignupTermsTex
       {SIGNUP_TEXT.termsMiddle}{' '}
       <a
         href="#politica-de-confidentialitate"
-        className="font-medium text-primary underline underline-offset-4 transition-colors hover:text-primary/80"
+        className="font-medium text-link underline underline-offset-4 transition-colors hover:text-primary"
         onClick={(event) => {
           event.preventDefault()
           event.stopPropagation()
