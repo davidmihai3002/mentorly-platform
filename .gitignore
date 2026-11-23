@@ -30,3 +30,8 @@ dist-ssr
 
 # Test coverage
 coverage
+
+# Local working notes (PR drafts, sprint plans, summaries) – not part of the app
+/PR-*.md
+/plan-sprint-*.md
+/rezumat-*.md
