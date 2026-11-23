@@ -153,6 +153,10 @@ export const router = createBrowserRouter([
             lazy: async () => ({ Component: (await import('@/features/reviews')).WriteReviewPage }),
           },
           {
+            path: ROUTES.projects,
+            lazy: async () => ({ Component: (await import('@/features/projects')).ProjectsPage }),
+          },
+          {
             path: ROUTES.mentor,
             element: <AccountPlaceholderPage {...ACCOUNT_PLACEHOLDER_TEXT.mentor} />,
           },
