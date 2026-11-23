@@ -46,25 +46,32 @@ src/
 
 ## Routes
 
-| Path                          | Page                                 |
-| ----------------------------- | ------------------------------------ |
-| `/`                           | Home (landing hero)                  |
-| `/ce-este-mentorly`           | Why mentoring (3 benefit cards)      |
-| `/comunitate`                 | Community Q&A                        |
-| `/recenzii`                   | Success stories                      |
-| `/parteneri`                  | Partners                             |
-| `/autentificare`              | Login                                |
-| `/inregistrare`               | Student signup                       |
-| `/inregistrare/mentor`        | Mentor signup + documents            |
-| `/parola-uitata`              | Forgot password                      |
-| `/resetare-parola`            | Reset password                       |
-| `/cursant`                    | Student account (placeholder)        |
-| `/test-potrivire`             | Matching quiz (4 steps)              |
-| `/test-potrivire/recomandari` | Top 3 recommended mentors            |
-| `/top-mentori`                | Top mentors with domain filter       |
-| `/mentor`                     | Mentor account (placeholder)         |
-| `/dev/componente`             | Shared components preview (dev only) |
-| anything else                 | 404                                  |
+| Path                                  | Page                                                |
+| ------------------------------------- | --------------------------------------------------- |
+| `/`                                   | Home (landing hero)                                 |
+| `/ce-este-mentorly`                   | Why mentoring (3 benefit cards)                     |
+| `/comunitate`                         | Community Q&A                                       |
+| `/recenzii`                           | Success stories                                     |
+| `/parteneri`                          | Partners                                            |
+| `/autentificare`                      | Login                                               |
+| `/inregistrare`                       | Student signup                                      |
+| `/inregistrare/mentor`                | Mentor signup + documents                           |
+| `/parola-uitata`                      | Forgot password                                     |
+| `/resetare-parola`                    | Reset password                                      |
+| `/mentori`                            | Mentor search: filters, sort, grid/list             |
+| `/mentori/:id`                        | Public mentor profile + application                 |
+| `/mentori/:id/recenzii`               | Detailed reviews                                    |
+| `/cursant/recenzie/:id`               | Write a review                                      |
+| `/cursant/rezervare/:id`              | Booking calendar → summary → payment → confirmation |
+| `/cursant/rezervare/:id/reprogramare` | Reschedule a session                                |
+| `/cursant/proiecte`                   | My projects + feedback                              |
+| `/cursant`                            | Student account (placeholder)                       |
+| `/test-potrivire`                     | Matching quiz (4 steps)                             |
+| `/test-potrivire/recomandari`         | Top 3 recommended mentors                           |
+| `/top-mentori`                        | Top mentors with domain filter                      |
+| `/mentor`                             | Mentor account (placeholder)                        |
+| `/dev/componente`                     | Shared components preview (dev only)                |
+| anything else                         | 404                                                 |
 
 ## Authentication (Team Decision)
 
