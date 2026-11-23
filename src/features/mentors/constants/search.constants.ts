@@ -39,7 +39,6 @@ export const FILTER_LABELS: Readonly<Record<FilterKey, string>> = {
 export const ANY_VALUE = 'orice'
 
 export const DOMAIN_FILTER_LABELS: Readonly<Record<string, string>> = {
-  'it-frontend': 'IT · Frontend',
   react: 'IT · React',
   software: 'IT · Software',
 }
@@ -49,6 +48,14 @@ export const AVAILABILITY_WEEKDAYS: Readonly<Record<string, readonly number[]>> 
   mon: [1],
   thu: [4],
   weekend: [6, 0],
+}
+
+export const FILTER_DIALOG_TITLES: Readonly<Record<FilterKey, string>> = {
+  domain: 'Alege domeniul',
+  language: 'Alege limba',
+  maxPrice: 'Buget pentru o sesiune',
+  minRating: 'Evaluare minimă',
+  availability: 'Disponibilitate',
 }
 
 export const PRICE_LIMITS = [180, 200, 250] as const

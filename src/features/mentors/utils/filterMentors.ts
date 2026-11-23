@@ -20,7 +20,7 @@ function matchesQuery(mentor: DirectoryMentor, query: string): boolean {
 
 function matchesDomain(mentor: DirectoryMentor, domain: MentorFilters['domain']): boolean {
   if (!domain) return true
-  if (domain === 'it') return mentor.domainId === 'it-frontend'
+  if (domain === 'it' || domain === 'it-frontend') return mentor.domainId === 'it-frontend'
   return mentor.domainLabel === DOMAIN_FILTER_LABELS[domain]
 }
 

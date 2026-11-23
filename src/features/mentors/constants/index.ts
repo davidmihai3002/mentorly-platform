@@ -4,6 +4,7 @@ export {
   ANY_VALUE,
   AVAILABILITY_WEEKDAYS,
   DOMAIN_FILTER_LABELS,
+  FILTER_DIALOG_TITLES,
   FILTER_LABELS,
   FILTER_OPTIONS,
   PRICE_LIMITS,
@@ -12,9 +13,4 @@ export {
   SEARCH_TEXT,
   SORT_OPTIONS,
 } from './search.constants'
-export {
-  PROFILE_CARD_CLASS,
-  PROFILE_TAG_CLASS,
-  SEARCH_FIELD_CLASS,
-  SEARCH_PANEL_CLASS,
-} from './styles.constants'
+export { PROFILE_CARD_CLASS, PROFILE_TAG_CLASS, SEARCH_PANEL_CLASS } from './styles.constants'
