@@ -5,7 +5,6 @@ export const PROFILE_TEXT = {
   publicProfile: 'Profil public',
   ratingSuffix: '/ 5',
   reviewCount: (count: number) => `(${count} recenzii)`,
-  opensInNewTab: '(se deschide într-o filă nouă)',
   audienceTitle: 'Pentru cine este mentoratul',
   requirementsTitle: 'Cunoștințe minime alese de mine, ca mentor',
   fitTitle: 'Ne potrivim dacă…',
