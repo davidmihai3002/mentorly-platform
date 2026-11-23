@@ -1,4 +1,4 @@
-export { APPLICATION_LIMITS, PROFILE_TEXT } from './profile.constants'
+export { APPLICATION_LIMITS, INTRO_CALL_MINUTES, PROFILE_TEXT } from './profile.constants'
 export { DEFAULT_APPLICATION_QUESTIONS, PROFILE_DETAILS } from './profiles.constants'
 export {
   ANY_VALUE,

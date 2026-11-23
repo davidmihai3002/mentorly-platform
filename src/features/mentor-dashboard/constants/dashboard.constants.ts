@@ -33,6 +33,7 @@ export const DASHBOARD_TEXT = {
   weekTitle: '23–29 noiembrie',
   noSessions: 'Fără sesiuni',
   studentsTitle: 'Cursanții mei',
+  studentActionContext: (student: string) => ` · ${student}`,
 } as const
 
 export const STATS: readonly StatCard[] = [

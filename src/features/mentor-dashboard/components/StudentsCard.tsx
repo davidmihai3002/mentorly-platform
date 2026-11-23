@@ -19,6 +19,9 @@ export function StudentsCard() {
                   className="w-fit rounded-sm text-left text-xs font-medium text-link hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
                 >
                   {student.action}
+                  <span className="sr-only">
+                    {DASHBOARD_TEXT.studentActionContext(student.name)}
+                  </span>
                 </button>
               }
             />

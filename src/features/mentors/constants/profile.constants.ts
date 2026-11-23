@@ -30,7 +30,8 @@ export const PROFILE_TEXT = {
   introSlotLabel: 'Alege intervalul pentru apelul gratuit',
   scheduleCall: 'Programează apelul gratuit',
   introDialogTitle: 'Să ne cunoaștem',
-  introSubject: (mentor: string) => `${mentor} · Apel introductiv de 20 minute`,
+  introSubject: (mentor: string, minutes: number) =>
+    `${mentor} · Apel introductiv de ${minutes} minute`,
   introFormat: 'Online · Ora României',
   introFree: 'Gratuit · Nu se solicită plata.',
   introConfirm: 'Confirmă apelul gratuit',
@@ -74,3 +75,5 @@ export const APPLICATION_LIMITS = {
   minLength: 10,
   maxLength: 1000,
 } as const
+
+export const INTRO_CALL_MINUTES = 20

@@ -7,6 +7,7 @@ import { SITE_TEXT } from '@/constants'
 type ChoiceOption = {
   readonly value: string
   readonly label: string
+  readonly ariaLabel?: string
 }
 
 type ChoiceDialogProps = {
@@ -62,6 +63,7 @@ export function ChoiceDialog({
               <button
                 type="button"
                 aria-pressed={option.value === value}
+                aria-label={option.ariaLabel}
                 onClick={() => choose(option.value)}
                 className={cn(
                   OPTION_CLASS,

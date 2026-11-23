@@ -53,19 +53,21 @@ export function AvailabilityCard({ mentorName, availability, schedule }: Availab
           </option>
         ))}
       </select>
-      <IntroCallDialog
-        mentorName={mentorName}
-        slotLabel={slotLabel}
-        onConfirm={() => setConfirmed(slotLabel)}
-        trigger={
-          <button
-            type="button"
-            className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'text-sm')}
-          >
-            {PROFILE_TEXT.scheduleCall}
-          </button>
-        }
-      />
+      {slot && (
+        <IntroCallDialog
+          mentorName={mentorName}
+          slotLabel={slotLabel}
+          onConfirm={() => setConfirmed(slotLabel)}
+          trigger={
+            <button
+              type="button"
+              className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'text-sm')}
+            >
+              {PROFILE_TEXT.scheduleCall}
+            </button>
+          }
+        />
+      )}
       <p
         role="status"
         className={cn('text-xs font-medium text-success-foreground', !confirmed && 'sr-only')}

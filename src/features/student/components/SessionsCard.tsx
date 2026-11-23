@@ -43,7 +43,7 @@ export function SessionsCard({ mentor }: SessionsCardProps) {
                 <p className={SESSION_TITLE_CLASS}>{session.title}</p>
               )}
               <p className="text-[11px] text-muted-foreground">{session.meta}</p>
-              {session.isRateable && <QuickRating />}
+              {session.isRateable && <QuickRating sessionTitle={session.title} />}
             </div>
           </li>
         ))}

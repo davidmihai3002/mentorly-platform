@@ -2,7 +2,7 @@ import type { ReactElement } from 'react'
 import { InfoDialog } from '@/components'
 import { DialogClose } from '@/components/ui'
 import { DIALOG_OUTLINE_CLASS, DIALOG_PRIMARY_CLASS } from '@/constants'
-import { PROFILE_TEXT } from '../constants'
+import { INTRO_CALL_MINUTES, PROFILE_TEXT } from '../constants'
 
 type IntroCallDialogProps = {
   mentorName: string
@@ -30,7 +30,9 @@ export function IntroCallDialog({
         </>
       }
     >
-      <p className="text-sm font-medium text-foreground">{PROFILE_TEXT.introSubject(mentorName)}</p>
+      <p className="text-sm font-medium text-foreground">
+        {PROFILE_TEXT.introSubject(mentorName, INTRO_CALL_MINUTES)}
+      </p>
       <p className="text-xs leading-[1.6] text-link">
         {slotLabel}
         <br />

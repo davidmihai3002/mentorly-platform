@@ -8,10 +8,15 @@ const RATING_OPTIONS = Array.from({ length: QUICK_RATING_MAX }, (_, index) => {
   return {
     value: String(stars),
     label: STUDENT_PROFILE_TEXT.quickRatingOption(stars, QUICK_RATING_MAX),
+    ariaLabel: STUDENT_PROFILE_TEXT.quickRatingAria(stars, QUICK_RATING_MAX),
   }
 })
 
-export function QuickRating() {
+type QuickRatingProps = {
+  sessionTitle: string
+}
+
+export function QuickRating({ sessionTitle }: QuickRatingProps) {
   const [rating, setRating] = useState<string>()
 
   return (
@@ -28,6 +33,7 @@ export function QuickRating() {
             className="w-fit rounded-sm text-[11px] font-medium text-link hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
           >
             {STUDENT_PROFILE_TEXT.quickRating}
+            <span className="sr-only">{STUDENT_PROFILE_TEXT.quickRatingContext(sessionTitle)}</span>
           </button>
         }
       />
