@@ -115,6 +115,34 @@ export const router = createBrowserRouter([
             }),
           },
           {
+            path: ROUTES.booking,
+            lazy: async () => ({ Component: (await import('@/features/booking')).BookingPage }),
+          },
+          {
+            path: ROUTES.bookingSummary,
+            lazy: async () => ({ Component: (await import('@/features/booking')).SummaryPage }),
+          },
+          {
+            path: ROUTES.bookingPayment,
+            lazy: async () => ({ Component: (await import('@/features/booking')).PaymentPage }),
+          },
+          {
+            path: ROUTES.bookingConfirmed,
+            lazy: async () => ({
+              Component: (await import('@/features/booking')).ConfirmationPage,
+            }),
+          },
+          {
+            path: ROUTES.reschedule,
+            lazy: async () => ({ Component: (await import('@/features/booking')).ReschedulePage }),
+          },
+          {
+            path: ROUTES.rescheduleConfirmed,
+            lazy: async () => ({
+              Component: (await import('@/features/booking')).RescheduleConfirmedPage,
+            }),
+          },
+          {
             path: ROUTES.mentor,
             element: <AccountPlaceholderPage {...ACCOUNT_PLACEHOLDER_TEXT.mentor} />,
           },
