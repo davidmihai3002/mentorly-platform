@@ -56,10 +56,6 @@ export const PROFILE_DETAILS: Readonly<Record<string, ProfileDetails>> = {
     },
     capacity: { max: 4, current: 3 },
     availability: {
-      slots: [
-        { day: 'Luni', time: '18:00–20:00' },
-        { day: 'Joi', time: '19:00–21:00' },
-      ],
       introSlots: [
         'Luni, 18:00–18:20',
         'Luni, 19:00–19:20',

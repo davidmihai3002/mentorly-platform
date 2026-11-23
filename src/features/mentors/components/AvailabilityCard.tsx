@@ -1,17 +1,19 @@
 import { cn } from 'cn'
 import { useId, useState } from 'react'
 import { AppLink } from '@/components'
-import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
+import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, WEEKDAY_NAMES } from '@/constants'
+import type { WeeklySlot } from '@/types'
 import { PROFILE_TAG_CLASS, PROFILE_TEXT } from '../constants'
 import type { MentorProfile } from '../types'
 import { ProfileCard } from './ProfileCard'
 
 type AvailabilityCardProps = {
   availability: MentorProfile['availability']
+  schedule: readonly WeeklySlot[]
   bookingPath: string
 }
 
-export function AvailabilityCard({ availability, bookingPath }: AvailabilityCardProps) {
+export function AvailabilityCard({ availability, schedule, bookingPath }: AvailabilityCardProps) {
   const selectId = useId()
   const [introSlot, setIntroSlot] = useState(availability.introSlots[0] ?? '')
   const search = new URLSearchParams({ apel: introSlot }).toString()
@@ -19,10 +21,12 @@ export function AvailabilityCard({ availability, bookingPath }: AvailabilityCard
   return (
     <ProfileCard title={PROFILE_TEXT.availabilityTitle}>
       <dl className="flex flex-col gap-2.5 text-[13px]">
-        {availability.slots.map((slot) => (
-          <div key={slot.day} className="flex justify-between gap-3">
-            <dt className="text-muted-foreground">{slot.day}</dt>
-            <dd className="font-semibold text-foreground">{slot.time}</dd>
+        {schedule.map((slot) => (
+          <div key={slot.weekday} className="flex justify-between gap-3">
+            <dt className="text-muted-foreground">{WEEKDAY_NAMES[slot.weekday]}</dt>
+            <dd className="font-semibold text-foreground">
+              {slot.start}–{slot.end}
+            </dd>
           </div>
         ))}
       </dl>

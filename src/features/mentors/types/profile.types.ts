@@ -49,7 +49,6 @@ export type MentorProfile = {
     readonly current: number
   }
   readonly availability: {
-    readonly slots: readonly { readonly day: string; readonly time: string }[]
     readonly introSlots: readonly string[]
   }
   readonly experience?: {

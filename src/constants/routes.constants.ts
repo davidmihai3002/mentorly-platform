@@ -16,6 +16,11 @@ export const ROUTES = {
   mentors: '/mentori',
   mentorProfile: '/mentori/:mentorId',
   booking: '/cursant/rezervare/:mentorId',
+  bookingSummary: '/cursant/rezervare/:mentorId/sumar',
+  bookingPayment: '/cursant/rezervare/:mentorId/plata',
+  bookingConfirmed: '/cursant/rezervare/:mentorId/confirmare',
+  reschedule: '/cursant/rezervare/:mentorId/reprogramare',
+  rescheduleConfirmed: '/cursant/rezervare/:mentorId/reprogramare/confirmata',
   mentor: '/mentor',
   componentsPreview: '/dev/componente',
 } as const

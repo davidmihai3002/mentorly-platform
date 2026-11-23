@@ -9,4 +9,5 @@ export type {
   MentorCardVariant,
   MentorLanguage,
   MentorReputation,
+  WeeklySlot,
 } from './mentor.types'

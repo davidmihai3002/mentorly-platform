@@ -1,4 +1,4 @@
-import { AVAILABILITY_LABELS, MENTOR_DIRECTORY } from '@/constants'
+import { MENTOR_DIRECTORY, MENTOR_SCHEDULES, WEEKDAY_NAMES } from '@/constants'
 import type { DirectoryMentor } from '@/types'
 import { findDomain } from '@/utils'
 import { DEFAULT_APPLICATION_QUESTIONS, PROFILE_DETAILS } from '../constants'
@@ -12,7 +12,7 @@ function buildDefaultProfile(mentor: DirectoryMentor): MentorProfile {
   const domain = findDomain(mentor.domainId)
   const fullPrice = mentor.pricePerSession * MONTHLY_SESSIONS
   const monthlyPrice = Math.round(fullPrice * (1 - MONTHLY_DISCOUNT))
-  const days = AVAILABILITY_LABELS[mentor.availability].split(' / ')
+  const schedule = MENTOR_SCHEDULES[mentor.availability]
 
   return {
     mentor,
@@ -38,8 +38,7 @@ function buildDefaultProfile(mentor: DirectoryMentor): MentorProfile {
     },
     capacity: DEFAULT_CAPACITY,
     availability: {
-      slots: days.map((day) => ({ day, time: '18:00–20:00' })),
-      introSlots: days.map((day) => `${day}, 18:00–18:20`),
+      introSlots: schedule.map((slot) => `${WEEKDAY_NAMES[slot.weekday]}, ${slot.start}`),
     },
     reviews: {
       criteria: [

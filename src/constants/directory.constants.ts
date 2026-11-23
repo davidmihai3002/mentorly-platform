@@ -1,4 +1,4 @@
-import type { DirectoryMentor } from '@/types'
+import type { AvailabilityId, DirectoryMentor, WeeklySlot } from '@/types'
 
 export const MENTOR_DIRECTORY: readonly DirectoryMentor[] = [
   {
@@ -142,4 +142,35 @@ export const AVAILABILITY_LABELS = {
   'mon-thu': 'Luni / Joi',
   'tue-fri': 'Marți / Vineri',
   weekend: 'Weekend',
+} as const
+
+export const WEEKDAY_NAMES = [
+  'Duminică',
+  'Luni',
+  'Marți',
+  'Miercuri',
+  'Joi',
+  'Vineri',
+  'Sâmbătă',
+] as const
+
+export const MENTOR_SCHEDULES: Readonly<Record<AvailabilityId, readonly WeeklySlot[]>> = {
+  'mon-thu': [
+    { weekday: 1, start: '18:00', end: '20:00' },
+    { weekday: 4, start: '19:00', end: '21:00' },
+  ],
+  'tue-fri': [
+    { weekday: 2, start: '17:00', end: '19:00' },
+    { weekday: 5, start: '18:00', end: '20:00' },
+  ],
+  weekend: [
+    { weekday: 6, start: '10:00', end: '12:00' },
+    { weekday: 0, start: '10:00', end: '12:00' },
+  ],
+}
+
+export const SAMPLE_STUDENT = {
+  firstName: 'Andreea',
+  fullName: 'Andreea Marin',
+  email: 'andreea.marin@example.com',
 } as const
