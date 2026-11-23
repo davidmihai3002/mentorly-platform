@@ -1,3 +1,4 @@
+export { API_URL } from './api.constants'
 export {
   AVAILABILITY_LABELS,
   LANGUAGE_LABELS,
