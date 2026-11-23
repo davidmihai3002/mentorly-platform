@@ -34,6 +34,12 @@ export const router = createBrowserRouter([
             path: ROUTES.partners,
             lazy: async () => ({ Component: (await import('@/features/landing')).PartnersPage }),
           },
+          {
+            path: ROUTES.mentorProfile,
+            lazy: async () => ({
+              Component: (await import('@/features/mentors')).MentorProfilePage,
+            }),
+          },
           ...(import.meta.env.DEV
             ? [
                 {

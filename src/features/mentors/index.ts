@@ -1,1 +1,1 @@
-export { MentorSearchPage } from './components'
+export { MentorProfilePage, MentorSearchPage } from './components'

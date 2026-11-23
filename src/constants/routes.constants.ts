@@ -15,6 +15,7 @@ export const ROUTES = {
   topMentors: '/top-mentori',
   mentors: '/mentori',
   mentorProfile: '/mentori/:mentorId',
+  booking: '/cursant/rezervare/:mentorId',
   mentor: '/mentor',
   componentsPreview: '/dev/componente',
 } as const
