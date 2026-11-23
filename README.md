@@ -17,6 +17,10 @@ npm run build        # Production build
 
 GitHub Actions runs `npm ci`, lint, typecheck, format check and build on every pull request to `main` and on every push to `main`. The build output (`dist`) is uploaded as an artifact for 7 days.
 
+## Team rules
+
+The shared rules for working on this project are in [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
 ## Project Structure
 
 ```text

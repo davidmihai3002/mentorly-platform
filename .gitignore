@@ -30,3 +30,17 @@ dist-ssr
 
 # Test coverage
 coverage
+
+# Local working notes (PR drafts, sprint plans, summaries) – not part of the app
+/PR-*.md
+/plan-sprint-*.md
+/rezumat-*.md
+
+# Local demo recordings, loose screenshots and backups (PR screenshots live in docs/screenshots)
+/demo-*/
+/mentorly-*.webm
+/mentorly-*.png
+*.bundle
+
+# Personal AI-assistant / editor tooling
+/.claude/
