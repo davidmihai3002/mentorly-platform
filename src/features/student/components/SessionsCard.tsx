@@ -1,7 +1,6 @@
-import { AppLink } from '@/components'
+import { AppLink, SectionCard } from '@/components'
 import { getBookingPath } from '@/utils'
 import { SESSION_HISTORY, STUDENT_PROFILE_TEXT } from '../constants'
-import { SectionCard } from './SectionCard'
 
 type SessionsCardProps = {
   mentorId: string

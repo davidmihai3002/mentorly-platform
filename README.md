@@ -46,8 +46,8 @@ src/
 
 ## Screenshots
 
-<img width="360" height="2441" alt="profil-cursant-mobil" src="https://github.com/user-attachments/assets/a55a6fde-abe3-4c08-aa36-90e16113f74a" />
-<img width="1024" height="1423" alt="profil-cursant-desktop" src="https://github.com/user-attachments/assets/327e8ea9-6316-454e-a56c-eb349696e064" />
+<img width="360" height="2043" alt="dashboard-mentor-mobil" src="https://github.com/user-attachments/assets/43de2edc-5d0e-4367-8e05-e0f95b221192" />
+<img width="1024" height="1177" alt="dashboard-mentor-desktop" src="https://github.com/user-attachments/assets/83c5c9af-2477-4871-aa98-96ff2e3e97b4" />
 
 ## Routes
 
@@ -74,7 +74,7 @@ src/
 | `/test-potrivire`                     | Matching quiz (4 steps)                             |
 | `/test-potrivire/recomandari`         | Top 3 recommended mentors                           |
 | `/top-mentori`                        | Top mentors with domain filter                      |
-| `/mentor`                             | Mentor account (placeholder)                        |
+| `/mentor`                             | Mentor dashboard                                    |
 | `/dev/componente`                     | Shared components preview (dev only)                |
 | anything else                         | 404                                                 |
 

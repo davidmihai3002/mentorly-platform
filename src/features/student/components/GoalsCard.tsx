@@ -1,10 +1,9 @@
 import { cn } from 'cn'
 import { Circle, CircleCheck } from 'lucide-react'
-import { AppLink } from '@/components'
+import { AppLink, SectionCard } from '@/components'
 import { ROUNDED_BUTTON_CLASS, ROUTES } from '@/constants'
 import { LEARNING_GOALS, STUDENT_PROFILE_TEXT } from '../constants'
 import { getGoalProgress } from '../utils'
-import { SectionCard } from './SectionCard'
 
 export function GoalsCard() {
   const { done, total, percent } = getGoalProgress(LEARNING_GOALS)

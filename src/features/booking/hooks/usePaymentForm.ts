@@ -1,3 +1,4 @@
+import { getFirstName } from '@/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { paymentSchema, type PaymentInput, type PaymentOutput } from '../schemas'
@@ -25,7 +26,7 @@ export function usePaymentForm(onPaid: (details: CheckoutState) => void) {
   const submit = form.handleSubmit((values) => {
     onPaid({
       email: values.email,
-      firstName: values.cardholder.split(' ')[0] ?? values.cardholder,
+      firstName: getFirstName(values.cardholder),
       cardLast4: values.cardNumber.slice(-CARD_LAST_DIGITS),
     })
   })

@@ -6,16 +6,18 @@ type SectionCardProps = {
   aside?: ReactNode
   children: ReactNode
   className?: string
+  id?: string
 }
 
-export function SectionCard({ title, aside, children, className }: SectionCardProps) {
+export function SectionCard({ title, aside, children, className, id }: SectionCardProps) {
   const titleId = useId()
 
   return (
     <section
+      id={id}
       aria-labelledby={titleId}
       className={cn(
-        'flex flex-col gap-3 rounded-[16px] border border-border bg-card p-5',
+        'flex scroll-mt-24 flex-col gap-3 rounded-[16px] border border-border bg-card p-5',
         className,
       )}
     >
