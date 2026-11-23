@@ -13,12 +13,28 @@ type ChoiceDialogProps = {
   title: string
   options: readonly ChoiceOption[]
   value?: string
-  trigger: ReactElement
+  trigger?: ReactElement
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
   onChange: (value: string) => void
 }
 
-export function ChoiceDialog({ title, options, value, trigger, onChange }: ChoiceDialogProps) {
-  const [isOpen, setIsOpen] = useState(false)
+export function ChoiceDialog({
+  title,
+  options,
+  value,
+  trigger,
+  open,
+  onOpenChange,
+  onChange,
+}: ChoiceDialogProps) {
+  const [ownOpen, setOwnOpen] = useState(false)
+  const isOpen = open ?? ownOpen
+
+  function setIsOpen(next: boolean) {
+    setOwnOpen(next)
+    onOpenChange?.(next)
+  }
 
   function choose(next: string) {
     onChange(next)
@@ -27,7 +43,7 @@ export function ChoiceDialog({ title, options, value, trigger, onChange }: Choic
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger render={trigger} />
+      {trigger && <DialogTrigger render={trigger} />}
       <DialogContent
         showCloseButton={false}
         className="gap-3 rounded-[16px] border border-border bg-card p-6 shadow-card-soft ring-0 sm:max-w-[430px]"

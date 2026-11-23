@@ -1,7 +1,14 @@
 import { ChevronDown } from 'lucide-react'
 import { useId } from 'react'
 import { ChoiceDialog } from '@/components'
-import { FILTER_DIALOG_TITLES, FILTER_LABELS, FILTER_OPTIONS, SEARCH_TEXT } from '../constants'
+import {
+  ANY_VALUE,
+  FILTER_DIALOG_TITLES,
+  FILTER_LABELS,
+  FILTER_OPTIONS,
+  FILTER_TRIGGER_CLASS,
+  SEARCH_TEXT,
+} from '../constants'
 import type { FilterKey } from '../types'
 
 type FilterFieldProps = {
@@ -13,7 +20,10 @@ type FilterFieldProps = {
 export function FilterField({ filterKey, value, onChange }: FilterFieldProps) {
   const labelId = useId()
   const valueId = useId()
-  const selected = FILTER_OPTIONS[filterKey].find((option) => option.value === value)
+  const options = FILTER_OPTIONS[filterKey]
+  const hasAnyOption = options.some((option) => option.value === ANY_VALUE)
+  const shownValue = value ?? (hasAnyOption ? ANY_VALUE : undefined)
+  const selected = options.find((option) => option.value === shownValue)
 
   return (
     <div className="flex flex-col gap-2">
@@ -22,14 +32,14 @@ export function FilterField({ filterKey, value, onChange }: FilterFieldProps) {
       </span>
       <ChoiceDialog
         title={FILTER_DIALOG_TITLES[filterKey]}
-        options={FILTER_OPTIONS[filterKey]}
-        value={value}
+        options={options}
+        value={shownValue}
         onChange={onChange}
         trigger={
           <button
             type="button"
             aria-labelledby={`${labelId} ${valueId}`}
-            className="flex h-10 w-full items-center justify-between gap-2 rounded-[10px] border border-border bg-card px-3 text-left text-[13px] text-foreground transition-colors hover:border-primary/50 focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+            className={FILTER_TRIGGER_CLASS}
           >
             <span id={valueId} className={selected ? undefined : 'text-muted-foreground'}>
               {selected?.label ?? SEARCH_TEXT.anyOption}

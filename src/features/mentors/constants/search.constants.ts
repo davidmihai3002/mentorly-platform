@@ -58,18 +58,11 @@ export const FILTER_DIALOG_TITLES: Readonly<Record<FilterKey, string>> = {
   availability: 'Disponibilitate',
 }
 
-export const DEMO_SEARCH_ALL = 'toti'
+export const DEMO_SEARCH_TITLE = 'Căutare demonstrativă'
 
-export const DEMO_SEARCH = {
-  title: 'Căutare demonstrativă',
-  options: [
-    { value: DEMO_SEARCH_ALL, label: 'Toți mentorii' },
-    { value: 'Mihai Popescu', label: 'Mihai Popescu' },
-    { value: 'Alexandru Radu', label: 'Alexandru Radu' },
-    { value: 'Ioana Dumitru', label: 'Ioana Dumitru' },
-    { value: 'Vlad Georgescu', label: 'Vlad Georgescu' },
-  ],
-} as const
+export const DEMO_SEARCH_ALL_LABEL = 'Toți mentorii'
+
+export const DEMO_SEARCH_LIMIT = 4
 
 export const PRICE_LIMITS = [180, 200, 250] as const
 

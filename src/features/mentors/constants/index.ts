@@ -2,8 +2,9 @@ export { APPLICATION_LIMITS, PROFILE_TEXT } from './profile.constants'
 export { DEFAULT_APPLICATION_QUESTIONS, PROFILE_DETAILS } from './profiles.constants'
 export {
   ANY_VALUE,
-  DEMO_SEARCH,
-  DEMO_SEARCH_ALL,
+  DEMO_SEARCH_ALL_LABEL,
+  DEMO_SEARCH_LIMIT,
+  DEMO_SEARCH_TITLE,
   AVAILABILITY_WEEKDAYS,
   DOMAIN_FILTER_LABELS,
   FILTER_DIALOG_TITLES,
@@ -15,4 +16,9 @@ export {
   SEARCH_TEXT,
   SORT_OPTIONS,
 } from './search.constants'
-export { PROFILE_CARD_CLASS, PROFILE_TAG_CLASS, SEARCH_PANEL_CLASS } from './styles.constants'
+export {
+  FILTER_TRIGGER_CLASS,
+  PROFILE_CARD_CLASS,
+  PROFILE_TAG_CLASS,
+  SEARCH_PANEL_CLASS,
+} from './styles.constants'
