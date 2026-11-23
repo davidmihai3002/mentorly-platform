@@ -1,6 +1,6 @@
 import { cn } from 'cn'
 import { useId, useState } from 'react'
-import { AppLink, MentorCard } from '@/components'
+import { AppLink, MentorCard, MentorPreviewDialog } from '@/components'
 import {
   ROUNDED_BUTTON_CLASS,
   ROUNDED_OUTLINE_CLASS,
@@ -13,8 +13,10 @@ import type { DomainFilterId } from '../types'
 import { filterTopMentors } from '../utils'
 import { DomainFilter } from './DomainFilter'
 import { QuizPageHeader } from './QuizPageHeader'
+import type { Mentor } from '@/types'
 
 export function TopMentorsPage() {
+  const [previewMentor, setPreviewMentor] = useState<Mentor | null>(null)
   const [filterId, setFilterId] = useState<DomainFilterId>('all')
   const mentors = filterTopMentors(QUIZ_MENTORS, filterId)
   const progressTitleId = useId()
@@ -22,6 +24,7 @@ export function TopMentorsPage() {
   return (
     <div className="flex flex-col gap-6">
       <title>{TOP_MENTORS_TEXT.pageTitle}</title>
+      <MentorPreviewDialog mentor={previewMentor} onClose={() => setPreviewMentor(null)} />
       <QuizPageHeader title={TOP_MENTORS_TEXT.title} subtitle={TOP_MENTORS_TEXT.subtitle} />
       <DomainFilter activeId={filterId} onChange={setFilterId} />
       <p role="status" className="sr-only">
@@ -33,6 +36,7 @@ export function TopMentorsPage() {
             {mentors.map((mentor) => (
               <li key={mentor.id} className="flex flex-col">
                 <MentorCard
+                  onApply={() => setPreviewMentor(mentor)}
                   mentor={mentor}
                   headingLevel="h2"
                   profileHref={getMentorProfilePath(mentor.id)}

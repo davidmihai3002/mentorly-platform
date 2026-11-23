@@ -1,6 +1,7 @@
 import { cn } from 'cn'
+import { useState } from 'react'
 import { useSearchParams } from 'react-router'
-import { AppLink, MentorCard } from '@/components'
+import { AppLink, MentorCard, MentorPreviewDialog } from '@/components'
 import {
   ROUNDED_BUTTON_CLASS,
   ROUNDED_OUTLINE_CLASS,
@@ -19,8 +20,10 @@ import {
 import { ConsideredAnswers } from './ConsideredAnswers'
 import { MatchReasonsCard } from './MatchReasonsCard'
 import { QuizPageHeader } from './QuizPageHeader'
+import type { Mentor } from '@/types'
 
 export function QuizResultsPage() {
+  const [previewMentor, setPreviewMentor] = useState<Mentor | null>(null)
   const [searchParams] = useSearchParams()
   const answers = parseQuizAnswers(searchParams)
   const recommendations = recommendMentors(answers, QUIZ_MENTORS)
@@ -28,6 +31,7 @@ export function QuizResultsPage() {
   return (
     <div className="flex flex-col gap-6">
       <title>{RESULTS_TEXT.pageTitle}</title>
+      <MentorPreviewDialog mentor={previewMentor} onClose={() => setPreviewMentor(null)} />
       <QuizPageHeader
         title={RESULTS_TEXT.title}
         subtitle={hasAnyAnswer(answers) ? RESULTS_TEXT.subtitle : RESULTS_TEXT.generalSubtitle}
@@ -37,6 +41,7 @@ export function QuizResultsPage() {
         {recommendations.map((mentor) => (
           <li key={mentor.id} className="flex flex-col gap-3">
             <MentorCard
+              onApply={() => setPreviewMentor(mentor)}
               mentor={mentor}
               headingLevel="h2"
               profileHref={getMentorProfilePath(mentor.id)}

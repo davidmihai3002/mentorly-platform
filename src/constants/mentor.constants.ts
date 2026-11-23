@@ -87,3 +87,11 @@ export const SAMPLE_MENTORS: readonly Mentor[] = [
     pricePerSession: 190,
   },
 ]
+
+export const MENTOR_PREVIEW_TEXT = {
+  title: 'Descoperă mentorul',
+  summary: 'Mentorat individual, feedback aplicat și un plan de învățare clar.',
+  apply: 'Aplică la mentorat',
+  back: 'Înapoi la rezultate',
+  applyAnchor: 'aplica',
+} as const
