@@ -1,8 +1,11 @@
 import { cn } from 'cn'
 import { Search } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
+import { ChoiceDialog } from '@/components'
 import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
-import { SEARCH_TEXT } from '../constants'
+import { DEMO_SEARCH, DEMO_SEARCH_ALL, SEARCH_TEXT } from '../constants'
+
+const SEARCH_BUTTON_CLASS = cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'px-8')
 
 type SearchBarProps = {
   initialQuery: string
@@ -15,6 +18,12 @@ export function SearchBar({ initialQuery, onSearch }: SearchBarProps) {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     onSearch(query)
+  }
+
+  function handleDemoChoice(choice: string) {
+    const next = choice === DEMO_SEARCH_ALL ? '' : choice
+    setQuery(next)
+    onSearch(next)
   }
 
   return (
@@ -34,9 +43,22 @@ export function SearchBar({ initialQuery, onSearch }: SearchBarProps) {
           className="h-10 w-full rounded-[24px] border border-border bg-card pr-4 pl-10 text-sm text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         />
       </label>
-      <button type="submit" className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'px-8')}>
-        {SEARCH_TEXT.search}
-      </button>
+      {query.trim() ? (
+        <button type="submit" className={SEARCH_BUTTON_CLASS}>
+          {SEARCH_TEXT.search}
+        </button>
+      ) : (
+        <ChoiceDialog
+          title={DEMO_SEARCH.title}
+          options={DEMO_SEARCH.options}
+          onChange={handleDemoChoice}
+          trigger={
+            <button type="button" className={SEARCH_BUTTON_CLASS}>
+              {SEARCH_TEXT.search}
+            </button>
+          }
+        />
+      )}
     </form>
   )
 }
