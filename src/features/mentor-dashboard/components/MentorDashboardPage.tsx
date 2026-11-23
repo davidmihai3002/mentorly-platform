@@ -3,6 +3,7 @@ import { DASHBOARD_MENTOR_ID, DASHBOARD_TEXT } from '../constants'
 import { DashboardHeader } from './DashboardHeader'
 import { EarningsCard } from './EarningsCard'
 import { StatsRow } from './StatsRow'
+import { StudentsCard } from './StudentsCard'
 import { UpcomingSessionsCard } from './UpcomingSessionsCard'
 import { WeekCard } from './WeekCard'
 
@@ -20,6 +21,7 @@ export function MentorDashboardPage() {
         <UpcomingSessionsCard />
       </div>
       <WeekCard />
+      <StudentsCard />
     </div>
   )
 }

@@ -73,7 +73,7 @@ Each PR adds desktop and mobile screenshots of the screens it changes to [`docs/
 | `/test-potrivire`                     | Matching quiz (4 steps)                             |
 | `/test-potrivire/recomandari`         | Top 3 recommended mentors                           |
 | `/top-mentori`                        | Top mentors with domain filter                      |
-| `/mentor`                             | Mentor account (placeholder)                        |
+| `/mentor`                             | Mentor dashboard                                    |
 | `/dev/componente`                     | Shared components preview (dev only)                |
 | anything else                         | 404                                                 |
 

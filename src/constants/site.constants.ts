@@ -36,8 +36,3 @@ export const NOT_FOUND_TEXT = {
   subtitle: 'Linkul poate fi greșit sau pagina a fost mutată.',
   backHome: 'Înapoi la pagina principală',
 } as const
-
-export const ACCOUNT_PLACEHOLDER_TEXT = {
-  mentor: { pageTitle: 'Contul de mentor – Mentorly', title: 'Contul de mentor' },
-  comingSoon: 'Această secțiune va fi disponibilă în curând.',
-} as const
