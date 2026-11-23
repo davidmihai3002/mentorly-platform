@@ -1,6 +1,6 @@
 import { cn } from 'cn'
 import { UserRound } from 'lucide-react'
-import { AppLink } from '@/components'
+import { AppLink, SectionCard } from '@/components'
 import {
   ROUNDED_BUTTON_CLASS,
   ROUNDED_OUTLINE_CLASS,
@@ -10,7 +10,6 @@ import {
 import type { DirectoryMentor } from '@/types'
 import { getMentorProfilePath } from '@/utils'
 import { STUDENT_PROFILE_TEXT } from '../constants'
-import { SectionCard } from './SectionCard'
 
 type MentorshipCardProps = {
   mentor: DirectoryMentor

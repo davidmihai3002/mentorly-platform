@@ -1,15 +1,23 @@
 import type { EarningsMonth, StatCard, StudentRow, UpcomingSession, WeekDay } from '../types'
 
+export const SECTION_IDS = {
+  overview: 'privire-de-ansamblu',
+  calendar: 'calendar',
+  students: 'cursanti',
+  earnings: 'castiguri',
+} as const
+
 export const DASHBOARD_TEXT = {
   pageTitle: 'Dashboard mentor – Mentorly',
   greeting: (firstName: string) => `Bună, ${firstName}!`,
+  fallbackName: 'mentorule',
   subtitle: 'Un loc pentru sesiuni, cursanți și progresul activității tale.',
   sectionsLabel: 'Secțiunile dashboard-ului',
   sections: [
-    { id: 'privire-de-ansamblu', label: 'Privire de ansamblu' },
-    { id: 'calendar', label: 'Calendar' },
-    { id: 'cursanti', label: 'Cursanți' },
-    { id: 'castiguri', label: 'Câștiguri' },
+    { id: SECTION_IDS.overview, label: 'Privire de ansamblu' },
+    { id: SECTION_IDS.calendar, label: 'Calendar' },
+    { id: SECTION_IDS.students, label: 'Cursanți' },
+    { id: SECTION_IDS.earnings, label: 'Câștiguri' },
   ],
   statsLabel: 'Indicatori',
   earningsTitle: 'Evoluția câștigurilor',
@@ -25,7 +33,6 @@ export const DASHBOARD_TEXT = {
   weekTitle: '23–29 noiembrie',
   noSessions: 'Fără sesiuni',
   studentsTitle: 'Cursanții mei',
-  currency: (amount: number) => `${amount} lei`,
 } as const
 
 export const STATS: readonly StatCard[] = [

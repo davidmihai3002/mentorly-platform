@@ -1,3 +1,4 @@
+import { getFirstName } from '@/utils'
 import { MENTOR_DIRECTORY } from '@/constants'
 import { DASHBOARD_MENTOR_ID, DASHBOARD_TEXT } from '../constants'
 import { DashboardHeader } from './DashboardHeader'
@@ -9,7 +10,7 @@ import { WeekCard } from './WeekCard'
 
 export function MentorDashboardPage() {
   const mentor = MENTOR_DIRECTORY.find((candidate) => candidate.id === DASHBOARD_MENTOR_ID)
-  const firstName = mentor?.name.split(' ')[0] ?? ''
+  const firstName = mentor ? getFirstName(mentor.name) : DASHBOARD_TEXT.fallbackName
 
   return (
     <div className="flex flex-col gap-5">

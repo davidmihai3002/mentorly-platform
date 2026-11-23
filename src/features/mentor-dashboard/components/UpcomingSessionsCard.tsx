@@ -1,11 +1,11 @@
+import { SectionCard } from '@/components'
 import { cn } from 'cn'
 import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
-import { DASHBOARD_TEXT, UPCOMING_SESSIONS } from '../constants'
-import { DashboardCard } from './DashboardCard'
+import { DASHBOARD_TEXT, SECTION_IDS, UPCOMING_SESSIONS } from '../constants'
 
 export function UpcomingSessionsCard() {
   return (
-    <DashboardCard title={DASHBOARD_TEXT.upcomingTitle}>
+    <SectionCard title={DASHBOARD_TEXT.upcomingTitle}>
       <ul className="flex flex-col gap-3">
         {UPCOMING_SESSIONS.map((session) => (
           <li
@@ -19,9 +19,12 @@ export function UpcomingSessionsCard() {
           </li>
         ))}
       </ul>
-      <a href="#calendar" className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'mt-auto')}>
+      <a
+        href={`#${SECTION_IDS.calendar}`}
+        className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'mt-auto')}
+      >
         {DASHBOARD_TEXT.manageCalendar}
       </a>
-    </DashboardCard>
+    </SectionCard>
   )
 }

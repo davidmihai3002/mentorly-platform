@@ -1,6 +1,5 @@
-import { ExternalLinkItem } from '@/components'
+import { ExternalLinkItem, SectionCard } from '@/components'
 import { STUDENT_LINKS, STUDENT_PROFILE_TEXT } from '../constants'
-import { SectionCard } from './SectionCard'
 
 export function LinksCard() {
   return (

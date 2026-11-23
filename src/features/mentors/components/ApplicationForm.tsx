@@ -1,3 +1,4 @@
+import { getFirstName } from '@/utils'
 import { cn } from 'cn'
 import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
 import { PROFILE_TEXT } from '../constants'
@@ -18,7 +19,7 @@ export function ApplicationForm({ profile, anchorId }: ApplicationFormProps) {
   const questions = [...profile.applicationQuestions, ...(profile.admissionTest?.questions ?? [])]
   const { form, submit, isSubmitted } = useApplicationForm(questions)
   const { errors } = form.formState
-  const firstName = profile.mentor.name.split(' ')[0] ?? profile.mentor.name
+  const firstName = getFirstName(profile.mentor.name)
 
   return (
     <form noValidate onSubmit={submit} className="flex scroll-mt-24 flex-col gap-6" id={anchorId}>

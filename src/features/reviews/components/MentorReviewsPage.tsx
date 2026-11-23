@@ -1,3 +1,4 @@
+import { getFirstName } from '@/utils'
 import { cn } from 'cn'
 import { useState } from 'react'
 import { generatePath, useLocation, useParams } from 'react-router'
@@ -21,7 +22,7 @@ export function MentorReviewsPage() {
 
   if (!mentor) return <ReviewsUnavailable />
 
-  const firstName = mentor.name.split(' ')[0] ?? mentor.name
+  const firstName = getFirstName(mentor.name)
   const reviews = selectReviews(SAMPLE_REVIEWS, filter, sort)
   const visible = reviews.slice(0, visibleCount)
   const isPublished = typeof state === 'object' && state !== null && 'published' in state

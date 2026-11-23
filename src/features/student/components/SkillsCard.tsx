@@ -1,5 +1,5 @@
+import { SectionCard } from '@/components'
 import { STUDENT_PROFILE_TEXT } from '../constants'
-import { SectionCard } from './SectionCard'
 
 export function SkillsCard() {
   return (
