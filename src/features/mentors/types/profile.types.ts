@@ -19,6 +19,11 @@ export type ApplicationQuestion = {
   readonly placeholder: string
 }
 
+export type IntroSlot = {
+  readonly weekday: number
+  readonly start: string
+}
+
 export type MentorProfile = {
   readonly mentor: DirectoryMentor
   readonly category: string
@@ -49,7 +54,7 @@ export type MentorProfile = {
     readonly current: number
   }
   readonly availability: {
-    readonly introSlots: readonly string[]
+    readonly introSlots: readonly IntroSlot[]
   }
   readonly experience?: {
     readonly jobs: readonly { readonly title: string; readonly meta: string }[]

@@ -1,31 +1,34 @@
 import { cn } from 'cn'
 import { useId, useState } from 'react'
-import { AppLink } from '@/components'
 import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, WEEKDAY_NAMES } from '@/constants'
 import type { WeeklySlot } from '@/types'
 import { PROFILE_TAG_CLASS, PROFILE_TEXT } from '../constants'
 import type { MentorProfile } from '../types'
+import { formatIntroDate, formatIntroSlot } from '../utils'
+import { IntroCallDialog } from './IntroCallDialog'
 import { ProfileCard } from './ProfileCard'
 
 type AvailabilityCardProps = {
+  mentorName: string
   availability: MentorProfile['availability']
   schedule: readonly WeeklySlot[]
-  bookingPath: string
 }
 
-export function AvailabilityCard({ availability, schedule, bookingPath }: AvailabilityCardProps) {
+export function AvailabilityCard({ mentorName, availability, schedule }: AvailabilityCardProps) {
   const selectId = useId()
-  const [introSlot, setIntroSlot] = useState(availability.introSlots[0] ?? '')
-  const search = new URLSearchParams({ apel: introSlot }).toString()
+  const [slotIndex, setSlotIndex] = useState(0)
+  const [confirmed, setConfirmed] = useState<string>()
+  const slot = availability.introSlots[slotIndex]
+  const slotLabel = slot ? formatIntroDate(slot) : ''
 
   return (
     <ProfileCard title={PROFILE_TEXT.availabilityTitle}>
       <dl className="flex flex-col gap-2.5 text-[13px]">
-        {schedule.map((slot) => (
-          <div key={slot.weekday} className="flex justify-between gap-3">
-            <dt className="text-muted-foreground">{WEEKDAY_NAMES[slot.weekday]}</dt>
+        {schedule.map((window) => (
+          <div key={window.weekday} className="flex justify-between gap-3">
+            <dt className="text-muted-foreground">{WEEKDAY_NAMES[window.weekday]}</dt>
             <dd className="font-semibold text-foreground">
-              {slot.start}–{slot.end}
+              {window.start}–{window.end}
             </dd>
           </div>
         ))}
@@ -40,22 +43,35 @@ export function AvailabilityCard({ availability, schedule, bookingPath }: Availa
       </label>
       <select
         id={selectId}
-        value={introSlot}
-        onChange={(event) => setIntroSlot(event.target.value)}
+        value={slotIndex}
+        onChange={(event) => setSlotIndex(Number(event.target.value))}
         className="min-h-8 w-fit rounded-[8px] border border-border bg-card px-2 text-[13px] text-link focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
       >
-        {availability.introSlots.map((slot) => (
-          <option key={slot} value={slot}>
-            {slot}
+        {availability.introSlots.map((option, index) => (
+          <option key={`${option.weekday}-${option.start}`} value={index}>
+            {formatIntroSlot(option)}
           </option>
         ))}
       </select>
-      <AppLink
-        to={`${bookingPath}?${search}`}
-        className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'text-sm')}
+      <IntroCallDialog
+        mentorName={mentorName}
+        slotLabel={slotLabel}
+        onConfirm={() => setConfirmed(slotLabel)}
+        trigger={
+          <button
+            type="button"
+            className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'text-sm')}
+          >
+            {PROFILE_TEXT.scheduleCall}
+          </button>
+        }
+      />
+      <p
+        role="status"
+        className={cn('text-xs font-medium text-success-foreground', !confirmed && 'sr-only')}
       >
-        {PROFILE_TEXT.scheduleCall}
-      </AppLink>
+        {confirmed ? PROFILE_TEXT.introConfirmed(confirmed) : ''}
+      </p>
     </ProfileCard>
   )
 }
