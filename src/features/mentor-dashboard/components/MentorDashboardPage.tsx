@@ -3,6 +3,8 @@ import { DASHBOARD_MENTOR_ID, DASHBOARD_TEXT } from '../constants'
 import { DashboardHeader } from './DashboardHeader'
 import { EarningsCard } from './EarningsCard'
 import { StatsRow } from './StatsRow'
+import { UpcomingSessionsCard } from './UpcomingSessionsCard'
+import { WeekCard } from './WeekCard'
 
 export function MentorDashboardPage() {
   const mentor = MENTOR_DIRECTORY.find((candidate) => candidate.id === DASHBOARD_MENTOR_ID)
@@ -15,7 +17,9 @@ export function MentorDashboardPage() {
       <StatsRow />
       <div className="grid items-stretch gap-5 lg:grid-cols-2">
         <EarningsCard />
+        <UpcomingSessionsCard />
       </div>
+      <WeekCard />
     </div>
   )
 }
