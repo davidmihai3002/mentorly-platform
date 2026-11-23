@@ -9,13 +9,15 @@ import {
   ROUTES,
 } from '@/constants'
 import { BOOKING_CARD_CLASS, MESSAGE_MAX_LENGTH, RESCHEDULE_TEXT } from '../constants'
-import { useBookingContext } from '../hooks'
+import { useBookingContext, useCheckoutState } from '../hooks'
 import type { BookingSelection } from '../types'
 import {
   buildBookingPath,
+  findFirstBookable,
   formatLongDate,
   getFirstFreeStart,
-  getTimeSlots,
+  getSlotEnd,
+  isSelectionBookable,
   parseIsoDate,
 } from '../utils'
 import { BookingNotFound } from './BookingNotFound'
@@ -25,15 +27,19 @@ import { MonthCalendar } from './MonthCalendar'
 import { SlotPanel } from './SlotPanel'
 
 export function ReschedulePage() {
-  const { mentor, selection, previous } = useBookingContext()
+  const checkout = useCheckoutState()
+  const { mentor, selection: requested, previous } = useBookingContext()
+  const selection =
+    mentor && requested && isSelectionBookable(mentor, requested)
+      ? requested
+      : mentor && findFirstBookable(mentor)
   const navigate = useNavigate()
   const messageId = useId()
   const [isSameSlot, setIsSameSlot] = useState(false)
   const previousDate = previous ? parseIsoDate(previous.date) : undefined
-  const previousSlot =
-    mentor && previousDate
-      ? getTimeSlots(mentor, previousDate).find((slot) => slot.start === previous?.start)
-      : undefined
+  const previousSlot = previous
+    ? { start: previous.start, end: getSlotEnd(previous.start) }
+    : undefined
 
   if (!mentor || !selection || !previous || !previousDate || !previousSlot)
     return <BookingNotFound />
@@ -54,6 +60,7 @@ export function ReschedulePage() {
       return
     }
     navigate(buildBookingPath(ROUTES.rescheduleConfirmed, mentor.id, selection, previous), {
+      state: checkout,
       viewTransition: true,
     })
   }
@@ -107,7 +114,7 @@ export function ReschedulePage() {
           rows={2}
           maxLength={MESSAGE_MAX_LENGTH}
           placeholder={RESCHEDULE_TEXT.messagePlaceholder}
-          className="w-full resize-y rounded-[10px] border border-border bg-card px-3 py-2 text-[13px] text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:outline-none"
+          className="w-full resize-y rounded-[10px] border border-border bg-card px-3 py-2 text-[13px] text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         />
       </div>
     </div>

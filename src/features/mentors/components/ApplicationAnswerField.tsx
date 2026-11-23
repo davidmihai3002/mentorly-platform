@@ -32,7 +32,7 @@ export function ApplicationAnswerField({
         placeholder={question.placeholder}
         aria-invalid={Boolean(error) || undefined}
         aria-describedby={error ? errorId : undefined}
-        className="min-h-[72px] w-full resize-y rounded-[10px] border border-border bg-card px-3 py-2.5 text-[13px] text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:outline-none aria-invalid:border-destructive"
+        className="min-h-[72px] w-full resize-y rounded-[10px] border border-border bg-card px-3 py-2.5 text-[13px] text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none aria-invalid:border-destructive"
         {...registration}
       />
       {error && (

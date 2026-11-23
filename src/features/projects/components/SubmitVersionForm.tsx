@@ -6,7 +6,7 @@ import { useSubmissionForm } from '../hooks'
 import { ProjectFileInput } from './ProjectFileInput'
 
 const FIELD_CLASS =
-  'w-full rounded-[10px] border border-border bg-card px-3 text-[13px] text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:outline-none aria-invalid:border-destructive'
+  'w-full rounded-[10px] border border-border bg-card px-3 text-[13px] text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none aria-invalid:border-destructive'
 
 export function SubmitVersionForm() {
   const { form, file, fileError, selectFile, submit, isSubmitted } = useSubmissionForm()

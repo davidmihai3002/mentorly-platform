@@ -11,14 +11,24 @@ import { getMentorProfilePath } from '@/utils'
 import { BOOKING_TEXT } from '../constants'
 import { useBookingContext } from '../hooks'
 import type { BookingSelection } from '../types'
-import { buildBookingPath, getFirstFreeStart, getSessionTopic } from '../utils'
+import {
+  buildBookingPath,
+  findFirstBookable,
+  getFirstFreeStart,
+  getSessionTopic,
+  isSelectionBookable,
+} from '../utils'
 import { BookingNotFound } from './BookingNotFound'
 import { BookingPageHeader } from './BookingPageHeader'
 import { MonthCalendar } from './MonthCalendar'
 import { SlotPanel } from './SlotPanel'
 
 export function BookingPage() {
-  const { mentor, selection } = useBookingContext()
+  const { mentor, selection: requested } = useBookingContext()
+  const selection =
+    mentor && requested && isSelectionBookable(mentor, requested)
+      ? requested
+      : mentor && findFirstBookable(mentor)
   const navigate = useNavigate()
 
   if (!mentor || !selection) return <BookingNotFound />

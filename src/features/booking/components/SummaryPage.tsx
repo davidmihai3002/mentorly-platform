@@ -13,7 +13,8 @@ import {
   buildBookingPath,
   formatLongDate,
   getSessionTopic,
-  getTimeSlots,
+  getSlotEnd,
+  isSelectionBookable,
   parseIsoDate,
 } from '../utils'
 import { BookingNotFound } from './BookingNotFound'
@@ -24,12 +25,10 @@ import { OrderLine } from './OrderLine'
 export function SummaryPage() {
   const { mentor, selection } = useBookingContext()
   const date = selection ? parseIsoDate(selection.date) : undefined
-  const slot =
-    mentor && date
-      ? getTimeSlots(mentor, date).find((item) => item.start === selection?.start)
-      : undefined
+  const slot = selection ? { start: selection.start, end: getSlotEnd(selection.start) } : undefined
 
-  if (!mentor || !selection || !date || !slot) return <BookingNotFound />
+  if (!mentor || !selection || !date || !slot || !isSelectionBookable(mentor, selection))
+    return <BookingNotFound />
 
   const topic = getSessionTopic(mentor)
   const price = `${mentor.pricePerSession} lei`

@@ -1,14 +1,17 @@
 import { z } from 'zod'
 import { MESSAGE_MAX_LENGTH, PROJECTS_TEXT } from '../constants'
 
-const HTTPS_URL = /^https:\/\/[^\s]+\.[^\s]+$/
+const HTTPS_URL = z.url({ protocol: /^https$/, hostname: z.regexes.domain })
 
 export const submissionSchema = z
   .object({
     repoUrl: z
       .string()
       .trim()
-      .refine((value) => value === '' || HTTPS_URL.test(value), PROJECTS_TEXT.invalidUrl),
+      .refine(
+        (value) => value === '' || HTTPS_URL.safeParse(value).success,
+        PROJECTS_TEXT.invalidUrl,
+      ),
     hasFile: z.boolean(),
     message: z.string().trim().max(MESSAGE_MAX_LENGTH, PROJECTS_TEXT.messageTooLong),
   })

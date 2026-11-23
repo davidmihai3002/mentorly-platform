@@ -1,8 +1,5 @@
 import { useLocation } from 'react-router'
-import { SAMPLE_STUDENT } from '@/constants'
 import type { CheckoutState } from '../types'
-
-const DEMO_CARD_LAST4 = '4242'
 
 function isCheckoutState(value: unknown): value is CheckoutState {
   if (typeof value !== 'object' || value === null) return false
@@ -14,13 +11,7 @@ function isCheckoutState(value: unknown): value is CheckoutState {
   )
 }
 
-export function useCheckoutState(): CheckoutState {
+export function useCheckoutState(): CheckoutState | undefined {
   const { state } = useLocation()
-  return isCheckoutState(state)
-    ? state
-    : {
-        firstName: SAMPLE_STUDENT.firstName,
-        email: SAMPLE_STUDENT.email,
-        cardLast4: DEMO_CARD_LAST4,
-      }
+  return isCheckoutState(state) ? state : undefined
 }

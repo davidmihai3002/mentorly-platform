@@ -3,6 +3,7 @@ export {
   formatLongDate,
   formatMonthTitle,
   formatShortDay,
+  lastBookableDay,
   parseIsoDate,
   startOfToday,
   toIsoDate,
@@ -11,9 +12,11 @@ export {
   buildMonthGrid,
   findFirstBookable,
   getFirstFreeStart,
+  getSlotEnd,
   getTimeSlots,
   isBookableDay,
-  resolveSelection,
+  isSelectionBookable,
+  parseSelection,
 } from './schedule'
 export { buildBookingPath } from './bookingPaths'
 export { getSessionTopic } from './getSessionTopic'

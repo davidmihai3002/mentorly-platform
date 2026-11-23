@@ -32,17 +32,18 @@ export function StarRatingInput({
       <legend className={cn('text-[13px] text-foreground', !isLegendVisible && 'sr-only')}>
         {legend}
       </legend>
-      <div className="flex gap-1.5">
+      <div className="-mx-1 flex">
         {STAR_VALUES.map((star) => (
           <label
             key={star}
-            className="cursor-pointer rounded-sm has-focus-visible:ring-3 has-focus-visible:ring-ring"
+            className="cursor-pointer rounded-sm p-1 has-focus-visible:ring-3 has-focus-visible:ring-ring"
           >
             <input
               type="radio"
               value={star}
               checked={value === star}
               aria-label={WRITE_REVIEW_TEXT.starLabel(star)}
+              aria-invalid={Boolean(error) || undefined}
               className="sr-only"
               {...registration}
             />

@@ -6,6 +6,15 @@ const CVC = /^\d{3,4}$/
 const POSTAL_CODE = /^\d{6}$/
 const CENTURY = 2000
 
+function passesLuhn(digits: string): boolean {
+  const sum = [...digits].reverse().reduce((total, char, index) => {
+    const digit = Number(char)
+    const doubled = index % 2 === 1 ? digit * 2 : digit
+    return total + (doubled > 9 ? doubled - 9 : doubled)
+  }, 0)
+  return sum % 10 === 0
+}
+
 function isFutureExpiry(value: string): boolean {
   const match = EXPIRY.exec(value)
   if (!match) return false
@@ -21,7 +30,10 @@ export const paymentSchema = z.object({
   cardNumber: z
     .string()
     .transform((value) => value.replace(/\s+/g, ''))
-    .refine((value) => CARD_DIGITS.test(value), 'Numărul cardului nu este valid.'),
+    .refine(
+      (value) => CARD_DIGITS.test(value) && passesLuhn(value),
+      'Numărul cardului nu este valid.',
+    ),
   expiry: z
     .string()
     .trim()

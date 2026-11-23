@@ -1,9 +1,8 @@
-import { AppLink } from '@/components'
+import { AppLink, RatingStars } from '@/components'
 import { PROFILE_LINK_CLASS, PROFILE_TEXT } from '../constants'
 import type { MentorProfile } from '../types'
 import { formatScore } from '@/utils'
 import { ProfileCard } from './ProfileCard'
-import { RatingStars } from './RatingStars'
 
 type ReviewsCardProps = {
   rating: number

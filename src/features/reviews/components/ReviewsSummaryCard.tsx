@@ -1,9 +1,8 @@
 import { cn } from 'cn'
-import { AppLink } from '@/components'
+import { AppLink, RatingStars } from '@/components'
 import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
 import { formatScore } from '@/utils'
 import { CRITERIA, REVIEWS_PAGE_TEXT, SUMMARY_SCORES } from '../constants'
-import { StarsDisplay } from './StarsDisplay'
 
 type ReviewsSummaryCardProps = {
   rating: number
@@ -22,7 +21,7 @@ export function ReviewsSummaryCard({
     <section className="grid gap-6 rounded-[16px] border border-border bg-card p-5 sm:grid-cols-[200px_minmax(0,1fr)] sm:p-6">
       <div className="flex flex-col gap-2">
         <p className="text-[32px] leading-none font-bold text-foreground">{ratingText}</p>
-        <StarsDisplay rating={rating} label={ratingText} />
+        <RatingStars rating={rating} label={ratingText} tone="blue" />
         <p className="text-xs text-muted-foreground">
           {REVIEWS_PAGE_TEXT.reviewCount(reviewCount)}
         </p>

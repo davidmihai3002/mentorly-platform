@@ -12,7 +12,7 @@ import {
   buildBookingPath,
   formatLongDate,
   getSessionTopic,
-  getTimeSlots,
+  getSlotEnd,
   parseIsoDate,
 } from '../utils'
 import { BookingNotFound } from './BookingNotFound'
@@ -24,10 +24,7 @@ export function ConfirmationPage() {
   const checkout = useCheckoutState()
   const downloadCalendar = useCalendarDownload()
   const date = selection ? parseIsoDate(selection.date) : undefined
-  const slot =
-    mentor && date
-      ? getTimeSlots(mentor, date).find((item) => item.start === selection?.start)
-      : undefined
+  const slot = selection ? { start: selection.start, end: getSlotEnd(selection.start) } : undefined
 
   if (!mentor || !selection || !date || !slot) return <BookingNotFound />
 
@@ -45,10 +42,10 @@ export function ConfirmationPage() {
           id="confirmation-title"
           className="text-[26px] leading-[1.2] font-bold tracking-[-0.02em] text-foreground"
         >
-          {CONFIRMATION_TEXT.greeting(checkout.firstName)}
+          {CONFIRMATION_TEXT.greeting(checkout?.firstName)}
         </h2>
         <p className="text-[13px] text-muted-foreground">
-          {CONFIRMATION_TEXT.emailSent(checkout.email)}
+          {CONFIRMATION_TEXT.emailSent(checkout?.email)}
         </p>
         <p className="text-lg font-bold text-foreground">
           {mentor.name} · {getSessionTopic(mentor)}
@@ -59,7 +56,7 @@ export function ConfirmationPage() {
           {CONFIRMATION_TEXT.sessionMeta}
         </p>
         <p className="text-xs text-link">
-          {CONFIRMATION_TEXT.reference(checkout.cardLast4, mentor.pricePerSession)}
+          {CONFIRMATION_TEXT.reference(mentor.pricePerSession, checkout?.cardLast4)}
         </p>
         <div className="grid gap-3 sm:grid-cols-2">
           <AppLink to={ROUTES.student} className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS)}>
@@ -89,6 +86,7 @@ export function ConfirmationPage() {
         {CONFIRMATION_TEXT.rescheduleHint}{' '}
         <AppLink
           to={buildBookingPath(ROUTES.reschedule, mentor.id, undefined, selection)}
+          state={checkout}
           className="rounded-sm underline underline-offset-2 hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
         >
           {CONFIRMATION_TEXT.rescheduleLink}

@@ -5,7 +5,13 @@ import { ROUTES } from '@/constants'
 import { BOOKING_CARD_CLASS, PAYMENT_TEXT } from '../constants'
 import { useBookingContext } from '../hooks'
 import type { CheckoutState } from '../types'
-import { buildBookingPath, formatLongDate, getTimeSlots, parseIsoDate } from '../utils'
+import {
+  buildBookingPath,
+  formatLongDate,
+  getSlotEnd,
+  isSelectionBookable,
+  parseIsoDate,
+} from '../utils'
 import { BookingNotFound } from './BookingNotFound'
 import { BookingPageHeader } from './BookingPageHeader'
 import { BookingSteps } from './BookingSteps'
@@ -16,12 +22,10 @@ export function PaymentPage() {
   const { mentor, selection } = useBookingContext()
   const navigate = useNavigate()
   const date = selection ? parseIsoDate(selection.date) : undefined
-  const slot =
-    mentor && date
-      ? getTimeSlots(mentor, date).find((item) => item.start === selection?.start)
-      : undefined
+  const slot = selection ? { start: selection.start, end: getSlotEnd(selection.start) } : undefined
 
-  if (!mentor || !selection || !date || !slot) return <BookingNotFound />
+  if (!mentor || !selection || !date || !slot || !isSelectionBookable(mentor, selection))
+    return <BookingNotFound />
 
   const price = `${mentor.pricePerSession} lei`
 

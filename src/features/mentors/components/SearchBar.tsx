@@ -31,13 +31,10 @@ export function SearchBar({ initialQuery, onSearch }: SearchBarProps) {
           maxLength={80}
           placeholder={SEARCH_TEXT.searchPlaceholder}
           onChange={(event) => setQuery(event.target.value)}
-          className="h-12 w-full rounded-[24px] border border-border bg-card pr-4 pl-10 text-sm text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:outline-none"
+          className="h-10 w-full rounded-[24px] border border-border bg-card pr-4 pl-10 text-sm text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
         />
       </label>
-      <button
-        type="submit"
-        className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'h-12 px-8')}
-      >
+      <button type="submit" className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'px-8')}>
         {SEARCH_TEXT.search}
       </button>
     </form>

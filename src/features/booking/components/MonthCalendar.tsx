@@ -7,6 +7,7 @@ import {
   buildMonthGrid,
   formatLongDate,
   formatMonthTitle,
+  lastBookableDay,
   parseIsoDate,
   startOfToday,
 } from '../utils'
@@ -25,6 +26,8 @@ export function MonthCalendar({ mentor, selectedDate, onSelect }: MonthCalendarP
   const [view, setView] = useState({ year: initial.getFullYear(), month: initial.getMonth() })
   const days = buildMonthGrid(mentor, view.year, view.month, today)
   const isCurrentMonth = view.year === today.getFullYear() && view.month === today.getMonth()
+  const lastDay = lastBookableDay(today)
+  const isLastMonth = view.year === lastDay.getFullYear() && view.month === lastDay.getMonth()
 
   function shiftMonth(delta: number) {
     setView((current) => {
@@ -54,8 +57,9 @@ export function MonthCalendar({ mentor, selectedDate, onSelect }: MonthCalendarP
         <button
           type="button"
           aria-label={BOOKING_TEXT.nextMonth}
+          disabled={isLastMonth}
           onClick={() => shiftMonth(1)}
-          className="grid size-8 place-items-center rounded-full text-link hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
+          className="grid size-8 place-items-center rounded-full text-link hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none disabled:opacity-30"
         >
           <ChevronRight aria-hidden="true" className="size-4" />
         </button>
@@ -68,7 +72,7 @@ export function MonthCalendar({ mentor, selectedDate, onSelect }: MonthCalendarP
             </span>
           ))}
         </div>
-        <ul className="contents">
+        <ul role="list" className="contents">
           {days.map((day, index) =>
             day ? (
               <li key={day.iso} className="grid place-items-center">

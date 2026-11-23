@@ -73,11 +73,16 @@ export const CONFIRMATION_TEXT = {
   title: 'Rezervarea ta este confirmată',
   subtitle: 'Totul este pregătit pentru următorul tău pas.',
   paid: (amount: number) => `Plată reușită · ${amount} lei`,
-  greeting: (name: string) => `Ne vedem la sesiune, ${name}!`,
-  emailSent: (email: string) => `Confirmarea și factura au fost trimise la ${email}.`,
+  greeting: (name?: string) => (name ? `Ne vedem la sesiune, ${name}!` : 'Ne vedem la sesiune!'),
+  emailSent: (email?: string) =>
+    email
+      ? `Confirmarea și factura au fost trimise la ${email}.`
+      : 'Confirmarea și factura au fost trimise pe email.',
   sessionMeta: '60 minute · Online · Europe/Bucharest',
-  reference: (last4: string, amount: number) =>
-    `Rezervare ML-2026-024 · Card •••• ${last4} · Achitat ${amount} lei`,
+  reference: (amount: number, last4?: string) =>
+    ['Rezervare ML-2026-024', last4 && `Card •••• ${last4}`, `Achitat ${amount} lei`]
+      .filter(Boolean)
+      .join(' · '),
   viewSession: 'Vezi sesiunea',
   addToCalendar: 'Adaugă în calendar',
   nextSteps: [
@@ -121,8 +126,8 @@ export const RESCHEDULE_TEXT = {
   previous: 'Interval anterior · eliberat',
   next: 'Noul interval · confirmat',
   meta: 'Ora României · Europe/Bucharest · Online · 60 minute',
-  notified: (email: string, amount: number) =>
-    `Mentorul a fost notificat. Confirmarea actualizată a fost trimisă la ${email}. Plata de ${amount} lei rămâne asociată sesiunii.`,
+  notified: (amount: number, email?: string) =>
+    `Mentorul a fost notificat. Confirmarea actualizată a fost trimisă ${email ? `la ${email}` : 'pe email'}. Plata de ${amount} lei rămâne asociată sesiunii.`,
   viewUpdated: 'Vezi sesiunea actualizată',
   updateCalendar: 'Actualizează calendarul',
 } as const

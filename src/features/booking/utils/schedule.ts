@@ -1,12 +1,18 @@
 import { MENTOR_SCHEDULES } from '@/constants'
 import type { DirectoryMentor } from '@/types'
-import type { CalendarDay, TimeSlot } from '../types'
-import { isWithinBookingWindow, parseIsoDate, startOfToday, toIsoDate } from './dates'
+import type { BookingSelection, CalendarDay, TimeSlot } from '../types'
+import {
+  BOOKING_WINDOW_DAYS,
+  daysBetween,
+  isWithinBookingWindow,
+  parseIsoDate,
+  startOfToday,
+  toIsoDate,
+} from './dates'
 
 const SLOT_MINUTES = 60
 const MINUTES_PER_HOUR = 60
 const DAYS_PER_WEEK = 7
-const LOOKAHEAD_DAYS = 60
 
 function toMinutes(time: string): number {
   const [hours, minutes] = time.split(':').map(Number)
@@ -23,7 +29,16 @@ function isDemoBusy(date: Date, slotIndex: number): boolean {
   return date.getDate() % 2 === 1 && slotIndex === 1
 }
 
-export function getTimeSlots(mentor: DirectoryMentor, date: Date): readonly TimeSlot[] {
+function hasStarted(date: Date, startMinutes: number, now: Date): boolean {
+  if (daysBetween(now, date) !== 0) return daysBetween(now, date) < 0
+  return startMinutes <= now.getHours() * MINUTES_PER_HOUR + now.getMinutes()
+}
+
+export function getTimeSlots(
+  mentor: DirectoryMentor,
+  date: Date,
+  now: Date = new Date(),
+): readonly TimeSlot[] {
   const window = MENTOR_SCHEDULES[mentor.availability].find(
     (slot) => slot.weekday === date.getDay(),
   )
@@ -34,7 +49,7 @@ export function getTimeSlots(mentor: DirectoryMentor, date: Date): readonly Time
     return {
       start: toTime(start),
       end: toTime(start + SLOT_MINUTES),
-      isBusy: isDemoBusy(date, index),
+      isBusy: isDemoBusy(date, index) || hasStarted(date, start, now),
     }
   })
 }
@@ -69,8 +84,11 @@ export function buildMonthGrid(
   return [...Array.from({ length: leadingBlanks }, () => null), ...days]
 }
 
-export function findFirstBookable(mentor: DirectoryMentor, today: Date = startOfToday()) {
-  for (let offset = 0; offset <= LOOKAHEAD_DAYS; offset += 1) {
+export function findFirstBookable(
+  mentor: DirectoryMentor,
+  today: Date = startOfToday(),
+): BookingSelection | undefined {
+  for (let offset = 0; offset <= BOOKING_WINDOW_DAYS; offset += 1) {
     const date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + offset)
     const slot = getTimeSlots(mentor, date).find((candidate) => !candidate.isBusy)
     if (slot) return { date: toIsoDate(date), start: slot.start }
@@ -78,22 +96,35 @@ export function findFirstBookable(mentor: DirectoryMentor, today: Date = startOf
   return undefined
 }
 
-export function resolveSelection(
+export function parseSelection(
   mentor: DirectoryMentor,
   dateValue: string | null,
   startValue: string | null,
-) {
+): BookingSelection | undefined {
   const date = parseIsoDate(dateValue)
-  const slot = date
-    ? getTimeSlots(mentor, date).find((candidate) => candidate.start === startValue)
-    : undefined
-  if (date && slot && !slot.isBusy && isBookableDay(mentor, date)) {
-    return { date: toIsoDate(date), start: slot.start }
-  }
-  return findFirstBookable(mentor)
+  if (!date) return undefined
+  const window = MENTOR_SCHEDULES[mentor.availability].find(
+    (slot) => slot.weekday === date.getDay(),
+  )
+  if (!window || !startValue) return undefined
+  const slotStarts = Array.from(
+    { length: (toMinutes(window.end) - toMinutes(window.start)) / SLOT_MINUTES },
+    (_, index) => toTime(toMinutes(window.start) + index * SLOT_MINUTES),
+  )
+  return slotStarts.includes(startValue) ? { date: toIsoDate(date), start: startValue } : undefined
+}
+
+export function isSelectionBookable(mentor: DirectoryMentor, selection: BookingSelection): boolean {
+  const date = parseIsoDate(selection.date)
+  if (!date || !isBookableDay(mentor, date)) return false
+  return getTimeSlots(mentor, date).some((slot) => slot.start === selection.start && !slot.isBusy)
 }
 
 export function getFirstFreeStart(mentor: DirectoryMentor, iso: string): string {
   const date = parseIsoDate(iso)
   return (date ? getTimeSlots(mentor, date).find((slot) => !slot.isBusy)?.start : undefined) ?? ''
+}
+
+export function getSlotEnd(start: string): string {
+  return toTime(toMinutes(start) + SLOT_MINUTES)
 }

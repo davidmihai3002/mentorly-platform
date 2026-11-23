@@ -42,7 +42,7 @@ export function AvailabilityCard({ availability, schedule, bookingPath }: Availa
         id={selectId}
         value={introSlot}
         onChange={(event) => setIntroSlot(event.target.value)}
-        className="w-fit rounded-sm bg-transparent text-[13px] text-link focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
+        className="min-h-8 w-fit rounded-[8px] border border-border bg-card px-2 text-[13px] text-link focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
       >
         {availability.introSlots.map((slot) => (
           <option key={slot} value={slot}>

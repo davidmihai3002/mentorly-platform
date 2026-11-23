@@ -21,8 +21,12 @@ export function buildCalendarFile(
     'PRODID:-//Mentorly//Rezervare//RO',
     'BEGIN:VEVENT',
     `UID:${mentor.id}-${toIcsStamp(date, slot.start)}@mentorly.ro`,
-    `DTSTART;TZID=Europe/Bucharest:${toIcsStamp(date, slot.start)}`,
-    `DTEND;TZID=Europe/Bucharest:${toIcsStamp(date, slot.end)}`,
+    `DTSTAMP:${new Date()
+      .toISOString()
+      .replace(/[-:]/g, '')
+      .replace(/\.\d{3}/, '')}`,
+    `DTSTART:${toIcsStamp(date, slot.start)}`,
+    `DTEND:${toIcsStamp(date, slot.end)}`,
     `SUMMARY:${escapeIcs(`Sesiune de mentorat cu ${mentor.name}`)}`,
     'END:VEVENT',
     'END:VCALENDAR',

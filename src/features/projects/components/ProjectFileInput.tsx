@@ -44,7 +44,7 @@ export function ProjectFileInput({ file, error, onSelect }: ProjectFileInputProp
               type="button"
               aria-label={PROJECTS_TEXT.removeFile}
               onClick={() => onSelect(null)}
-              className="rounded-sm text-muted-foreground hover:text-destructive focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
+              className="rounded-sm p-1 text-muted-foreground hover:text-destructive focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
             >
               <X aria-hidden="true" className="size-3.5" />
             </button>

@@ -9,12 +9,20 @@ type FiltersPanelProps = {
   initialFilters: MentorFilters
   onApply: (filters: MentorFilters) => void
   onReset: () => void
+  id?: string
+  className?: string
 }
 
 const FILTER_KEYS = Object.keys(FILTER_LABELS) as FilterKey[]
 const NUMERIC_KEYS: readonly FilterKey[] = ['maxPrice', 'minRating']
 
-export function FiltersPanel({ initialFilters, onApply, onReset }: FiltersPanelProps) {
+export function FiltersPanel({
+  initialFilters,
+  onApply,
+  onReset,
+  id,
+  className,
+}: FiltersPanelProps) {
   const [draft, setDraft] = useState(initialFilters)
 
   function handleChange(key: FilterKey, value: string | undefined) {
@@ -31,7 +39,8 @@ export function FiltersPanel({ initialFilters, onApply, onReset }: FiltersPanelP
     <form
       aria-labelledby="filters-title"
       onSubmit={handleSubmit}
-      className={cn(SEARCH_PANEL_CLASS, 'flex flex-col gap-4 p-5')}
+      id={id}
+      className={cn(SEARCH_PANEL_CLASS, 'flex flex-col gap-4 p-5', className)}
     >
       <h2 id="filters-title" className="text-xl font-bold tracking-[-0.02em] text-foreground">
         {SEARCH_TEXT.filtersTitle}

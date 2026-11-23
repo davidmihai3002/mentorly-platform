@@ -35,6 +35,7 @@ export const PROJECTS_TEXT = {
   invalidUrl: 'Linkul trebuie să înceapă cu https://.',
   fileType: 'Fișierul trebuie să fie PDF sau ZIP.',
   fileSize: 'Fișierul poate avea cel mult 20 MB.',
+  fileEmpty: 'Fișierul este gol.',
   messageTooLong: 'Mesajul poate avea cel mult 1000 de caractere.',
   viewFeedback: 'Vezi feedbackul',
   empty: 'Nu ai proiecte în această categorie.',

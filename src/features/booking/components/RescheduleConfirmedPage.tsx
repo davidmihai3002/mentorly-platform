@@ -5,29 +5,25 @@ import {
   ROUNDED_OUTLINE_CLASS,
   ROUNDED_PRIMARY_CLASS,
   ROUTES,
-  SAMPLE_STUDENT,
 } from '@/constants'
 import { BOOKING_CARD_CLASS, BOOKING_TAG_CLASS, RESCHEDULE_TEXT } from '../constants'
-import { useBookingContext, useCalendarDownload } from '../hooks'
-import { buildBookingPath, formatDayMonthYear, getTimeSlots, parseIsoDate } from '../utils'
+import { useBookingContext, useCheckoutState, useCalendarDownload } from '../hooks'
+import { buildBookingPath, formatDayMonthYear, getSlotEnd, parseIsoDate } from '../utils'
 import { BookingNotFound } from './BookingNotFound'
 import { BookingPageHeader } from './BookingPageHeader'
 import { SlotSummaryBox } from './SlotSummaryBox'
 import { SuccessMark } from './SuccessMark'
 
 export function RescheduleConfirmedPage() {
+  const checkout = useCheckoutState()
   const { mentor, selection, previous } = useBookingContext()
   const downloadCalendar = useCalendarDownload()
   const date = selection ? parseIsoDate(selection.date) : undefined
   const previousDate = previous ? parseIsoDate(previous.date) : undefined
-  const slot =
-    mentor && date
-      ? getTimeSlots(mentor, date).find((item) => item.start === selection?.start)
-      : undefined
-  const previousSlot =
-    mentor && previousDate
-      ? getTimeSlots(mentor, previousDate).find((item) => item.start === previous?.start)
-      : undefined
+  const slot = selection ? { start: selection.start, end: getSlotEnd(selection.start) } : undefined
+  const previousSlot = previous
+    ? { start: previous.start, end: getSlotEnd(previous.start) }
+    : undefined
 
   if (!mentor || !selection || !date || !slot || !previousDate || !previousSlot)
     return <BookingNotFound />
@@ -67,7 +63,7 @@ export function RescheduleConfirmedPage() {
         </div>
         <p className="text-[11px] text-muted-foreground">{RESCHEDULE_TEXT.meta}</p>
         <p className="text-[13px] text-foreground">
-          {RESCHEDULE_TEXT.notified(SAMPLE_STUDENT.email, mentor.pricePerSession)}
+          {RESCHEDULE_TEXT.notified(mentor.pricePerSession, checkout?.email)}
         </p>
         <div className="grid gap-3 sm:grid-cols-2">
           <AppLink

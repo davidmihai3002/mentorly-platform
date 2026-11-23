@@ -12,6 +12,7 @@ export const SEARCH_TEXT = {
   searchPlaceholder: 'Caută după nume, rol sau competență',
   search: 'Caută',
   filtersTitle: 'Filtre',
+  filtersToggle: (count: number) => (count ? `Filtre (${count})` : 'Filtre'),
   apply: 'Aplică filtrele',
   reset: 'Resetează',
   anyOption: 'Oricare',

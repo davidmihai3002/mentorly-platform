@@ -21,6 +21,7 @@ export function WriteReviewPage() {
   const commentId = useId()
   const commentHintId = useId()
   const commentErrorId = useId()
+  const consentErrorId = useId()
   const mentor = MENTOR_DIRECTORY.find((candidate) => candidate.id === mentorId)
   const reviewsPath = mentor
     ? generatePath(ROUTES.mentorReviews, { mentorId: mentor.id })
@@ -111,7 +112,7 @@ export function WriteReviewPage() {
             placeholder={WRITE_REVIEW_TEXT.commentPlaceholder}
             aria-invalid={Boolean(errors.comment) || undefined}
             aria-describedby={commentDescription}
-            className="w-full resize-y rounded-[10px] border border-border bg-card px-3 py-2.5 text-[13px] text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/30 focus-visible:outline-none aria-invalid:border-destructive"
+            className="w-full resize-y rounded-[10px] border border-border bg-card px-3 py-2.5 text-[13px] text-foreground placeholder:text-muted-foreground focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none aria-invalid:border-destructive"
             {...form.register('comment')}
           />
           <p id={commentHintId} className="text-[11px] text-muted-foreground">
@@ -129,12 +130,15 @@ export function WriteReviewPage() {
               type="checkbox"
               className="mt-0.5 size-4 accent-primary"
               aria-invalid={Boolean(errors.consent) || undefined}
+              aria-describedby={errors.consent ? consentErrorId : undefined}
               {...form.register('consent')}
             />
             {WRITE_REVIEW_TEXT.consent}
           </label>
           {errors.consent && (
-            <p className="text-xs font-medium text-destructive">{errors.consent.message}</p>
+            <p id={consentErrorId} className="text-xs font-medium text-destructive">
+              {errors.consent.message}
+            </p>
           )}
         </div>
         <div className="grid gap-3 sm:grid-cols-2">

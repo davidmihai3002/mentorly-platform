@@ -1,7 +1,7 @@
+import { RatingStars } from '@/components'
 import { useId, useState } from 'react'
 import { CRITERIA, REVIEW_LIMITS, REVIEWS_PAGE_TEXT } from '../constants'
 import type { DetailedReview } from '../types'
-import { StarsDisplay } from './StarsDisplay'
 
 type ReviewItemProps = {
   review: DetailedReview
@@ -26,7 +26,7 @@ export function ReviewItem({ review }: ReviewItemProps) {
         </span>
       </div>
       <p className="flex items-center gap-1.5 text-primary">
-        <StarsDisplay rating={review.rating} label={ratingText} />
+        <RatingStars rating={review.rating} label={ratingText} tone="blue" />
         <span aria-hidden="true" className="text-sm">
           · {ratingText}
         </span>
@@ -43,7 +43,7 @@ export function ReviewItem({ review }: ReviewItemProps) {
           type="button"
           aria-pressed={isHelpful}
           onClick={() => setIsHelpful((current) => !current)}
-          className="rounded-sm hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none aria-pressed:font-semibold aria-pressed:text-primary"
+          className="min-h-6 rounded-sm hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none aria-pressed:font-semibold aria-pressed:text-primary"
         >
           {REVIEWS_PAGE_TEXT.helpful(review.helpfulCount + (isHelpful ? 1 : 0))}
         </button>

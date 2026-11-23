@@ -1,6 +1,6 @@
 const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/
 const LOCALE = 'ro-RO'
-const BOOKING_WINDOW_DAYS = 60
+export const BOOKING_WINDOW_DAYS = 60
 const DAY_MS = 86_400_000
 
 export function toIsoDate(date: Date): string {
@@ -20,9 +20,21 @@ export function startOfToday(now: Date = new Date()): Date {
   return new Date(now.getFullYear(), now.getMonth(), now.getDate())
 }
 
+function toUtcDay(date: Date): number {
+  return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / DAY_MS
+}
+
+export function daysBetween(from: Date, to: Date): number {
+  return toUtcDay(to) - toUtcDay(from)
+}
+
 export function isWithinBookingWindow(date: Date, today: Date): boolean {
-  const diff = (date.getTime() - today.getTime()) / DAY_MS
+  const diff = daysBetween(today, date)
   return diff >= 0 && diff <= BOOKING_WINDOW_DAYS
+}
+
+export function lastBookableDay(today: Date): Date {
+  return new Date(today.getFullYear(), today.getMonth(), today.getDate() + BOOKING_WINDOW_DAYS)
 }
 
 export function formatLongDate(date: Date): string {
