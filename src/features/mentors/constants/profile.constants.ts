@@ -59,6 +59,11 @@ export const PROFILE_TEXT = {
     'Răspunsurile mă ajută să pregătesc discuția de potrivire. Nu solicit plata înainte de a ne cunoaște.',
   answerRequired: 'Scrie un răspuns de cel puțin 10 caractere.',
   answerTooLong: 'Răspunsul poate avea cel mult 1000 de caractere.',
+  sentTitle: 'Cererea a fost trimisă',
+  sentText:
+    'În așteptarea răspunsului mentorului. Trimiterea cererii nu înseamnă acceptare automată și nu declanșează plata. În acest prototip, cererea este doar simulată.',
+  sentClose: 'Închide confirmarea',
+  sentExplore: 'Explorează alți mentori',
   submitted: 'Aplicația a fost trimisă. Mentorul îți răspunde personal după ce o citește.',
   notFoundTitle: 'Mentorul nu a fost găsit',
   notFoundText: 'Profilul poate fi mutat sau linkul este greșit.',

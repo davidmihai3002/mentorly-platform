@@ -4,6 +4,7 @@ import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
 import { PROFILE_TEXT } from '../constants'
 import { useApplicationForm } from '../hooks'
 import type { MentorProfile } from '../types'
+import { ApplicationSentDialog } from './ApplicationSentDialog'
 import { AdmissionTestFields } from './AdmissionTestFields'
 import { ApplicationAnswerField } from './ApplicationAnswerField'
 import { ProfileCard } from './ProfileCard'
@@ -17,7 +18,8 @@ const WIDE_QUESTION_INDEX = 0
 
 export function ApplicationForm({ profile, anchorId }: ApplicationFormProps) {
   const questions = [...profile.applicationQuestions, ...(profile.admissionTest?.questions ?? [])]
-  const { form, submit, isSubmitted } = useApplicationForm(questions)
+  const { form, submit, isSubmitted, isConfirmOpen, setIsConfirmOpen } =
+    useApplicationForm(questions)
   const { errors } = form.formState
   const firstName = getFirstName(profile.mentor.name)
 
@@ -59,6 +61,11 @@ export function ApplicationForm({ profile, anchorId }: ApplicationFormProps) {
       >
         {isSubmitted ? PROFILE_TEXT.submitted : ''}
       </p>
+      <ApplicationSentDialog
+        mentorName={profile.mentor.name}
+        open={isConfirmOpen}
+        onOpenChange={setIsConfirmOpen}
+      />
     </form>
   )
 }
