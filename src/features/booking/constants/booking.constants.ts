@@ -136,11 +136,6 @@ export const SESSION_TOPICS: Readonly<Record<string, string>> = {
   'mihai-popescu': 'Frontend & React',
 }
 
-export const BOOKING_PARAM_KEYS = {
-  date: 'data',
-  start: 'ora',
-  previousDate: 'data_veche',
-  previousStart: 'ora_veche',
-} as const
+export { BOOKING_PARAM_KEYS } from '@/constants'
 
 export const MESSAGE_MAX_LENGTH = 500

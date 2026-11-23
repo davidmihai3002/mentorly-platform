@@ -67,7 +67,7 @@ export function StudentProfilePage() {
         <div className="flex flex-col gap-5">
           {mentor && <MentorshipCard mentor={mentor} />}
           <GoalsCard />
-          {mentor && <SessionsCard mentorId={mentor.id} mentorName={mentor.name} />}
+          {mentor && <SessionsCard mentor={mentor} />}
         </div>
       </div>
     </div>

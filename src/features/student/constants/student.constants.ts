@@ -42,6 +42,13 @@ export const STUDENT_PROFILE_TEXT = {
   sessionsNote: (mentor: string) =>
     `Ora României · Sesiuni cu ${mentor}, în intervalele sale săptămânale.`,
   allBookings: 'Vezi toate programările',
+  sessionDialogTitle: (mentor: string) => `Sesiunea ta cu ${mentor}`,
+  sessionDialogMeta: '60 minute · Online · Europe/Bucharest',
+  sessionDialogText: (price: number) =>
+    `Sesiune individuală suplimentară · ${price} lei. Este separată de pachetul lunar de 4 sesiuni, pentru a evita o plată dublă.`,
+  sessionReschedule: 'Reprogramează sesiunea',
+  sessionBookExtra: 'Rezervă o sesiune suplimentară',
+  sessionBack: 'Înapoi la spațiul meu',
   goalStatus: {
     done: 'Finalizat',
     'in-progress': 'În progres',
@@ -93,6 +100,11 @@ export const SESSION_HISTORY: readonly SessionEntry[] = [
     month: 'Noi',
     title: 'Code review & integrare API',
     meta: 'Luni · 18:00–19:00 · Online',
+    upcoming: {
+      date: '2026-11-23',
+      start: '18:00',
+      label: 'Luni, 23 noiembrie 2026 · 18:00–19:00',
+    },
   },
   {
     day: '16',

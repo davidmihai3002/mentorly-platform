@@ -1,13 +1,17 @@
+import { cn } from 'cn'
 import { AppLink, SectionCard } from '@/components'
 import { getBookingPath } from '@/utils'
+import type { DirectoryMentor } from '@/types'
 import { SESSION_HISTORY, STUDENT_PROFILE_TEXT } from '../constants'
+import { SessionDetailsDialog } from './SessionDetailsDialog'
 
 type SessionsCardProps = {
-  mentorId: string
-  mentorName: string
+  mentor: DirectoryMentor
 }
 
-export function SessionsCard({ mentorId, mentorName }: SessionsCardProps) {
+const SESSION_TITLE_CLASS = 'text-[13px] font-semibold text-foreground'
+
+export function SessionsCard({ mentor }: SessionsCardProps) {
   return (
     <SectionCard title={STUDENT_PROFILE_TEXT.sessionsTitle}>
       <ul className="flex flex-col gap-3">
@@ -18,17 +22,35 @@ export function SessionsCard({ mentorId, mentorName }: SessionsCardProps) {
               <span className="text-[9px] uppercase">{session.month}</span>
             </span>
             <div>
-              <p className="text-[13px] font-semibold text-foreground">{session.title}</p>
+              {session.upcoming ? (
+                <SessionDetailsDialog
+                  mentor={mentor}
+                  session={session.upcoming}
+                  trigger={
+                    <button
+                      type="button"
+                      className={cn(
+                        SESSION_TITLE_CLASS,
+                        'rounded-sm text-left underline-offset-2 hover:text-link hover:underline focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none',
+                      )}
+                    >
+                      {session.title}
+                    </button>
+                  }
+                />
+              ) : (
+                <p className={SESSION_TITLE_CLASS}>{session.title}</p>
+              )}
               <p className="text-[11px] text-muted-foreground">{session.meta}</p>
             </div>
           </li>
         ))}
       </ul>
       <p className="text-[11px] text-muted-foreground">
-        {STUDENT_PROFILE_TEXT.sessionsNote(mentorName)}
+        {STUDENT_PROFILE_TEXT.sessionsNote(mentor.name)}
       </p>
       <AppLink
-        to={getBookingPath(mentorId)}
+        to={getBookingPath(mentor.id)}
         className="w-fit rounded-sm text-xs font-medium text-link hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
       >
         {STUDENT_PROFILE_TEXT.allBookings} <span aria-hidden="true">→</span>
