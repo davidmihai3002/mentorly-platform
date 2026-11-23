@@ -8,15 +8,23 @@ import { AuthDivider } from './AuthDivider'
 import { AuthPasswordField } from './AuthPasswordField'
 import { AuthTextField } from './AuthTextField'
 import { GoogleAuthButton } from './GoogleAuthButton'
+import { RoleChoiceDialog } from './RoleChoiceDialog'
 
 export function LoginForm() {
-  const { form, submit, logCurrentValues } = useLoginForm()
+  const {
+    form,
+    submit,
+    logCurrentValues,
+    continueWithGoogle,
+    isRoleChoiceOpen,
+    setIsRoleChoiceOpen,
+  } = useLoginForm()
   const { errors } = form.formState
   const styles = AUTH_DENSITY_STYLES.compact
 
   return (
     <div className={styles.stack}>
-      <GoogleAuthButton density="compact" onClick={() => logCurrentValues('google')} />
+      <GoogleAuthButton density="compact" onClick={continueWithGoogle} />
       <AuthDivider density="compact" />
 
       <form onSubmit={(event) => void submit(event)} noValidate className={styles.stack}>
@@ -44,6 +52,7 @@ export function LoginForm() {
       </form>
 
       <AuthCardFooter onRegisterClick={logCurrentValues} />
+      <RoleChoiceDialog open={isRoleChoiceOpen} onOpenChange={setIsRoleChoiceOpen} />
     </div>
   )
 }

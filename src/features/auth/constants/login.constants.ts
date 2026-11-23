@@ -1,6 +1,10 @@
 export const LOGIN_TEXT = {
   pageTitle: 'Autentificare – Mentorly',
   title: 'Autentificare',
+  roleTitle: 'Cum vrei să continui?',
+  roleText: 'Alege rolul tău. Autentificarea este simulată și nu solicită date reale.',
+  roleStudent: 'Sunt cursant',
+  roleMentor: 'Sunt mentor',
   google: 'Continuă cu Google',
   divider: 'sau cu email',
   emailLabel: 'Adresă de email',
