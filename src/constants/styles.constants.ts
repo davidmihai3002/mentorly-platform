@@ -28,3 +28,9 @@ export const ROUNDED_OUTLINE_CLASS =
 
 export const TEXT_LINK_CLASS =
   'inline-flex items-center gap-1 rounded-sm text-[13px] text-link transition-colors hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none'
+
+export const DIALOG_PRIMARY_CLASS =
+  'inline-flex min-h-10 w-full items-center justify-center rounded-[24px] border border-primary-border bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-primary transition-colors hover:bg-primary/90 focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none'
+
+export const DIALOG_OUTLINE_CLASS =
+  'inline-flex min-h-10 w-full items-center justify-center rounded-[24px] border border-brand-navy-border bg-card px-5 text-[13px] font-medium text-foreground transition-colors hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none'

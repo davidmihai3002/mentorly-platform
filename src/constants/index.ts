@@ -13,6 +13,8 @@ export { COMPONENTS_PREVIEW_TEXT } from './preview.constants'
 export { LOGOUT_STATE, MAIN_CONTENT_ID, ROUTES } from './routes.constants'
 export { FOOTER_LINKS, NAV_LINKS, NOT_FOUND_TEXT, SITE_TEXT } from './site.constants'
 export {
+  DIALOG_OUTLINE_CLASS,
+  DIALOG_PRIMARY_CLASS,
   HEADER_GHOST_CLASS,
   HEADER_PRIMARY_CLASS,
   LAYOUT_CONTAINER_CLASS,
