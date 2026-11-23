@@ -94,7 +94,9 @@ export const router = createBrowserRouter([
         children: [
           {
             path: ROUTES.student,
-            element: <AccountPlaceholderPage {...ACCOUNT_PLACEHOLDER_TEXT.student} />,
+            lazy: async () => ({
+              Component: (await import('@/features/student')).StudentProfilePage,
+            }),
           },
           {
             path: ROUTES.quiz,

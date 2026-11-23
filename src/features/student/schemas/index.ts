@@ -1,0 +1,1 @@
+export { studentSchema } from './studentSchema'
