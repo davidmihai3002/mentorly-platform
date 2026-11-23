@@ -1,9 +1,8 @@
 import { createBrowserRouter } from 'react-router'
-import { ACCOUNT_PLACEHOLDER_TEXT, ROUTES } from '@/constants'
+import { ROUTES } from '@/constants'
 import { AuthLayout } from '../layouts/AuthLayout'
 import { PublicLayout } from '../layouts/PublicLayout'
 import { RootLayout } from '../layouts/RootLayout'
-import { AccountPlaceholderPage } from '../pages/AccountPlaceholderPage'
 import { RouteFallback } from '../pages/RouteFallback'
 
 export const router = createBrowserRouter([
@@ -160,7 +159,9 @@ export const router = createBrowserRouter([
           },
           {
             path: ROUTES.mentor,
-            element: <AccountPlaceholderPage {...ACCOUNT_PLACEHOLDER_TEXT.mentor} />,
+            lazy: async () => ({
+              Component: (await import('@/features/mentor-dashboard')).MentorDashboardPage,
+            }),
           },
         ],
       },
