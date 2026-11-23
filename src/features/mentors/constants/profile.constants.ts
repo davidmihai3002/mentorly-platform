@@ -37,6 +37,7 @@ export const PROFILE_TEXT = {
   achievementTitle: 'Lucruri de care sunt mândru',
   certificationsTitle: 'Certificări',
   reviewsTitle: 'Ce spun cursanții',
+  allReviews: 'Toate recenziile',
   reviewsCount: (count: number) => `${count} de recenzii`,
   applyTitle: (firstName: string) => `Aplică la mentoratul cu ${firstName}`,
   applySubtitle:

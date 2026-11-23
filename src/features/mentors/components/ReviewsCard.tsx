@@ -1,6 +1,7 @@
-import { PROFILE_TEXT } from '../constants'
+import { AppLink } from '@/components'
+import { PROFILE_LINK_CLASS, PROFILE_TEXT } from '../constants'
 import type { MentorProfile } from '../types'
-import { formatScore } from '../utils'
+import { formatScore } from '@/utils'
 import { ProfileCard } from './ProfileCard'
 import { RatingStars } from './RatingStars'
 
@@ -8,13 +9,21 @@ type ReviewsCardProps = {
   rating: number
   reviewCount: number
   reviews: MentorProfile['reviews']
+  reviewsPath: string
 }
 
 const MAX_SCORE = 5
 
-export function ReviewsCard({ rating, reviewCount, reviews }: ReviewsCardProps) {
+export function ReviewsCard({ rating, reviewCount, reviews, reviewsPath }: ReviewsCardProps) {
   return (
-    <ProfileCard title={PROFILE_TEXT.reviewsTitle}>
+    <ProfileCard
+      title={PROFILE_TEXT.reviewsTitle}
+      aside={
+        <AppLink to={reviewsPath} className={PROFILE_LINK_CLASS}>
+          {PROFILE_TEXT.allReviews} <span aria-hidden="true">→</span>
+        </AppLink>
+      }
+    >
       <div className="grid gap-6 sm:grid-cols-[160px_minmax(0,1fr)]">
         <div className="flex flex-col gap-1.5">
           <p className="text-foreground">

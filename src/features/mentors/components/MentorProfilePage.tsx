@@ -1,6 +1,6 @@
 import { cn } from 'cn'
-import { useParams } from 'react-router'
-import { LAYOUT_CONTAINER_CLASS, MENTOR_SCHEDULES } from '@/constants'
+import { generatePath, useParams } from 'react-router'
+import { LAYOUT_CONTAINER_CLASS, MENTOR_SCHEDULES, ROUTES } from '@/constants'
 import { getBookingPath } from '@/utils'
 import { PROFILE_TEXT } from '../constants'
 import { getMentorProfile } from '../utils'
@@ -55,6 +55,7 @@ export function MentorProfilePage() {
             rating={profile.mentor.rating}
             reviewCount={profile.mentor.reputation?.reviewCount ?? 0}
             reviews={profile.reviews}
+            reviewsPath={generatePath(ROUTES.mentorReviews, { mentorId: profile.mentor.id })}
           />
           <ApplicationForm key={profile.mentor.id} profile={profile} anchorId={APPLY_ANCHOR} />
         </>
