@@ -13,6 +13,8 @@ export const ROUTES = {
   quiz: '/test-potrivire',
   quizResults: '/test-potrivire/recomandari',
   topMentors: '/top-mentori',
+  mentors: '/mentori',
+  mentorProfile: '/mentori/:mentorId',
   mentor: '/mentor',
   componentsPreview: '/dev/componente',
 } as const

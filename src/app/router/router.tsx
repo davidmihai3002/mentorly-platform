@@ -103,6 +103,12 @@ export const router = createBrowserRouter([
             lazy: async () => ({ Component: (await import('@/features/quiz')).TopMentorsPage }),
           },
           {
+            path: ROUTES.mentors,
+            lazy: async () => ({
+              Component: (await import('@/features/mentors')).MentorSearchPage,
+            }),
+          },
+          {
             path: ROUTES.mentor,
             element: <AccountPlaceholderPage {...ACCOUNT_PLACEHOLDER_TEXT.mentor} />,
           },
