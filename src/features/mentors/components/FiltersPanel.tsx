@@ -1,7 +1,7 @@
 import { cn } from 'cn'
 import { useState, type FormEvent } from 'react'
 import { ROUNDED_BUTTON_CLASS, ROUNDED_OUTLINE_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
-import { FILTER_LABELS, SEARCH_PANEL_CLASS, SEARCH_TEXT } from '../constants'
+import { ANY_VALUE, FILTER_LABELS, SEARCH_PANEL_CLASS, SEARCH_TEXT } from '../constants'
 import type { FilterKey, MentorFilters } from '../types'
 import { FilterSelect } from './FilterSelect'
 
@@ -26,7 +26,9 @@ export function FiltersPanel({
   const [draft, setDraft] = useState(initialFilters)
 
   function handleChange(key: FilterKey, value: string | undefined) {
-    const parsed = value !== undefined && NUMERIC_KEYS.includes(key) ? Number(value) : value
+    const isAny = value === ANY_VALUE
+    const parsed =
+      value === undefined || isAny ? undefined : NUMERIC_KEYS.includes(key) ? Number(value) : value
     setDraft((current) => ({ ...current, [key]: parsed }))
   }
 

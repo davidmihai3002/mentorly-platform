@@ -1,6 +1,13 @@
-import type { AvailabilityId, DomainId, MentorLanguage } from '@/types'
-import { FILTER_OPTIONS, SEARCH_PARAM_KEYS, SORT_OPTIONS } from '../constants'
-import type { FilterKey, MentorFilters, MentorSearch, ViewId } from '../types'
+import type { MentorLanguage } from '@/types'
+import { ANY_VALUE, FILTER_OPTIONS, SEARCH_PARAM_KEYS, SORT_OPTIONS } from '../constants'
+import type {
+  AvailabilityFilterId,
+  DomainFilterId,
+  FilterKey,
+  MentorFilters,
+  MentorSearch,
+  ViewId,
+} from '../types'
 
 const MAX_QUERY_LENGTH = 80
 const VIEWS: readonly ViewId[] = ['grid', 'list']
@@ -12,7 +19,7 @@ function readOption(params: URLSearchParams, key: FilterKey): string | undefined
 
 function readNumber(params: URLSearchParams, key: FilterKey): number | undefined {
   const value = readOption(params, key)
-  return value === undefined ? undefined : Number(value)
+  return value === undefined || value === ANY_VALUE ? undefined : Number(value)
 }
 
 export function parseMentorSearch(params: URLSearchParams): MentorSearch {
@@ -21,11 +28,11 @@ export function parseMentorSearch(params: URLSearchParams): MentorSearch {
   return {
     query: (params.get(SEARCH_PARAM_KEYS.query) ?? '').trim().slice(0, MAX_QUERY_LENGTH),
     filters: {
-      domain: readOption(params, 'domain') as DomainId | undefined,
+      domain: readOption(params, 'domain') as DomainFilterId | undefined,
       language: readOption(params, 'language') as MentorLanguage | undefined,
       maxPrice: readNumber(params, 'maxPrice'),
       minRating: readNumber(params, 'minRating'),
-      availability: readOption(params, 'availability') as AvailabilityId | undefined,
+      availability: readOption(params, 'availability') as AvailabilityFilterId | undefined,
     },
     sort: SORT_OPTIONS.find((option) => option.value === sort)?.value ?? 'relevance',
     view: VIEWS.find((candidate) => candidate === view) ?? 'grid',

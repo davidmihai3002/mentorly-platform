@@ -1,4 +1,4 @@
-import { AVAILABILITY_LABELS, DOMAINS, LANGUAGE_LABELS } from '@/constants'
+import { LANGUAGE_LABELS } from '@/constants'
 import type { FilterKey, SelectOption, SortId } from '../types'
 
 export const SEARCH_TEXT = {
@@ -36,22 +36,46 @@ export const FILTER_LABELS: Readonly<Record<FilterKey, string>> = {
   availability: 'Disponibilitate',
 }
 
-export const PRICE_LIMITS = [150, 200, 250, 300] as const
+export const ANY_VALUE = 'orice'
 
-export const RATING_LIMITS = [4.5, 4.8] as const
+export const DOMAIN_FILTER_LABELS: Readonly<Record<string, string>> = {
+  'it-frontend': 'IT · Frontend',
+  react: 'IT · React',
+  software: 'IT · Software',
+}
+
+export const AVAILABILITY_WEEKDAYS: Readonly<Record<string, readonly number[]>> = {
+  'mon-thu': [1, 4],
+  mon: [1],
+  thu: [4],
+  weekend: [6, 0],
+}
+
+export const PRICE_LIMITS = [180, 200, 250] as const
+
+export const RATING_LIMITS = [4.8, 4.9] as const
 
 export const FILTER_OPTIONS: Readonly<Record<FilterKey, readonly SelectOption[]>> = {
-  domain: DOMAINS.map((domain) => ({ value: domain.id, label: domain.label })),
+  domain: [
+    { value: 'it', label: 'Toate domeniile IT' },
+    { value: 'it-frontend', label: 'IT · Frontend' },
+    { value: 'react', label: 'React' },
+    { value: 'software', label: 'Software' },
+  ],
   language: Object.entries(LANGUAGE_LABELS).map(([value, label]) => ({ value, label })),
-  maxPrice: PRICE_LIMITS.map((limit) => ({ value: String(limit), label: `Până la ${limit} lei` })),
+  maxPrice: [
+    ...PRICE_LIMITS.map((limit) => ({ value: String(limit), label: `Până la ${limit} lei` })),
+    { value: ANY_VALUE, label: 'Orice preț' },
+  ],
   minRating: RATING_LIMITS.map((limit) => ({
     value: String(limit),
     label: `★ ${String(limit).replace('.', ',')} și peste`,
   })),
   availability: [
     { value: 'mon-thu', label: 'Luni sau joi' },
-    { value: 'tue-fri', label: 'Marți sau vineri' },
-    { value: 'weekend', label: AVAILABILITY_LABELS.weekend },
+    { value: 'mon', label: 'Luni' },
+    { value: 'thu', label: 'Joi' },
+    { value: 'weekend', label: 'Weekend' },
   ],
 }
 

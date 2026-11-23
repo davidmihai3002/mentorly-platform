@@ -1,5 +1,7 @@
+import { MENTOR_SCHEDULES } from '@/constants'
 import type { DirectoryMentor } from '@/types'
 import { findDomain } from '@/utils'
+import { AVAILABILITY_WEEKDAYS, DOMAIN_FILTER_LABELS } from '../constants'
 import type { MentorFilters, SortId } from '../types'
 
 function matchesQuery(mentor: DirectoryMentor, query: string): boolean {
@@ -16,13 +18,28 @@ function matchesQuery(mentor: DirectoryMentor, query: string): boolean {
   return haystack.includes(needle)
 }
 
+function matchesDomain(mentor: DirectoryMentor, domain: MentorFilters['domain']): boolean {
+  if (!domain) return true
+  if (domain === 'it') return mentor.domainId === 'it-frontend'
+  return mentor.domainLabel === DOMAIN_FILTER_LABELS[domain]
+}
+
+function matchesAvailability(
+  mentor: DirectoryMentor,
+  availability: MentorFilters['availability'],
+): boolean {
+  if (!availability) return true
+  const weekdays = AVAILABILITY_WEEKDAYS[availability] ?? []
+  return MENTOR_SCHEDULES[mentor.availability].some((slot) => weekdays.includes(slot.weekday))
+}
+
 function matchesFilters(mentor: DirectoryMentor, filters: MentorFilters): boolean {
   return (
-    (!filters.domain || mentor.domainId === filters.domain) &&
+    matchesDomain(mentor, filters.domain) &&
     (!filters.language || mentor.languages.includes(filters.language)) &&
     (filters.maxPrice === undefined || mentor.pricePerSession <= filters.maxPrice) &&
     (filters.minRating === undefined || mentor.rating >= filters.minRating) &&
-    (!filters.availability || mentor.availability === filters.availability)
+    matchesAvailability(mentor, filters.availability)
   )
 }
 
