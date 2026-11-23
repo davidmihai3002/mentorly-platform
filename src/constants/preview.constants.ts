@@ -11,4 +11,13 @@ export const COMPONENTS_PREVIEW_TEXT = {
   optionTitle: 'Primul meu rol în domeniu',
   optionDescription: 'Construiesc un portofoliu și mă pregătesc pentru interviuri.',
   cardExamples: 'Exemple de carduri pe specialități',
+  dialogs: 'Ferestre de alegere',
+  dialogTitle: 'Disponibilitate',
+  dialogTrigger: 'Alege disponibilitatea',
+  dialogOptions: [
+    { value: 'mon-thu', label: 'Luni sau joi' },
+    { value: 'mon', label: 'Luni' },
+    { value: 'thu', label: 'Joi' },
+    { value: 'weekend', label: 'Weekend' },
+  ],
 } as const

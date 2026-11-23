@@ -1,6 +1,13 @@
 import { cn } from 'cn'
 import { useState } from 'react'
-import { buttonVariants, MentorCard, OptionCard, OptionGroup, SpecialtyCard } from '@/components'
+import {
+  buttonVariants,
+  ChoiceDialog,
+  MentorCard,
+  OptionCard,
+  OptionGroup,
+  SpecialtyCard,
+} from '@/components'
 import {
   COMPONENTS_PREVIEW_TEXT as TEXT,
   DOMAINS,
@@ -18,6 +25,7 @@ type OptionValue = (typeof OPTION_VALUES)[number]
 
 export function ComponentsPreviewPage() {
   const [selected, setSelected] = useState<OptionValue>('second')
+  const [availability, setAvailability] = useState<string>()
 
   return (
     <div className={cn(LAYOUT_CONTAINER_CLASS, 'space-y-8 py-8')}>
@@ -26,6 +34,21 @@ export function ComponentsPreviewPage() {
         <h1 className="text-[28px] font-bold text-foreground">{TEXT.title}</h1>
         <p className="text-sm text-muted-foreground">{TEXT.subtitle}</p>
       </header>
+
+      <ComponentsPreviewSection title={TEXT.dialogs} variant="dashed">
+        <ChoiceDialog
+          title={TEXT.dialogTitle}
+          options={TEXT.dialogOptions}
+          value={availability}
+          onChange={setAvailability}
+          trigger={
+            <button type="button" className={cn(buttonVariants(), PILL_OUTLINE_CLASS)}>
+              {TEXT.dialogOptions.find((option) => option.value === availability)?.label ??
+                TEXT.dialogTrigger}
+            </button>
+          }
+        />
+      </ComponentsPreviewSection>
 
       <ComponentsPreviewSection title={TEXT.specialties} variant="panel">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
