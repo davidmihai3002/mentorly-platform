@@ -12,6 +12,7 @@ export type SessionEntry = {
   readonly title: string
   readonly meta: string
   readonly upcoming?: UpcomingSession
+  readonly isRateable?: boolean
 }
 
 export type UpcomingSession = {

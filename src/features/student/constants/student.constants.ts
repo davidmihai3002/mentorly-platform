@@ -49,6 +49,12 @@ export const STUDENT_PROFILE_TEXT = {
   sessionReschedule: 'Reprogramează sesiunea',
   sessionBookExtra: 'Rezervă o sesiune suplimentară',
   sessionBack: 'Înapoi la spațiul meu',
+  quickRating: 'Evaluare rapidă',
+  quickRatingTitle: 'Alege evaluarea',
+  quickRatingCancel: 'Renunță',
+  quickRatingOption: (stars: number, max: number) =>
+    `${'★'.repeat(stars)}${'☆'.repeat(max - stars)} · ${stars} / ${max}`,
+  quickRatingDone: (stars: string, max: number) => `Ai evaluat sesiunea cu ${stars} / ${max}.`,
   goalStatus: {
     done: 'Finalizat',
     'in-progress': 'În progres',
@@ -111,6 +117,7 @@ export const SESSION_HISTORY: readonly SessionEntry[] = [
     month: 'Noi',
     title: 'Testarea componentelor React',
     meta: 'Luni · 18:00–19:00 · Finalizată',
+    isRateable: true,
   },
 ]
 
@@ -125,3 +132,5 @@ export const PROFILE_LIMITS = {
   cityMax: 60,
   aboutMax: 600,
 } as const
+
+export const QUICK_RATING_MAX = 5

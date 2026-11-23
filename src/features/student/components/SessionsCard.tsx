@@ -3,6 +3,7 @@ import { AppLink, SectionCard } from '@/components'
 import { getBookingPath } from '@/utils'
 import type { DirectoryMentor } from '@/types'
 import { SESSION_HISTORY, STUDENT_PROFILE_TEXT } from '../constants'
+import { QuickRating } from './QuickRating'
 import { SessionDetailsDialog } from './SessionDetailsDialog'
 
 type SessionsCardProps = {
@@ -42,6 +43,7 @@ export function SessionsCard({ mentor }: SessionsCardProps) {
                 <p className={SESSION_TITLE_CLASS}>{session.title}</p>
               )}
               <p className="text-[11px] text-muted-foreground">{session.meta}</p>
+              {session.isRateable && <QuickRating />}
             </div>
           </li>
         ))}
