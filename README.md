@@ -46,7 +46,8 @@ src/
 
 ## Screenshots
 
-Each PR adds desktop and mobile screenshots of the screens it changes to [`docs/screenshots`](docs/screenshots/README.md).
+<img width="360" height="2441" alt="profil-cursant-mobil" src="https://github.com/user-attachments/assets/a55a6fde-abe3-4c08-aa36-90e16113f74a" />
+<img width="1024" height="1423" alt="profil-cursant-desktop" src="https://github.com/user-attachments/assets/327e8ea9-6316-454e-a56c-eb349696e064" />
 
 ## Routes
 
