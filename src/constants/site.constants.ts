@@ -13,6 +13,7 @@ export const SITE_TEXT = {
   openMenu: 'Deschide meniul',
   closeMenu: 'Închide meniul',
   mobileNavLabel: 'Navigare mobilă',
+  opensInNewTab: '(se deschide într-o filă nouă)',
 } as const
 
 export const NAV_LINKS = [
@@ -37,7 +38,6 @@ export const NOT_FOUND_TEXT = {
 } as const
 
 export const ACCOUNT_PLACEHOLDER_TEXT = {
-  student: { pageTitle: 'Contul de cursant – Mentorly', title: 'Contul de cursant' },
   mentor: { pageTitle: 'Contul de mentor – Mentorly', title: 'Contul de mentor' },
   comingSoon: 'Această secțiune va fi disponibilă în curând.',
 } as const

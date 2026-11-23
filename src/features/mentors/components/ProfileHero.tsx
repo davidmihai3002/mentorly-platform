@@ -1,9 +1,8 @@
-import { RatingStars } from '@/components'
+import { ExternalLinkItem, RatingStars } from '@/components'
 import { cn } from 'cn'
 import { Handshake, UserRound } from 'lucide-react'
 import { PROFILE_CARD_CLASS, PROFILE_TAG_CLASS, PROFILE_TEXT } from '../constants'
 import type { MentorProfile } from '../types'
-import { ExternalLinkItem } from './ExternalLinkItem'
 
 type ProfileHeroProps = {
   profile: MentorProfile

@@ -1,5 +1,6 @@
 import { AppLink, RatingStars } from '@/components'
-import { PROFILE_LINK_CLASS, PROFILE_TEXT } from '../constants'
+import { TEXT_LINK_CLASS } from '@/constants'
+import { PROFILE_TEXT } from '../constants'
 import type { MentorProfile } from '../types'
 import { formatScore } from '@/utils'
 import { ProfileCard } from './ProfileCard'
@@ -18,7 +19,7 @@ export function ReviewsCard({ rating, reviewCount, reviews, reviewsPath }: Revie
     <ProfileCard
       title={PROFILE_TEXT.reviewsTitle}
       aside={
-        <AppLink to={reviewsPath} className={PROFILE_LINK_CLASS}>
+        <AppLink to={reviewsPath} className={TEXT_LINK_CLASS}>
           {PROFILE_TEXT.allReviews} <span aria-hidden="true">→</span>
         </AppLink>
       }

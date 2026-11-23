@@ -1,10 +1,10 @@
+import { ExternalLinkItem } from '@/components'
 import { BookOpen } from 'lucide-react'
 import type { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { PROFILE_TAG_CLASS, PROFILE_TEXT } from '../constants'
 import type { ApplicationValues } from '../hooks'
 import type { MentorProfile } from '../types'
 import { ApplicationAnswerField } from './ApplicationAnswerField'
-import { ExternalLinkItem } from './ExternalLinkItem'
 import { ProfileCard } from './ProfileCard'
 
 type AdmissionTestFieldsProps = {

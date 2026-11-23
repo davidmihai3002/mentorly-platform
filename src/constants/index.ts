@@ -28,4 +28,5 @@ export {
   ROUNDED_OUTLINE_CLASS,
   ROUNDED_PRIMARY_CLASS,
   TAG_CLASS,
+  TEXT_LINK_CLASS,
 } from './styles.constants'

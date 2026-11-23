@@ -1,6 +1,6 @@
+import { ExternalLinkItem } from '@/components'
 import { PROFILE_TEXT } from '../constants'
 import type { MentorProfile } from '../types'
-import { ExternalLinkItem } from './ExternalLinkItem'
 import { ProfileCard } from './ProfileCard'
 
 type ExperienceCardProps = {

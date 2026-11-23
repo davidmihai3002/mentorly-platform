@@ -7,6 +7,3 @@ export const PROFILE_CARD_CLASS = 'rounded-[16px] border border-border bg-card p
 
 export const PROFILE_TAG_CLASS =
   'inline-flex min-h-6 items-center rounded-[12px] bg-tag px-2.5 text-[11px] text-foreground'
-
-export const PROFILE_LINK_CLASS =
-  'inline-flex items-center gap-1 rounded-sm text-[13px] text-link transition-colors hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none'

@@ -44,6 +44,10 @@ src/
     index.ts          public feature barrel
 ```
 
+## Screenshots
+
+Each PR adds desktop and mobile screenshots of the screens it changes to [`docs/screenshots`](docs/screenshots/README.md).
+
 ## Routes
 
 | Path                                  | Page                                                |
@@ -65,7 +69,7 @@ src/
 | `/cursant/rezervare/:id`              | Booking calendar → summary → payment → confirmation |
 | `/cursant/rezervare/:id/reprogramare` | Reschedule a session                                |
 | `/cursant/proiecte`                   | My projects + feedback                              |
-| `/cursant`                            | Student account (placeholder)                       |
+| `/cursant`                            | Student profile (inline editing)                    |
 | `/test-potrivire`                     | Matching quiz (4 steps)                             |
 | `/test-potrivire/recomandari`         | Top 3 recommended mentors                           |
 | `/top-mentori`                        | Top mentors with domain filter                      |
