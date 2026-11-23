@@ -29,6 +29,7 @@ export const TOP_MENTORS_TEXT = {
   progressText:
     'Selecție orientativă după evaluări, sesiuni finalizate și feedbackul cursanților. Profiluri și indicatori ilustrativi.',
   findMatch: 'Găsește mentorul potrivit',
+  exploreAll: 'Explorează toți mentorii',
   empty: 'Nu avem încă mentori de top în acest domeniu.',
   resultCount: (count: number) => (count === 1 ? '1 mentor afișat' : `${count} mentori afișați`),
 } as const

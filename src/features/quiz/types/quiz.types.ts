@@ -1,4 +1,4 @@
-import type { DomainId, Mentor } from '@/types'
+import type { DirectoryMentor, DomainId } from '@/types'
 
 export type QuizStepId = 'goal' | 'level' | 'domain' | 'pace'
 
@@ -36,13 +36,14 @@ export type QuizStep = {
   readonly options: readonly QuizOption[]
 }
 
-export type QuizMentor = Mentor & {
+export type QuizMatchProfile = {
   readonly focusLabel: string
   readonly topLabel?: string
   readonly goals: readonly GoalId[]
   readonly levels: readonly LevelId[]
   readonly reasons: readonly string[]
-  readonly experienceYears: number
 }
+
+export type QuizMentor = DirectoryMentor & QuizMatchProfile
 
 export type DomainFilterId = 'all' | 'it-product' | 'management' | 'hr' | 'business'

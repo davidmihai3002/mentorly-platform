@@ -34,6 +34,12 @@ export const router = createBrowserRouter([
             path: ROUTES.partners,
             lazy: async () => ({ Component: (await import('@/features/landing')).PartnersPage }),
           },
+          {
+            path: ROUTES.mentorProfile,
+            lazy: async () => ({
+              Component: (await import('@/features/mentors')).MentorProfilePage,
+            }),
+          },
           ...(import.meta.env.DEV
             ? [
                 {
@@ -101,6 +107,54 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.topMentors,
             lazy: async () => ({ Component: (await import('@/features/quiz')).TopMentorsPage }),
+          },
+          {
+            path: ROUTES.mentors,
+            lazy: async () => ({
+              Component: (await import('@/features/mentors')).MentorSearchPage,
+            }),
+          },
+          {
+            path: ROUTES.booking,
+            lazy: async () => ({ Component: (await import('@/features/booking')).BookingPage }),
+          },
+          {
+            path: ROUTES.bookingSummary,
+            lazy: async () => ({ Component: (await import('@/features/booking')).SummaryPage }),
+          },
+          {
+            path: ROUTES.bookingPayment,
+            lazy: async () => ({ Component: (await import('@/features/booking')).PaymentPage }),
+          },
+          {
+            path: ROUTES.bookingConfirmed,
+            lazy: async () => ({
+              Component: (await import('@/features/booking')).ConfirmationPage,
+            }),
+          },
+          {
+            path: ROUTES.reschedule,
+            lazy: async () => ({ Component: (await import('@/features/booking')).ReschedulePage }),
+          },
+          {
+            path: ROUTES.rescheduleConfirmed,
+            lazy: async () => ({
+              Component: (await import('@/features/booking')).RescheduleConfirmedPage,
+            }),
+          },
+          {
+            path: ROUTES.mentorReviews,
+            lazy: async () => ({
+              Component: (await import('@/features/reviews')).MentorReviewsPage,
+            }),
+          },
+          {
+            path: ROUTES.writeReview,
+            lazy: async () => ({ Component: (await import('@/features/reviews')).WriteReviewPage }),
+          },
+          {
+            path: ROUTES.projects,
+            lazy: async () => ({ Component: (await import('@/features/projects')).ProjectsPage }),
           },
           {
             path: ROUTES.mentor,

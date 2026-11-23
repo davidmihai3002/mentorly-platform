@@ -7,6 +7,7 @@ import {
   ROUNDED_PRIMARY_CLASS,
   ROUTES,
 } from '@/constants'
+import { getMentorProfilePath } from '@/utils'
 import { QUIZ_MENTORS, RESULTS_TEXT } from '../constants'
 import {
   hasAnyAnswer,
@@ -35,7 +36,12 @@ export function QuizResultsPage() {
       <ul className="grid gap-4 md:grid-cols-3">
         {recommendations.map((mentor) => (
           <li key={mentor.id} className="flex flex-col gap-3">
-            <MentorCard mentor={mentor} headingLevel="h2" className="flex-1" />
+            <MentorCard
+              mentor={mentor}
+              headingLevel="h2"
+              profileHref={getMentorProfilePath(mentor.id)}
+              className="flex-1"
+            />
             <MatchReasonsCard mentor={mentor} />
           </li>
         ))}
@@ -47,7 +53,7 @@ export function QuizResultsPage() {
         >
           {RESULTS_TEXT.adjustAnswers}
         </AppLink>
-        <AppLink to={ROUTES.topMentors} className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS)}>
+        <AppLink to={ROUTES.mentors} className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS)}>
           {RESULTS_TEXT.exploreAll}
         </AppLink>
       </div>

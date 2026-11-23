@@ -1,0 +1,6 @@
+export { BookingPage } from './BookingPage'
+export { ConfirmationPage } from './ConfirmationPage'
+export { PaymentPage } from './PaymentPage'
+export { RescheduleConfirmedPage } from './RescheduleConfirmedPage'
+export { ReschedulePage } from './ReschedulePage'
+export { SummaryPage } from './SummaryPage'

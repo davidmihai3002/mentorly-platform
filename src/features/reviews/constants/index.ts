@@ -1,0 +1,9 @@
+export {
+  CRITERIA,
+  REVIEW_LIMITS,
+  REVIEWS_PAGE_TEXT,
+  SAMPLE_REVIEWS,
+  SUMMARY_SCORES,
+  UNAVAILABLE_TEXT,
+  WRITE_REVIEW_TEXT,
+} from './reviews.constants'

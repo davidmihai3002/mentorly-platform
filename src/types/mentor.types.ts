@@ -31,3 +31,19 @@ export type Mentor = {
 export type MentorCardVariant = 'grid' | 'list'
 
 export type HeadingLevel = 'h2' | 'h3'
+
+export type MentorLanguage = 'ro' | 'en'
+
+export type AvailabilityId = 'mon-thu' | 'tue-fri' | 'weekend'
+
+export type WeeklySlot = {
+  readonly weekday: number
+  readonly start: string
+  readonly end: string
+}
+
+export type DirectoryMentor = Mentor & {
+  readonly languages: readonly MentorLanguage[]
+  readonly availability: AvailabilityId
+  readonly experienceYears: number
+}

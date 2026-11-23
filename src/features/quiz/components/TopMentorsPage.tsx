@@ -1,7 +1,13 @@
 import { cn } from 'cn'
 import { useId, useState } from 'react'
 import { AppLink, MentorCard } from '@/components'
-import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, ROUTES } from '@/constants'
+import {
+  ROUNDED_BUTTON_CLASS,
+  ROUNDED_OUTLINE_CLASS,
+  ROUNDED_PRIMARY_CLASS,
+  ROUTES,
+} from '@/constants'
+import { getMentorProfilePath } from '@/utils'
 import { QUIZ_CARD_CLASS, QUIZ_MENTORS, TOP_MENTORS_TEXT } from '../constants'
 import type { DomainFilterId } from '../types'
 import { filterTopMentors } from '../utils'
@@ -26,7 +32,11 @@ export function TopMentorsPage() {
           <ul className="grid gap-4 md:grid-cols-3">
             {mentors.map((mentor) => (
               <li key={mentor.id} className="flex flex-col">
-                <MentorCard mentor={mentor} headingLevel="h2" />
+                <MentorCard
+                  mentor={mentor}
+                  headingLevel="h2"
+                  profileHref={getMentorProfilePath(mentor.id)}
+                />
               </li>
             ))}
           </ul>
@@ -46,12 +56,17 @@ export function TopMentorsPage() {
         </h2>
         <p className="text-[13px] text-muted-foreground">{TOP_MENTORS_TEXT.progressText}</p>
       </section>
-      <AppLink
-        to={ROUTES.quiz}
-        className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'w-full sm:w-1/2')}
-      >
-        {TOP_MENTORS_TEXT.findMatch}
-      </AppLink>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <AppLink to={ROUTES.quiz} className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS)}>
+          {TOP_MENTORS_TEXT.findMatch}
+        </AppLink>
+        <AppLink
+          to={ROUTES.mentors}
+          className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_OUTLINE_CLASS, 'text-sm')}
+        >
+          {TOP_MENTORS_TEXT.exploreAll}
+        </AppLink>
+      </div>
     </div>
   )
 }

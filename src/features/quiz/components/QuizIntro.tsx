@@ -48,7 +48,7 @@ export function QuizIntro({ shouldFocus, onStart }: QuizIntroProps) {
             {QUIZ_TEXT.start} <span aria-hidden="true">→</span>
           </button>
           <AppLink
-            to={ROUTES.topMentors}
+            to={ROUTES.mentors}
             className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_OUTLINE_CLASS, 'text-sm')}
           >
             {QUIZ_TEXT.exploreMentors}

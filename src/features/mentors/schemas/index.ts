@@ -1,0 +1,1 @@
+export { buildApplicationSchema } from './applicationSchema'
