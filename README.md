@@ -45,8 +45,8 @@ src/
 ```
 
 ## Screenshots
-
-Each PR adds desktop and mobile screenshots of the screens it changes to [`docs/screenshots`](docs/screenshots/README.md).
+<img width="360" height="2043" alt="dashboard-mentor-mobil" src="https://github.com/user-attachments/assets/43de2edc-5d0e-4367-8e05-e0f95b221192" />
+<img width="1024" height="1177" alt="dashboard-mentor-desktop" src="https://github.com/user-attachments/assets/83c5c9af-2477-4871-aa98-96ff2e3e97b4" />
 
 ## Routes
 
