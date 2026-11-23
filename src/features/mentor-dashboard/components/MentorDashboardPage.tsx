@@ -1,6 +1,7 @@
 import { MENTOR_DIRECTORY } from '@/constants'
 import { DASHBOARD_MENTOR_ID, DASHBOARD_TEXT } from '../constants'
 import { DashboardHeader } from './DashboardHeader'
+import { EarningsCard } from './EarningsCard'
 import { StatsRow } from './StatsRow'
 
 export function MentorDashboardPage() {
@@ -12,6 +13,9 @@ export function MentorDashboardPage() {
       <title>{DASHBOARD_TEXT.pageTitle}</title>
       <DashboardHeader firstName={firstName} />
       <StatsRow />
+      <div className="grid items-stretch gap-5 lg:grid-cols-2">
+        <EarningsCard />
+      </div>
     </div>
   )
 }
