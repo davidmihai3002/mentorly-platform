@@ -38,7 +38,6 @@ export const NOT_FOUND_TEXT = {
 } as const
 
 export const ACCOUNT_PLACEHOLDER_TEXT = {
-  student: { pageTitle: 'Contul de cursant – Mentorly', title: 'Contul de cursant' },
   mentor: { pageTitle: 'Contul de mentor – Mentorly', title: 'Contul de mentor' },
   comingSoon: 'Această secțiune va fi disponibilă în curând.',
 } as const

@@ -1,3 +1,4 @@
+import { SAMPLE_STUDENT } from '@/constants'
 import type { GoalStatus, LearningGoal, SessionEntry, StudentDetails } from '../types'
 
 export const STUDENT_PROFILE_TEXT = {
@@ -33,11 +34,13 @@ export const STUDENT_PROFILE_TEXT = {
   viewMentor: 'Vezi profilul mentorului',
   openGroup: 'Deschide grupul',
   goalsTitle: 'Obiective și progres',
-  goalsMeta: '3 din 5 obiective îndeplinite · actualizat pe 9 noiembrie',
+  goalsMeta: (done: number, total: number) =>
+    `${done} din ${total} obiective îndeplinite · actualizat pe 9 noiembrie`,
   progressLabel: 'Progres obiective',
   viewProjects: 'Vezi proiectele și feedbackul',
   sessionsTitle: 'Sesiuni și istoric',
-  sessionsNote: 'Ora României · Sesiuni cu Mihai Popescu, în intervalele sale săptămânale.',
+  sessionsNote: (mentor: string) =>
+    `Ora României · Sesiuni cu ${mentor}, în intervalele sale săptămânale.`,
   allBookings: 'Vezi toate programările',
   goalStatus: {
     done: 'Finalizat',
@@ -51,15 +54,15 @@ export const STUDENT_PROFILE_TEXT = {
     about: 'Despre mine',
   },
   errors: {
-    fullName: 'Introdu un nume de 2–60 de caractere.',
-    careerGoal: 'Descrie obiectivul în 5–120 de caractere.',
-    city: 'Introdu localitatea (2–60 de caractere).',
-    about: 'Scrie cel mult 600 de caractere.',
+    fullName: (min: number, max: number) => `Introdu un nume de ${min}–${max} de caractere.`,
+    careerGoal: (min: number, max: number) => `Descrie obiectivul în ${min}–${max} de caractere.`,
+    city: (min: number, max: number) => `Introdu localitatea (${min}–${max} de caractere).`,
+    about: (max: number) => `Scrie cel mult ${max} de caractere.`,
   },
 } as const
 
 export const INITIAL_STUDENT: StudentDetails = {
-  fullName: 'Andreea Marin',
+  fullName: SAMPLE_STUDENT.fullName,
   careerGoal: 'primul meu rol de Frontend Developer',
   city: 'Cluj-Napoca',
   about:
@@ -101,4 +104,12 @@ export const SESSION_HISTORY: readonly SessionEntry[] = [
 
 export const ACTIVE_MENTOR_ID = 'mihai-popescu'
 
-export const PROFILE_LIMITS = { aboutMax: 600 } as const
+export const PROFILE_LIMITS = {
+  nameMin: 2,
+  nameMax: 60,
+  goalMin: 5,
+  goalMax: 120,
+  cityMin: 2,
+  cityMax: 60,
+  aboutMax: 600,
+} as const

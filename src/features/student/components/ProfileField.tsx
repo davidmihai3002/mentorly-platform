@@ -41,7 +41,7 @@ export function ProfileField({
         <input id={id} className={`${FIELD_CLASS} h-10`} {...aria} {...registration} />
       )}
       {error && (
-        <p id={errorId} className="text-xs font-medium text-destructive">
+        <p id={errorId} role="alert" className="text-xs font-medium text-destructive">
           {error}
         </p>
       )}

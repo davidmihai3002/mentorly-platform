@@ -36,11 +36,11 @@ export function MentorshipCard({ mentor }: MentorshipCardProps) {
         </div>
       </div>
       <p className="text-[13px] text-foreground">{STUDENT_PROFILE_TEXT.program}</p>
-      <dl className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-[11px] text-muted-foreground">
+      <ul className="grid grid-cols-2 gap-x-4 gap-y-0.5 text-[11px] text-muted-foreground">
         {STUDENT_PROFILE_TEXT.mentorshipFacts.flat().map((fact) => (
-          <dd key={fact}>{fact}</dd>
+          <li key={fact}>{fact}</li>
         ))}
-      </dl>
+      </ul>
       <div className="flex flex-wrap gap-3">
         <AppLink
           to={getMentorProfilePath(mentor.id)}

@@ -5,9 +5,10 @@ import { SectionCard } from './SectionCard'
 
 type SessionsCardProps = {
   mentorId: string
+  mentorName: string
 }
 
-export function SessionsCard({ mentorId }: SessionsCardProps) {
+export function SessionsCard({ mentorId, mentorName }: SessionsCardProps) {
   return (
     <SectionCard title={STUDENT_PROFILE_TEXT.sessionsTitle}>
       <ul className="flex flex-col gap-3">
@@ -24,7 +25,9 @@ export function SessionsCard({ mentorId }: SessionsCardProps) {
           </li>
         ))}
       </ul>
-      <p className="text-[11px] text-muted-foreground">{STUDENT_PROFILE_TEXT.sessionsNote}</p>
+      <p className="text-[11px] text-muted-foreground">
+        {STUDENT_PROFILE_TEXT.sessionsNote(mentorName)}
+      </p>
       <AppLink
         to={getBookingPath(mentorId)}
         className="w-fit rounded-sm text-xs font-medium text-link hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"

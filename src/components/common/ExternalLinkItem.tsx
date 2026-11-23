@@ -1,6 +1,6 @@
 import { cn } from 'cn'
 import { ExternalLink } from 'lucide-react'
-import { SITE_TEXT } from '@/constants'
+import { SITE_TEXT, TEXT_LINK_CLASS } from '@/constants'
 
 type ExternalLinkItemProps = {
   link: { readonly label: string; readonly href: string }
@@ -13,10 +13,7 @@ export function ExternalLinkItem({ link, className }: ExternalLinkItemProps) {
       href={link.href}
       target="_blank"
       rel="noopener noreferrer"
-      className={cn(
-        'inline-flex items-center gap-1 rounded-sm text-[13px] text-link transition-colors hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none',
-        className,
-      )}
+      className={cn(TEXT_LINK_CLASS, className)}
     >
       {link.label}
       <ExternalLink aria-hidden="true" className="size-3.5" />

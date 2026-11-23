@@ -1,4 +1,5 @@
 import { cn } from 'cn'
+import { useEffect, useRef } from 'react'
 import { MENTOR_DIRECTORY, ROUNDED_BUTTON_CLASS, ROUNDED_OUTLINE_CLASS } from '@/constants'
 import { ACTIVE_MENTOR_ID, STUDENT_PROFILE_TEXT } from '../constants'
 import { useStudentProfile } from '../hooks'
@@ -13,6 +14,12 @@ import { StudentHero } from './StudentHero'
 
 export function StudentProfilePage() {
   const profile = useStudentProfile()
+  const editButtonRef = useRef<HTMLButtonElement>(null)
+  const { isEditing, hasClosedEditor } = profile
+
+  useEffect(() => {
+    if (!isEditing && hasClosedEditor) editButtonRef.current?.focus()
+  }, [isEditing, hasClosedEditor])
   const mentor = MENTOR_DIRECTORY.find((candidate) => candidate.id === ACTIVE_MENTOR_ID)
 
   return (
@@ -24,6 +31,7 @@ export function StudentProfilePage() {
         </h1>
         {!profile.isEditing && (
           <button
+            ref={editButtonRef}
             type="button"
             onClick={profile.startEditing}
             className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_OUTLINE_CLASS, 'min-h-9 text-sm')}
@@ -59,7 +67,7 @@ export function StudentProfilePage() {
         <div className="flex flex-col gap-5">
           {mentor && <MentorshipCard mentor={mentor} />}
           <GoalsCard />
-          <SessionsCard mentorId={ACTIVE_MENTOR_ID} />
+          {mentor && <SessionsCard mentorId={mentor.id} mentorName={mentor.name} />}
         </div>
       </div>
     </div>

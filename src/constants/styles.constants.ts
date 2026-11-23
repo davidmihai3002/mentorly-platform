@@ -25,3 +25,6 @@ export const ROUNDED_PRIMARY_CLASS =
 
 export const ROUNDED_OUTLINE_CLASS =
   'border-brand-navy-border bg-card text-foreground hover:bg-muted'
+
+export const TEXT_LINK_CLASS =
+  'inline-flex items-center gap-1 rounded-sm text-[13px] text-link transition-colors hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none'

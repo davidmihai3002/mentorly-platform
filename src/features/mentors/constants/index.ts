@@ -11,7 +11,6 @@ export {
 } from './search.constants'
 export {
   PROFILE_CARD_CLASS,
-  PROFILE_LINK_CLASS,
   PROFILE_TAG_CLASS,
   SEARCH_FIELD_CLASS,
   SEARCH_PANEL_CLASS,
