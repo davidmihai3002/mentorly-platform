@@ -1,15 +1,19 @@
-import type { AvailabilityId, DomainId, MentorLanguage } from '@/types'
+import type { MentorLanguage } from '@/types'
+
+export type DomainFilterId = 'it' | 'it-frontend' | 'react' | 'software'
+
+export type AvailabilityFilterId = 'mon-thu' | 'mon' | 'thu' | 'weekend'
 
 export type SortId = 'relevance' | 'price-asc' | 'rating'
 
 export type ViewId = 'grid' | 'list'
 
 export type MentorFilters = {
-  readonly domain?: DomainId
+  readonly domain?: DomainFilterId
   readonly language?: MentorLanguage
   readonly maxPrice?: number
   readonly minRating?: number
-  readonly availability?: AvailabilityId
+  readonly availability?: AvailabilityFilterId
 }
 
 export type FilterKey = keyof MentorFilters

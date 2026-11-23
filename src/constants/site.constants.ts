@@ -14,6 +14,7 @@ export const SITE_TEXT = {
   closeMenu: 'Închide meniul',
   mobileNavLabel: 'Navigare mobilă',
   opensInNewTab: '(se deschide într-o filă nouă)',
+  closeWithoutChanges: 'Închide fără modificări',
 } as const
 
 export const NAV_LINKS = [
