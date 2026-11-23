@@ -41,3 +41,6 @@ coverage
 /mentorly-*.webm
 /mentorly-*.png
 *.bundle
+
+# Personal AI-assistant / editor tooling
+/.claude/
