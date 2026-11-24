@@ -1,11 +1,6 @@
 import { SIGNUP_TEXT } from '../constants'
 
-type SignupTermsTextProps = {
-  onTermsClick: () => void
-  onPrivacyClick: () => void
-}
-
-export function SignupTermsText({ onTermsClick, onPrivacyClick }: SignupTermsTextProps) {
+export function SignupTermsText() {
   return (
     <>
       {SIGNUP_TEXT.termsPrefix}{' '}
@@ -15,7 +10,6 @@ export function SignupTermsText({ onTermsClick, onPrivacyClick }: SignupTermsTex
         onClick={(event) => {
           event.preventDefault()
           event.stopPropagation()
-          onTermsClick()
         }}
       >
         {SIGNUP_TEXT.termsLink}
@@ -27,7 +21,6 @@ export function SignupTermsText({ onTermsClick, onPrivacyClick }: SignupTermsTex
         onClick={(event) => {
           event.preventDefault()
           event.stopPropagation()
-          onPrivacyClick()
         }}
       >
         {SIGNUP_TEXT.privacyLink}

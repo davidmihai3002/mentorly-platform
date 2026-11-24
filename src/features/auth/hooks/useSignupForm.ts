@@ -1,8 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { signupSchema } from '../schemas'
-import type { SignupAction, SignupFormInput, SignupFormOutput } from '../types'
-import { EMPTY_SIGNUP_VALUES, logSignupAction } from '../utils'
+import { EMPTY_SIGNUP_VALUES } from '../constants'
+import type { SignupFormInput, SignupFormOutput } from '../types'
 
 export function useSignupForm() {
   const form = useForm<SignupFormInput, unknown, SignupFormOutput>({
@@ -10,13 +10,7 @@ export function useSignupForm() {
     defaultValues: EMPTY_SIGNUP_VALUES,
   })
 
-  const submit = form.handleSubmit((values) => {
-    logSignupAction('signup', values)
-  })
+  const submit = form.handleSubmit(() => undefined)
 
-  const logCurrentValues = (action: SignupAction) => {
-    logSignupAction(action, form.getValues())
-  }
-
-  return { form, submit, logCurrentValues }
+  return { form, submit }
 }

@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { resetPasswordSchema } from '../schemas'
 import type { ResetPasswordInput, ResetPasswordOutput } from '../types'
-import { logAuthEvent } from '../utils'
 
 export function useResetPasswordForm() {
   const [isSaved, setIsSaved] = useState(false)
@@ -12,10 +11,7 @@ export function useResetPasswordForm() {
     defaultValues: { password: '', confirmPassword: '' },
   })
 
-  const submit = form.handleSubmit((values) => {
-    logAuthEvent('reset-password', values)
-    setIsSaved(true)
-  })
+  const submit = form.handleSubmit(() => setIsSaved(true))
 
   return { form, submit, isSaved }
 }

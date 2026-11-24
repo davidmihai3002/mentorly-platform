@@ -141,3 +141,17 @@ export const SESSION_TOPICS: Readonly<Record<string, string>> = {
 export { BOOKING_PARAM_KEYS } from '@/constants'
 
 export const MESSAGE_MAX_LENGTH = 500
+
+export const PAYMENT_ERRORS = {
+  email: 'Introdu o adresă de email validă.',
+  cardholder: 'Introdu numele de pe card.',
+  cardNumber: 'Numărul cardului nu este valid.',
+  expiry: 'Folosește formatul LL / AA, cu o dată viitoare.',
+  cvc: 'CVC-ul are 3 sau 4 cifre.',
+  address: 'Introdu adresa de facturare.',
+  city: 'Introdu localitatea.',
+  postalCode: 'Codul poștal are 6 cifre.',
+  terms: 'Trebuie să accepți termenii ca să continui.',
+} as const
+
+export const COUNTRY_OPTIONS = [{ value: 'RO', label: 'România' }] as const

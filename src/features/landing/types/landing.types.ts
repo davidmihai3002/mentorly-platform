@@ -13,7 +13,7 @@ export type Benefit = {
   readonly link: ArrowLinkTarget
 }
 
-export type AvatarTone = 'sky' | 'violet' | 'indigo'
+type AvatarTone = 'sky' | 'violet' | 'indigo'
 
 export type Person = {
   readonly name: string

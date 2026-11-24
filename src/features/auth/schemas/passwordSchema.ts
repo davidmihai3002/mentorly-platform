@@ -1,14 +1,15 @@
 import { z } from 'zod'
+import { AUTH_ERRORS } from '../constants'
 
 export const newPasswordSchema = z
   .string()
-  .min(1, 'Introdu parola.')
-  .min(8, 'Parola trebuie să aibă cel puțin 8 caractere.')
-  .regex(/[A-Z]/, 'Parola trebuie să conțină cel puțin o literă mare.')
-  .regex(/[0-9]/, 'Parola trebuie să conțină cel puțin o cifră.')
+  .min(1, AUTH_ERRORS.passwordRequired)
+  .min(8, AUTH_ERRORS.passwordMin)
+  .regex(/[A-Z]/, AUTH_ERRORS.passwordUppercase)
+  .regex(/[0-9]/, AUTH_ERRORS.passwordDigit)
 
 export const emailSchema = z
   .string()
   .trim()
-  .min(1, 'Introdu adresa de email.')
-  .pipe(z.email('Adresa de email nu este validă.'))
+  .min(1, AUTH_ERRORS.emailRequired)
+  .pipe(z.email(AUTH_ERRORS.emailInvalid))

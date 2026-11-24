@@ -6,7 +6,6 @@ import type { MentorDocument, MentorSignupInput, MentorSignupOutput } from '../t
 import {
   getMentorDocumentError,
   getMissingMentorDocument,
-  logAuthEvent,
   mergeFiles,
   validateCvFile,
 } from '../utils'
@@ -24,7 +23,6 @@ export function useMentorSignupForm(onMissingDocument: (document: MentorDocument
   const connectLinkedIn = () => {
     setIsLinkedInConnected(true)
     setDocumentsError(null)
-    logAuthEvent('linkedin-connect', { connected: true })
   }
 
   const selectCv = (file: File) => {
@@ -41,18 +39,8 @@ export function useMentorSignupForm(onMissingDocument: (document: MentorDocument
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     const missing = getMissingMentorDocument({ isLinkedInConnected, hasCv: cvFile !== null })
     setDocumentsError(missing ? getMentorDocumentError(missing) : null)
-    await form.handleSubmit((values) => {
-      if (missing) {
-        onMissingDocument(missing)
-        return
-      }
-      logAuthEvent('mentor-signup', {
-        email: values.email,
-        password: values.password,
-        linkedin: isLinkedInConnected,
-        cv: cvFile?.name ?? null,
-        certificates: certificates.length,
-      })
+    await form.handleSubmit(() => {
+      if (missing) onMissingDocument(missing)
     })(event)
   }
 

@@ -1,9 +1,9 @@
 import { cn } from 'cn'
-import { LANDING_CARD_CLASS, REVIEWS_TEXT } from '../constants'
+import { RatingStars } from '@/components'
+import { LANDING_CARD_CLASS, MAX_RATING, REVIEWS_TEXT } from '../constants'
 import { formatPosition } from '../utils'
 import type { Review } from '../types'
 import { PersonAvatar } from './PersonAvatar'
-import { StarRating } from './StarRating'
 
 type ReviewCardProps = {
   review: Review
@@ -19,7 +19,10 @@ export function ReviewCard({ review, position }: ReviewCardProps) {
       )}
     >
       <div className="flex items-start justify-between">
-        <StarRating rating={review.rating} />
+        <RatingStars
+          rating={review.rating}
+          label={REVIEWS_TEXT.ratingLabel(review.rating, MAX_RATING)}
+        />
         <span aria-hidden="true" className="font-serif text-[28px] leading-none text-link-muted/60">
           “
         </span>

@@ -5,6 +5,7 @@ import {
   BOOKING_CARD_CLASS,
   BOOKING_INPUT_CLASS,
   BOOKING_TAG_CLASS,
+  COUNTRY_OPTIONS,
   PAYMENT_TEXT,
 } from '../constants'
 import { usePaymentForm } from '../hooks'
@@ -112,7 +113,11 @@ export function PaymentForm({ amount, backLink, onPaid }: PaymentFormProps) {
           className={BOOKING_INPUT_CLASS}
           {...form.register('country')}
         >
-          <option value="RO">România</option>
+          {COUNTRY_OPTIONS.map((country) => (
+            <option key={country.value} value={country.value}>
+              {country.label}
+            </option>
+          ))}
         </select>
       </div>
       <div className="flex flex-col gap-1">

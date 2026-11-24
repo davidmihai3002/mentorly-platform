@@ -20,6 +20,7 @@ export function ApplicationSentDialog({
       title={PROFILE_TEXT.sentTitle}
       open={open}
       onOpenChange={onOpenChange}
+      isDismissedByOutsideClick={false}
       actions={
         <>
           <DialogClose className={DIALOG_OUTLINE_CLASS}>{PROFILE_TEXT.sentClose}</DialogClose>

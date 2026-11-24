@@ -5,7 +5,7 @@ export type ExternalLink = {
   readonly href: string
 }
 
-export type ProfileReview = {
+type ProfileReview = {
   readonly id: string
   readonly author: string
   readonly rating: number

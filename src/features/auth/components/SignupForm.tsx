@@ -12,17 +12,13 @@ import { SignupCardFooter } from './SignupCardFooter'
 import { SignupTermsText } from './SignupTermsText'
 
 export function SignupForm() {
-  const { form, submit, logCurrentValues } = useSignupForm()
+  const { form, submit } = useSignupForm()
   const { errors } = form.formState
   const styles = AUTH_DENSITY_STYLES.regular
 
   return (
     <div className="space-y-5">
-      <GoogleAuthButton
-        label={SIGNUP_TEXT.google}
-        hasIcon={false}
-        onClick={() => logCurrentValues('google')}
-      />
+      <GoogleAuthButton label={SIGNUP_TEXT.google} hasIcon={false} />
       <AuthDivider />
 
       <form onSubmit={(event) => void submit(event)} noValidate className={styles.stack}>
@@ -89,10 +85,7 @@ export function SignupForm() {
                 inputRef={field.ref}
                 error={errors.isTermsAccepted?.message}
               >
-                <SignupTermsText
-                  onTermsClick={() => logCurrentValues('terms')}
-                  onPrivacyClick={() => logCurrentValues('privacy-policy')}
-                />
+                <SignupTermsText />
               </AuthCheckboxField>
             )}
           />
@@ -103,7 +96,7 @@ export function SignupForm() {
         </Button>
       </form>
 
-      <SignupCardFooter onLoginClick={() => logCurrentValues('login-link')} />
+      <SignupCardFooter />
     </div>
   )
 }

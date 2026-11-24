@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { forgotPasswordSchema } from '../schemas'
 import type { ForgotPasswordInput, ForgotPasswordOutput } from '../types'
-import { logAuthEvent } from '../utils'
 
 export function useForgotPasswordForm() {
   const [isSent, setIsSent] = useState(false)
@@ -12,10 +11,7 @@ export function useForgotPasswordForm() {
     defaultValues: { email: '' },
   })
 
-  const submit = form.handleSubmit((values) => {
-    logAuthEvent('forgot-password', values)
-    setIsSent(true)
-  })
+  const submit = form.handleSubmit(() => setIsSent(true))
 
   return { form, submit, isSent }
 }

@@ -1,6 +1,6 @@
 export { COMMUNITY_QUESTIONS, COMMUNITY_TEXT } from './community.constants'
 export { PARTNER_BENEFITS, PARTNERS, PARTNERS_TEXT } from './partners.constants'
-export { REVIEWS, REVIEWS_TEXT } from './reviews.constants'
+export { MAX_RATING, REVIEWS, REVIEWS_TEXT } from './reviews.constants'
 export { ABOUT_TEXT, BENEFITS } from './about.constants'
 export { HOME_TEXT, LANDING_LINKS } from './home.constants'
 export {

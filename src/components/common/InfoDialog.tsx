@@ -18,6 +18,7 @@ type InfoDialogProps = {
   trigger?: ReactElement
   open?: boolean
   onOpenChange?: (open: boolean) => void
+  isDismissedByOutsideClick?: boolean
 }
 
 export function InfoDialog({
@@ -28,6 +29,7 @@ export function InfoDialog({
   trigger,
   open,
   onOpenChange,
+  isDismissedByOutsideClick = true,
 }: InfoDialogProps) {
   const [ownOpen, setOwnOpen] = useState(false)
 
@@ -37,7 +39,11 @@ export function InfoDialog({
   }
 
   return (
-    <Dialog open={open ?? ownOpen} onOpenChange={setIsOpen}>
+    <Dialog
+      open={open ?? ownOpen}
+      onOpenChange={setIsOpen}
+      disablePointerDismissal={!isDismissedByOutsideClick}
+    >
       {trigger && <DialogTrigger render={trigger} />}
       <DialogContent
         showCloseButton={false}

@@ -1,3 +1,4 @@
+import type { SignupFormInput } from '../types'
 export const SIGNUP_TEXT = {
   pageTitle: 'Înscriere cursant – Mentorly',
   title: 'Înscriere cursant',
@@ -24,4 +25,11 @@ export const SIGNUP_TEXT = {
   loginLink: 'Autentifică-te',
 } as const
 
-export const SIGNUP_ACTIONS = ['signup', 'google', 'terms', 'privacy-policy', 'login-link'] as const
+export const EMPTY_SIGNUP_VALUES: SignupFormInput = {
+  fullName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+  isAgeConfirmed: false,
+  isTermsAccepted: false,
+}
