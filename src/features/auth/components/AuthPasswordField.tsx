@@ -51,7 +51,7 @@ export function AuthPasswordField({
           <AppLink
             to={forgotPasswordHref}
             onClick={onForgotPassword}
-            className="rounded-sm text-[13px] font-medium text-link hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
+            className="inline-flex min-h-6 items-center rounded-sm text-[13px] font-medium text-link hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
           >
             {forgotPasswordLabel}
           </AppLink>
