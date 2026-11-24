@@ -32,3 +32,9 @@ Generated with Playwright at 1024 px (desktop) and 360 px (mobile).
 | Alege evaluarea        | ![](flow-dialogs/alege-evaluarea-desktop.jpg)       | ![](flow-dialogs/alege-evaluarea-mobil.jpg)       |
 | Acțiune demonstrativă  | ![](flow-dialogs/actiune-demonstrativa-desktop.jpg) | ![](flow-dialogs/actiune-demonstrativa-mobil.jpg) |
 | Cum vrei să continui?  | ![](flow-dialogs/alege-rolul-desktop.jpg)           | ![](flow-dialogs/alege-rolul-mobil.jpg)           |
+
+## Group link
+
+| Screen                  | Desktop                                   | Mobile                                  |
+| ----------------------- | ----------------------------------------- | --------------------------------------- |
+| Mentorat în desfășurare | ![](group-link/grup-mentorat-desktop.jpg) | ![](group-link/grup-mentorat-mobil.jpg) |
