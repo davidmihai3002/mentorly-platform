@@ -14,7 +14,3 @@ export type DetailedReview = {
 export type ReviewFilterId = 'all' | '5' | '4'
 
 export type ReviewSortId = 'recent' | 'helpful'
-
-export type PublishedState = {
-  readonly published: true
-}

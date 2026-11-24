@@ -18,7 +18,7 @@ export type QuizAnswers = {
   readonly interests: readonly InterestId[]
 }
 
-export type QuizOption<Value extends string = string> = {
+type QuizOption<Value extends string = string> = {
   readonly value: Value
   readonly title: string
   readonly description: string

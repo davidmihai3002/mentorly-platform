@@ -15,11 +15,6 @@ export type CalendarDay = {
   readonly isAvailable: boolean
 }
 
-export type CalendarMonth = {
-  readonly year: number
-  readonly month: number
-}
-
 export type CheckoutState = {
   readonly firstName: string
   readonly email: string

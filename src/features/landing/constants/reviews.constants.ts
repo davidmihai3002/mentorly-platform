@@ -38,3 +38,5 @@ export const REVIEWS: readonly Review[] = [
     mentorName: 'Mihai Popescu',
   },
 ]
+
+export const MAX_RATING = 5
