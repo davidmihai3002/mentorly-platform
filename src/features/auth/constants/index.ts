@@ -8,3 +8,4 @@ export {
   AUTH_LINK_CLASS,
   AUTH_SUBMIT_BASE_CLASS,
 } from './styles.constants'
+export { AUTH_ERRORS } from './errors.constants'

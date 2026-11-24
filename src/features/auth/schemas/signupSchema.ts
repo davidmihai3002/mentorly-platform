@@ -1,20 +1,21 @@
 import { z } from 'zod'
+import { AUTH_ERRORS } from '../constants'
 import { emailSchema, newPasswordSchema } from './passwordSchema'
 
 export const signupSchema = z
   .object({
-    fullName: z.string().trim().min(1, 'Introdu numele complet.'),
+    fullName: z.string().trim().min(1, AUTH_ERRORS.fullNameRequired),
     email: emailSchema,
     password: newPasswordSchema,
-    confirmPassword: z.string().min(1, 'Confirmă parola.'),
+    confirmPassword: z.string().min(1, AUTH_ERRORS.confirmRequired),
     isAgeConfirmed: z.boolean().refine((value) => value, {
-      message: 'Confirmă că ai cel puțin 16 ani.',
+      message: AUTH_ERRORS.ageRequired,
     }),
     isTermsAccepted: z.boolean().refine((value) => value, {
-      message: 'Acceptă Termenii și condițiile și Politica de confidențialitate.',
+      message: AUTH_ERRORS.termsRequired,
     }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
-    message: 'Parolele nu coincid.',
+    message: AUTH_ERRORS.passwordsDiffer,
   })
