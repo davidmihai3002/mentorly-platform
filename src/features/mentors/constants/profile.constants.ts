@@ -1,3 +1,4 @@
+import { TIME_ZONE_LABEL, TIME_ZONE_TEXT } from '@/constants'
 export const PROFILE_TEXT = {
   pageTitle: (name: string) => `${name} – Mentorly`,
   breadcrumbLabel: 'Fir de navigare',
@@ -23,7 +24,7 @@ export const PROFILE_TEXT = {
   capacityNote:
     'Informație orientativă, nu o limită care blochează aplicarea. Poți trimite o cerere indiferent de ocupare.',
   availabilityTitle: 'Disponibilitate săptămânală',
-  timezone: 'Ora României · Europe/Bucharest',
+  timezone: TIME_ZONE_TEXT,
   availabilityNote:
     'Atât apelul introductiv gratuit, cât și sesiunile plătite se programează doar în aceste intervale recurente.',
   introCall: 'Apel gratuit · 20 minute',
@@ -32,7 +33,7 @@ export const PROFILE_TEXT = {
   introDialogTitle: 'Să ne cunoaștem',
   introSubject: (mentor: string, minutes: number) =>
     `${mentor} · Apel introductiv de ${minutes} minute`,
-  introFormat: 'Online · Ora României',
+  introFormat: `Online · ${TIME_ZONE_LABEL}`,
   introFree: 'Gratuit · Nu se solicită plata.',
   introConfirm: 'Confirmă apelul gratuit',
   introCancel: 'Renunță',

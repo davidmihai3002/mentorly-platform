@@ -1,3 +1,4 @@
+import { TIME_ZONE, TIME_ZONE_LABEL, TIME_ZONE_TEXT } from '@/constants'
 import { formatLei } from '@/utils'
 export const BOOKING_TEXT = {
   pageTitle: 'Rezervare – Mentorly',
@@ -34,7 +35,7 @@ export const SUMMARY_TEXT = {
   accepted: 'Cerere de mentorat acceptată',
   mentorMeta: (topic: string) => `${topic} · Mentorat 1-la-1`,
   sessionTitle: 'Sesiune individuală · 60 minute',
-  timezone: 'Ora României',
+  timezone: TIME_ZONE_LABEL,
   format: 'Online · Limba română',
   objective: 'Obiectiv: code review și integrare API în proiectul de lecturi.',
   changeSlot: 'Schimbă data și ora',
@@ -59,7 +60,7 @@ export const PAYMENT_TEXT = {
   provider: 'Stripe',
   billingTitle: 'Detalii de facturare',
   orderTitle: 'Comanda ta',
-  orderMeta: '60 minute · Europe/Bucharest',
+  orderMeta: `60 minute · ${TIME_ZONE}`,
   session: 'Sesiune',
   total: 'Total',
   receiptNote: 'Confirmarea și factura vor fi trimise la adresa de email.',
@@ -79,7 +80,7 @@ export const CONFIRMATION_TEXT = {
     email
       ? `Confirmarea și factura au fost trimise la ${email}.`
       : 'Confirmarea și factura au fost trimise pe email.',
-  sessionMeta: '60 minute · Online · Europe/Bucharest',
+  sessionMeta: `60 minute · Online · ${TIME_ZONE}`,
   reference: (amount: number, last4?: string) =>
     ['Rezervare ML-2026-024', last4 && `Card •••• ${last4}`, `Achitat ${formatLei(amount)}`]
       .filter(Boolean)
@@ -109,7 +110,7 @@ export const RESCHEDULE_TEXT = {
   title: 'Reprogramează sesiunea',
   subtitle: 'Alege un nou interval din disponibilitatea mentorului.',
   currentTitle: 'Programare actuală',
-  currentMeta: '60 minute · Online · Europe/Bucharest',
+  currentMeta: `60 minute · Online · ${TIME_ZONE}`,
   currentNote:
     'Poți solicita reprogramarea cu minimum 24 de ore înainte. Rezervarea actuală rămâne valabilă până confirmi schimbarea.',
   noExtraCost: 'Fără plată suplimentară pentru această schimbare de interval.',
@@ -126,7 +127,7 @@ export const RESCHEDULE_TEXT = {
   bookingLine: (mentor: string) => `Rezervare · ${mentor} · Sesiune 1-la-1`,
   previous: 'Interval anterior · eliberat',
   next: 'Noul interval · confirmat',
-  meta: 'Ora României · Europe/Bucharest · Online · 60 minute',
+  meta: `${TIME_ZONE_TEXT} · Online · 60 minute`,
   notified: (amount: number, email?: string) =>
     `Mentorul a fost notificat. Confirmarea actualizată a fost trimisă ${email ? `la ${email}` : 'pe email'}. Plata de ${amount} lei rămâne asociată sesiunii.`,
   viewUpdated: 'Vezi sesiunea actualizată',
