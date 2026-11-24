@@ -1,4 +1,4 @@
-import { formatDayMonthYear, formatShortDay, parseIsoDate } from '@/utils'
+import { formatDayMonthYear, formatLei, formatShortDay, parseIsoDate } from '@/utils'
 import { cn } from 'cn'
 import type { ReactNode } from 'react'
 import type { DirectoryMentor } from '@/types'
@@ -47,7 +47,7 @@ export function SlotPanel({
       <p className="text-[13px] text-foreground">
         {BOOKING_TEXT.sessionWith(mentor.name)}
         <br />
-        {getSessionTopic(mentor)} · {mentor.pricePerSession} lei
+        {getSessionTopic(mentor)} · {formatLei(mentor.pricePerSession)}
       </p>
       {footnote && <p className="text-[11px] text-muted-foreground">{footnote}</p>}
       {children}

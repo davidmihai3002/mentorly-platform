@@ -1,3 +1,4 @@
+import { formatLei } from '@/utils'
 export const BOOKING_TEXT = {
   pageTitle: 'Rezervare – Mentorly',
   title: 'Alege momentul potrivit',
@@ -62,7 +63,7 @@ export const PAYMENT_TEXT = {
   session: 'Sesiune',
   total: 'Total',
   receiptNote: 'Confirmarea și factura vor fi trimise la adresa de email.',
-  pay: (amount: number) => `Plătește ${amount} lei`,
+  pay: (amount: number) => `Plătește ${formatLei(amount)}`,
   cardNote: 'Datele cardului sunt procesate de Stripe. Mentorly nu stochează numărul cardului.',
   backToSummary: 'Înapoi la sumar',
   terms: 'Accept Termenii și condițiile și politica de reprogramare a mentorului.',
@@ -72,7 +73,7 @@ export const CONFIRMATION_TEXT = {
   pageTitle: 'Rezervare confirmată – Mentorly',
   title: 'Rezervarea ta este confirmată',
   subtitle: 'Totul este pregătit pentru următorul tău pas.',
-  paid: (amount: number) => `Plată reușită · ${amount} lei`,
+  paid: (amount: number) => `Plată reușită · ${formatLei(amount)}`,
   greeting: (name?: string) => (name ? `Ne vedem la sesiune, ${name}!` : 'Ne vedem la sesiune!'),
   emailSent: (email?: string) =>
     email
@@ -80,7 +81,7 @@ export const CONFIRMATION_TEXT = {
       : 'Confirmarea și factura au fost trimise pe email.',
   sessionMeta: '60 minute · Online · Europe/Bucharest',
   reference: (amount: number, last4?: string) =>
-    ['Rezervare ML-2026-024', last4 && `Card •••• ${last4}`, `Achitat ${amount} lei`]
+    ['Rezervare ML-2026-024', last4 && `Card •••• ${last4}`, `Achitat ${formatLei(amount)}`]
       .filter(Boolean)
       .join(' · '),
   viewSession: 'Vezi sesiunea',

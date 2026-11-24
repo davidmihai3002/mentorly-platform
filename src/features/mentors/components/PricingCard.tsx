@@ -1,3 +1,4 @@
+import { formatLei } from '@/utils'
 import { cn } from 'cn'
 import { ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
 import { PROFILE_TAG_CLASS, PROFILE_TEXT } from '../constants'
@@ -26,7 +27,7 @@ export function PricingCard({ sessionPrice, pricing, applyAnchor }: PricingCardP
         </span>
         <p className="text-foreground">
           <span className="text-[28px] font-bold tracking-[-0.02em]">
-            {pricing.monthlyPrice} lei
+            {formatLei(pricing.monthlyPrice)}
           </span>{' '}
           <span className="text-[13px]">{PROFILE_TEXT.perMonth}</span>
         </p>

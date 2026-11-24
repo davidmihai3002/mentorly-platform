@@ -1,3 +1,4 @@
+import { formatLei } from '@/utils'
 import { SAMPLE_STUDENT } from '@/constants'
 import type { GoalStatus, LearningGoal, SessionEntry, StudentDetails } from '../types'
 
@@ -45,7 +46,7 @@ export const STUDENT_PROFILE_TEXT = {
   sessionDialogTitle: (mentor: string) => `Sesiunea ta cu ${mentor}`,
   sessionDialogMeta: '60 minute · Online · Europe/Bucharest',
   sessionDialogText: (price: number) =>
-    `Sesiune individuală suplimentară · ${price} lei. Este separată de pachetul lunar de 4 sesiuni, pentru a evita o plată dublă.`,
+    `Sesiune individuală suplimentară · ${formatLei(price)}. Este separată de pachetul lunar de 4 sesiuni, pentru a evita o plată dublă.`,
   sessionReschedule: 'Reprogramează sesiunea',
   sessionBookExtra: 'Rezervă o sesiune suplimentară',
   sessionBack: 'Înapoi la spațiul meu',

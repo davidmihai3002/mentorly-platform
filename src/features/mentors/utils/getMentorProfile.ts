@@ -1,6 +1,6 @@
 import { MENTOR_DIRECTORY, MENTOR_SCHEDULES } from '@/constants'
 import type { DirectoryMentor } from '@/types'
-import { findDomain } from '@/utils'
+import { findDomain, formatLei } from '@/utils'
 import { DEFAULT_APPLICATION_QUESTIONS, PROFILE_DETAILS } from '../constants'
 import type { MentorProfile } from '../types'
 
@@ -34,7 +34,7 @@ function buildDefaultProfile(mentor: DirectoryMentor): MentorProfile {
     pricing: {
       monthlyPrice,
       monthlyMeta: `${MONTHLY_SESSIONS} sesiuni de 60 min / 30 zile, în loc de ${fullPrice} lei.`,
-      discountNote: `Reducere de ${fullPrice - monthlyPrice} lei aleasă de mentor. Nu este impusă de Mentorly.`,
+      discountNote: `Reducere de ${formatLei(fullPrice - monthlyPrice)} aleasă de mentor. Nu este impusă de Mentorly.`,
     },
     capacity: DEFAULT_CAPACITY,
     availability: {

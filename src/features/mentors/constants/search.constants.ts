@@ -1,3 +1,4 @@
+import { formatLei } from '@/utils'
 import { LANGUAGE_LABELS } from '@/constants'
 import type { FilterKey, SelectOption, SortId } from '../types'
 
@@ -77,7 +78,10 @@ export const FILTER_OPTIONS: Readonly<Record<FilterKey, readonly SelectOption[]>
   ],
   language: Object.entries(LANGUAGE_LABELS).map(([value, label]) => ({ value, label })),
   maxPrice: [
-    ...PRICE_LIMITS.map((limit) => ({ value: String(limit), label: `Până la ${limit} lei` })),
+    ...PRICE_LIMITS.map((limit) => ({
+      value: String(limit),
+      label: `Până la ${formatLei(limit)}`,
+    })),
     { value: ANY_VALUE, label: 'Orice preț' },
   ],
   minRating: RATING_LIMITS.map((limit) => ({

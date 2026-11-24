@@ -1,8 +1,9 @@
+import { formatLei } from '@/utils'
 import { FILTER_OPTIONS } from '../constants'
 import type { ActiveFilter, FilterKey, MentorFilters } from '../types'
 
 const CHIP_LABELS: Readonly<Partial<Record<FilterKey, (value: string) => string>>> = {
-  maxPrice: (value) => `≤ ${value} lei`,
+  maxPrice: (value) => `≤ ${formatLei(Number(value))}`,
 }
 
 export function describeFilters(filters: MentorFilters): readonly ActiveFilter[] {
