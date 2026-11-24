@@ -137,3 +137,8 @@ export const PROFILE_LIMITS = {
 } as const
 
 export const QUICK_RATING_MAX = 5
+
+export const MENTORSHIP_GROUP = {
+  url: '',
+  isEnrolmentConfirmed: true,
+} as const
