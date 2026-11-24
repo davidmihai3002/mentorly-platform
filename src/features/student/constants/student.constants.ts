@@ -63,7 +63,7 @@ export const STUDENT_PROFILE_TEXT = {
   quickRatingTitle: 'Alege evaluarea',
   quickRatingCancel: 'Renunță',
   quickRatingStars: (stars: number, max: number) =>
-    `${'★'.repeat(stars)}${'☆'.repeat(max - stars)} ·`,
+    `${'★'.repeat(stars)}${'☆'.repeat(max - stars)} ·\u00a0`,
   quickRatingValue: (stars: number, max: number) => `${stars} / ${max}`,
   quickRatingDone: (stars: string, max: number) => `Ai evaluat sesiunea cu ${stars} / ${max}.`,
   goalStatus: {

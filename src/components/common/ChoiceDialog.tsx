@@ -69,7 +69,7 @@ export function ChoiceDialog({
                   'aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground',
                 )}
               >
-                {option.decoration && <span aria-hidden="true">{option.decoration}&nbsp;</span>}
+                {option.decoration && <span aria-hidden="true">{option.decoration}</span>}
                 {option.label}
               </button>
             </li>
