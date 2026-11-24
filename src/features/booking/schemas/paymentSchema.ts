@@ -1,6 +1,6 @@
 import { nowInTimeZone } from '@/utils'
 import { z } from 'zod'
-import { PAYMENT_ERRORS } from '../constants'
+import { COUNTRY_OPTIONS, PAYMENT_ERRORS } from '../constants'
 
 const CARD_DIGITS = /^\d{13,19}$/
 const EXPIRY = /^(0[1-9]|1[0-2])\s?\/\s?(\d{2})$/
@@ -38,7 +38,7 @@ export const paymentSchema = z.object({
   address: z.string().trim().min(5, PAYMENT_ERRORS.address).max(120),
   city: z.string().trim().min(2, PAYMENT_ERRORS.city).max(60),
   postalCode: z.string().trim().regex(POSTAL_CODE, PAYMENT_ERRORS.postalCode),
-  country: z.literal('RO'),
+  country: z.enum(COUNTRY_OPTIONS.map((option) => option.value)),
   acceptTerms: z.boolean().refine((value) => value, PAYMENT_ERRORS.terms),
 })
 
