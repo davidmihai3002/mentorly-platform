@@ -44,7 +44,9 @@ export function MentorshipCard({ mentor }: MentorshipCardProps) {
         >
           {STUDENT_PROFILE_TEXT.viewMentor}
         </AppLink>
-        <GroupButton url={getSafeGroupUrl(MENTORSHIP_GROUP.url)} />
+        {MENTORSHIP_GROUP.isEnrolmentConfirmed && (
+          <GroupButton url={getSafeGroupUrl(MENTORSHIP_GROUP.url)} />
+        )}
       </div>
     </SectionCard>
   )
