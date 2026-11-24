@@ -1,3 +1,4 @@
+import { nowInTimeZone } from '@/utils'
 import { z } from 'zod'
 
 const CARD_DIGITS = /^\d{13,19}$/
@@ -20,7 +21,7 @@ function isFutureExpiry(value: string): boolean {
   if (!match) return false
   const month = Number(match[1])
   const year = CENTURY + Number(match[2])
-  const now = new Date()
+  const now = nowInTimeZone()
   return year > now.getFullYear() || (year === now.getFullYear() && month >= now.getMonth() + 1)
 }
 

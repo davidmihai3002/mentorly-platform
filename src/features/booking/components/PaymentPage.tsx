@@ -1,17 +1,12 @@
+import { formatLei, formatLongDate, parseIsoDate } from '@/utils'
 import { cn } from 'cn'
 import { useNavigate } from 'react-router'
 import { AppLink } from '@/components'
 import { ROUTES } from '@/constants'
-import { BOOKING_CARD_CLASS, PAYMENT_TEXT } from '../constants'
+import { BOOKING_CARD_CLASS, PAYMENT_TEXT, SUMMARY_TEXT } from '../constants'
 import { useBookingContext } from '../hooks'
 import type { CheckoutState } from '../types'
-import {
-  buildBookingPath,
-  formatLongDate,
-  getSlotEnd,
-  isSelectionBookable,
-  parseIsoDate,
-} from '../utils'
+import { buildBookingPath, getSlotEnd, isSelectionBookable } from '../utils'
 import { BookingNotFound } from './BookingNotFound'
 import { BookingPageHeader } from './BookingPageHeader'
 import { BookingSteps } from './BookingSteps'
@@ -27,7 +22,7 @@ export function PaymentPage() {
   if (!mentor || !selection || !date || !slot || !isSelectionBookable(mentor, selection))
     return <BookingNotFound />
 
-  const price = `${mentor.pricePerSession} lei`
+  const price = formatLei(mentor.pricePerSession)
 
   function handlePaid(details: CheckoutState) {
     if (!mentor || !selection) return
@@ -71,7 +66,7 @@ export function PaymentPage() {
           </p>
           <dl className="flex flex-col gap-2.5">
             <OrderLine label={PAYMENT_TEXT.session} value={price} />
-            <OrderLine label="Taxe suplimentare" value="0 lei" />
+            <OrderLine label={SUMMARY_TEXT.fees} value={formatLei(0)} />
             <OrderLine label={PAYMENT_TEXT.total} value={price} isTotal />
           </dl>
           <p className="text-[11px] text-muted-foreground">{PAYMENT_TEXT.receiptNote}</p>

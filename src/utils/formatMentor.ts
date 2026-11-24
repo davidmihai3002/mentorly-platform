@@ -1,12 +1,12 @@
-import { DOMAINS, MENTOR_TEXT } from '@/constants'
+import { DOMAINS, LOCALE, MENTOR_TEXT } from '@/constants'
 import type { Domain, DomainId, Mentor } from '@/types'
 
-const RATING_FORMAT = new Intl.NumberFormat('ro-RO', {
+const RATING_FORMAT = new Intl.NumberFormat(LOCALE, {
   minimumFractionDigits: 1,
   maximumFractionDigits: 1,
 })
 
-const COUNT_FORMAT = new Intl.NumberFormat('ro-RO')
+const COUNT_FORMAT = new Intl.NumberFormat(LOCALE)
 
 export function formatReputation(mentor: Mentor): string {
   const rating = `★ ${RATING_FORMAT.format(mentor.rating)}`

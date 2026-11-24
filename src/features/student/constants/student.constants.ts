@@ -1,4 +1,5 @@
-import { SAMPLE_STUDENT } from '@/constants'
+import { formatLei } from '@/utils'
+import { SAMPLE_STUDENT, TIME_ZONE, TIME_ZONE_LABEL } from '@/constants'
 import type { GoalStatus, LearningGoal, SessionEntry, StudentDetails } from '../types'
 
 export const STUDENT_PROFILE_TEXT = {
@@ -40,12 +41,12 @@ export const STUDENT_PROFILE_TEXT = {
   viewProjects: 'Vezi proiectele și feedbackul',
   sessionsTitle: 'Sesiuni și istoric',
   sessionsNote: (mentor: string) =>
-    `Ora României · Sesiuni cu ${mentor}, în intervalele sale săptămânale.`,
+    `${TIME_ZONE_LABEL} · Sesiuni cu ${mentor}, în intervalele sale săptămânale.`,
   allBookings: 'Vezi toate programările',
   sessionDialogTitle: (mentor: string) => `Sesiunea ta cu ${mentor}`,
-  sessionDialogMeta: '60 minute · Online · Europe/Bucharest',
+  sessionDialogMeta: `60 minute · Online · ${TIME_ZONE}`,
   sessionDialogText: (price: number) =>
-    `Sesiune individuală suplimentară · ${price} lei. Este separată de pachetul lunar de 4 sesiuni, pentru a evita o plată dublă.`,
+    `Sesiune individuală suplimentară · ${formatLei(price)}. Este separată de pachetul lunar de 4 sesiuni, pentru a evita o plată dublă.`,
   sessionReschedule: 'Reprogramează sesiunea',
   sessionBookExtra: 'Rezervă o sesiune suplimentară',
   sessionBack: 'Înapoi la spațiul meu',

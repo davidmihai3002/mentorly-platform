@@ -1,3 +1,4 @@
+import { LOCALE } from '@/constants'
 import { ExternalLinkItem, RatingStars } from '@/components'
 import { cn } from 'cn'
 import { Handshake, UserRound } from 'lucide-react'
@@ -11,7 +12,7 @@ type ProfileHeroProps = {
 export function ProfileHero({ profile }: ProfileHeroProps) {
   const { mentor } = profile
   const reviewCount = mentor.reputation?.reviewCount ?? 0
-  const rating = mentor.rating.toLocaleString('ro-RO')
+  const rating = mentor.rating.toLocaleString(LOCALE)
 
   return (
     <section className={cn(PROFILE_CARD_CLASS, 'flex flex-col gap-4 shadow-card-soft')}>

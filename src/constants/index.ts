@@ -15,6 +15,13 @@ export {
   SAMPLE_MENTORS,
 } from './mentor.constants'
 export { COMPONENTS_PREVIEW_TEXT } from './preview.constants'
+export {
+  CURRENCY_LABEL,
+  LOCALE,
+  TIME_ZONE,
+  TIME_ZONE_LABEL,
+  TIME_ZONE_TEXT,
+} from './locale.constants'
 export { BOOKING_PARAM_KEYS, LOGOUT_STATE, MAIN_CONTENT_ID, ROUTES } from './routes.constants'
 export { FOOTER_LINKS, NAV_LINKS, NOT_FOUND_TEXT, SITE_TEXT } from './site.constants'
 export {

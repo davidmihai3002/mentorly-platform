@@ -1,9 +1,11 @@
 import type { DirectoryMentor } from '@/types'
+import { zonedTimeToUtc } from '@/utils'
 
-function toIcsStamp(date: Date, time: string): string {
-  const [hours, minutes] = time.split(':')
-  const day = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}`
-  return `${day}T${hours ?? '00'}${minutes ?? '00'}00`
+function toIcsUtcStamp(date: Date): string {
+  return date
+    .toISOString()
+    .replace(/[-:]/g, '')
+    .replace(/\.\d{3}/, '')
 }
 
 function escapeIcs(text: string): string {
@@ -15,18 +17,16 @@ export function buildCalendarFile(
   date: Date,
   slot: { start: string; end: string },
 ): string {
+  const start = toIcsUtcStamp(zonedTimeToUtc(date, slot.start))
   return [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
     'PRODID:-//Mentorly//Rezervare//RO',
     'BEGIN:VEVENT',
-    `UID:${mentor.id}-${toIcsStamp(date, slot.start)}@mentorly.ro`,
-    `DTSTAMP:${new Date()
-      .toISOString()
-      .replace(/[-:]/g, '')
-      .replace(/\.\d{3}/, '')}`,
-    `DTSTART:${toIcsStamp(date, slot.start)}`,
-    `DTEND:${toIcsStamp(date, slot.end)}`,
+    `UID:${mentor.id}-${start}@mentorly.ro`,
+    `DTSTAMP:${toIcsUtcStamp(new Date())}`,
+    `DTSTART:${start}`,
+    `DTEND:${toIcsUtcStamp(zonedTimeToUtc(date, slot.end))}`,
     `SUMMARY:${escapeIcs(`Sesiune de mentorat cu ${mentor.name}`)}`,
     'END:VEVENT',
     'END:VCALENDAR',

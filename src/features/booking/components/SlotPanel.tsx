@@ -1,15 +1,10 @@
+import { formatDayMonthYear, formatLei, formatShortDay, parseIsoDate } from '@/utils'
 import { cn } from 'cn'
 import type { ReactNode } from 'react'
 import type { DirectoryMentor } from '@/types'
 import { BOOKING_CARD_CLASS, BOOKING_TAG_CLASS, BOOKING_TEXT } from '../constants'
 import type { BookingSelection } from '../types'
-import {
-  formatDayMonthYear,
-  formatShortDay,
-  getSessionTopic,
-  getTimeSlots,
-  parseIsoDate,
-} from '../utils'
+import { getSessionTopic, getTimeSlots } from '../utils'
 import { SlotList } from './SlotList'
 
 type SlotPanelProps = {
@@ -52,7 +47,7 @@ export function SlotPanel({
       <p className="text-[13px] text-foreground">
         {BOOKING_TEXT.sessionWith(mentor.name)}
         <br />
-        {getSessionTopic(mentor)} · {mentor.pricePerSession} lei
+        {getSessionTopic(mentor)} · {formatLei(mentor.pricePerSession)}
       </p>
       {footnote && <p className="text-[11px] text-muted-foreground">{footnote}</p>}
       {children}

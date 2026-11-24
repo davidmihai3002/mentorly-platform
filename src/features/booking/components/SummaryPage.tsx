@@ -1,3 +1,4 @@
+import { formatLei, formatLongDate, parseIsoDate } from '@/utils'
 import { cn } from 'cn'
 import { UserRound } from 'lucide-react'
 import { AppLink } from '@/components'
@@ -9,14 +10,7 @@ import {
 } from '@/constants'
 import { BOOKING_CARD_CLASS, BOOKING_TAG_CLASS, SUMMARY_TEXT } from '../constants'
 import { useBookingContext } from '../hooks'
-import {
-  buildBookingPath,
-  formatLongDate,
-  getSessionTopic,
-  getSlotEnd,
-  isSelectionBookable,
-  parseIsoDate,
-} from '../utils'
+import { buildBookingPath, getSessionTopic, getSlotEnd, isSelectionBookable } from '../utils'
 import { BookingNotFound } from './BookingNotFound'
 import { BookingPageHeader } from './BookingPageHeader'
 import { BookingSteps } from './BookingSteps'
@@ -31,7 +25,7 @@ export function SummaryPage() {
     return <BookingNotFound />
 
   const topic = getSessionTopic(mentor)
-  const price = `${mentor.pricePerSession} lei`
+  const price = formatLei(mentor.pricePerSession)
 
   return (
     <div className="flex flex-col gap-6">
@@ -81,7 +75,7 @@ export function SummaryPage() {
           </h2>
           <dl className="flex flex-col gap-2.5">
             <OrderLine label={SUMMARY_TEXT.sessionLine} value={price} />
-            <OrderLine label={SUMMARY_TEXT.fees} value="0 lei" />
+            <OrderLine label={SUMMARY_TEXT.fees} value={formatLei(0)} />
             <OrderLine label={SUMMARY_TEXT.total} value={price} isTotal />
           </dl>
           <p className="text-[11px] text-muted-foreground">{SUMMARY_TEXT.oneOff}</p>
