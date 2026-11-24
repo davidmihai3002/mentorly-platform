@@ -40,7 +40,6 @@ Generated with Playwright at 1024 px (desktop) and 360 px (mobile).
 
 ## Autentificare legată de backend
 
-| Screen                   | Desktop                                            | Mobile                                           |
-| ------------------------ | -------------------------------------------------- | ------------------------------------------------ |
-| Înscriere cursant        | ![](auth-backend/inregistrare-desktop.jpg)         | ![](auth-backend/inregistrare-mobil.jpg)         |
-| Email sau parolă greșită | ![](auth-backend/autentificare-eroare-desktop.jpg) | ![](auth-backend/autentificare-eroare-mobil.jpg) |
+| Screen            | Desktop                                    | Mobile                                   |
+| ----------------- | ------------------------------------------ | ---------------------------------------- |
+| Înscriere cursant | ![](auth-backend/inregistrare-desktop.jpg) | ![](auth-backend/inregistrare-mobil.jpg) |
