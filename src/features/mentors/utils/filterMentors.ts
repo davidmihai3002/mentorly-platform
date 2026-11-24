@@ -1,4 +1,4 @@
-import { MENTOR_SCHEDULES } from '@/constants'
+import { LOCALE, MENTOR_SCHEDULES } from '@/constants'
 import type { DirectoryMentor } from '@/types'
 import { findDomain } from '@/utils'
 import { AVAILABILITY_WEEKDAYS, DOMAIN_FILTER_LABELS } from '../constants'
@@ -6,7 +6,7 @@ import type { MentorFilters, SortId } from '../types'
 
 function matchesQuery(mentor: DirectoryMentor, query: string): boolean {
   if (!query) return true
-  const needle = query.toLocaleLowerCase('ro-RO')
+  const needle = query.toLocaleLowerCase(LOCALE)
   const haystack = [
     mentor.name,
     mentor.role,
@@ -14,7 +14,7 @@ function matchesQuery(mentor: DirectoryMentor, query: string): boolean {
     findDomain(mentor.domainId)?.label,
   ]
     .join(' ')
-    .toLocaleLowerCase('ro-RO')
+    .toLocaleLowerCase(LOCALE)
   return haystack.includes(needle)
 }
 
