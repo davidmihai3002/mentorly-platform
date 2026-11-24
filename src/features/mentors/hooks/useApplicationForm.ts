@@ -8,6 +8,7 @@ export type ApplicationValues = Record<string, string>
 
 export function useApplicationForm(questions: readonly ApplicationQuestion[]) {
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false)
   const schema = useMemo(
     () => buildApplicationSchema(questions.map((question) => question.id)),
     [questions],
@@ -17,7 +18,10 @@ export function useApplicationForm(questions: readonly ApplicationQuestion[]) {
     defaultValues: Object.fromEntries(questions.map((question) => [question.id, ''])),
   })
 
-  const submit = form.handleSubmit(() => setIsSubmitted(true))
+  const submit = form.handleSubmit(() => {
+    setIsSubmitted(true)
+    setIsConfirmOpen(true)
+  })
 
-  return { form, submit, isSubmitted }
+  return { form, submit, isSubmitted, isConfirmOpen, setIsConfirmOpen }
 }

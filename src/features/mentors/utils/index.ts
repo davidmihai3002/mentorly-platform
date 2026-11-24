@@ -4,3 +4,4 @@ export { parseMentorSearch, toSearchParams, withoutFilter } from './searchParams
 export { toSearchCard } from './toSearchCard'
 export { getMentorProfile } from './getMentorProfile'
 export { getDemoSearchOptions } from './getDemoSearchOptions'
+export { formatIntroDate, formatIntroSlot, nextIntroDate } from './introCall'

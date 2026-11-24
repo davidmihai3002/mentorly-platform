@@ -31,3 +31,10 @@ export const ROUTES = {
 export const MAIN_CONTENT_ID = 'continut'
 
 export const LOGOUT_STATE = { loggedOut: true } as const
+
+export const BOOKING_PARAM_KEYS = {
+  date: 'data',
+  start: 'ora',
+  previousDate: 'data_veche',
+  previousStart: 'ora_veche',
+} as const

@@ -15,6 +15,11 @@ export const SITE_TEXT = {
   mobileNavLabel: 'Navigare mobilă',
   opensInNewTab: '(se deschide într-o filă nouă)',
   closeWithoutChanges: 'Închide fără modificări',
+  close: 'Închide',
+  understood: 'Am înțeles',
+  demoActionTitle: 'Acțiune demonstrativă',
+  demoActionText:
+    'Acest prototip prezintă navigarea Mentorly. Nu trimite date și nu efectuează operațiuni reale.',
 } as const
 
 export const NAV_LINKS = [

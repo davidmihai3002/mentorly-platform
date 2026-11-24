@@ -11,6 +11,14 @@ export type SessionEntry = {
   readonly month: string
   readonly title: string
   readonly meta: string
+  readonly upcoming?: UpcomingSession
+  readonly isRateable?: boolean
+}
+
+export type UpcomingSession = {
+  readonly date: string
+  readonly start: string
+  readonly label: string
 }
 
 export type StudentDetails = {

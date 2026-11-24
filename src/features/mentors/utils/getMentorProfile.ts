@@ -1,4 +1,4 @@
-import { MENTOR_DIRECTORY, MENTOR_SCHEDULES, WEEKDAY_NAMES } from '@/constants'
+import { MENTOR_DIRECTORY, MENTOR_SCHEDULES } from '@/constants'
 import type { DirectoryMentor } from '@/types'
 import { findDomain } from '@/utils'
 import { DEFAULT_APPLICATION_QUESTIONS, PROFILE_DETAILS } from '../constants'
@@ -38,7 +38,7 @@ function buildDefaultProfile(mentor: DirectoryMentor): MentorProfile {
     },
     capacity: DEFAULT_CAPACITY,
     availability: {
-      introSlots: schedule.map((slot) => `${WEEKDAY_NAMES[slot.weekday]}, ${slot.start}`),
+      introSlots: schedule.map((slot) => ({ weekday: slot.weekday, start: slot.start })),
     },
     reviews: {
       criteria: [

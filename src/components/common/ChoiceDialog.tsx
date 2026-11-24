@@ -7,6 +7,7 @@ import { SITE_TEXT } from '@/constants'
 type ChoiceOption = {
   readonly value: string
   readonly label: string
+  readonly ariaLabel?: string
 }
 
 type ChoiceDialogProps = {
@@ -16,8 +17,12 @@ type ChoiceDialogProps = {
   trigger?: ReactElement
   open?: boolean
   onOpenChange?: (open: boolean) => void
+  cancelLabel?: string
   onChange: (value: string) => void
 }
+
+const OPTION_CLASS =
+  'flex min-h-9 w-full items-center justify-center rounded-[20px] border border-brand-navy-border bg-card px-4 text-[13px] font-medium text-foreground transition-colors hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none'
 
 export function ChoiceDialog({
   title,
@@ -26,6 +31,7 @@ export function ChoiceDialog({
   trigger,
   open,
   onOpenChange,
+  cancelLabel,
   onChange,
 }: ChoiceDialogProps) {
   const [ownOpen, setOwnOpen] = useState(false)
@@ -57,9 +63,10 @@ export function ChoiceDialog({
               <button
                 type="button"
                 aria-pressed={option.value === value}
+                aria-label={option.ariaLabel}
                 onClick={() => choose(option.value)}
                 className={cn(
-                  'flex min-h-9 w-full items-center justify-center rounded-[20px] border border-brand-navy-border bg-card px-4 text-[13px] font-medium text-foreground transition-colors hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none',
+                  OPTION_CLASS,
                   'aria-pressed:border-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground',
                 )}
               >
@@ -68,9 +75,13 @@ export function ChoiceDialog({
             </li>
           ))}
         </ul>
-        <DialogClose className="w-fit rounded-sm text-xs font-medium text-foreground hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none">
-          {SITE_TEXT.closeWithoutChanges} <span aria-hidden="true">×</span>
-        </DialogClose>
+        {cancelLabel ? (
+          <DialogClose className={OPTION_CLASS}>{cancelLabel}</DialogClose>
+        ) : (
+          <DialogClose className="w-fit rounded-sm text-xs font-medium text-foreground hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none">
+            {SITE_TEXT.closeWithoutChanges} <span aria-hidden="true">×</span>
+          </DialogClose>
+        )}
       </DialogContent>
     </Dialog>
   )

@@ -2,6 +2,7 @@ export { findDomain, formatReputation, formatSessionPrice } from './formatMentor
 export { getAccountHome } from './getAccountHome'
 export { getMentorProfilePath } from './getMentorProfilePath'
 export { getBookingPath } from './getBookingPath'
+export { getReschedulePath } from './getReschedulePath'
 export { formatScore } from './formatScore'
 export { formatLei } from './formatLei'
 export { getFirstName } from './getFirstName'

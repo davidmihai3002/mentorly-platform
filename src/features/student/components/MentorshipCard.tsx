@@ -1,12 +1,7 @@
 import { cn } from 'cn'
 import { UserRound } from 'lucide-react'
-import { AppLink, SectionCard } from '@/components'
-import {
-  ROUNDED_BUTTON_CLASS,
-  ROUNDED_OUTLINE_CLASS,
-  ROUNDED_PRIMARY_CLASS,
-  ROUTES,
-} from '@/constants'
+import { AppLink, DemoActionDialog, SectionCard } from '@/components'
+import { ROUNDED_BUTTON_CLASS, ROUNDED_OUTLINE_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
 import type { DirectoryMentor } from '@/types'
 import { getMentorProfilePath } from '@/utils'
 import { STUDENT_PROFILE_TEXT } from '../constants'
@@ -47,12 +42,16 @@ export function MentorshipCard({ mentor }: MentorshipCardProps) {
         >
           {STUDENT_PROFILE_TEXT.viewMentor}
         </AppLink>
-        <AppLink
-          to={ROUTES.projects}
-          className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'min-h-9 text-sm')}
-        >
-          {STUDENT_PROFILE_TEXT.openGroup}
-        </AppLink>
+        <DemoActionDialog
+          trigger={
+            <button
+              type="button"
+              className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'min-h-9 text-sm')}
+            >
+              {STUDENT_PROFILE_TEXT.openGroup}
+            </button>
+          }
+        />
       </div>
     </SectionCard>
   )

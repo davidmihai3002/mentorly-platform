@@ -29,6 +29,14 @@ export const PROFILE_TEXT = {
   introCall: 'Apel gratuit · 20 minute',
   introSlotLabel: 'Alege intervalul pentru apelul gratuit',
   scheduleCall: 'Programează apelul gratuit',
+  introDialogTitle: 'Să ne cunoaștem',
+  introSubject: (mentor: string, minutes: number) =>
+    `${mentor} · Apel introductiv de ${minutes} minute`,
+  introFormat: 'Online · Ora României',
+  introFree: 'Gratuit · Nu se solicită plata.',
+  introConfirm: 'Confirmă apelul gratuit',
+  introCancel: 'Renunță',
+  introConfirmed: (slot: string) => `Apelul gratuit a fost programat: ${slot}.`,
   experienceTitle: 'Experiență, realizări și recomandări',
   experienceSubtitle: 'Exemple de parcurs profesional pentru acest profil ilustrativ.',
   jobsTitle: 'Experiență profesională',
@@ -52,6 +60,11 @@ export const PROFILE_TEXT = {
     'Răspunsurile mă ajută să pregătesc discuția de potrivire. Nu solicit plata înainte de a ne cunoaște.',
   answerRequired: 'Scrie un răspuns de cel puțin 10 caractere.',
   answerTooLong: 'Răspunsul poate avea cel mult 1000 de caractere.',
+  sentTitle: 'Cererea a fost trimisă',
+  sentText:
+    'În așteptarea răspunsului mentorului. Trimiterea cererii nu înseamnă acceptare automată și nu declanșează plata. În acest prototip, cererea este doar simulată.',
+  sentClose: 'Închide confirmarea',
+  sentExplore: 'Explorează alți mentori',
   submitted: 'Aplicația a fost trimisă. Mentorul îți răspunde personal după ce o citește.',
   notFoundTitle: 'Mentorul nu a fost găsit',
   notFoundText: 'Profilul poate fi mutat sau linkul este greșit.',
@@ -62,3 +75,5 @@ export const APPLICATION_LIMITS = {
   minLength: 10,
   maxLength: 1000,
 } as const
+
+export const INTRO_CALL_MINUTES = 20

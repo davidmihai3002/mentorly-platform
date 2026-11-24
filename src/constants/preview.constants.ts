@@ -14,6 +14,7 @@ export const COMPONENTS_PREVIEW_TEXT = {
   dialogs: 'Ferestre de alegere',
   dialogTitle: 'Disponibilitate',
   dialogTrigger: 'Alege disponibilitatea',
+  demoTrigger: 'Deschide grupul',
   dialogOptions: [
     { value: 'mon-thu', label: 'Luni sau joi' },
     { value: 'mon', label: 'Luni' },

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import {
   buttonVariants,
   ChoiceDialog,
+  DemoActionDialog,
   MentorCard,
   OptionCard,
   OptionGroup,
@@ -45,6 +46,13 @@ export function ComponentsPreviewPage() {
             <button type="button" className={cn(buttonVariants(), PILL_OUTLINE_CLASS)}>
               {TEXT.dialogOptions.find((option) => option.value === availability)?.label ??
                 TEXT.dialogTrigger}
+            </button>
+          }
+        />
+        <DemoActionDialog
+          trigger={
+            <button type="button" className={cn(buttonVariants(), PILL_OUTLINE_CLASS)}>
+              {TEXT.demoTrigger}
             </button>
           }
         />

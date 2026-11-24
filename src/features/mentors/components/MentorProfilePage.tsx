@@ -1,7 +1,6 @@
 import { cn } from 'cn'
 import { generatePath, useParams } from 'react-router'
 import { LAYOUT_CONTAINER_CLASS, MENTOR_SCHEDULES, ROUTES } from '@/constants'
-import { getBookingPath } from '@/utils'
 import { PROFILE_TEXT } from '../constants'
 import { getMentorProfile } from '../utils'
 import { AboutCard } from './AboutCard'
@@ -44,9 +43,9 @@ export function MentorProfilePage() {
               />
               <CapacityCard capacity={profile.capacity} />
               <AvailabilityCard
+                mentorName={profile.mentor.name}
                 availability={profile.availability}
                 schedule={MENTOR_SCHEDULES[profile.mentor.availability]}
-                bookingPath={getBookingPath(profile.mentor.id)}
               />
             </aside>
           </div>

@@ -57,10 +57,10 @@ export const PROFILE_DETAILS: Readonly<Record<string, ProfileDetails>> = {
     capacity: { max: 4, current: 3 },
     availability: {
       introSlots: [
-        'Luni, 18:00–18:20',
-        'Luni, 19:00–19:20',
-        'Joi, 19:00–19:20',
-        'Joi, 20:00–20:20',
+        { weekday: 1, start: '18:00' },
+        { weekday: 1, start: '19:00' },
+        { weekday: 4, start: '19:00' },
+        { weekday: 4, start: '20:00' },
       ],
     },
     experience: {
