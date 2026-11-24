@@ -8,7 +8,7 @@ import { AuthFieldError } from './AuthFieldError'
 
 type AuthTextFieldProps = {
   label: string
-  type?: 'text' | 'email'
+  type?: 'text' | 'email' | 'date'
   placeholder?: string
   autoComplete?: string
   error?: string
