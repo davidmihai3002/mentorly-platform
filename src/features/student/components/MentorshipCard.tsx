@@ -1,11 +1,11 @@
 import { cn } from 'cn'
 import { UserRound } from 'lucide-react'
+import { useId } from 'react'
 import { AppLink, SectionCard } from '@/components'
 import { ROUNDED_BUTTON_CLASS, ROUNDED_OUTLINE_CLASS } from '@/constants'
 import type { DirectoryMentor } from '@/types'
 import { getMentorProfilePath } from '@/utils'
 import { MENTORSHIP_GROUP, STUDENT_PROFILE_TEXT } from '../constants'
-import { getSafeGroupUrl } from '../utils'
 import { GroupButton } from './GroupButton'
 
 type MentorshipCardProps = {
@@ -13,6 +13,8 @@ type MentorshipCardProps = {
 }
 
 export function MentorshipCard({ mentor }: MentorshipCardProps) {
+  const groupNoteId = useId()
+
   return (
     <SectionCard
       title={STUDENT_PROFILE_TEXT.mentorshipTitle}
@@ -45,11 +47,13 @@ export function MentorshipCard({ mentor }: MentorshipCardProps) {
           {STUDENT_PROFILE_TEXT.viewMentor}
         </AppLink>
         {MENTORSHIP_GROUP.isEnrolmentConfirmed && (
-          <GroupButton url={getSafeGroupUrl(MENTORSHIP_GROUP.url)} />
+          <GroupButton url={MENTORSHIP_GROUP.url} describedBy={groupNoteId} />
         )}
       </div>
       {MENTORSHIP_GROUP.isEnrolmentConfirmed && (
-        <p className="text-[11px] text-muted-foreground">{STUDENT_PROFILE_TEXT.groupNote}</p>
+        <p id={groupNoteId} className="text-[11px] text-muted-foreground">
+          {STUDENT_PROFILE_TEXT.groupNote}
+        </p>
       )}
     </SectionCard>
   )

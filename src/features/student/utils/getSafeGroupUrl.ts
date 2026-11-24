@@ -1,7 +1,16 @@
 const ALLOWED_PROTOCOL = 'https:'
 
+function parseUrl(value: string): URL | undefined {
+  try {
+    return new URL(value)
+  } catch {
+    return undefined
+  }
+}
+
 export function getSafeGroupUrl(value: string): string | undefined {
-  if (!URL.canParse(value)) return undefined
-  const url = new URL(value)
-  return url.protocol === ALLOWED_PROTOCOL ? url.href : undefined
+  const url = parseUrl(value)
+  if (!url || url.protocol !== ALLOWED_PROTOCOL) return undefined
+  if (url.username || url.password) return undefined
+  return url.href
 }
