@@ -7,8 +7,8 @@ const RATING_OPTIONS = Array.from({ length: QUICK_RATING_MAX }, (_, index) => {
   const stars = QUICK_RATING_MAX - index
   return {
     value: String(stars),
-    label: STUDENT_PROFILE_TEXT.quickRatingOption(stars, QUICK_RATING_MAX),
-    ariaLabel: STUDENT_PROFILE_TEXT.quickRatingAria(stars, QUICK_RATING_MAX),
+    label: STUDENT_PROFILE_TEXT.quickRatingValue(stars, QUICK_RATING_MAX),
+    decoration: STUDENT_PROFILE_TEXT.quickRatingStars(stars, QUICK_RATING_MAX),
   }
 })
 

@@ -62,9 +62,9 @@ export const STUDENT_PROFILE_TEXT = {
   quickRatingContext: (session: string) => `: ${session}`,
   quickRatingTitle: 'Alege evaluarea',
   quickRatingCancel: 'Renunță',
-  quickRatingOption: (stars: number, max: number) =>
-    `${'★'.repeat(stars)}${'☆'.repeat(max - stars)} · ${stars} / ${max}`,
-  quickRatingAria: (stars: number, max: number) => `${stars} din ${max}`,
+  quickRatingStars: (stars: number, max: number) =>
+    `${'★'.repeat(stars)}${'☆'.repeat(max - stars)} ·`,
+  quickRatingValue: (stars: number, max: number) => `${stars} / ${max}`,
   quickRatingDone: (stars: string, max: number) => `Ai evaluat sesiunea cu ${stars} / ${max}.`,
   goalStatus: {
     done: 'Finalizat',
