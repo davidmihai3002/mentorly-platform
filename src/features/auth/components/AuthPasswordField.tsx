@@ -16,7 +16,6 @@ type AuthPasswordFieldProps = {
   autoComplete?: string
   error?: string
   registration: UseFormRegisterReturn
-  onForgotPassword?: () => void
   forgotPasswordHref?: string
   forgotPasswordLabel?: string
   density?: AuthDensity
@@ -29,7 +28,6 @@ export function AuthPasswordField({
   autoComplete = 'current-password',
   error,
   registration,
-  onForgotPassword,
   forgotPasswordHref,
   forgotPasswordLabel = LOGIN_TEXT.forgotPassword,
   density = 'regular',
@@ -50,7 +48,6 @@ export function AuthPasswordField({
         {forgotPasswordHref && (
           <AppLink
             to={forgotPasswordHref}
-            onClick={onForgotPassword}
             className="inline-flex min-h-6 items-center rounded-sm text-[13px] font-medium text-link hover:text-primary focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
           >
             {forgotPasswordLabel}

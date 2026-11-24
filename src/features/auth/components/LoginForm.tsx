@@ -11,14 +11,7 @@ import { GoogleAuthButton } from './GoogleAuthButton'
 import { RoleChoiceDialog } from './RoleChoiceDialog'
 
 export function LoginForm() {
-  const {
-    form,
-    submit,
-    logCurrentValues,
-    continueWithGoogle,
-    isRoleChoiceOpen,
-    setIsRoleChoiceOpen,
-  } = useLoginForm()
+  const { form, submit, continueWithGoogle, isRoleChoiceOpen, setIsRoleChoiceOpen } = useLoginForm()
   const { errors } = form.formState
   const styles = AUTH_DENSITY_STYLES.compact
 
@@ -43,7 +36,6 @@ export function LoginForm() {
           error={errors.password?.message}
           registration={form.register('password')}
           forgotPasswordHref={ROUTES.forgotPassword}
-          onForgotPassword={() => logCurrentValues('forgot-password')}
         />
 
         <Button type="submit" className={cn(AUTH_SUBMIT_BASE_CLASS, styles.submit)}>
@@ -51,7 +43,7 @@ export function LoginForm() {
         </Button>
       </form>
 
-      <AuthCardFooter onRegisterClick={logCurrentValues} />
+      <AuthCardFooter />
       <RoleChoiceDialog open={isRoleChoiceOpen} onOpenChange={setIsRoleChoiceOpen} />
     </div>
   )

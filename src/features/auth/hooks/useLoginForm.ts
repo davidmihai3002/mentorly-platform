@@ -2,8 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { loginSchema } from '../schemas'
-import type { LoginAction, LoginFormInput, LoginFormOutput } from '../types'
-import { logLoginAction } from '../utils'
+import type { LoginFormInput, LoginFormOutput } from '../types'
 
 export function useLoginForm() {
   const [isRoleChoiceOpen, setIsRoleChoiceOpen] = useState(false)
@@ -12,24 +11,13 @@ export function useLoginForm() {
     defaultValues: { email: '', password: '' },
   })
 
-  const submit = form.handleSubmit((values) => {
-    logLoginAction('login', values)
-    setIsRoleChoiceOpen(true)
-  })
+  const submit = form.handleSubmit(() => setIsRoleChoiceOpen(true))
 
-  const logCurrentValues = (action: LoginAction) => {
-    logLoginAction(action, form.getValues())
-  }
-
-  const continueWithGoogle = () => {
-    logCurrentValues('google')
-    setIsRoleChoiceOpen(true)
-  }
+  const continueWithGoogle = () => setIsRoleChoiceOpen(true)
 
   return {
     form,
     submit,
-    logCurrentValues,
     continueWithGoogle,
     isRoleChoiceOpen,
     setIsRoleChoiceOpen,

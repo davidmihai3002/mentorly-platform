@@ -19,11 +19,3 @@ export const LOGIN_TEXT = {
   registerMentor: 'Înregistrează-te ca mentor',
   loggedOut: 'Te-ai deconectat cu succes.',
 } as const
-
-export const LOGIN_ACTIONS = [
-  'login',
-  'google',
-  'forgot-password',
-  'register-mentee',
-  'register-mentor',
-] as const

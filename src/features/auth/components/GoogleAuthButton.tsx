@@ -5,7 +5,7 @@ import type { AuthDensity } from '../types'
 import { GoogleIcon } from './GoogleIcon'
 
 type GoogleAuthButtonProps = {
-  onClick: () => void
+  onClick?: () => void
   label?: string
   density?: AuthDensity
   hasIcon?: boolean
