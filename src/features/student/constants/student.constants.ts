@@ -34,6 +34,7 @@ export const STUDENT_PROFILE_TEXT = {
   ],
   viewMentor: 'Vezi profilul mentorului',
   openGroup: 'Deschide grupul',
+  groupNote: 'Nu există chat în aplicație; comunicarea are loc în grupul mentoratului.',
   goalsTitle: 'Obiective și progres',
   goalsMeta: (done: number, total: number) =>
     `${done} din ${total} obiective îndeplinite · actualizat pe 9 noiembrie`,

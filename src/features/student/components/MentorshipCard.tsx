@@ -48,6 +48,9 @@ export function MentorshipCard({ mentor }: MentorshipCardProps) {
           <GroupButton url={getSafeGroupUrl(MENTORSHIP_GROUP.url)} />
         )}
       </div>
+      {MENTORSHIP_GROUP.isEnrolmentConfirmed && (
+        <p className="text-[11px] text-muted-foreground">{STUDENT_PROFILE_TEXT.groupNote}</p>
+      )}
     </SectionCard>
   )
 }
