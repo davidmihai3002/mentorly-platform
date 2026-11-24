@@ -1,5 +1,12 @@
+import { cn } from 'cn'
 import { formatLei } from '@/utils'
-import { SAMPLE_STUDENT, TIME_ZONE, TIME_ZONE_LABEL } from '@/constants'
+import {
+  ROUNDED_BUTTON_CLASS,
+  ROUNDED_PRIMARY_CLASS,
+  SAMPLE_STUDENT,
+  TIME_ZONE,
+  TIME_ZONE_LABEL,
+} from '@/constants'
 import type { GoalStatus, LearningGoal, SessionEntry, StudentDetails } from '../types'
 
 export const STUDENT_PROFILE_TEXT = {
@@ -34,6 +41,7 @@ export const STUDENT_PROFILE_TEXT = {
   ],
   viewMentor: 'Vezi profilul mentorului',
   openGroup: 'Deschide grupul',
+  groupNote: 'Nu există chat în aplicație; comunicarea are loc în grupul mentoratului.',
   goalsTitle: 'Obiective și progres',
   goalsMeta: (done: number, total: number) =>
     `${done} din ${total} obiective îndeplinite · actualizat pe 9 noiembrie`,
@@ -137,3 +145,10 @@ export const PROFILE_LIMITS = {
 } as const
 
 export const QUICK_RATING_MAX = 5
+
+export const GROUP_BUTTON_CLASS = cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'min-h-9 text-sm')
+
+export const MENTORSHIP_GROUP = {
+  url: '',
+  isEnrolmentConfirmed: true,
+} as const

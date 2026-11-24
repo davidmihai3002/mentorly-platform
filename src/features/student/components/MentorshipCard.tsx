@@ -1,16 +1,20 @@
 import { cn } from 'cn'
 import { UserRound } from 'lucide-react'
-import { AppLink, DemoActionDialog, SectionCard } from '@/components'
-import { ROUNDED_BUTTON_CLASS, ROUNDED_OUTLINE_CLASS, ROUNDED_PRIMARY_CLASS } from '@/constants'
+import { useId } from 'react'
+import { AppLink, SectionCard } from '@/components'
+import { ROUNDED_BUTTON_CLASS, ROUNDED_OUTLINE_CLASS } from '@/constants'
 import type { DirectoryMentor } from '@/types'
 import { getMentorProfilePath } from '@/utils'
-import { STUDENT_PROFILE_TEXT } from '../constants'
+import { MENTORSHIP_GROUP, STUDENT_PROFILE_TEXT } from '../constants'
+import { GroupButton } from './GroupButton'
 
 type MentorshipCardProps = {
   mentor: DirectoryMentor
 }
 
 export function MentorshipCard({ mentor }: MentorshipCardProps) {
+  const groupNoteId = useId()
+
   return (
     <SectionCard
       title={STUDENT_PROFILE_TEXT.mentorshipTitle}
@@ -42,17 +46,15 @@ export function MentorshipCard({ mentor }: MentorshipCardProps) {
         >
           {STUDENT_PROFILE_TEXT.viewMentor}
         </AppLink>
-        <DemoActionDialog
-          trigger={
-            <button
-              type="button"
-              className={cn(ROUNDED_BUTTON_CLASS, ROUNDED_PRIMARY_CLASS, 'min-h-9 text-sm')}
-            >
-              {STUDENT_PROFILE_TEXT.openGroup}
-            </button>
-          }
-        />
+        {MENTORSHIP_GROUP.isEnrolmentConfirmed && (
+          <GroupButton url={MENTORSHIP_GROUP.url} describedBy={groupNoteId} />
+        )}
       </div>
+      {MENTORSHIP_GROUP.isEnrolmentConfirmed && (
+        <p id={groupNoteId} className="text-[11px] text-muted-foreground">
+          {STUDENT_PROFILE_TEXT.groupNote}
+        </p>
+      )}
     </SectionCard>
   )
 }
