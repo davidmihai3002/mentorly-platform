@@ -2,28 +2,18 @@ import { MENTOR_SCHEDULES } from '@/constants'
 import type { DirectoryMentor } from '@/types'
 import type { BookingSelection, CalendarDay, TimeSlot } from '../types'
 import {
-  BOOKING_WINDOW_DAYS,
-  daysBetween,
-  isWithinBookingWindow,
+  formatMinutes,
+  MINUTES_PER_HOUR,
+  nowInTimeZone,
   parseIsoDate,
   startOfToday,
   toIsoDate,
-} from './dates'
+  toMinutes,
+} from '@/utils'
+import { BOOKING_WINDOW_DAYS, daysBetween, isWithinBookingWindow } from './dates'
 
 const SLOT_MINUTES = 60
-const MINUTES_PER_HOUR = 60
 const DAYS_PER_WEEK = 7
-
-function toMinutes(time: string): number {
-  const [hours, minutes] = time.split(':').map(Number)
-  return (hours ?? 0) * MINUTES_PER_HOUR + (minutes ?? 0)
-}
-
-function toTime(totalMinutes: number): string {
-  const hours = String(Math.floor(totalMinutes / MINUTES_PER_HOUR)).padStart(2, '0')
-  const minutes = String(totalMinutes % MINUTES_PER_HOUR).padStart(2, '0')
-  return `${hours}:${minutes}`
-}
 
 function isDemoBusy(date: Date, slotIndex: number): boolean {
   return date.getDate() % 2 === 1 && slotIndex === 1
@@ -37,7 +27,7 @@ function hasStarted(date: Date, startMinutes: number, now: Date): boolean {
 export function getTimeSlots(
   mentor: DirectoryMentor,
   date: Date,
-  now: Date = new Date(),
+  now: Date = nowInTimeZone(),
 ): readonly TimeSlot[] {
   const window = MENTOR_SCHEDULES[mentor.availability].find(
     (slot) => slot.weekday === date.getDay(),
@@ -47,8 +37,8 @@ export function getTimeSlots(
   return Array.from({ length: count }, (_, index) => {
     const start = toMinutes(window.start) + index * SLOT_MINUTES
     return {
-      start: toTime(start),
-      end: toTime(start + SLOT_MINUTES),
+      start: formatMinutes(start),
+      end: formatMinutes(start + SLOT_MINUTES),
       isBusy: isDemoBusy(date, index) || hasStarted(date, start, now),
     }
   })
@@ -109,7 +99,7 @@ export function parseSelection(
   if (!window || !startValue) return undefined
   const slotStarts = Array.from(
     { length: (toMinutes(window.end) - toMinutes(window.start)) / SLOT_MINUTES },
-    (_, index) => toTime(toMinutes(window.start) + index * SLOT_MINUTES),
+    (_, index) => formatMinutes(toMinutes(window.start) + index * SLOT_MINUTES),
   )
   return slotStarts.includes(startValue) ? { date: toIsoDate(date), start: startValue } : undefined
 }
@@ -126,5 +116,5 @@ export function getFirstFreeStart(mentor: DirectoryMentor, iso: string): string 
 }
 
 export function getSlotEnd(start: string): string {
-  return toTime(toMinutes(start) + SLOT_MINUTES)
+  return formatMinutes(toMinutes(start) + SLOT_MINUTES)
 }

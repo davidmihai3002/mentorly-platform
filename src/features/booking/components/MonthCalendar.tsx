@@ -1,16 +1,10 @@
+import { formatLongDate, formatMonthTitle, parseIsoDate, startOfToday } from '@/utils'
 import { cn } from 'cn'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 import type { DirectoryMentor } from '@/types'
 import { BOOKING_CARD_CLASS, BOOKING_TEXT } from '../constants'
-import {
-  buildMonthGrid,
-  formatLongDate,
-  formatMonthTitle,
-  lastBookableDay,
-  parseIsoDate,
-  startOfToday,
-} from '../utils'
+import { buildMonthGrid, lastBookableDay } from '../utils'
 
 type MonthCalendarProps = {
   mentor: DirectoryMentor

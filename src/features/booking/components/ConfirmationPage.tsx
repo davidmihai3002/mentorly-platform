@@ -1,3 +1,4 @@
+import { formatLongDate, parseIsoDate } from '@/utils'
 import { cn } from 'cn'
 import { AppLink } from '@/components'
 import {
@@ -8,13 +9,7 @@ import {
 } from '@/constants'
 import { BOOKING_CARD_CLASS, BOOKING_TAG_CLASS, CONFIRMATION_TEXT } from '../constants'
 import { useBookingContext, useCalendarDownload, useCheckoutState } from '../hooks'
-import {
-  buildBookingPath,
-  formatLongDate,
-  getSessionTopic,
-  getSlotEnd,
-  parseIsoDate,
-} from '../utils'
+import { buildBookingPath, getSessionTopic, getSlotEnd } from '../utils'
 import { BookingNotFound } from './BookingNotFound'
 import { BookingPageHeader } from './BookingPageHeader'
 import { SuccessMark } from './SuccessMark'

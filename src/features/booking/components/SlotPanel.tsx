@@ -1,15 +1,10 @@
+import { formatDayMonthYear, formatShortDay, parseIsoDate } from '@/utils'
 import { cn } from 'cn'
 import type { ReactNode } from 'react'
 import type { DirectoryMentor } from '@/types'
 import { BOOKING_CARD_CLASS, BOOKING_TAG_CLASS, BOOKING_TEXT } from '../constants'
 import type { BookingSelection } from '../types'
-import {
-  formatDayMonthYear,
-  formatShortDay,
-  getSessionTopic,
-  getTimeSlots,
-  parseIsoDate,
-} from '../utils'
+import { getSessionTopic, getTimeSlots } from '../utils'
 import { SlotList } from './SlotList'
 
 type SlotPanelProps = {

@@ -1,3 +1,4 @@
+import { formatLongDate, parseIsoDate } from '@/utils'
 import { cn } from 'cn'
 import { useNavigate } from 'react-router'
 import { AppLink } from '@/components'
@@ -5,13 +6,7 @@ import { ROUTES } from '@/constants'
 import { BOOKING_CARD_CLASS, PAYMENT_TEXT } from '../constants'
 import { useBookingContext } from '../hooks'
 import type { CheckoutState } from '../types'
-import {
-  buildBookingPath,
-  formatLongDate,
-  getSlotEnd,
-  isSelectionBookable,
-  parseIsoDate,
-} from '../utils'
+import { buildBookingPath, getSlotEnd, isSelectionBookable } from '../utils'
 import { BookingNotFound } from './BookingNotFound'
 import { BookingPageHeader } from './BookingPageHeader'
 import { BookingSteps } from './BookingSteps'

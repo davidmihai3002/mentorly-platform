@@ -1,9 +1,9 @@
+import { TIME_ZONE } from '@/constants'
 import type { DirectoryMentor } from '@/types'
+import { toIsoDate } from '@/utils'
 
 function toIcsStamp(date: Date, time: string): string {
-  const [hours, minutes] = time.split(':')
-  const day = `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}`
-  return `${day}T${hours ?? '00'}${minutes ?? '00'}00`
+  return `${toIsoDate(date).replaceAll('-', '')}T${time.replace(':', '')}00`
 }
 
 function escapeIcs(text: string): string {
@@ -25,8 +25,8 @@ export function buildCalendarFile(
       .toISOString()
       .replace(/[-:]/g, '')
       .replace(/\.\d{3}/, '')}`,
-    `DTSTART:${toIcsStamp(date, slot.start)}`,
-    `DTEND:${toIcsStamp(date, slot.end)}`,
+    `DTSTART;TZID=${TIME_ZONE}:${toIcsStamp(date, slot.start)}`,
+    `DTEND;TZID=${TIME_ZONE}:${toIcsStamp(date, slot.end)}`,
     `SUMMARY:${escapeIcs(`Sesiune de mentorat cu ${mentor.name}`)}`,
     'END:VEVENT',
     'END:VCALENDAR',

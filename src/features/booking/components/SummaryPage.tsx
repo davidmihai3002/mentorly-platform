@@ -1,3 +1,4 @@
+import { formatLongDate, parseIsoDate } from '@/utils'
 import { cn } from 'cn'
 import { UserRound } from 'lucide-react'
 import { AppLink } from '@/components'
@@ -9,14 +10,7 @@ import {
 } from '@/constants'
 import { BOOKING_CARD_CLASS, BOOKING_TAG_CLASS, SUMMARY_TEXT } from '../constants'
 import { useBookingContext } from '../hooks'
-import {
-  buildBookingPath,
-  formatLongDate,
-  getSessionTopic,
-  getSlotEnd,
-  isSelectionBookable,
-  parseIsoDate,
-} from '../utils'
+import { buildBookingPath, getSessionTopic, getSlotEnd, isSelectionBookable } from '../utils'
 import { BookingNotFound } from './BookingNotFound'
 import { BookingPageHeader } from './BookingPageHeader'
 import { BookingSteps } from './BookingSteps'

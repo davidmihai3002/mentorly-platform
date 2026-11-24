@@ -1,3 +1,4 @@
+import { formatDayMonthYear, parseIsoDate } from '@/utils'
 import { cn } from 'cn'
 import { AppLink } from '@/components'
 import {
@@ -8,7 +9,7 @@ import {
 } from '@/constants'
 import { BOOKING_CARD_CLASS, BOOKING_TAG_CLASS, RESCHEDULE_TEXT } from '../constants'
 import { useBookingContext, useCheckoutState, useCalendarDownload } from '../hooks'
-import { buildBookingPath, formatDayMonthYear, getSlotEnd, parseIsoDate } from '../utils'
+import { buildBookingPath, getSlotEnd } from '../utils'
 import { BookingNotFound } from './BookingNotFound'
 import { BookingPageHeader } from './BookingPageHeader'
 import { SlotSummaryBox } from './SlotSummaryBox'
