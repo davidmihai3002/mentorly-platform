@@ -15,6 +15,7 @@ export function RoleChoiceDialog({ open, onOpenChange }: RoleChoiceDialogProps) 
       description={LOGIN_TEXT.roleText}
       open={open}
       onOpenChange={onOpenChange}
+      isDismissedByOutsideClick={false}
       actions={
         <>
           <AppLink to={ROUTES.student} className={DIALOG_PRIMARY_CLASS}>
