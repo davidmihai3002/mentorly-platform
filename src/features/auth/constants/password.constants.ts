@@ -15,7 +15,7 @@ export const RESET_PASSWORD_TEXT = {
   subtitle: 'Alege o parolă pe care nu ai mai folosit-o.',
   passwordLabel: 'Parolă nouă',
   passwordPlaceholder: 'Creează o parolă',
-  passwordHelper: 'Minimum 8 caractere, o literă mare și o cifră.',
+  passwordHelper: 'Minimum 8 caractere, o literă și o cifră.',
   confirmLabel: 'Confirmă parola',
   confirmPlaceholder: 'Reintrodu parola',
   submit: 'Salvează parola',

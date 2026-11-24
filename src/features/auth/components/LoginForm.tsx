@@ -1,3 +1,5 @@
+import { useId } from 'react'
+import { DemoActionDialog } from '@/components'
 import { Button } from '@/components/ui'
 import { cn } from 'cn'
 import { ROUTES } from '@/constants'
@@ -5,19 +7,20 @@ import { AUTH_DENSITY_STYLES, AUTH_SUBMIT_BASE_CLASS, LOGIN_TEXT } from '../cons
 import { useLoginForm } from '../hooks'
 import { AuthCardFooter } from './AuthCardFooter'
 import { AuthDivider } from './AuthDivider'
+import { AuthFieldError } from './AuthFieldError'
 import { AuthPasswordField } from './AuthPasswordField'
 import { AuthTextField } from './AuthTextField'
 import { GoogleAuthButton } from './GoogleAuthButton'
-import { RoleChoiceDialog } from './RoleChoiceDialog'
 
 export function LoginForm() {
-  const { form, submit, continueWithGoogle, isRoleChoiceOpen, setIsRoleChoiceOpen } = useLoginForm()
-  const { errors } = form.formState
+  const { form, submit } = useLoginForm()
+  const { errors, isSubmitting } = form.formState
+  const formErrorId = useId()
   const styles = AUTH_DENSITY_STYLES.compact
 
   return (
     <div className={styles.stack}>
-      <GoogleAuthButton density="compact" onClick={continueWithGoogle} />
+      <DemoActionDialog trigger={<GoogleAuthButton density="compact" />} />
       <AuthDivider density="compact" />
 
       <form onSubmit={(event) => void submit(event)} noValidate className={styles.stack}>
@@ -38,13 +41,18 @@ export function LoginForm() {
           forgotPasswordHref={ROUTES.forgotPassword}
         />
 
-        <Button type="submit" className={cn(AUTH_SUBMIT_BASE_CLASS, styles.submit)}>
+        <AuthFieldError id={formErrorId} message={errors.root?.message} />
+
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className={cn(AUTH_SUBMIT_BASE_CLASS, styles.submit)}
+        >
           {LOGIN_TEXT.submit}
         </Button>
       </form>
 
       <AuthCardFooter />
-      <RoleChoiceDialog open={isRoleChoiceOpen} onOpenChange={setIsRoleChoiceOpen} />
     </div>
   )
 }

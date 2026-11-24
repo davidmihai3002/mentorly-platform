@@ -5,6 +5,7 @@ import { PublicLayout } from '../layouts/PublicLayout'
 import { RootLayout } from '../layouts/RootLayout'
 import { RouteFallback } from '../pages/RouteFallback'
 import { lazyPage } from './lazyPage'
+import { RequireRole } from './RequireRole'
 
 export const router = createBrowserRouter([
   {
@@ -84,64 +85,74 @@ export const router = createBrowserRouter([
         lazy: lazyPage(() => import('../layouts/AccountLayout'), 'AccountLayout'),
         children: [
           {
-            path: ROUTES.student,
-            lazy: lazyPage(() => import('@/features/student'), 'StudentProfilePage'),
-          },
-          {
-            path: ROUTES.quiz,
-            lazy: lazyPage(() => import('@/features/quiz'), 'QuizPage'),
-          },
-          {
-            path: ROUTES.quizResults,
-            lazy: lazyPage(() => import('@/features/quiz'), 'QuizResultsPage'),
-          },
-          {
-            path: ROUTES.topMentors,
-            lazy: lazyPage(() => import('@/features/quiz'), 'TopMentorsPage'),
-          },
-          {
             path: ROUTES.mentors,
             lazy: lazyPage(() => import('@/features/mentors'), 'MentorSearchPage'),
-          },
-          {
-            path: ROUTES.booking,
-            lazy: lazyPage(() => import('@/features/booking'), 'BookingPage'),
-          },
-          {
-            path: ROUTES.bookingSummary,
-            lazy: lazyPage(() => import('@/features/booking'), 'SummaryPage'),
-          },
-          {
-            path: ROUTES.bookingPayment,
-            lazy: lazyPage(() => import('@/features/booking'), 'PaymentPage'),
-          },
-          {
-            path: ROUTES.bookingConfirmed,
-            lazy: lazyPage(() => import('@/features/booking'), 'ConfirmationPage'),
-          },
-          {
-            path: ROUTES.reschedule,
-            lazy: lazyPage(() => import('@/features/booking'), 'ReschedulePage'),
-          },
-          {
-            path: ROUTES.rescheduleConfirmed,
-            lazy: lazyPage(() => import('@/features/booking'), 'RescheduleConfirmedPage'),
           },
           {
             path: ROUTES.mentorReviews,
             lazy: lazyPage(() => import('@/features/reviews'), 'MentorReviewsPage'),
           },
           {
-            path: ROUTES.writeReview,
-            lazy: lazyPage(() => import('@/features/reviews'), 'WriteReviewPage'),
+            element: <RequireRole role="MENTEE" />,
+            children: [
+              {
+                path: ROUTES.student,
+                lazy: lazyPage(() => import('@/features/student'), 'StudentProfilePage'),
+              },
+              {
+                path: ROUTES.quiz,
+                lazy: lazyPage(() => import('@/features/quiz'), 'QuizPage'),
+              },
+              {
+                path: ROUTES.quizResults,
+                lazy: lazyPage(() => import('@/features/quiz'), 'QuizResultsPage'),
+              },
+              {
+                path: ROUTES.topMentors,
+                lazy: lazyPage(() => import('@/features/quiz'), 'TopMentorsPage'),
+              },
+              {
+                path: ROUTES.booking,
+                lazy: lazyPage(() => import('@/features/booking'), 'BookingPage'),
+              },
+              {
+                path: ROUTES.bookingSummary,
+                lazy: lazyPage(() => import('@/features/booking'), 'SummaryPage'),
+              },
+              {
+                path: ROUTES.bookingPayment,
+                lazy: lazyPage(() => import('@/features/booking'), 'PaymentPage'),
+              },
+              {
+                path: ROUTES.bookingConfirmed,
+                lazy: lazyPage(() => import('@/features/booking'), 'ConfirmationPage'),
+              },
+              {
+                path: ROUTES.reschedule,
+                lazy: lazyPage(() => import('@/features/booking'), 'ReschedulePage'),
+              },
+              {
+                path: ROUTES.rescheduleConfirmed,
+                lazy: lazyPage(() => import('@/features/booking'), 'RescheduleConfirmedPage'),
+              },
+              {
+                path: ROUTES.writeReview,
+                lazy: lazyPage(() => import('@/features/reviews'), 'WriteReviewPage'),
+              },
+              {
+                path: ROUTES.projects,
+                lazy: lazyPage(() => import('@/features/projects'), 'ProjectsPage'),
+              },
+            ],
           },
           {
-            path: ROUTES.projects,
-            lazy: lazyPage(() => import('@/features/projects'), 'ProjectsPage'),
-          },
-          {
-            path: ROUTES.mentor,
-            lazy: lazyPage(() => import('@/features/mentor-dashboard'), 'MentorDashboardPage'),
+            element: <RequireRole role="MENTOR" />,
+            children: [
+              {
+                path: ROUTES.mentor,
+                lazy: lazyPage(() => import('@/features/mentor-dashboard'), 'MentorDashboardPage'),
+              },
+            ],
           },
         ],
       },

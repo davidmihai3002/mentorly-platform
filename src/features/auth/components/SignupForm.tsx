@@ -1,10 +1,13 @@
+import { useId } from 'react'
 import { Controller } from 'react-hook-form'
+import { DemoActionDialog } from '@/components'
 import { Button } from '@/components/ui'
 import { cn } from 'cn'
 import { AUTH_DENSITY_STYLES, AUTH_SUBMIT_BASE_CLASS, SIGNUP_TEXT } from '../constants'
 import { useSignupForm } from '../hooks'
 import { AuthCheckboxField } from './AuthCheckboxField'
 import { AuthDivider } from './AuthDivider'
+import { AuthFieldError } from './AuthFieldError'
 import { AuthPasswordField } from './AuthPasswordField'
 import { AuthTextField } from './AuthTextField'
 import { GoogleAuthButton } from './GoogleAuthButton'
@@ -13,22 +16,32 @@ import { SignupTermsText } from './SignupTermsText'
 
 export function SignupForm() {
   const { form, submit } = useSignupForm()
-  const { errors } = form.formState
+  const { errors, isSubmitting } = form.formState
+  const formErrorId = useId()
   const styles = AUTH_DENSITY_STYLES.regular
 
   return (
     <div className="space-y-5">
-      <GoogleAuthButton label={SIGNUP_TEXT.google} hasIcon={false} />
+      <DemoActionDialog trigger={<GoogleAuthButton label={SIGNUP_TEXT.google} hasIcon={false} />} />
       <AuthDivider />
 
       <form onSubmit={(event) => void submit(event)} noValidate className={styles.stack}>
         <AuthTextField
-          label={SIGNUP_TEXT.fullNameLabel}
+          label={SIGNUP_TEXT.firstNameLabel}
           type="text"
-          placeholder={SIGNUP_TEXT.fullNamePlaceholder}
-          autoComplete="name"
-          error={errors.fullName?.message}
-          registration={form.register('fullName')}
+          placeholder={SIGNUP_TEXT.firstNamePlaceholder}
+          autoComplete="given-name"
+          error={errors.firstName?.message}
+          registration={form.register('firstName')}
+        />
+
+        <AuthTextField
+          label={SIGNUP_TEXT.lastNameLabel}
+          type="text"
+          placeholder={SIGNUP_TEXT.lastNamePlaceholder}
+          autoComplete="family-name"
+          error={errors.lastName?.message}
+          registration={form.register('lastName')}
         />
 
         <AuthTextField
@@ -57,23 +70,15 @@ export function SignupForm() {
           registration={form.register('confirmPassword')}
         />
 
-        <div className="space-y-3 pt-0.5">
-          <Controller
-            control={form.control}
-            name="isAgeConfirmed"
-            render={({ field }) => (
-              <AuthCheckboxField
-                checked={field.value}
-                onCheckedChange={field.onChange}
-                onBlur={field.onBlur}
-                inputRef={field.ref}
-                error={errors.isAgeConfirmed?.message}
-              >
-                {SIGNUP_TEXT.ageConfirmationLabel}
-              </AuthCheckboxField>
-            )}
-          />
+        <AuthTextField
+          label={SIGNUP_TEXT.birthDateLabel}
+          type="date"
+          autoComplete="bday"
+          error={errors.birthDate?.message}
+          registration={form.register('birthDate')}
+        />
 
+        <div className="space-y-3 pt-0.5">
           <Controller
             control={form.control}
             name="isTermsAccepted"
@@ -91,7 +96,13 @@ export function SignupForm() {
           />
         </div>
 
-        <Button type="submit" className={cn(AUTH_SUBMIT_BASE_CLASS, styles.submit)}>
+        <AuthFieldError id={formErrorId} message={errors.root?.message} />
+
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className={cn(AUTH_SUBMIT_BASE_CLASS, styles.submit)}
+        >
           {SIGNUP_TEXT.submit}
         </Button>
       </form>

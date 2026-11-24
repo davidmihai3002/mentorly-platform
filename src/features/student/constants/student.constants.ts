@@ -3,7 +3,6 @@ import { formatLei } from '@/utils'
 import {
   ROUNDED_BUTTON_CLASS,
   ROUNDED_PRIMARY_CLASS,
-  SAMPLE_STUDENT,
   TIME_ZONE,
   TIME_ZONE_LABEL,
 } from '@/constants'
@@ -85,8 +84,7 @@ export const STUDENT_PROFILE_TEXT = {
   },
 } as const
 
-export const INITIAL_STUDENT: StudentDetails = {
-  fullName: SAMPLE_STUDENT.fullName,
+export const INITIAL_STUDENT: Omit<StudentDetails, 'fullName'> = {
   careerGoal: 'primul meu rol de Frontend Developer',
   city: 'Cluj-Napoca',
   about:

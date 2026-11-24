@@ -71,5 +71,3 @@ export const MY_STUDENTS: readonly StudentRow[] = [
   { name: 'Radu S.', progress: '40% · Arhitectură React', action: 'Vezi planul de învățare' },
   { name: 'Irina T.', progress: '80% · Testare frontend', action: 'Trimite feedback' },
 ]
-
-export const DASHBOARD_MENTOR_ID = 'mihai-popescu'

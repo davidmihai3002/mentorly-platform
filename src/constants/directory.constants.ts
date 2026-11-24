@@ -168,9 +168,3 @@ export const MENTOR_SCHEDULES: Readonly<Record<AvailabilityId, readonly WeeklySl
     { weekday: 0, start: '10:00', end: '12:00' },
   ],
 }
-
-export const SAMPLE_STUDENT = {
-  firstName: 'Andreea',
-  fullName: 'Andreea Marin',
-  email: 'andreea.marin@example.com',
-} as const

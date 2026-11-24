@@ -84,7 +84,6 @@ src/
 
 ## Authentication (Team Decision)
 
-- Credentials are submitted as plain JSON over HTTPS.
-- The backend returns a **JWT**, stored in a **cookie** (never `localStorage` or `sessionStorage`).
-- Every authenticated request sends `Authorization: Bearer <token>`.
-- Until the backend is connected, login actions log form values in development with the password masked.
+- Requests go to `/api`, proxied to the backend by Vercel (`vercel.json`) and by the Vite dev server (`vite.config.ts`).
+- The **access token** is kept only in memory (never in `localStorage`, `sessionStorage` or a JS cookie) and sent as `Authorization: Bearer <token>`.
+- The **refresh token** is an `httpOnly` cookie handled by the browser. The app refreshes the session on start and once on a `401`.

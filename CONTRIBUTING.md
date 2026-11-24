@@ -15,6 +15,8 @@ Regulile comune ale echipei. Scurte, ca să le citim și să le respectăm toți
 ```text
 src/
   app/            router, layout-uri, pagini globale
+  api/            clientul API, apelurile de autentificare și tipurile lor
+  session/        sesiunea: provider-ul și hook-ul
   components/
     ui/           componente shadcn (instalate MANUAL, nu se modifică)
     common/       componente comune, refolosite în mai multe feature-uri
@@ -51,8 +53,8 @@ src/
 
 ## 5. Doar FE
 
-- Lucrăm doar la interfață. Până există API-ul: date de exemplu, fără cereri reale spre BE.
-- Token-ul JWT stă în cookie (niciodată în localStorage) și se trimite ca `Authorization: Bearer <token>`.
+- Lucrăm doar la interfață. Unde există API, folosim src/api; în rest, date de exemplu.
+- Access token-ul stă doar în memorie și se trimite ca `Authorization: Bearer <token>`; refresh token-ul e un cookie httpOnly pe care îl gestionează browserul.
 
 ## 6. Pull request
 

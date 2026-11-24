@@ -4,7 +4,6 @@ export {
   LANGUAGE_LABELS,
   MENTOR_DIRECTORY,
   MENTOR_SCHEDULES,
-  SAMPLE_STUDENT,
   WEEKDAY_NAMES,
 } from './directory.constants'
 export { DOMAINS } from './domains.constants'
