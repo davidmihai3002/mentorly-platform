@@ -33,7 +33,7 @@ function buildDefaultProfile(mentor: DirectoryMentor): MentorProfile {
     },
     pricing: {
       monthlyPrice,
-      monthlyMeta: `${MONTHLY_SESSIONS} sesiuni de 60 min / 30 zile, în loc de ${fullPrice} lei.`,
+      monthlyMeta: `${MONTHLY_SESSIONS} sesiuni de 60 min / 30 zile, în loc de ${formatLei(fullPrice)}.`,
       discountNote: `Reducere de ${formatLei(fullPrice - monthlyPrice)} aleasă de mentor. Nu este impusă de Mentorly.`,
     },
     capacity: DEFAULT_CAPACITY,

@@ -129,7 +129,7 @@ export const RESCHEDULE_TEXT = {
   next: 'Noul interval · confirmat',
   meta: `${TIME_ZONE_TEXT} · Online · 60 minute`,
   notified: (amount: number, email?: string) =>
-    `Mentorul a fost notificat. Confirmarea actualizată a fost trimisă ${email ? `la ${email}` : 'pe email'}. Plata de ${amount} lei rămâne asociată sesiunii.`,
+    `Mentorul a fost notificat. Confirmarea actualizată a fost trimisă ${email ? `la ${email}` : 'pe email'}. Plata de ${formatLei(amount)} rămâne asociată sesiunii.`,
   viewUpdated: 'Vezi sesiunea actualizată',
   updateCalendar: 'Actualizează calendarul',
 } as const

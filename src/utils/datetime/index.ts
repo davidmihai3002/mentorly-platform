@@ -1,4 +1,10 @@
-export { nowInTimeZone, parseIsoDate, startOfToday, toIsoDate } from './calendarDate'
+export {
+  nowInTimeZone,
+  parseIsoDate,
+  startOfToday,
+  toIsoDate,
+  zonedTimeToUtc,
+} from './calendarDate'
 export {
   formatDayMonth,
   formatDayMonthYear,

@@ -16,7 +16,9 @@ export function PricingCard({ sessionPrice, pricing, applyAnchor }: PricingCardP
     <ProfileCard title={PROFILE_TEXT.pricingTitle} className="shadow-card-soft">
       <div className="flex flex-col gap-1 border-b border-border pb-4">
         <p className="text-foreground">
-          <span className="text-[28px] font-bold tracking-[-0.02em]">{sessionPrice} lei</span>{' '}
+          <span className="text-[28px] font-bold tracking-[-0.02em]">
+            {formatLei(sessionPrice)}
+          </span>{' '}
           <span className="text-[13px]">{PROFILE_TEXT.perSession}</span>
         </p>
         <p className="text-xs text-muted-foreground">{PROFILE_TEXT.sessionMeta}</p>

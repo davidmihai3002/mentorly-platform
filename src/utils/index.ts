@@ -21,4 +21,5 @@ export {
   startOfToday,
   toIsoDate,
   toMinutes,
+  zonedTimeToUtc,
 } from './datetime'
