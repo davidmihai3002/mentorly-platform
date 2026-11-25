@@ -9,7 +9,7 @@ export function SignupPage() {
       <title>{SIGNUP_TEXT.pageTitle}</title>
       <AuthCard density="regular">
         <AuthCardHeader title={SIGNUP_TEXT.title} subtitle={SIGNUP_TEXT.subtitle} />
-        <SignupForm />
+        <SignupForm role="MENTEE" />
       </AuthCard>
     </>
   )

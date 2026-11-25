@@ -17,4 +17,5 @@ export const AUTH_ERRORS = {
   emailTaken: 'Există deja un cont cu acest email.',
   underAge: 'Trebuie să ai cel puțin 16 ani ca să îți creezi un cont.',
   generic: 'A apărut o eroare. Încearcă din nou.',
+  googleFailed: 'Autentificarea cu Google a eșuat. Încearcă din nou.',
 } as const

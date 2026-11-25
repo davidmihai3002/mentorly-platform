@@ -2,6 +2,7 @@ export {
   AuthCard,
   ForgotPasswordPage,
   LoginPage,
+  MentorApplicationPage,
   MentorSignupPage,
   ResetPasswordPage,
   SignupPage,

@@ -152,6 +152,10 @@ export const router = createBrowserRouter([
                 path: ROUTES.mentor,
                 lazy: lazyPage(() => import('@/features/mentor-dashboard'), 'MentorDashboardPage'),
               },
+              {
+                path: ROUTES.mentorApplication,
+                lazy: lazyPage(() => import('@/features/auth'), 'MentorApplicationPage'),
+              },
             ],
           },
         ],
