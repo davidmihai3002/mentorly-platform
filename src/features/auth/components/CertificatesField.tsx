@@ -1,13 +1,22 @@
 import { FileBadgeIcon } from 'lucide-react'
-import { useId } from 'react'
-import { MENTOR_SIGNUP_TEXT } from '../constants'
+import { useId, type Ref } from 'react'
+import { CREDENTIAL_ACCEPT } from '../constants'
 
 type CertificatesFieldProps = {
+  label: string
   count: number
   onSelect: (files: File[]) => void
+  inputRef?: Ref<HTMLInputElement>
+  describedById?: string
 }
 
-export function CertificatesField({ count, onSelect }: CertificatesFieldProps) {
+export function CertificatesField({
+  label,
+  count,
+  onSelect,
+  inputRef,
+  describedById,
+}: CertificatesFieldProps) {
   const inputId = useId()
 
   return (
@@ -17,15 +26,16 @@ export function CertificatesField({ count, onSelect }: CertificatesFieldProps) {
     >
       <span className="flex items-center gap-2">
         <FileBadgeIcon aria-hidden="true" className="size-4" />
-        {MENTOR_SIGNUP_TEXT.certificates}
+        {label}
         {count > 0 && <span className="font-semibold text-primary">({count})</span>}
       </span>
-      <span className="text-muted-foreground">{MENTOR_SIGNUP_TEXT.optional}</span>
       <input
+        ref={inputRef}
         id={inputId}
         type="file"
         multiple
-        accept="application/pdf,image/*"
+        accept={CREDENTIAL_ACCEPT}
+        aria-describedby={describedById}
         className="sr-only"
         onChange={(event) => {
           onSelect(Array.from(event.target.files ?? []))

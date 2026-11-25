@@ -4,7 +4,6 @@ export const SIGNUP_TEXT = {
   title: 'Înscriere cursant',
   subtitle:
     'Fă primul pas spre cariera ta. Creează un cont și găsește mentorul potrivit pentru tine.',
-  google: 'Înscrie-te cu Google',
   divider: 'sau cu email',
   firstNameLabel: 'Prenume',
   firstNamePlaceholder: 'Prenumele tău',

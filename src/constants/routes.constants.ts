@@ -25,6 +25,7 @@ export const ROUTES = {
   reschedule: '/cursant/rezervare/:mentorId/reprogramare',
   rescheduleConfirmed: '/cursant/rezervare/:mentorId/reprogramare/confirmata',
   mentor: '/mentor',
+  mentorApplication: '/mentor/aplicare',
   componentsPreview: '/dev/componente',
 } as const
 

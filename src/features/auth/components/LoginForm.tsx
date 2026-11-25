@@ -1,5 +1,4 @@
 import { useId } from 'react'
-import { DemoActionDialog } from '@/components'
 import { Button } from '@/components/ui'
 import { cn } from 'cn'
 import { ROUTES } from '@/constants'
@@ -10,7 +9,7 @@ import { AuthDivider } from './AuthDivider'
 import { AuthFieldError } from './AuthFieldError'
 import { AuthPasswordField } from './AuthPasswordField'
 import { AuthTextField } from './AuthTextField'
-import { GoogleAuthButton } from './GoogleAuthButton'
+import { GoogleAuthSection } from './GoogleAuthSection'
 
 export function LoginForm() {
   const { form, submit } = useLoginForm()
@@ -20,7 +19,7 @@ export function LoginForm() {
 
   return (
     <div className={styles.stack}>
-      <DemoActionDialog trigger={<GoogleAuthButton density="compact" />} />
+      <GoogleAuthSection defaultRole="MENTEE" />
       <AuthDivider density="compact" />
 
       <form onSubmit={(event) => void submit(event)} noValidate className={styles.stack}>

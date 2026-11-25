@@ -8,8 +8,9 @@ import { AuthFieldError } from './AuthFieldError'
 
 type AuthTextFieldProps = {
   label: string
-  type?: 'text' | 'email' | 'date'
+  type?: 'text' | 'email' | 'date' | 'url'
   placeholder?: string
+  helperText?: string
   autoComplete?: string
   error?: string
   registration: UseFormRegisterReturn
@@ -20,6 +21,7 @@ export function AuthTextField({
   label,
   type = 'text',
   placeholder,
+  helperText,
   autoComplete,
   error,
   registration,
@@ -27,7 +29,11 @@ export function AuthTextField({
 }: AuthTextFieldProps) {
   const styles = AUTH_DENSITY_STYLES[density]
   const fieldId = useId()
+  const helperId = `${fieldId}-helper`
   const errorId = `${fieldId}-error`
+  const describedBy =
+    [helperText ? helperId : undefined, error ? errorId : undefined].filter(Boolean).join(' ') ||
+    undefined
 
   return (
     <div className={cn('flex flex-col', styles.field)}>
@@ -42,9 +48,14 @@ export function AuthTextField({
         placeholder={placeholder}
         className={cn(AUTH_INPUT_BASE_CLASS, styles.input)}
         aria-invalid={error ? true : undefined}
-        aria-describedby={error ? errorId : undefined}
+        aria-describedby={describedBy}
         {...registration}
       />
+      {helperText && (
+        <p id={helperId} className="text-xs text-muted-foreground">
+          {helperText}
+        </p>
+      )}
       <AuthFieldError id={errorId} message={error} />
     </div>
   )

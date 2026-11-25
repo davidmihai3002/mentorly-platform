@@ -5,7 +5,6 @@ type AuthDensityStyles = {
   stack: string
   field: string
   input: string
-  google: string
   submit: string
   divider: string
 }
@@ -16,7 +15,6 @@ export const AUTH_DENSITY_STYLES: Record<AuthDensity, AuthDensityStyles> = {
     stack: 'space-y-3',
     field: 'gap-0.5',
     input: 'h-10 px-2.5 sm:h-[30px]',
-    google: 'h-10 sm:h-[33px]',
     submit: 'h-10 shadow-navy sm:h-[29px]',
     divider: 'text-[13px] font-medium text-foreground',
   },
@@ -25,7 +23,6 @@ export const AUTH_DENSITY_STYLES: Record<AuthDensity, AuthDensityStyles> = {
     stack: 'space-y-3.5',
     field: 'gap-1.5',
     input: 'h-10 px-3',
-    google: 'h-10',
     submit: 'h-[42px] shadow-navy-soft',
     divider: 'text-xs text-muted-foreground',
   },

@@ -27,3 +27,14 @@ export type RegisterRequest = {
   birthDate: string
   hasAcceptedTerms: true
 }
+
+export type GoogleLoginRequest = {
+  idToken: string
+}
+
+export type GoogleRegisterRequest = {
+  idToken: string
+  role: UserRole
+  birthDate: string
+  hasAcceptedTerms: true
+}

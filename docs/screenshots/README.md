@@ -43,3 +43,10 @@ Generated with Playwright at 1024 px (desktop) and 360 px (mobile).
 | Screen            | Desktop                                    | Mobile                                   |
 | ----------------- | ------------------------------------------ | ---------------------------------------- |
 | Înscriere cursant | ![](auth-backend/inregistrare-desktop.jpg) | ![](auth-backend/inregistrare-mobil.jpg) |
+
+## Înscriere mentor și Google
+
+| Screen           | Desktop                                                 | Mobile                                                |
+| ---------------- | ------------------------------------------------------- | ----------------------------------------------------- |
+| Înscriere mentor | ![](mentor-google-auth/inregistrare-mentor-desktop.jpg) | ![](mentor-google-auth/inregistrare-mentor-mobil.jpg) |
+| Aplicare mentor  | ![](mentor-google-auth/aplicare-mentor-desktop.jpg)     | ![](mentor-google-auth/aplicare-mentor-mobil.jpg)     |

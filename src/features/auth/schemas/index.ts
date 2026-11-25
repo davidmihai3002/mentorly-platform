@@ -1,6 +1,7 @@
 export { forgotPasswordSchema } from './forgotPasswordSchema'
+export { googleSignupSchema } from './googleSignupSchema'
 export { loginSchema } from './loginSchema'
-export { mentorSignupSchema } from './mentorSignupSchema'
+export { mentorApplicationSchema } from './mentorApplicationSchema'
 export { emailSchema, newPasswordSchema } from './passwordSchema'
 export { resetPasswordSchema } from './resetPasswordSchema'
 export { signupSchema } from './signupSchema'

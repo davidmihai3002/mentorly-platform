@@ -1,7 +1,6 @@
 export const LOGIN_TEXT = {
   pageTitle: 'Autentificare – Mentorly',
   title: 'Autentificare',
-  google: 'Continuă cu Google',
   divider: 'sau cu email',
   emailLabel: 'Adresă de email',
   emailPlaceholder: 'exemplu@email.ro',

@@ -1,15 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
-import { type AuthResponse, register } from '@/api'
-import { ROUTES } from '@/constants'
+import { type AuthResponse, register, type UserRole } from '@/api'
 import { useSession } from '@/session'
 import { EMPTY_SIGNUP_VALUES } from '../constants'
 import { signupSchema } from '../schemas'
 import type { SignupFormInput, SignupFormOutput } from '../types'
-import { getSignupError } from '../utils'
+import { getSignupError, getSignupHome } from '../utils'
 
-export function useSignupForm() {
+export function useSignupForm(role: UserRole) {
   const navigate = useNavigate()
   const { signIn } = useSession()
   const form = useForm<SignupFormInput, unknown, SignupFormOutput>({
@@ -21,7 +20,7 @@ export function useSignupForm() {
     let auth: AuthResponse
     try {
       auth = await register({
-        role: 'MENTEE',
+        role,
         firstName,
         lastName,
         email,
@@ -35,7 +34,7 @@ export function useSignupForm() {
       return
     }
     signIn(auth)
-    await navigate(ROUTES.quiz, { replace: true, viewTransition: true })
+    await navigate(getSignupHome(role), { replace: true, viewTransition: true })
   })
 
   return { form, submit }

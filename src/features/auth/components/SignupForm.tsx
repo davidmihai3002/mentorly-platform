@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import { Controller } from 'react-hook-form'
-import { DemoActionDialog } from '@/components'
+import type { UserRole } from '@/api'
 import { Button } from '@/components/ui'
 import { cn } from 'cn'
 import { AUTH_DENSITY_STYLES, AUTH_SUBMIT_BASE_CLASS, SIGNUP_TEXT } from '../constants'
@@ -10,19 +10,23 @@ import { AuthDivider } from './AuthDivider'
 import { AuthFieldError } from './AuthFieldError'
 import { AuthPasswordField } from './AuthPasswordField'
 import { AuthTextField } from './AuthTextField'
-import { GoogleAuthButton } from './GoogleAuthButton'
+import { GoogleAuthSection } from './GoogleAuthSection'
 import { SignupCardFooter } from './SignupCardFooter'
 import { SignupTermsText } from './SignupTermsText'
 
-export function SignupForm() {
-  const { form, submit } = useSignupForm()
+type SignupFormProps = {
+  role: UserRole
+}
+
+export function SignupForm({ role }: SignupFormProps) {
+  const { form, submit } = useSignupForm(role)
   const { errors, isSubmitting } = form.formState
   const formErrorId = useId()
   const styles = AUTH_DENSITY_STYLES.regular
 
   return (
     <div className="space-y-5">
-      <DemoActionDialog trigger={<GoogleAuthButton label={SIGNUP_TEXT.google} hasIcon={false} />} />
+      <GoogleAuthSection defaultRole={role} />
       <AuthDivider />
 
       <form onSubmit={(event) => void submit(event)} noValidate className={styles.stack}>
